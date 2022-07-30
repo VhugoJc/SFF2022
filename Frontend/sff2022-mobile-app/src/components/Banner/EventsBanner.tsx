@@ -22,7 +22,7 @@ export default function EventsBanner() {
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
                     {"\n"}
                 </Text>
-                <IconBtn name='Descubrir' light />
+                <IconBtn name='Descubrir' type='light' />
             </View>
         </ImageBackground>
     )

@@ -44,5 +44,10 @@
           color:'$primary',
           fontSize:'$0',
           paddingRight:'$2'
+        },
+        blueLabel:{
+          color: '$blueLight',
+          fontSize: '$1',
+          fontFamily: 'Rubik-regular'
         }
       });

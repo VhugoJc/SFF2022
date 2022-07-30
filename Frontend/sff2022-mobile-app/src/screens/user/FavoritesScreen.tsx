@@ -1,10 +1,11 @@
-import { View, Text } from 'react-native'
+import { ScrollView } from 'react-native'
 import React from 'react'
+import FavList from '../../components/Lists/FavList';
 
 export default function FavoritesScreen() {
   return (
-    <View>
-      <Text>Favorites</Text>
-    </View>
+    <ScrollView>
+      <FavList/>
+    </ScrollView>
   )
 }

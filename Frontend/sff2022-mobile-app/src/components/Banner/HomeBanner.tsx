@@ -17,9 +17,9 @@ export default function HomeBanner() {
                     showsHorizontalScrollIndicator={false}
                 >
                     <View sx={{ flexDirection: 'row', paddingLeft: '$3', marginTop: '$3' }}>
-                        <IconBtn light name='Equipos' icon='store' />
-                        <IconBtn light name='Combos' icon='fastfood' />
-                        <IconBtn light name='Eventos' icon='theaters' />
+                        <IconBtn type='light' name='Equipos' icon='store' />
+                        <IconBtn type='light' name='Combos' icon='fastfood' />
+                        <IconBtn type='light' name='Eventos' icon='theaters' />
                     </View>
                 </ScrollView>
             </View>
