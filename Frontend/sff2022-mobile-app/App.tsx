@@ -5,6 +5,7 @@ import { theme } from "./src/theme/Dripsy";
 import { DripsyProvider } from "dripsy";
 import Fonts from './src/utils/Fonts';
 import StatusBar from './src/utils/StatusBar';
+import { StackNavigator } from './src/Navigation/StackNavigation';
 
 export default function App() {
   return (

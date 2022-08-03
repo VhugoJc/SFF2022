@@ -4,10 +4,12 @@ import { View, Text, } from 'dripsy';
 import React from 'react'
 import IconBtn from '../Button/IconBtn';
 import { styles } from '../../theme/stylesheet';
+import { useNavigation } from '@react-navigation/native';
 
 
 
 export default function EventsBanner() {
+    const navigation = useNavigation(); 
 
     return (
         <ImageBackground
@@ -22,7 +24,7 @@ export default function EventsBanner() {
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
                     {"\n"}
                 </Text>
-                <IconBtn name='Descubrir' type='light' />
+                <IconBtn onPress={() => navigation.navigate("Entretenimiento" as any)} name='Descubrir' type='light' />
             </View>
         </ImageBackground>
     )
