@@ -3,29 +3,33 @@ import { ImageSourcePropType, StyleSheet } from 'react-native';
 import { styles } from '../../theme/stylesheet';
 import { Icon } from '@rneui/base';
 import{ View,Text,Image } from 'dripsy';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 interface FoodCardProps{
     img: ImageSourcePropType,
     title:string,
     price:number,
     paid?:boolean,
-    fav?:boolean
+    fav?:boolean,
+    onPress?():void
 }
-export default function FoodCard({img,title,price,paid=false,fav=false}:FoodCardProps) {
+export default function FoodCard({img,title,price,paid=false,fav=false,onPress}:FoodCardProps) {
   return (
-    <View sx={foodCard.container}>
-        <View  style={foodCard.favicon}>
-            {
-                fav?<Icon color={'#E63946'} name='favorite' />
-                :paid?
-                <Image sx={foodCard.paidIcon} source={require('../../../assets/img/paid.png')}/>
-                :null
-            }
+    <TouchableOpacity onPress={onPress}>
+        <View sx={foodCard.container}>
+            <View  style={foodCard.favicon}>
+                {
+                    fav?<Icon color={'#E63946'} name='favorite' />
+                    :paid?
+                    <Image sx={foodCard.paidIcon} source={require('../../../assets/img/paid.png')}/>
+                    :null
+                }
+            </View>
+        <Image sx={foodCard.img} source={img}/>
+        <Text sx={styles.text}>{title}</Text>
+        <Text sx={styles.blueLabel}>${price.toFixed(2)}</Text>
         </View>
-      <Image sx={foodCard.img} source={img}/>
-      <Text sx={styles.text}>{title}</Text>
-      <Text sx={styles.blueLabel}>${price.toFixed(2)}</Text>
-    </View>
+    </TouchableOpacity>
   )
 }
 

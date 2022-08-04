@@ -6,9 +6,9 @@ import {StackScreenProps } from '@react-navigation/stack';
 
 
 import { HomeNavigation } from './HomeNavigation';
+import { FoodNavigation } from './FoodNavigation';
 
 
-import HomeScreen from '../screens/user/HomeScreen';
 import FoodScreen from '../screens/user/FoodScreen';
 import FavoritesScreen from '../screens/user/FavoritesScreen';
 import PreSalesScreen from '../screens/user/PreSalesScreen';
@@ -39,8 +39,8 @@ export default function AppNavigation() {
         }
         
         >
-        <Tab.Screen name='HomeNav' options={{headerShown:false}} component={HomeNavigation}/>
-        <Tab.Screen name='Comida' component={FoodScreen}/>
+        <Tab.Screen name='HomeNav' options={{headerShown:false, title:"Home"}} component={HomeNavigation}/>
+        <Tab.Screen name='FoodNav' options={{headerShown:false, title:"Comida"}} component={FoodNavigation}/>
         <Tab.Screen name='Favoritos' component={FavoritesScreen}/>
         <Tab.Screen name='Mis Preventas' component={PreSalesScreen}/>
         <Tab.Screen name='Mi Cuenta' component={AccountScreen}/>
@@ -56,7 +56,7 @@ const screenOptions = (route:any, color:any, size:any) =>{
             iconName='home';
             break;
 
-        case 'Comida':
+        case 'FoodNav':
             iconName='restaurant';
             break;
 

@@ -1,13 +1,27 @@
 import { Text, ScrollView, StyleSheet } from 'react-native';
 import { View } from 'dripsy';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import IconBtn from '../../components/Button/IconBtn';
 import TeamsList from '../../components/Lists/TeamsList';
 import FoodList from '../../components/Lists/FoodsList';
+import { StackScreenProps } from '@react-navigation/stack';
 
-export default function FoodScreen() {
+interface Props extends StackScreenProps <any>{
+
+}
+
+export default function FoodScreen({route}:Props) {
+
   const [buttonActivated, setButtonActivated] = useState('Equipo');
+  const {status}:any|undefined = route.params;
 
+  useEffect(() => {
+    if(status){
+      setButtonActivated(status);
+    }
+    
+  }, [status]);
+  
   const handleType=(type:string)=>{
     return buttonActivated===type?'secondary':'background'
   }
