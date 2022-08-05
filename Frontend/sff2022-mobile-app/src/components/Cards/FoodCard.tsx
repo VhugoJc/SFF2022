@@ -1,9 +1,10 @@
 import React from 'react';
-import { ImageSourcePropType, StyleSheet } from 'react-native';
+import { ImageSourcePropType, StyleSheet, ImageBackground } from 'react-native';
 import { styles } from '../../theme/stylesheet';
 import { Icon } from '@rneui/base';
 import{ View,Text,Image } from 'dripsy';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import CircleBtn from '../Button/CircleBtn';
 
 interface FoodCardProps{
     img: ImageSourcePropType,
@@ -18,14 +19,19 @@ export default function FoodCard({img,title,price,paid=false,fav=false,onPress}:
     <TouchableOpacity onPress={onPress}>
         <View sx={foodCard.container}>
             <View  style={foodCard.favicon}>
-                {
-                    fav?<Icon color={'#E63946'} name='favorite' />
-                    :paid?
+                {                    
+                    paid?
                     <Image sx={foodCard.paidIcon} source={require('../../../assets/img/paid.png')}/>
                     :null
                 }
             </View>
-        <Image sx={foodCard.img} source={img}/>
+        <ImageBackground style={foodCard.img} source={img}>
+        {
+            fav
+                ?<CircleBtn name='favorite' right/>
+                :null
+        }
+        </ImageBackground>
         <Text sx={styles.text}>{title}</Text>
         <Text sx={styles.blueLabel}>${price.toFixed(2)}</Text>
         </View>
@@ -44,7 +50,7 @@ const foodCard = StyleSheet.create({
         width:'100%',
         borderTopLeftRadius: 12,
         borderTopRightRadius: 12,
-        marginBottom:'$1',
+        marginBottom:10,
     },
     favicon:{
         position:'absolute',

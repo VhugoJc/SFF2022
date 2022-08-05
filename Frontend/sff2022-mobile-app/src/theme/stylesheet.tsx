@@ -49,5 +49,8 @@
           color: '$blueLight',
           fontSize: '$1',
           fontFamily: 'Rubik-regular'
-        }
+        },
+        flexDirection:{
+          flexDirection:'row'
+        },
       });

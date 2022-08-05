@@ -49,9 +49,10 @@ export default function Entreteinment() {
                 {
                     events.map(event=>{
                         return(
-                            <View sx={entreteinment.card}>
+                            <View sx={entreteinment.card}
+                            key={event.id} 
+                            >
                                 <EntrreteinmentCard
-                                key={event.id} 
                                     img={event.img}
                                     title={event.title}
                                     date={event.date}

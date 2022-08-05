@@ -13,8 +13,8 @@ interface Props extends StackScreenProps <any>{
 export default function FoodScreen({route}:Props) {
 
   const [buttonActivated, setButtonActivated] = useState('Equipo');
-  const {status}:any|undefined = route.params;
-
+  const status=typeof route.params !=='undefined' ?route.params.status :null;
+  
   useEffect(() => {
     if(status){
       setButtonActivated(status);

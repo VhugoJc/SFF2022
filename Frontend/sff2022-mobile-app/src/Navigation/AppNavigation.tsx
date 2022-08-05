@@ -23,7 +23,7 @@ interface Props extends StackScreenProps<any, any> {
 
 export default function AppNavigation() {
     return(
-        <Tab.Navigator 
+        <Tab.Navigator
         screenOptions={
             ({route})=>({
                 tabBarActiveTintColor:"#1D3557",//$primary
@@ -34,13 +34,14 @@ export default function AppNavigation() {
                 tabBarIcon:({color,size})=>screenOptions(route,color,size),
                 headerTitleStyle:{
                     fontFamily:'Rubik-regular'
-                }
+                },
+                
             })
         }
         
         >
         <Tab.Screen name='HomeNav' options={{headerShown:false, title:"Home"}} component={HomeNavigation}/>
-        <Tab.Screen name='FoodNav' options={{headerShown:false, title:"Comida"}} component={FoodNavigation}/>
+        <Tab.Screen name='FoodNav' initialParams={{status:"Equipo"}} options={{headerShown:false, title:"Comida"}} component={FoodNavigation}/>
         <Tab.Screen name='Favoritos' component={FavoritesScreen}/>
         <Tab.Screen name='Mis Preventas' component={PreSalesScreen}/>
         <Tab.Screen name='Mi Cuenta' component={AccountScreen}/>
