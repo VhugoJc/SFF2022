@@ -1,5 +1,5 @@
-import { ImageBackground, ScrollView } from 'react-native';
-import { View, Text, } from 'dripsy';
+import { ImageBackground, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, Image } from 'dripsy';
 import React from 'react';
 import { styles } from '../../theme/stylesheet';
 import CircleBtn from '../../components/Button/CircleBtn';
@@ -8,6 +8,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { useState } from 'react';
 import ProductsCard from '../../components/Cards/ProductsCard';
 import LargeBtn from '../../components/Button/LargeBtn';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 export default function ItemFoodScreen() {
@@ -15,8 +16,7 @@ export default function ItemFoodScreen() {
     const [favIcon, setfavIcon] = useState<boolean>(false);
     const [showHeader, setShowHeader] = useState<boolean>(false);
 
-
-    const handleScroll = (e:Object) =>{
+    const handleScroll = (e:any) =>{
         const y =e.nativeEvent.contentOffset.y;
         if(y===0){
             setShowHeader(false);
@@ -29,30 +29,15 @@ export default function ItemFoodScreen() {
         <View
             sx={itemFood.container}
         >
-            {
-                showHeader
-                ?(  
-                <View>
-                    <Text>ssss</Text>
-                    <Text>ssss</Text>
-                    <Text>ssss</Text>
-                </View>)
-                : null
-            }
-            <ScrollView bounces={false} scrollEventThrottle={16}  onScroll ={handleScroll}>
+                <View sx={showHeader ?itemFood.headerTop :{zIndex:2} as any}>
+                    <CircleBtn name='close' onPress={() => navigation.goBack()} />
+                    <CircleBtn name={favIcon ? 'favorite' : 'favorite-border'} onPress={() => setfavIcon(!favIcon)} right/>
+                </View>
+            <ScrollView showsVerticalScrollIndicator={false} bounces={false} scrollEventThrottle={16}  onScroll ={handleScroll}>
                 <ImageBackground
                     style={itemFood.headerImg}
                     source={require('../../../assets/img/food1.jpg')}
                 >
-                    {
-                        showHeader
-                        ? null
-                        : (<View style={{ flexDirection: 'row' }}>
-                        <CircleBtn name='close' onPress={() => navigation.navigate("Comida")} />
-                        <CircleBtn name={favIcon ? 'favorite' : 'favorite-border'} onPress={() => setfavIcon(!favIcon)
-                        } right />
-                    </View>)
-                    }
                 </ImageBackground>
                 <View sx={itemFood.header as any}>
                     <Text sx={styles.subtitle}>
@@ -78,16 +63,25 @@ export default function ItemFoodScreen() {
                         <ProductsCard imgUrl={require('../../../assets/img/product3.png')} />
                     </View>
                 </ScrollView>
+
+                <View  sx={itemFood.header as any}>
+                    <Text sx={Object.assign({}, styles.text, itemFood.subtitle)}>
+                        Vendedor:
+                    </Text>
+                </View>
+                <TouchableOpacity>
+                    <Image sx={styles.imageTeanm} source={require('../../../assets/img/team1.png')}/>
+                </TouchableOpacity>
                 <View sx={itemFood.btnContainer}>
-                        <LargeBtn/>
+                        <LargeBtn name='Comprar preventa' onPress={()=>navigation.navigate("Mi Pedido")}/>
                 </View>
             </ScrollView>
         </View>
     )
 }
 
-// const itemFood = StyleSheet.create({
-const itemFood = ({
+const itemFood = StyleSheet.create({
+// const itemFood = ({
     container: {
         flex: 1,
         backgroundColor: '$background',
@@ -112,5 +106,14 @@ const itemFood = ({
     btnContainer:{
         alignItems:'center',
         paddingVertical:'$4'
-    }
+    },    
+    headerTop:{
+        // alignItems:'center',
+        height:45,
+        position:'absolute',
+        zIndex:10,
+        backgroundColor: '$background',
+        width:'100%'
+    },
+    
 });

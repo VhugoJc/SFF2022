@@ -1,3 +1,4 @@
+import "./src/utils/IgnoreWarning";
 import { StyleSheet } from 'react-native';
 import AppNavigation from './src/Navigation/AppNavigation';
 import { NavigationContainer } from "@react-navigation/native";
@@ -5,7 +6,6 @@ import { theme } from "./src/theme/Dripsy";
 import { DripsyProvider } from "dripsy";
 import Fonts from './src/utils/Fonts';
 import StatusBar from './src/utils/StatusBar';
-import { StackNavigator } from './src/Navigation/StackNavigation';
 
 export default function App() {
   return (

@@ -1,16 +1,19 @@
-import { Text, Image, StyleSheet, ImageSourcePropType } from 'react-native';
+import { Text, Image, StyleSheet, ImageSourcePropType, TouchableOpacity } from 'react-native';
 import React from 'react'
 import {View} from 'dripsy';
 
 interface teamCardProps{
-    img: ImageSourcePropType
+    img: ImageSourcePropType,
+    onPress?():void
 }
 
-export default function TeamCard({img}:teamCardProps) {
+export default function TeamCard({img,onPress}:teamCardProps) {
     return (
-        <View sx={team.conrainer as any}>
-            <Image style={team.img} source={img} />
-        </View>
+        <TouchableOpacity onPress={onPress}>
+            <View sx={team.conrainer as any}>
+                <Image style={team.img} source={img} />
+            </View>
+        </TouchableOpacity>
     )
 }
 

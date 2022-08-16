@@ -5,14 +5,17 @@ import {Icon} from "@rneui/base"; //react native elements
 import {StackScreenProps } from '@react-navigation/stack';
 
 
+//navigation stacks
 import { HomeNavigation } from './HomeNavigation';
 import { FoodNavigation } from './FoodNavigation';
+import { AccountNavigation } from './AccountNavigation';
+
+
 
 
 import FoodScreen from '../screens/user/FoodScreen';
 import FavoritesScreen from '../screens/user/FavoritesScreen';
 import PreSalesScreen from '../screens/user/PreSalesScreen';
-import AccountScreen from '../screens/user/AccountScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -26,8 +29,9 @@ export default function AppNavigation() {
         <Tab.Navigator
         screenOptions={
             ({route})=>({
-                tabBarActiveTintColor:"#1D3557",//$primary
-                tabBarInactiveTintColor:"#A8DADC",//$secondary
+                tabBarActiveTintColor:"#457B9D",//$primary
+                tabBarInactiveTintColor:"rgba(29,53,87,0.7)",//$primaryTransparent
+                // tabBarInactiveTintColor:"#A8DADC",//$blueLight
                 tabBarLabelStyle:{
                     fontFamily:'Rubik-regular'
                 },
@@ -42,9 +46,10 @@ export default function AppNavigation() {
         >
         <Tab.Screen name='HomeNav' options={{headerShown:false, title:"Home"}} component={HomeNavigation}/>
         <Tab.Screen name='FoodNav' initialParams={{status:"Equipo"}} options={{headerShown:false, title:"Comida"}} component={FoodNavigation}/>
+
         <Tab.Screen name='Favoritos' component={FavoritesScreen}/>
         <Tab.Screen name='Mis Preventas' component={PreSalesScreen}/>
-        <Tab.Screen name='Mi Cuenta' component={AccountScreen}/>
+        <Tab.Screen name='AccountNav' component={AccountNavigation} options={{headerShown:false,title:"Mi cuenta"}}/>
     </Tab.Navigator>
     ); 
 }
@@ -66,17 +71,16 @@ const screenOptions = (route:any, color:any, size:any) =>{
             break;
 
         case 'Mis Preventas':
-            iconName='payment';
+            iconName='shopping-bag';
             break;
 
-        case 'Mi Cuenta':
+        case 'AccountNav':
             iconName='person';
             break;
 
         default:
         break;
     }
-
     return <Icon type='material' name={iconName} color={color}  size={size}/>
 }
 

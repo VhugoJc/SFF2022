@@ -5,14 +5,17 @@ import { View, } from 'dripsy';
 interface Props {
     name: string,
     right?: boolean,
-    onPress?(): void
+    onPress?(): void,
+    type?: "primary" | "light"  | "blueLight" | "secondary" | "background"
 }
 
-export default function CircleBtn({ name, right, onPress }: Props) {
+export default function CircleBtn({ name, right, onPress,type='background' }: Props) {
 
     return (
-        <TouchableOpacity onPress={onPress} style={Object.assign({}, circleBtn.container, right ? circleBtn.right : {})}>
-            <View sx={circleBtn.circle}>
+        <TouchableOpacity  onPress={onPress} 
+            style={Object.assign({}, circleBtn.container, right ? circleBtn.right : {},)}
+        >
+            <View sx={Object.assign({},circleBtn.circle,{backgroundColor: `$${type}`})}>
                 <Icon size={19} name={name}  
                     color={
                         name==='favorite'

@@ -11,7 +11,7 @@ import CalendarBanner from '../../components/Banner/CalendarBanner';
 
 export default function HomeScreen() {
   return (
-    <ScrollView>
+    <ScrollView >
         <HomeBanner/>
         <Article/>
         <EventsBanner/>

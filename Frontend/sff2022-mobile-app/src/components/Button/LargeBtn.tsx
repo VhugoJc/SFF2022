@@ -3,18 +3,23 @@ import React from 'react'
 import {  View, Text, } from 'dripsy';
 import { styles } from '../../theme/stylesheet';
 
-export default function LargeBtn() {
+interface Props{
+    onPress?(): void,
+    name:String,
+    type?: "primary" | "light" | "red" | "secondary" ;
+}
+
+export default function LargeBtn({onPress,name,type='secondary'}:Props) {
     return (
-        <TouchableOpacity  style={{width:'90%'}}>
-            <View sx={largeBtn.container}>
-                <Text sx={Object.assign({},styles.text,largeBtn.text)}>Comprar preventa</Text>
+        <TouchableOpacity onPress={onPress} style={{width:'90%'}}>
+            <View sx={Object.assign({},largeBtn.container,{ backgroundColor:`$${type}`})}>
+                <Text sx={Object.assign({},styles.text,largeBtn.text)}>{name}</Text>
             </View>
         </TouchableOpacity>
     )
 }
 const largeBtn = StyleSheet.create({
     container:{
-        backgroundColor:'$secondary',
         paddingVertical:'$3',
         borderRadius:12
     },

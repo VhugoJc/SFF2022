@@ -53,4 +53,18 @@
         flexDirection:{
           flexDirection:'row'
         },
+        basicBackgnd:{
+          backgroundColor:'$background',
+          minHeight:'100%'
+        },
+        imageTeanm: {
+          width: 130,
+          height: 130,
+          borderRadius: 150 / 2,
+          overflow: "hidden",
+          borderWidth: 3,
+          borderColor: "$light",
+          alignSelf:'center',
+          marginTop:'$3'
+      }
       });
