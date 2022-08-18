@@ -11,18 +11,11 @@ import { FoodNavigation } from './FoodNavigation';
 import { AccountNavigation } from './AccountNavigation';
 
 
-
-
-import FoodScreen from '../screens/user/FoodScreen';
+// single screens
 import FavoritesScreen from '../screens/user/FavoritesScreen';
 import PreSalesScreen from '../screens/user/PreSalesScreen';
 
 const Tab = createBottomTabNavigator();
-
-interface Props extends StackScreenProps<any, any> {
-
-};
-
 
 export default function AppNavigation() {
     return(
@@ -46,7 +39,6 @@ export default function AppNavigation() {
         >
         <Tab.Screen name='HomeNav' options={{headerShown:false, title:"Home"}} component={HomeNavigation}/>
         <Tab.Screen name='FoodNav' initialParams={{status:"Equipo"}} options={{headerShown:false, title:"Comida"}} component={FoodNavigation}/>
-
         <Tab.Screen name='Favoritos' component={FavoritesScreen}/>
         <Tab.Screen name='Mis Preventas' component={PreSalesScreen}/>
         <Tab.Screen name='AccountNav' component={AccountNavigation} options={{headerShown:false,title:"Mi cuenta"}}/>
