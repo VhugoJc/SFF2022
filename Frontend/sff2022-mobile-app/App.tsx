@@ -10,7 +10,7 @@ import {useState} from 'react';
 import AdminNavigation from "./src/Navigation/AdminNavigation";
 
 export default function App() {
-  const [nav, setNav] = useState<string>("user");
+  const [nav, setNav] = useState<string>("admin");
   return (
     <DripsyProvider theme={theme}>
       <StatusBar/>
@@ -18,7 +18,7 @@ export default function App() {
         <NavigationContainer>
           
           {
-            nav==="admin"
+            nav==="user"
             ? <AppNavigation />
             : <AdminNavigation/>
           }

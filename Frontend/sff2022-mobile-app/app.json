@@ -1,7 +1,8 @@
 {
   "expo": {
     "name": "sff2022-mobile-app",
-    "slug": "sff2022-mobile-app",
+    "slug": "sff2022",
+    "owner":"vic0201",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

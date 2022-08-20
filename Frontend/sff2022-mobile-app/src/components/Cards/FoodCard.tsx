@@ -12,9 +12,10 @@ interface FoodCardProps{
     price:number,
     paid?:boolean,
     fav?:boolean,
+    edit?:boolean,
     onPress?():void
 }
-export default function FoodCard({img,title,price,paid=false,fav=false,onPress}:FoodCardProps) {
+export default function FoodCard({img,title,price,paid=false,fav=false,edit=false,onPress}:FoodCardProps) {
   return (
     <TouchableOpacity onPress={onPress}>
         <View sx={foodCard.container}>
@@ -29,7 +30,9 @@ export default function FoodCard({img,title,price,paid=false,fav=false,onPress}:
         {
             fav
                 ?<CircleBtn name='favorite' right/>
-                :null
+                :edit
+                    ? <CircleBtn name='edit' right/>
+                    : null
         }
         </ImageBackground>
         <Text sx={styles.text}>{title}</Text>

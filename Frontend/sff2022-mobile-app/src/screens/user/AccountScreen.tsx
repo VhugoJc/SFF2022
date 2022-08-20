@@ -27,13 +27,7 @@ export default function AccountScreen() {
           <Icon name='arrow-forward-ios' size={15} color={'#A6A6A6'} style={{alignSelf:'flex-end'}}/>
         </View>
       </View>
-      <View
-        sx={{    
-          borderWidth: 0.5,
-          borderColor:'$lightGrey',
-          margin:0,
-        }}
-        />
+      <View sx={styles.divider}/>
         <View style={{flex:5}}>
           <OptionsAccount text='Ayuda' icon='help'/>
           <OptionsAccount onPress={()=>navigation.navigate("Acerca de")} text='Acera de' icon='info' type='red'/>
