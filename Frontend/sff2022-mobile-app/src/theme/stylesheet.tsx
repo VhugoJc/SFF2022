@@ -22,6 +22,11 @@ export const styles = ({
     fontSize: '$1',
     fontFamily: 'Rubik-regular'
   },
+  textBold: {
+    color: '$primary',
+    fontSize: '$1',
+    fontFamily: 'Rubik-bold'
+  },
   homeBanner: {
     height: '100%',
   },

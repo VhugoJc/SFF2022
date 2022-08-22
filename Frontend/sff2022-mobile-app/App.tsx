@@ -8,9 +8,10 @@ import Fonts from './src/utils/Fonts';
 import StatusBar from './src/utils/StatusBar';
 import {useState} from 'react';
 import AdminNavigation from "./src/Navigation/admin/AdminNavigation";
+import LoginNavigation from './src/Navigation/shared/LoginNavigation';
 
 export default function App() {
-  const [nav, setNav] = useState<string>("admin");
+  const [nav, setNav] = useState<string>("login");
   return (
     <DripsyProvider theme={theme}>
       <StatusBar/>
@@ -22,7 +23,7 @@ export default function App() {
             ? <AppNavigation />
             : nav==="admin"
               ? <AdminNavigation/>
-              : null
+              : <LoginNavigation/>
           }
         </NavigationContainer>
       </Fonts>
