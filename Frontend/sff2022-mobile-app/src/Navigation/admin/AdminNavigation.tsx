@@ -4,7 +4,7 @@ import HomeAdminScreen from '../../screens/admin/HomeAdminScreen';
 import { Icon } from '@rneui/base';
 import MoneyScreen from '../../screens/admin/MoneyScreen';
 import { ProductsNav } from './ProductsNav';
-import { AccountNavigation } from '../AccountNavigation';
+import { AccountNavigation } from '../shared/AccountNavigation';
 import { PresalesNav } from './PresalesNav';
 import { MoneyNav } from './MoneyNav';
 

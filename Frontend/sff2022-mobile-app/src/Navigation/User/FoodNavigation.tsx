@@ -1,9 +1,9 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
-import FoodScreen from '../screens/user/FoodScreen';
-import ItemFoodScreen from '../screens/user/ItemFoodScreen';
-import TeamScreen from '../screens/user/TeamScreen';
-import SelingPresaleScreen from '../screens/user/SelingPresaleScreen';
+import FoodScreen from '../../screens/user/FoodScreen';
+import ItemFoodScreen from '../../screens/user/ItemFoodScreen';
+import TeamScreen from '../../screens/user/TeamScreen';
+import SelingPresaleScreen from '../../screens/user/SelingPresaleScreen';
 
 const Stack = createStackNavigator();
 

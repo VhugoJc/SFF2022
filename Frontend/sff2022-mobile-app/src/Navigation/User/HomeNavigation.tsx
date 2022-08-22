@@ -1,7 +1,7 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
-import Entreteinment from '../screens/user/EntertainmentScreen';
-import HomeScreen from '../screens/user/HomeScreen';
+import Entreteinment from '../../screens/user/EntertainmentScreen';
+import HomeScreen from '../../screens/user/HomeScreen';
 
 
 

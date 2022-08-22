@@ -1,7 +1,7 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
-import AccountScreen from '../screens/shared/AccountScreen';
-import AuthorCredits from '../screens/shared/AuthorCreditsScreen';
+import AccountScreen from '../../screens/shared/AccountScreen';
+import AuthorCredits from '../../screens/shared/AuthorCreditsScreen';
 
 
 

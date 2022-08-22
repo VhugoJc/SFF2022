@@ -1,7 +1,7 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
-import PreSalesScreen from '../screens/user/PreSalesScreen';
-import PaidPresaleScreen from '../screens/shared/PaidPresaleScreen';
+import PreSalesScreen from '../../screens/user/PreSalesScreen';
+import PaidPresaleScreen from '../../screens/shared/PaidPresaleScreen';
 
 const Stack = createStackNavigator();
 

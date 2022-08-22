@@ -1,6 +1,6 @@
 import "./src/utils/IgnoreWarning";
 import { StyleSheet } from 'react-native';
-import AppNavigation from './src/Navigation/AppNavigation';
+import AppNavigation from './src/Navigation/User/AppNavigation';
 import { NavigationContainer } from "@react-navigation/native";
 import { theme } from "./src/theme/Dripsy";
 import { DripsyProvider } from "dripsy";

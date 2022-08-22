@@ -8,12 +8,11 @@ import {StackScreenProps } from '@react-navigation/stack';
 //navigation stacks
 import { HomeNavigation } from './HomeNavigation';
 import { FoodNavigation } from './FoodNavigation';
-import { AccountNavigation } from './AccountNavigation';
+import { AccountNavigation } from '../shared/AccountNavigation';
 
 
 // single screens
-import FavoritesScreen from '../screens/user/FavoritesScreen';
-import PreSalesScreen from '../screens/user/PreSalesScreen';
+import FavoritesScreen from '../../screens/user/FavoritesScreen';
 import { MyPresaleNavigation } from './MyPresaleNavigation';
 
 const Tab = createBottomTabNavigator();
