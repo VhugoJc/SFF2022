@@ -1,11 +1,12 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeAdminScreen from '../screens/admin/HomeAdminScreen';
+import HomeAdminScreen from '../../screens/admin/HomeAdminScreen';
 import { Icon } from '@rneui/base';
-import ProductsScreen from '../screens/admin/ProductsScreen';
-import PresalesAdmn from '../screens/admin/PresalesAdmn';
-import MoneyScreen from '../screens/admin/MoneyScreen';
-import AccountScreen from '../screens/user/AccountScreen';
+import MoneyScreen from '../../screens/admin/MoneyScreen';
+import { ProductsNav } from './ProductsNav';
+import { AccountNavigation } from '../AccountNavigation';
+import { PresalesNav } from './PresalesNav';
+import { MoneyNav } from './MoneyNav';
 
 export default function AdminNavigation() {
     const Tab = createBottomTabNavigator();
@@ -27,10 +28,12 @@ export default function AdminNavigation() {
         }
         >
             <Tab.Screen name='HomeAdmn' options={{headerShown:false, title:"Home"}} component={HomeAdminScreen}/>
-            <Tab.Screen name='ProductAdmn' options={{title:"Mis Productos"}} component={ProductsScreen}/>
-            <Tab.Screen name='PresalesAdmn' options={{ title:"Mis Preventas"}} component={PresalesAdmn}/>
-            <Tab.Screen name='MoneyAdmn' options={{title:"Mis Finanzas"}} component={MoneyScreen}/>
-            <Tab.Screen name='AccountAdmn' options={{headerShown:false, title:"Mi Cuenta"}} component={AccountScreen}/>
+
+            <Tab.Screen name='ProductAdmn' options={{headerShown:false, title:"Mis Productos"}} component={ProductsNav}/>
+            <Tab.Screen name='PresalesAdmn' options={{headerShown:false,title:"Mis Preventas"}} component={PresalesNav}/>
+
+            <Tab.Screen name='MoneyAdmn' options={{headerShown:false, title:"Mis Ventas"}}  component={MoneyNav}/>
+            <Tab.Screen name='AccountAdmn' options={{headerShown:false, title:"Mi Cuenta"}} component={AccountNavigation}/>
         </Tab.Navigator>
     )
 }

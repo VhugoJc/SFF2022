@@ -9,25 +9,25 @@ export default function ProductCard() {
 
     return (
         <View>
-            <View sx={productCard.container}>
-                <View sx={productCard.descContainer}>
-                    <Text sx={styles.text}>
-                        Torta
-                    </Text>
-                    <Text sx={Object.assign({},styles.text,productCard.descTxt)}>
-                        Bistek, pastor, chorizo
-                    </Text>
+            <TouchableOpacity>
+                <View sx={productCard.container}>
+                    <View sx={productCard.descContainer}>
+                        <Text sx={styles.text}>
+                            Torta
+                        </Text>
+                        <Text sx={Object.assign({}, styles.text, productCard.descTxt)}>
+                            Bistek, pastor, chorizo
+                        </Text>
+                    </View>
+                    <View sx={productCard.imgContainer}>
+                        <Image sx={productCard.img} source={require('../../../assets/img/product4.png')} />
+                    </View>
+                    <View sx={productCard.editContainer}>
+                        <Icon name='edit' color={'#1D3557'} />
+                    </View>
                 </View>
-                <View sx={productCard.imgContainer}>
-                    <Image sx={productCard.img} source={require('../../../assets/img/product4.png')} />
-                </View>
-                <View sx={productCard.editContainer}>
-                    <TouchableOpacity>
-                        <Icon name='edit' color={'#1D3557'}/>
-                    </TouchableOpacity>
-                </View>
-            </View>
-            <View sx={styles.divider} />
+                <View sx={styles.divider} />
+            </TouchableOpacity>
         </View>
     )
 }
@@ -52,7 +52,7 @@ const productCard = StyleSheet.create({
     editContainer: {
         flex: 1
     },
-    descTxt:{
-        color:'$secondary'
+    descTxt: {
+        color: '$secondary'
     }
 });

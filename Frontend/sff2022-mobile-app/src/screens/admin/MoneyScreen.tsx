@@ -3,11 +3,13 @@ import React from 'react';
 import {View, Text, Image, ScrollView} from 'dripsy';
 import { styles } from '../../theme/stylesheet';
 import LargeBtn from '../../components/Button/LargeBtn';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 export default function MoneyScreen() {
-  
+  const navigation = useNavigation<StackNavigationProp<any>>();
   return (
-    <ScrollView sx={moneyScreen.container}>
+    <ScrollView sx={moneyScreen.container} bounces={false}>
       <Image sx={Object.assign({},moneyScreen.img,styles.shadowProp)} source={require('../../../assets/img/sell_illustration.png')} />
       <View sx={moneyScreen.txtContainer as any}>
           <Text sx={styles.subtitle as object}>
@@ -34,10 +36,10 @@ export default function MoneyScreen() {
           </Text>
       </View>
       <View sx={moneyScreen.btnContainer}>
-        <LargeBtn name={'Nueva Venta'}/>
+        <LargeBtn onPress={()=>navigation.navigate("Nueva Venta")} name={'Nueva Venta'}/>
       </View>
       <View sx={moneyScreen.btnContainer}>
-        <LargeBtn light name={'Mis Ventas Anteriores'}/>
+        <LargeBtn onPress={()=>navigation.navigate("Ventas Anteriores")} light name={'Mis Ventas Anteriores'}/>
       </View>
     </ScrollView>
   )

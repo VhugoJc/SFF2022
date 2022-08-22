@@ -7,7 +7,7 @@ import { DripsyProvider } from "dripsy";
 import Fonts from './src/utils/Fonts';
 import StatusBar from './src/utils/StatusBar';
 import {useState} from 'react';
-import AdminNavigation from "./src/Navigation/AdminNavigation";
+import AdminNavigation from "./src/Navigation/admin/AdminNavigation";
 
 export default function App() {
   const [nav, setNav] = useState<string>("admin");
@@ -20,7 +20,9 @@ export default function App() {
           {
             nav==="user"
             ? <AppNavigation />
-            : <AdminNavigation/>
+            : nav==="admin"
+              ? <AdminNavigation/>
+              : null
           }
         </NavigationContainer>
       </Fonts>

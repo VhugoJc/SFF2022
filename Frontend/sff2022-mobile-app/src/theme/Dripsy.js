@@ -10,7 +10,7 @@ export const theme = makeTheme({
         $background:'#FFFFFF',
         $primaryTransparent:"rgba(29,53,87,0.7)",
         $grey:"#A6A6A6",
-        $lightGrey:'#EBEBEB',
+        $lightGrey:'#D9D9D9',
     },
     space: {
         // recommended: set 0 first, then double for consistent nested spacing

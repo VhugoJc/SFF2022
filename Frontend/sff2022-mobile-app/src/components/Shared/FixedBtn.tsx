@@ -4,10 +4,13 @@ import React from 'react'
 import { Icon } from '@rneui/base';
 import { styles } from '../../theme/stylesheet';
 
-export default function FixedBtn() {
+interface FixedBtnProps{
+    onPress?:()=>void
+}
+export default function FixedBtn({onPress}:FixedBtnProps) {
     
     return (
-            <TouchableOpacity style={fixedBtn.touchable}>
+            <TouchableOpacity onPress={onPress} style={fixedBtn.touchable}>
         <View sx={Object.assign({},fixedBtn.btn,styles.shadowProp)}>
             <Icon color={'#ffffff'} name='add'/>
         </View>
