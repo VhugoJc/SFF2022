@@ -1,13 +1,17 @@
 import { View, Text, ScrollView, Image, TextInput } from 'dripsy';
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import LargeBtn from '../../components/Button/LargeBtn';
 import { styles } from '../../theme/stylesheet';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { AuthContext } from '../../context/authContext/AuthContext';
 
 export default function LoginScreen() {
     const navigation = useNavigation<StackNavigationProp<any>>();
+    const {authState,signIn} = useContext(AuthContext);
+
+
     return (
         <ScrollView sx={loginScreen.container} bounces={false}>
             <View sx={loginScreen.imgContainer}>
@@ -21,7 +25,7 @@ export default function LoginScreen() {
                 <TextInput sx={styles.input} placeholder='Contraseña' secureTextEntry={true} />
             </View>
             <View sx={loginScreen.btnContainer}>
-                <LargeBtn name={'Iniciar Sesión'} />
+                <LargeBtn name={'Iniciar Sesión'} onPress={signIn}/>
             </View>
             <View sx={loginScreen.txtContainer}>
                 <Text sx={styles.text}>

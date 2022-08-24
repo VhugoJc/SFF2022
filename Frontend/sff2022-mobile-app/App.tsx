@@ -1,30 +1,21 @@
 import "./src/utils/IgnoreWarning";
-import { StyleSheet } from 'react-native';
-import AppNavigation from './src/Navigation/User/AppNavigation';
 import { NavigationContainer } from "@react-navigation/native";
 import { theme } from "./src/theme/Dripsy";
 import { DripsyProvider } from "dripsy";
-import Fonts from './src/utils/Fonts';
-import StatusBar from './src/utils/StatusBar';
-import {useState} from 'react';
-import AdminNavigation from "./src/Navigation/admin/AdminNavigation";
-import LoginNavigation from './src/Navigation/shared/LoginNavigation';
+import Fonts from './src/utils/Fonts'; // fonts component
+import StatusBar from './src/utils/StatusBar'; // statusbar color config
+import { AuthProvider } from './src/context/authContext/AuthContext';// Authentication State Provider
+import Navigation from "./src/Navigation/Index";// component which checks if the user is logged and renders the assigned navigation.
 
 export default function App() {
-  const [nav, setNav] = useState<string>("login");
   return (
-    <DripsyProvider theme={theme}>
-      <StatusBar/>
-      <Fonts>
+    <DripsyProvider theme={theme}> 
+      <StatusBar />
+      <Fonts> 
         <NavigationContainer>
-          
-          {
-            nav==="user"
-            ? <AppNavigation />
-            : nav==="admin"
-              ? <AdminNavigation/>
-              : <LoginNavigation/>
-          }
+          <AppState>
+            <Navigation/>
+          </AppState>
         </NavigationContainer>
       </Fonts>
     </DripsyProvider>
@@ -32,11 +23,10 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const AppState = ({ children }: any) => {
+  return (
+    <AuthProvider>
+      {children}
+    </AuthProvider>
+  )
+}

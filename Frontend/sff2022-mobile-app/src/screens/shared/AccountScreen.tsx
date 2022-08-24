@@ -7,9 +7,14 @@ import OptionsAccount from '../../components/Shared/OptionsAccount';
 import LargeBtn from '../../components/Button/LargeBtn';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/authContext/AuthContext';
 
 export default function AccountScreen() {
   const navigation = useNavigation<StackNavigationProp<any>>();
+  const {logOut} = useContext(AuthContext);
+
+
   return (
     <ScrollView bounces={false} sx={accountScreen.container}>
      <View style={{minHeight:'100%'}}>
@@ -33,7 +38,7 @@ export default function AccountScreen() {
           <OptionsAccount onPress={()=>navigation.navigate("Acerca de")} text='Acera de' icon='info' type='red'/>
         </View>
         <View sx={accountScreen.logOut}>
-          <LargeBtn name='Cerrar Sesión' type='red'/>
+          <LargeBtn onPress={logOut} name='Cerrar Sesión' type='red'/>
         </View>
      </View>
     </ScrollView>
