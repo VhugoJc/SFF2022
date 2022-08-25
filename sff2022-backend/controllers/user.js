@@ -1,31 +1,33 @@
 const {response, request} = require('express');
+const User = require('../models/user');
+const bcrypt = require('bcryptjs');
 
-const getUser = (req = request, res = response) =>{
-    res.json({status:true,message:"get"})
+const loginUser = async(req = request, res = response)=>{
+    console.log("####");
+    res.json({status:true});
 }
 
-const putUser = (req = request, res = response) => {
-    res.json({
-        status:false,message:"put",
-    })
+const postUser = async (req = request, res = response) => {
+    const {name, lastname, email, password} = req.body;
+    console.log(req.body);
+    try {
+        const newUser = new User({name, lastname, email, password});
+        //email validation
+        const emailExists = await User.findOne({email});
+        if(emailExists){
+            throw {error:{message:"El correo ya existe"}}
+        }
+        //encript password
+        const salt = bcrypt.genSaltSync();
+        newUser.password = bcrypt.hashSync(password,salt);
+        await newUser.save();
+        res.json(newUser);
+    } catch (error) {
+        res.status(404).json(error);
+    }
 }
-
-const postUser = (req = request, res = response) => {
-    const {name} = req.body;
-    res.json({
-        status:false,message:"post",
-        names: name
-    })
-    res.json({status:false,message:"post"})
-}
-
-const deleteUser = (req = request, res = response) => {
-    const {id} = req.params;
-    const {data} = req.query;
-    res.json({status:true,message:"delete",id:id, data})
-}
-
 
 module.exports = {
-    getUser, putUser, postUser, deleteUser
+    postUser,
+    loginUser
 };
