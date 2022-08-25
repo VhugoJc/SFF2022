@@ -13,9 +13,9 @@ export default function Navigation() {
         <>
             {
                 authState.isLoggedIn //if the user is Logged
-                    ? authState.role === "admin" //if the user role is admin
+                    ? authState.user?.role === "ADMIN_ROLE" //if the user role is admin
                         ? <AdminNavigation />
-                        : authState.role === "user" //if the user role is user
+                        : authState.user?.role === "USER_ROLE" //if the user role is user
                             ? <AppNavigation />
                             : <LoginNavigation /> 
                     : <LoginNavigation />

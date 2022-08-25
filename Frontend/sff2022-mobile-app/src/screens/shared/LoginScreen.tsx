@@ -6,12 +6,19 @@ import { styles } from '../../theme/stylesheet';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { AuthContext } from '../../context/authContext/AuthContext';
+import { useState } from 'react';
 
 export default function LoginScreen() {
     const navigation = useNavigation<StackNavigationProp<any>>();
     const {authState,signIn} = useContext(AuthContext);
+    const [email, setemail] = useState('');
+    const [password, setpassword] = useState('');
 
-
+    const onClick = () =>{
+        console.log("###");
+        
+        signIn({email,password})
+    }
     return (
         <ScrollView sx={loginScreen.container} bounces={false}>
             <View sx={loginScreen.imgContainer}>
@@ -21,11 +28,13 @@ export default function LoginScreen() {
                 </Text>
             </View>
             <View sx={loginScreen.formsContainer as object}>
-                <TextInput sx={styles.input} placeholder='Correo Electrónico' />
-                <TextInput sx={styles.input} placeholder='Contraseña' secureTextEntry={true} />
+                <TextInput onChangeText={e=>setemail(e)} sx={styles.input} placeholder='Correo Electrónico' />
+                <TextInput onChangeText={e=>setpassword(e)} sx={styles.input} placeholder='Contraseña' secureTextEntry={true} />
             </View>
             <View sx={loginScreen.btnContainer}>
-                <LargeBtn name={'Iniciar Sesión'} onPress={signIn}/>
+                <LargeBtn name={'Iniciar Sesión'} 
+                onPress={onClick}
+                />
             </View>
             <View sx={loginScreen.txtContainer}>
                 <Text sx={styles.text}>

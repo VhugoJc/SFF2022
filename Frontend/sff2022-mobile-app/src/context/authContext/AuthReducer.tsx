@@ -1,23 +1,21 @@
 import { AuthState } from './AuthContext';
+import { User } from '../../interfaces/UserInterfaces';
 
-type AuthAction = {type:'SignIn' | 'LogOut'}
+type AuthAction = {type:'SignIn', payload: {user:User,isLogged:boolean} } | {type:'LogOut'}
 
 export const authReducer = ( state: AuthState, action: AuthAction):AuthState => { //always return an AuthState type object
     switch(action.type){
         case 'SignIn':
             return {
                 ...state,
-                isLoggedIn:true,
-                userName:'no-username-yet',
-                role:'user'
+                user: action.payload.user,
+                isLoggedIn:action.payload.isLogged
             }
         case 'LogOut':
             return {
                 ...state,
-                isLoggedIn:false,
-                userName:undefined,
-                userId:undefined,
-                role:undefined,
+                user: undefined,
+                isLoggedIn:false
             }
         default:
             return state;
