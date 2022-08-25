@@ -1,3 +1,3 @@
 import axios from "axios";
-const baseURL = 'http://192.168.0.10:5000/api';
+const baseURL = 'https://sff-testing.herokuapp.com/';
 export const userAPI = axios.create({baseURL});
