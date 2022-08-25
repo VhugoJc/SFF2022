@@ -1,5 +1,6 @@
 import { createContext, useReducer } from "react"
 import { authReducer } from "./AuthReducer";
+import { userAPI } from '../../api/UserApi';
 
 // my info 
 export interface AuthState {
@@ -33,9 +34,16 @@ export const AuthProvider = ({children}:any) =>{
 
     const [authState, dispatch] = useReducer(authReducer, authInitialState);
 
-    const signIn = () => {
-
-        dispatch({type:'SignIn'});
+    const signIn = async () => {
+        try{
+            const resp = await userAPI.get('/user');
+            console.log(resp);
+            
+        }catch(err){
+            console.log(err);
+            
+        }
+        // dispatch({type:'SignIn'});
     }
     const logOut = () => {
 
