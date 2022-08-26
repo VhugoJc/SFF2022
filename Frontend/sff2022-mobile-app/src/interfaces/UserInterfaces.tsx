@@ -14,5 +14,6 @@ export interface User {
 
 export interface loginResponse{
     user: User,
-    isLogged: boolean
+    isLogged: boolean,
+    token: string
 }

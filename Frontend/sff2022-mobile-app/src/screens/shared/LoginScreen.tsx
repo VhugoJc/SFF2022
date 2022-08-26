@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Image, TextInput } from 'dripsy';
+import { View, Text, Image, TextInput, ScrollView } from 'dripsy';
 import React, { useContext, useEffect } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import LargeBtn from '../../components/Button/LargeBtn';
@@ -10,17 +10,16 @@ import { useState } from 'react';
 
 export default function LoginScreen() {
     const navigation = useNavigation<StackNavigationProp<any>>();
-    const {authState,signIn} = useContext(AuthContext);
+    const {authState,signIn, loading} = useContext(AuthContext);
     const [email, setemail] = useState('');
     const [password, setpassword] = useState('');
 
     const onClick = () =>{
-        console.log("###");
-        
-        signIn({email,password})
+        loading();
+        signIn({email,password});
     }
     return (
-        <ScrollView sx={loginScreen.container} bounces={false}>
+        <ScrollView  sx={loginScreen.container} bounces={false}>
             <View sx={loginScreen.imgContainer}>
                 <Image sx={loginScreen.img} source={require('../../../assets/img/taco_illustration.png')} />
                 <Text sx={styles.subtitle}>

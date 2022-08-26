@@ -1,7 +1,8 @@
 import { AuthState } from './AuthContext';
 import { User } from '../../interfaces/UserInterfaces';
 
-type AuthAction = {type:'SignIn', payload: {user:User,isLogged:boolean} } | {type:'LogOut'}
+
+type AuthAction = {type:'SignIn', payload: {user:User,status:string,token:string} } | {type:'LogOut'} |  {type:'loading'}
 
 export const authReducer = ( state: AuthState, action: AuthAction):AuthState => { //always return an AuthState type object
     switch(action.type){
@@ -9,13 +10,19 @@ export const authReducer = ( state: AuthState, action: AuthAction):AuthState => 
             return {
                 ...state,
                 user: action.payload.user,
-                isLoggedIn:action.payload.isLogged
+                status:'authenticated',
+                token:action.payload.token
             }
         case 'LogOut':
             return {
                 ...state,
                 user: undefined,
-                isLoggedIn:false
+                status:'no-authenticated'
+            }
+        case 'loading':
+            return {
+                ...state,
+                status:'checking'
             }
         default:
             return state;
