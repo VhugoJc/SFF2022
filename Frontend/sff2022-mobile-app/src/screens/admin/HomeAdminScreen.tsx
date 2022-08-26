@@ -27,7 +27,7 @@ export default function HomeAdminScreen() {
                 </View>
                 <MyTeamMates/>
             </View>
-            <WeekSalesChart/>
+            {/* <WeekSaplesChart/> */}
         </ScrollView>
     )
 };
