@@ -15,7 +15,7 @@ export interface AuthState {
 //initital state
 export const authInitialState: AuthState ={
     user:null,
-    status:'checking',
+    status:'no-authenticated',
     token: null
     
 }
@@ -67,7 +67,8 @@ export const AuthProvider = ({children}:any) =>{
             logOut();
         }
     }
-    const logOut = () => {
+    const logOut =async () => {
+        await AsyncStorage.removeItem("token");
         dispatch({type:'LogOut'});
     }
 
