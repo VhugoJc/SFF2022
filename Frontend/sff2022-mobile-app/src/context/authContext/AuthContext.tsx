@@ -15,7 +15,7 @@ export interface AuthState {
 //initital state
 export const authInitialState: AuthState ={
     user:null,
-    status:'no-authenticated',
+    status:'checking',
     token: null
     
 }
