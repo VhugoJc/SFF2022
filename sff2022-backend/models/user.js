@@ -28,7 +28,10 @@ const userSchema = Schema({
     },
     status:{
         type:Boolean,
-        default: true
+        default: false
+    },
+    tokenEmail:{
+        type:String,
     },
 })
 userSchema.methods.toJSON = function(){

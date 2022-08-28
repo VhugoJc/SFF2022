@@ -5,6 +5,7 @@ const User = require('../models/user');
 const { generarJWT } = require('../helper/jwt-geenerator');
 
 
+
 const login = async(req, res = response) => {
 
     const { email, password } = req.body;
@@ -62,9 +63,25 @@ const UsrTokenValidator = async (req, res = response ) => {
     })
 
 }
+const confirmEmail = async (req, res = response ) =>{
+    const {token}=req.body;
+    try{
+        let user = await User.findOneAndUpdate({tokenEmail:token}, { $set: { "status" : true,"tokenEmail":null} });
+        if(!user){
+            throw {message: "No existe el token"}
+        }else{
+            res.json({message:'exitoso'})
+        }
+
+    }catch(err){
+       res.json({err});
+    }
+}
+
 
 
 module.exports ={
     login,
-    UsrTokenValidator
+    UsrTokenValidator,
+    confirmEmail
 }
