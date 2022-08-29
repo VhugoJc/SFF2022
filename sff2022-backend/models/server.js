@@ -30,7 +30,7 @@ class Server{
         //CORS
         this.app.use(cors());
         //public folders
-        this.app.use(express.static('public'));
+        this.app.use(express.static('public',{ extensions: ['html'] })); //{ extensions: ['html'] }: Delete html extension on url
     }
 
     routes(){

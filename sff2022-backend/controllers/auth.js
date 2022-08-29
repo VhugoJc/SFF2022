@@ -11,19 +11,18 @@ const login = async(req, res = response) => {
     const { email, password } = req.body;
 
     try {
-      console.log(email, password);
         // check if the email already exists
         const user = await User.findOne({ email });
         if ( !user ) {
             return res.status(400).json({
-                msg: 'Usuario / Password no son correctos - correo'
+                msg: 'Contraseña o correo incorrectos'
             });
         }
 
         // check if the user is active
         if ( !user.status ) {
             return res.status(400).json({
-                msg: 'Usuario / Password no son correctos - estado: false'
+                msg: 'Necesitas confirmar tu correo electrónico'
             });
         }
 
@@ -31,7 +30,7 @@ const login = async(req, res = response) => {
         const validPassword = bcryptjs.compareSync( password, user.password );
         if ( !validPassword ) {
             return res.status(400).json({
-                msg: 'Usuario / Password no son correctos - password'
+                msg: 'Contraseña o correo incorrectos'
             });
         }
 
