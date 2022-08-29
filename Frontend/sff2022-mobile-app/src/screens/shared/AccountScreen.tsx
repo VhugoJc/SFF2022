@@ -12,9 +12,12 @@ import { AuthContext } from '../../context/authContext/AuthContext';
 
 export default function AccountScreen() {
   const navigation = useNavigation<StackNavigationProp<any>>();
-  const {logOut} = useContext(AuthContext);
+  const {logOut,loading} = useContext(AuthContext);
 
-
+  const onClick =()=>{
+    loading();
+    logOut();
+  }
   return (
     <ScrollView bounces={false} sx={accountScreen.container}>
      <View style={{minHeight:'100%'}}>
@@ -38,7 +41,7 @@ export default function AccountScreen() {
           <OptionsAccount onPress={()=>navigation.navigate("Acerca de")} text='Acera de' icon='info' type='red'/>
         </View>
         <View sx={accountScreen.logOut}>
-          <LargeBtn onPress={logOut} name='Cerrar Sesión' type='red'/>
+          <LargeBtn onPress={onClick} name='Cerrar Sesión' type='red'/>
         </View>
      </View>
     </ScrollView>

@@ -2,6 +2,8 @@ const { response } = require('express');
 const bcryptjs = require('bcryptjs')
 
 const User = require('../models/user');
+const { generarJWT } = require('../helper/jwt-geenerator');
+
 
 
 const login = async(req, res = response) => {
@@ -9,36 +11,35 @@ const login = async(req, res = response) => {
     const { email, password } = req.body;
 
     try {
-      console.log("####");
-      console.log(email, password);
-        // Verificar si el email existe
+        // check if the email already exists
         const user = await User.findOne({ email });
         if ( !user ) {
             return res.status(400).json({
-                msg: 'Usuario / Password no son correctos - correo'
+                msg: 'Contraseña o correo incorrectos'
             });
         }
 
-        // SI el usuario está activo
-        // if ( !user.estado ) {
-        //     return res.status(400).json({
-        //         msg: 'Usuario / Password no son correctos - estado: false'
-        //     });
-        // }
+        // check if the user is active
+        if ( !user.status ) {
+            return res.status(400).json({
+                msg: 'Necesitas confirmar tu correo electrónico'
+            });
+        }
 
-        // Verificar la contraseña
+        // check if the password is the same
         const validPassword = bcryptjs.compareSync( password, user.password );
         if ( !validPassword ) {
             return res.status(400).json({
-                msg: 'Usuario / Password no son correctos - password'
+                msg: 'Contraseña o correo incorrectos'
             });
         }
 
         // Generar el JWT
-        // const token = await generarJWT( user.id );
+        const token = await generarJWT( user.id );
 
         res.json({
-            user
+            user,
+            token
         })
 
     } catch (error) {
@@ -50,7 +51,36 @@ const login = async(req, res = response) => {
 
 }
 
+const UsrTokenValidator = async (req, res = response ) => {
+
+    // Generar el JWT
+    const token = await generarJWT( req.user._id );
+    
+    res.json({
+        user: req.user,
+        token: token,
+    })
+
+}
+const confirmEmail = async (req, res = response ) =>{
+    const {token}=req.body;
+    try{
+        let user = await User.findOneAndUpdate({tokenEmail:token}, { $set: { "status" : true,"tokenEmail":null} });
+        if(!user){
+            throw {message: "No existe el token"}
+        }else{
+            res.json({message:'exitoso'})
+        }
+
+    }catch(err){
+       res.json({err});
+    }
+}
+
+
 
 module.exports ={
-    login
+    login,
+    UsrTokenValidator,
+    confirmEmail
 }

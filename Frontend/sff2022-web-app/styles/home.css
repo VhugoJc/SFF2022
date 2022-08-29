@@ -1,0 +1,57 @@
+.home-banner{
+    /* https://bgjar.com/cloudy */
+    background: url('/assets/svg/Cloudy.svg') center center no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100vh;
+    min-width: 100vw;
+    text-align: center;
+    padding-top: 20px;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+.home-banner-countdown{
+    display: flex;
+    /* flex-direction: column; */
+}
+.home-banner-text{
+    font-size: 54px;
+    color: #ffffff;
+}
+
+.home-banner-countdown-item{
+    flex: 1;
+}
+.home-banner-img{
+    width: 30vw !important;
+}
+.home-banner-countdown-text{
+    font-size: 100px;
+    font-weight: bold;
+    color: #ffffff;
+    line-height: 0;
+}
+.home-banner-countdown-description{
+    color: #ffffff;
+}
+
+@media(max-width:720px){
+    .home-banner-countdown{
+        flex-direction: column;
+    }
+    .home-banner-countdown-text{
+        line-height: normal;
+        margin-bottom: 0px;
+    }
+    .home-banner-countdown-description{
+        line-height: 0;
+    }
+    .home-banner-countdown-text{
+        margin-bottom: 0 !important;
+    }
+    .home-banner-img{
+        width: 100% !important;
+    }
+}
