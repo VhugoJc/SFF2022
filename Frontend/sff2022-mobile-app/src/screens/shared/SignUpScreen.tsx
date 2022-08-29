@@ -8,6 +8,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { useState } from 'react';
 import { NewUser } from '../../interfaces/UserInterfaces';
 import { userAPI } from '../../api/UserApi';
+import { validateEmail } from '../../utils/validation';
 
 
 export default function SignUpScreen() {
@@ -22,6 +23,23 @@ export default function SignUpScreen() {
     const [userData, setuserData] = useState<NewUser>(InitialState);
 
     const onClick = async () => {
+        const emailValidated = validateEmail(userData.email);
+        if(!emailValidated){
+            return Alert.alert('Usuario no creado','El email es incorrecto', [
+                { text: 'OK' }, 
+        ]);
+        }
+        if (userData.password.length < 6) {
+            return Alert.alert('Usuario no creado', 'La contraseña es muy corta', [
+                { text: 'OK' },
+            ]);
+        }
+        if (userData.password!==userData.confirmpassword) {
+            return Alert.alert('Usuario no creado', 'Las contraseñas no coinciden', [
+                { text: 'OK' },
+            ]);
+        }
+
         try {
             const { data } = await userAPI.post<NewUser>('/user', {
                 name: userData.name,
@@ -34,16 +52,16 @@ export default function SignUpScreen() {
             ]);
 
         } catch (err) {
-            if ( err?.response?.data?.error?.message) {
+            if (err?.response?.data?.error?.message) {
                 // Request made and server responded
                 Alert.alert('Usuario no creado', err.response.data.error.message, [
                     { text: 'OK' },
-                  ]);
+                ]);
             } else {
-                if(err?.response?.data?.errors[0]?.msg){
+                if (err?.response?.data?.errors[0]?.msg) {
                     Alert.alert('Usuario no creado', err.response.data.errors[0].msg, [
                         { text: 'OK' },
-                      ]);
+                    ]);
                 }
             }
         }

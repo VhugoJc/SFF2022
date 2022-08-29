@@ -2,7 +2,6 @@ import { Button, Result } from 'antd';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { BASEURL } from '../../../api/config.js';
 type Props = {}
 
 export default function ConfirmEmail({ }: Props) {
@@ -10,13 +9,16 @@ export default function ConfirmEmail({ }: Props) {
     const [status, setstatus] = useState('checking');
 
     useEffect(() => {
+        const hostName=location.port === ""
+        ? location.protocol + "//" + location.host
+        : "http://" + location.hostname + ":5000";
+        
         const confirmEmail=async()=>{
             const options = {
                 method: 'PUT',
-                url: `${BASEURL}/auth/confirm-email`,
+                url: `${hostName}/api/auth/confirm-email`,
                 data: { token:query.token }
             };
-            console.log(options);
             axios.request(options).then(function (response) {
                 if(response.data?.err){
                     return setstatus('fail');

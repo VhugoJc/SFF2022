@@ -4,6 +4,7 @@ import { userAPI } from '../../api/UserApi';
 import { loginResponse, LoginData, User } from '../../interfaces/UserInterfaces';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {useEffect} from 'react';
+import { Alert } from 'react-native';
 
 // my info 
 export interface AuthState {
@@ -63,7 +64,11 @@ export const AuthProvider = ({children}:any) =>{
             await AsyncStorage.setItem("token",data.token);
             
         }catch(err){
-            console.log(err);
+            if(err?.response.data.msg){
+                Alert.alert('Error al iniciar sesión',err?.response.data.msg,{
+                    text:'Ok'
+                })
+            }
             logOut();
         }
     }
