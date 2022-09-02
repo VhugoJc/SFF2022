@@ -1,13 +1,10 @@
 import { Spin } from 'antd'
 import React from 'react'
 
-type Props = {}
-
-export default function 
-({}: Props) {
+export const LoadingPage = () => {
   return (
     <div className='loading-container'>
-        <Spin size='large'/>
+      <Spin size='large' />
     </div>
   )
 }

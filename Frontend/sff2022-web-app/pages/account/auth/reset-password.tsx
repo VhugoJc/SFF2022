@@ -4,12 +4,12 @@ import { useRouter } from 'next/router';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
 import { ResetPassworForm } from '../../../components/forms/ResetPasswordForm';
 import React, { useState } from 'react';
-import LoadingPage from '../../../components/shared/LoadingPage';
+import {LoadingPage} from '../../../components/shared/LoadingPage';
 
 type Props = {}
 type Status = 'checking' | 'authorized' | 'no-authorized';
 type Token = JwtPayload
-export default function resetPassword({ }: Props) {
+export default function ResetPassword({ }: Props) {
     const { query } = useRouter();
     const [staus, setstaus] = useState<Status>('checking');
 

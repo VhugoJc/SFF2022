@@ -32,7 +32,7 @@ export const ResetPassworForm = ({ setstaus }: Props) => {
 
         }).catch(function (error) {
             setstaus('no-authorized');
-            // console.log(error);
+            console.log(error);
         });
 
     };
@@ -56,7 +56,7 @@ export const ResetPassworForm = ({ setstaus }: Props) => {
                                 <h1>
                                     Cambiar mi contraseña
                                 </h1>
-                                <Image className='reset-password_img' preview={false} src='/assets/img/laptop_illustration.png' />
+                                <Image alt='reset password' className='reset-password_img' preview={false} src='/assets/img/laptop_illustration.png' />
                             </div>
                             <Col sm={3} />
                             <Col sm={18}>

@@ -83,6 +83,9 @@ const passwordRecovery = async (req, res = response) => {
     const today = moment();
     try {
         if (user) { //if the user exists:
+            if(!user.status){
+                return res.status(400).json({message:'No has validado tu correo electrónico aún'})
+            }
             if(user.lastPasswordModified){ //if the password has been changed
                 const last = moment(user.lastPasswordModified);
                 diff=today.diff(last,'hours');
@@ -106,7 +109,6 @@ const passwordRecovery = async (req, res = response) => {
         res.json({ message: 'Ocurrio un error recuperando su contraseña' })
     }
 }
-
 const resetPassword = async (req, res = response) => {
     const token = req.header('x-token');
     const {newPassword} = req.body;
