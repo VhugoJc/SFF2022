@@ -33,9 +33,12 @@ const userSchema = Schema({
     tokenEmail:{
         type:String,
     },
+    lastPasswordModified:{
+        type: Date
+    }
 })
 userSchema.methods.toJSON = function(){
-    const {__v,password,_id,...user} = this.toObject();
+    const {__v,password,_id,tokenEmail,lastPasswordModified,...user} = this.toObject();
     user._uid=_id;
     return user; //user data without password and version is returned
 }

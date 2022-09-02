@@ -16,20 +16,20 @@ export default function LoginScreen() {
     const [password, setpassword] = useState('');
 
     const onClick = () => {
-        if(email.length<6){
+        if (email.length < 6) {
             return Alert.alert('No válido', 'Correo electrónico no es válido', [
-                { text: 'OK'},
+                { text: 'OK' },
             ]);
         }
-        if(password.length<6){
-            return Alert.alert('No válida', 'La contraseña debe ser de al menos 6 caracterés', [
-                { text: 'OK'},
+        if (password.length < 6) {
+            return Alert.alert('No válida', 'La contraseña debe ser de al menos 6 caracteres', [
+                { text: 'OK' },
             ]);
         }
         const emailValidated = validateEmail(email);
-        if(emailValidated===null){
+        if (emailValidated === null) {
             return Alert.alert('No válida', 'La contraseña debe ser de al menos 6 caracteres', [
-                { text: 'OK'},
+                { text: 'OK' },
             ]);
         }
         // loading();
@@ -47,6 +47,13 @@ export default function LoginScreen() {
                 <TextInput onChangeText={e => setemail(e)} sx={styles.input} placeholder='Correo Electrónico' />
                 <TextInput onChangeText={e => setpassword(e)} sx={styles.input} placeholder='Contraseña' secureTextEntry={true} />
             </View>
+            <View sx={loginScreen.txtContainer2}>
+                <TouchableOpacity onPress={() => navigation.navigate("PasswordRecovery")}>
+                    <Text sx={styles.text}>
+                        He olvidado mi contraseña
+                    </Text>
+                </TouchableOpacity>
+            </View>
             <View sx={loginScreen.btnContainer}>
                 <LargeBtn name={'Iniciar Sesión'}
                     onPress={onClick}
@@ -58,7 +65,7 @@ export default function LoginScreen() {
                 </Text>
                 <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
                     <Text sx={styles.textBold}>
-                        Crear cuenta
+                        Crear cuenta {"\n"}
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -68,6 +75,7 @@ export default function LoginScreen() {
 
 const loginScreen = StyleSheet.create({
     container: {
+        paddingBottom:'$4',
         flex: 1,
         backgroundColor: '$background',
     },
@@ -84,11 +92,16 @@ const loginScreen = StyleSheet.create({
     },
     btnContainer: {
         alignItems: 'center',
-        marginTop: '$4'
+        marginVertical: '$4'
     },
     txtContainer: {
-        marginVertical: '$5',
+        // marginVertical: '$5',
         flexDirection: 'row',
         justifyContent: 'center',
+    },
+    txtContainer2: {
+        // marginVertical: '$5',
+        flexDirection: 'row',
+        paddingHorizontal:'$3'
     }
 });

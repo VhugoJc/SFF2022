@@ -1,4 +1,6 @@
 @import './home.css';
+@import './reset-password.css';
+@import './loading-page.css';
 
 html,
 body {
