@@ -24,17 +24,17 @@ export default function SignUpScreen() {
 
     const onClick = async () => {
         const emailValidated = validateEmail(userData.email);
-        if(!emailValidated){
-            return Alert.alert('Usuario no creado','El email es incorrecto', [
-                { text: 'OK' }, 
-        ]);
+        if (!emailValidated) {
+            return Alert.alert('Usuario no creado', 'El email es incorrecto', [
+                { text: 'OK' },
+            ]);
         }
         if (userData.password.length < 6) {
             return Alert.alert('Usuario no creado', 'La contraseña es muy corta', [
                 { text: 'OK' },
             ]);
         }
-        if (userData.password!==userData.confirmpassword) {
+        if (userData.password !== userData.confirmpassword) {
             return Alert.alert('Usuario no creado', 'Las contraseñas no coinciden', [
                 { text: 'OK' },
             ]);

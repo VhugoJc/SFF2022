@@ -5,6 +5,7 @@ import AdminNavigation from './admin/AdminNavigation';
 import AppNavigation from './User/AppNavigation';
 import LoginNavigation from './shared/LoginNavigation';
 import LoadingScreen from '../screens/shared/LoadingScreen';
+import NoLoggedNavigation from './User/NoLoggedNavigation';
 
 
 export default function Navigation() {
@@ -23,7 +24,7 @@ export default function Navigation() {
                         : authState.user?.role === "USER_ROLE" //if the user role is user
                             ? <AppNavigation />
                             : <LoginNavigation /> 
-                    : <LoginNavigation />
+                    : <NoLoggedNavigation />
             }
         </>
     )

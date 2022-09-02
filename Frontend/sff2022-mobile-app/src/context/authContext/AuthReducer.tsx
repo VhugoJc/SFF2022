@@ -17,7 +17,7 @@ export const authReducer = ( state: AuthState, action: AuthAction):AuthState => 
             return {
                 ...state,
                 user: undefined,
-                status:'no-authenticated'
+                status:'no-authenticated',
             }
         case 'loading':
             return {
