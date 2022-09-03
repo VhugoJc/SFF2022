@@ -51,7 +51,7 @@ export default function SignUpScreen() {
                 { text: 'OK', onPress: () => setuserData(InitialState) },
             ]);
 
-        } catch (err) {
+        } catch (err:any) {
             if (err?.response?.data?.error?.message) {
                 // Request made and server responded
                 Alert.alert('Usuario no creado', err.response.data.error.message, [

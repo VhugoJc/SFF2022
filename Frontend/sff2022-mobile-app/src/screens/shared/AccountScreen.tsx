@@ -12,8 +12,9 @@ import { AuthContext } from '../../context/authContext/AuthContext';
 
 export default function AccountScreen() {
   const navigation = useNavigation<StackNavigationProp<any>>();
-  const {logOut,loading} = useContext(AuthContext);
-
+  const {logOut,loading, authState} = useContext(AuthContext);
+  const {user}=authState;
+  
   const onClick =()=>{
     loading();
     logOut();
@@ -25,20 +26,21 @@ export default function AccountScreen() {
         <Image sx={accountScreen.imgAvatar} source={require('../../../assets/img/avatar.jpg')} />
         <View sx={{marginLeft:'$3'}}>
           <Text sx={Object.assign({},styles.text,{width:'100%',fontSize:'$2'})}>
-            Víctor Hugo Jiménez
+            {`${user?.name} ${user?.lastname}`}
           </Text>
           <Text sx={Object.assign({},styles.text,{color:'$grey'})}>
-            180230@upslp.edu.mx
+            {`${user?.email}`}
           </Text>
         </View>
-        <View style={{flex:1}}>
+        {/* <View style={{flex:1}}>
           <Icon name='arrow-forward-ios' size={15} color={'#A6A6A6'} style={{alignSelf:'flex-end'}}/>
-        </View>
+        </View> */}
       </View>
       <View sx={styles.divider}/>
         <View style={{flex:5}}>
           <OptionsAccount text='Ayuda' icon='help'/>
           <OptionsAccount onPress={()=>navigation.navigate("Acerca de")} text='Acera de' icon='info' type='red'/>
+          <OptionsAccount onPress={()=>navigation.navigate("Cambiar contraseña")} text='Cambiar mi contraseña' icon='fingerprint' type='primary'/>
         </View>
         <View sx={accountScreen.logOut}>
           <LargeBtn onPress={onClick} name='Cerrar Sesión' type='red'/>
