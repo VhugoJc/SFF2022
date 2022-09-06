@@ -6,11 +6,26 @@ import ImagesCarousel from '../../components/Banner/ImagesCarousel';
 import { styles } from '../../theme/stylesheet';
 import SocialMedia from '../../components/Shared/SocialMedia';
 import FoodDescriptionCard from '../../components/Cards/FoodDescriptionCard';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import teamsdb from '../../db/teams.json';
+import { TeamData } from '../../interfaces/UserInterfaces';
+
+interface Props{
+    teamData:any
+}
 
 export default function TeamScreen() {
     const navigation = useNavigation<StackNavigationProp<any>>();
+    const route = useRoute<any>();
+    const {teamData} = route.params;
+    
+    
+
+    const teams = teamsdb;
+    
+    
+    
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             <View sx={teamScreen.container as any}>
@@ -21,26 +36,24 @@ export default function TeamScreen() {
                     </View>
                     <ImagesCarousel
                     arrayImages={
-                        [
-                            "https://images.squarespace-cdn.com/content/53b839afe4b07ea978436183/1608506201082-GU22QYZJC5TWXRSY24RX/traditional-food-around-the-world-Travlinmad.jpg?content-type=image%2Fjpeg"
-                            ,"https://images.squarespace-cdn.com/content/53b839afe4b07ea978436183/1608506201082-GU22QYZJC5TWXRSY24RX/traditional-food-around-the-world-Travlinmad.jpg?content-type=image%2Fjpeg"
-                            ,"https://images.squarespace-cdn.com/content/53b839afe4b07ea978436183/1608506201082-GU22QYZJC5TWXRSY24RX/traditional-food-around-the-world-Travlinmad.jpg?content-type=image%2Fjpeg"
-                        ]
+                        teamData.imgs.map((img:string)=>{
+                            return({uri:img});
+                        })
                     }
                     height={250}
                     hideDots={false}
                     />
                     <View sx={teamScreen.textContainer as any}>
                         <Text sx={Object.assign({},styles.subtitle,teamScreen.title)}>
-                            FRANKIE TORTA
+                            {teamData.name}
                         </Text>
                         <Text>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            {teamData.description}
                         </Text>
                         <Text sx={Object.assign({},styles.subtitle,teamScreen.title)}>
                             Redes Sociales
                         </Text>
-                        <SocialMedia/>
+                        <SocialMedia socialMediaData={teamData.socialMedia}/>
                         <Text sx={Object.assign({},styles.subtitle,teamScreen.title)}>
                             Menú
                         </Text>
@@ -70,6 +83,7 @@ const teamScreen = StyleSheet.create({
         marginHorizontal:'$3'
     },
     title:{
-        color:'$secondary'
+        color:'$secondary',
+        textTransform:'uppercase'
     }
 });

@@ -35,6 +35,9 @@ const userSchema = Schema({
     },
     lastPasswordModified:{
         type: Date
+    },
+    team:{
+        type:String
     }
 })
 userSchema.methods.toJSON = function(){

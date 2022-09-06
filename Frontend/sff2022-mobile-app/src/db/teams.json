@@ -1,0 +1,21 @@
+[{
+  "_id": {
+    "$oid": "6313d786ae72268a74c92d8c"
+  },
+  "name": "FrankieTort",
+  "imgs": [
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2Fbanners%2Fteam1%2Fteam1.jpg?alt=media",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2Fbanners%2Fteam1%2F71098793_123779915672035_2063207773948084224_n.png?alt=media"
+  ],
+  "socialMedia": {
+    "twitter": "",
+    "facebook": "https://fb.watch/fjZF7buKEc/?mibextid=bZN3Wv",
+    "tiktok": "",
+    "instagram": "",
+    "whatsapp":"https://fb.watch/fjZF7buKEc/?mibextid=bZN3Wv"
+  },
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,",
+  "logo": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2Flogos%2Fteam1.png?alt=media",
+  "status": false,
+  "__v": 0
+}]

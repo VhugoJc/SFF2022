@@ -19,7 +19,7 @@ const calendarBanner = StyleSheet.create({
         padding:'$4'
     },
     illustration:{
-        height:300,
-        width:300
+        height:150,
+        width:150
     }
 });
