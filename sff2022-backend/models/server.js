@@ -10,6 +10,8 @@ class Server{
         this.usersPath = '/api/user';
         this.authPath = '/api/auth';
         this.teamPath = '/api/team';
+        this.productPath = '/api/product';
+        this.presalePath = '/api/presale';
 
         //Middleware
         this.middlewares();
@@ -39,6 +41,8 @@ class Server{
         this.app.use(this.usersPath,require('../routes/user'));
         this.app.use(this.authPath,require('../routes/auth'));
         this.app.use(this.teamPath,require('../routes/team'));
+        this.app.use(this.productPath,require('../routes/product'));
+        this.app.use(this.presalePath,require('../routes/presale'));
     }
 
     listen(){

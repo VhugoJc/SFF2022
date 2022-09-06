@@ -41,6 +41,14 @@ export interface SocialMediaInterface{
     tiktok:string,
     twitter:string
 }
+export interface ProductData{
+    _id:id,
+    amount:number,
+    category:string,
+    description:string,
+    img:string,
+    name:string
+}
 export interface TeamData{
     __v:number,
     _id:id,

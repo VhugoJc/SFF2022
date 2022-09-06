@@ -1,8 +1,8 @@
 const {Schema, model} = require('mongoose');
 const productSchema = Schema({
-    title:{
+    name:{
         type:String,
-        required:[true, 'El titulo es obligatorio']
+        required:[true, 'El nombre es obligatorio']
     },
     description:{
         type:String,
