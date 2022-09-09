@@ -3,13 +3,13 @@ import React from 'react'
 import { StyleSheet } from 'react-native';
 import { styles } from '../../theme/stylesheet';
 
+
 export default function QRScreen() {
     return (
         <View sx={qrScreen.container}>
             <Text sx={Object.assign({}, styles.subtitle, { color: '$primary' })}>
                 Comprando preventa
             </Text>
-                <Image sx={qrScreen.img} source={require('../../../assets/img/qr.png')}/>
             <Text sx={Object.assign({},styles.text,qrScreen.instructions)}>
                 Instrucciones:
             </Text>

@@ -10,7 +10,6 @@ const postPresale = async (req, res = response) =>{
         products,
         coverImg
     }=req.body;
-    console.log('########');
     try{
         let newProduct = new Product({
             name,

@@ -24,7 +24,8 @@ export default function SelingPresaleScreen() {
       </View>
       {
         screenQR
-        ? <SuccessfulSaleScreen id={presale.sellerId}/>
+        // ? <SuccessfulSaleScreen id={presale.sellerId}/>
+        ?<QRScreen/>
         : <CheckOrderScreen presale={presale} setScreen={setScreen}/>
       }
     </ScrollView>

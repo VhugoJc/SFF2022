@@ -8,10 +8,10 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { useState, useContext } from 'react';
 import ProductsCard from '../../components/Cards/ProductsCard';
 import LargeBtn from '../../components/Button/LargeBtn';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { ProductData, idDB } from '../../interfaces/UserInterfaces';
 import SellerBanner from '../../components/Shared/SellerBanner';
 import { FavContext } from '../../context/FavsContext/FavsContext';
+import { AuthContext } from '../../context/authContext/AuthContext';
 
 
 export default function ItemFoodScreen() {
@@ -23,16 +23,17 @@ export default function ItemFoodScreen() {
     const [favIcon, setfavIcon] = useState<boolean>(false);
     const [showHeader, setShowHeader] = useState<boolean>(false);
 
-    const {addFood,deleteFood,favsState} = useContext(FavContext);
+    const { addFood, deleteFood, favsState } = useContext(FavContext);
+    const { authState } = useContext(AuthContext);
 
-    useEffect(()=>{
+    useEffect(() => {
         const favs = favsState.FoodIds;
-        const favExists = favs.find(item=>item===presaleData._id.$oid);
-        if(favExists){
+        const favExists = favs.find(item => item === presaleData._id.$oid);
+        if (favExists) {
             setfavIcon(true);
         }
-        
-    },[])
+
+    }, [])
 
     const handleScroll = (e: any) => {
         const y = e.nativeEvent.contentOffset.y;
@@ -43,14 +44,14 @@ export default function ItemFoodScreen() {
         }
     }
 
-    const handleFavs=(id:idDB)=>{
-        if(!favIcon){
+    const handleFavs = (id: idDB) => {
+        if (!favIcon) {
             addFood(id);
             setfavIcon(true);
-        }else{
+        } else {
             deleteFood(id);
             setfavIcon(false);
-            
+
         }
     }
 
@@ -60,7 +61,14 @@ export default function ItemFoodScreen() {
         >
             <View sx={showHeader ? itemFood.headerTop : { zIndex: 2 } as any}>
                 <CircleBtn name='close' onPress={() => navigation.goBack()} />
-                <CircleBtn name={favIcon ? 'favorite' : 'favorite-border'} onPress={() => handleFavs(presaleData._id)} right />
+                {
+                    authState.status === 'authenticated'
+                        ? <CircleBtn
+                            name={favIcon ? 'favorite' : 'favorite-border'}
+                            onPress={() => handleFavs(presaleData._id)} right
+                        />
+                        : null
+                }
             </View>
             <ScrollView showsVerticalScrollIndicator={false} bounces={false} scrollEventThrottle={16} onScroll={handleScroll}>
                 <ImageBackground
@@ -69,7 +77,7 @@ export default function ItemFoodScreen() {
                 >
                 </ImageBackground>
                 <View sx={itemFood.header as any}>
-                    <Text sx={Object.assign({},styles.subtitle,{textTransform:'uppercase'})as object}>
+                    <Text sx={Object.assign({}, styles.subtitle, { textTransform: 'uppercase' }) as object}>
                         {presaleData.name}
                     </Text>
                     <Text sx={itemFood.price}>
@@ -87,7 +95,7 @@ export default function ItemFoodScreen() {
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                     <View sx={styles.flexDirection as any}>
                         {
-                            presaleData.products.map((product:ProductData) => {
+                            presaleData.products.map((product: ProductData) => {
                                 return (
                                     <ProductsCard key={product._id.$oid} product={product} />
                                 );
@@ -95,11 +103,15 @@ export default function ItemFoodScreen() {
                         }
                     </View>
                 </ScrollView>
-                <SellerBanner id={presaleData.sellerId}/>
+                <SellerBanner id={presaleData.sellerId} />
                 <View sx={itemFood.btnContainer}>
-                    <LargeBtn name='Comprar preventa' onPress={() => navigation.navigate("Mi Pedido",{
-                        presale: presaleData
-                    })} />
+                    {
+                        authState.status === 'authenticated'
+                            ? <LargeBtn name='Comprar preventa' onPress={() => navigation.navigate("Mi Pedido", {
+                                presale: presaleData
+                            })} />
+                            : null
+                    }
                 </View>
             </ScrollView>
         </View>
