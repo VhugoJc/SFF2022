@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { styles } from '../../theme/stylesheet';
 import CheckOrderScreen from './CheckOrderScreen';
 import CircleBtn from '../../components/Button/CircleBtn';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import QRScreen from './QRScreen';
 import SuccessfulSaleScreen from './SuccessfulSaleScreen';
 
@@ -13,6 +13,10 @@ export default function SelingPresaleScreen() {
     setScreenQR(!screenQR);
   }
   const navigation = useNavigation();
+  const route = useRoute<any>();
+  const{presale} = route.params;
+  
+  
   return (
     <ScrollView bounces={false} sx={styles.basicBackgnd}>
       <View>
@@ -20,8 +24,8 @@ export default function SelingPresaleScreen() {
       </View>
       {
         screenQR
-        ? <SuccessfulSaleScreen/>
-        : <CheckOrderScreen  setScreen={setScreen}/>
+        ? <SuccessfulSaleScreen id={presale.sellerId}/>
+        : <CheckOrderScreen presale={presale} setScreen={setScreen}/>
       }
     </ScrollView>
   )

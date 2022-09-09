@@ -9,7 +9,8 @@ import FoodDescriptionCard from '../../components/Cards/FoodDescriptionCard';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import teamsdb from '../../db/teams.json';
-import { TeamData } from '../../interfaces/UserInterfaces';
+import presalesdb from '../../db/presales.json';
+
 
 interface Props{
     teamData:any
@@ -19,6 +20,9 @@ export default function TeamScreen() {
     const navigation = useNavigation<StackNavigationProp<any>>();
     const route = useRoute<any>();
     const {teamData} = route.params;
+    const presales = presalesdb.filter(presale=>presale.sellerId.$oid===teamData._id.$oid);
+    
+    
     
     
 
@@ -57,8 +61,11 @@ export default function TeamScreen() {
                         <Text sx={Object.assign({},styles.subtitle,teamScreen.title)}>
                             Menú
                         </Text>
-                        <FoodDescriptionCard/>
-                        <FoodDescriptionCard/>
+                        {
+                            presales.map(food=>{
+                                return <FoodDescriptionCard presale={food} key={food._id.$oid}/>
+                            })
+                        }
                     </View>
             </View>
         </ScrollView>

@@ -1,15 +1,17 @@
 import { ImageBackground, ScrollView, StyleSheet } from 'react-native';
 import { View, Text, Image } from 'dripsy';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { styles } from '../../theme/stylesheet';
 import CircleBtn from '../../components/Button/CircleBtn';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import ProductsCard from '../../components/Cards/ProductsCard';
 import LargeBtn from '../../components/Button/LargeBtn';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { ProductData } from '../../interfaces/UserInterfaces';
+import { ProductData, idDB } from '../../interfaces/UserInterfaces';
+import SellerBanner from '../../components/Shared/SellerBanner';
+import { FavContext } from '../../context/FavsContext/FavsContext';
 
 
 export default function ItemFoodScreen() {
@@ -21,6 +23,17 @@ export default function ItemFoodScreen() {
     const [favIcon, setfavIcon] = useState<boolean>(false);
     const [showHeader, setShowHeader] = useState<boolean>(false);
 
+    const {addFood,deleteFood,favsState} = useContext(FavContext);
+
+    useEffect(()=>{
+        const favs = favsState.FoodIds;
+        const favExists = favs.find(item=>item===presaleData._id.$oid);
+        if(favExists){
+            setfavIcon(true);
+        }
+        
+    },[])
+
     const handleScroll = (e: any) => {
         const y = e.nativeEvent.contentOffset.y;
         if (y === 0) {
@@ -30,13 +43,24 @@ export default function ItemFoodScreen() {
         }
     }
 
+    const handleFavs=(id:idDB)=>{
+        if(!favIcon){
+            addFood(id);
+            setfavIcon(true);
+        }else{
+            deleteFood(id);
+            setfavIcon(false);
+            
+        }
+    }
+
     return (
         <View
             sx={itemFood.container}
         >
             <View sx={showHeader ? itemFood.headerTop : { zIndex: 2 } as any}>
                 <CircleBtn name='close' onPress={() => navigation.goBack()} />
-                <CircleBtn name={favIcon ? 'favorite' : 'favorite-border'} onPress={() => setfavIcon(!favIcon)} right />
+                <CircleBtn name={favIcon ? 'favorite' : 'favorite-border'} onPress={() => handleFavs(presaleData._id)} right />
             </View>
             <ScrollView showsVerticalScrollIndicator={false} bounces={false} scrollEventThrottle={16} onScroll={handleScroll}>
                 <ImageBackground
@@ -45,7 +69,7 @@ export default function ItemFoodScreen() {
                 >
                 </ImageBackground>
                 <View sx={itemFood.header as any}>
-                    <Text sx={styles.subtitle}>
+                    <Text sx={Object.assign({},styles.subtitle,{textTransform:'uppercase'})as object}>
                         {presaleData.name}
                     </Text>
                     <Text sx={itemFood.price}>
@@ -71,17 +95,11 @@ export default function ItemFoodScreen() {
                         }
                     </View>
                 </ScrollView>
-
-                <View sx={itemFood.header as any}>
-                    <Text sx={Object.assign({}, styles.text, itemFood.subtitle)}>
-                        Vendedor:
-                    </Text>
-                </View>
-                <TouchableOpacity>
-                    <Image sx={styles.imageTeanm} source={require('../../../assets/img/team1.png')} />
-                </TouchableOpacity>
+                <SellerBanner id={presaleData.sellerId}/>
                 <View sx={itemFood.btnContainer}>
-                    <LargeBtn name='Comprar preventa' onPress={() => navigation.navigate("Mi Pedido")} />
+                    <LargeBtn name='Comprar preventa' onPress={() => navigation.navigate("Mi Pedido",{
+                        presale: presaleData
+                    })} />
                 </View>
             </ScrollView>
         </View>

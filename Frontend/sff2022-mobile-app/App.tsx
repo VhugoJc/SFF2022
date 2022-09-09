@@ -7,6 +7,7 @@ import StatusBar from './src/utils/StatusBar'; // statusbar color config
 import { AuthProvider } from './src/context/authContext/AuthContext';// Authentication State Provider
 import Navigation from "./src/Navigation/Index";// component which checks if the user is logged and renders the assigned navigation.
 import 'react-native-gesture-handler';//android bug fixed
+import FavProvider from './src/context/FavsContext/FavsContext';
 
 export default function App() {
   return (
@@ -27,7 +28,9 @@ export default function App() {
 const AppState = ({ children }: any) => {
   return (
     <AuthProvider>
+      <FavProvider>
       {children}
+      </FavProvider>
     </AuthProvider>
   )
 }

@@ -6,12 +6,14 @@ import { StyleSheet } from 'react-native';
 import FoodDescriptionCard from '../../components/Cards/FoodDescriptionCard';
 import LargeBtn from '../../components/Button/LargeBtn';
 import { useNavigation } from '@react-navigation/native';
+import { PresaleData } from '../../interfaces/UserInterfaces';
 
 interface Props{
-    setScreen:()=>void
+    setScreen:()=>void,
+    presale:PresaleData
 }
 
-export default function CheckOrderScreen({setScreen}:Props) {
+export default function CheckOrderScreen({setScreen,presale}:Props) {
     const [counter, setcounter] = useState<number>(1);
     const maxAmount = 5;
     const navigation = useNavigation();
@@ -36,14 +38,14 @@ export default function CheckOrderScreen({setScreen}:Props) {
             <Text sx={Object.assign({}, styles.subtitle, { color: '$primary' })}>
                 Mi Producto:
             </Text>
-            <FoodDescriptionCard />
+            <FoodDescriptionCard presale={presale}/>
             <View sx={checkOrder.counter}>
                 <CircleBtn onPress={() => { handleCounter(false) }} name='remove' type='blueLight' />
                 <Text sx={checkOrder.counterNum as any}>{counter}</Text>
                 <CircleBtn onPress={() => { handleCounter(true) }} right name='add' type='blueLight' />
             </View>
             <Text sx={Object.assign({}, styles.subtitle, { color: '$primary', alignSelf: 'center' })}>
-                Total: $49.00
+                Total: {`$${(presale.cost*counter).toFixed(2)}`}
             </Text>
             <View sx={checkOrder.btnContainer}>
                 <LargeBtn onPress={setScreen} name='Generar QR Para pagar' />

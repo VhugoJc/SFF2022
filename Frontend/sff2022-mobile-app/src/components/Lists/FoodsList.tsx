@@ -8,7 +8,6 @@ import presalesdb from '../../db/presales.json';
 
 export default function FoodList() {
   const presales = presalesdb;
-  console.log(presales);
   
   
   const navigation = useNavigation<StackNavigationProp<any>>();
@@ -19,7 +18,7 @@ export default function FoodList() {
           return(
             <FoodCard 
             key={presale._id.$oid} 
-            title='FRANKIETORTA' 
+            title={presale.name}
             price={presale.cost} 
             img={{uri:presale.coverImg}} 
             onPress={()=>navigation.navigate("Mi Comida",{

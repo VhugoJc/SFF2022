@@ -12,9 +12,7 @@ interface Props {
 }
 
 export default function SocialMedia({ socialMediaData }: Props) {
-    console.log(socialMediaData);
     const smAux = Object.entries(socialMediaData);
-    console.log(smAux[0]);
     
 
     return (

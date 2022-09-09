@@ -55,11 +55,9 @@ export const AuthProvider = ({children}:any) =>{
     }
 
     const signIn = async ({email,password}: LoginData) => {
-        console.log(email,email);
         
         try{
             const {data} = await userAPI.post<loginResponse>('/auth/login',{email,password});
-            console.log(data);
             dispatch({type:'SignIn',payload:{user:data.user, token:data.token, status:'authenticated'}});
             await AsyncStorage.setItem("token",data.token);
             
@@ -73,6 +71,7 @@ export const AuthProvider = ({children}:any) =>{
         }
     }
     const logOut =async () => {
+        await AsyncStorage.removeItem("favs");
         await AsyncStorage.removeItem("token");
         dispatch({type:'LogOut'});
     }

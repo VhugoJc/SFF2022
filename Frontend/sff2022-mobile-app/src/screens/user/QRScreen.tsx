@@ -16,12 +16,7 @@ export default function QRScreen() {
             <Text sx={Object.assign({},styles.text,qrScreen.instructionsText)}>
                 Muestra el códigoQR a un intregrante del equipo para que pueda validar tu orden y efectuar el pago de tu preventa. 
             </Text>
-            <Text sx={Object.assign({},styles.text,qrScreen.instructions)}>
-                Vendedor:
-            </Text>
-            {/* <TouchableOpacity> */}
-                    <Image sx={styles.imageTeanm} source={require('../../../assets/img/team1.png')}/>
-            {/* </TouchableOpacity> */}
+            {/* <SellerBanner/> */}
         </View>
     )
 }
