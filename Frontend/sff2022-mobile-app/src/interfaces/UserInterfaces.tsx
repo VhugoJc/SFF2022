@@ -69,3 +69,9 @@ export interface PresaleData{
     sellerId:idDB,
     name:string,
 }
+
+export interface PresaleDataSale{
+    presaleId:string,
+    userId:string | undefined,
+    amount:number,
+}

@@ -1,22 +1,26 @@
 import { View, Text, Image, ScrollView } from 'dripsy'
-import React, { useState } from 'react'
+import React, { Dispatch, SetStateAction, useState } from 'react'
 import { styles } from '../../theme/stylesheet'
 import CircleBtn from '../../components/Button/CircleBtn';
 import { StyleSheet } from 'react-native';
 import FoodDescriptionCard from '../../components/Cards/FoodDescriptionCard';
 import LargeBtn from '../../components/Button/LargeBtn';
-import { useNavigation } from '@react-navigation/native';
 import { PresaleData } from '../../interfaces/UserInterfaces';
 
 interface Props{
-    setScreen:()=>void,
-    presale:PresaleData
+    setScreen:(amount:number)=>void,
+    presale:PresaleData,
+    
 }
 
-export default function CheckOrderScreen({setScreen,presale}:Props) {
+export default function CheckOrderScreen({setScreen,presale,}:Props) {
     const [counter, setcounter] = useState<number>(1);
     const maxAmount = 5;
-    const navigation = useNavigation();
+
+    const onClick = () =>{
+        setScreen(counter);
+    }
+
     const handleCounter = (add: boolean) => {
         if (add) {
             if (counter + 1 <= maxAmount) {
@@ -48,7 +52,7 @@ export default function CheckOrderScreen({setScreen,presale}:Props) {
                 Total: {`$${(presale.cost*counter).toFixed(2)}`}
             </Text>
             <View sx={checkOrder.btnContainer}>
-                <LargeBtn onPress={setScreen} name='Generar QR Para pagar' />
+                <LargeBtn onPress={onClick} name='Generar QR Para pagar' />
             </View>
         </View>
     )
