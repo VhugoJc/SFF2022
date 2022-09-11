@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, A } from 'dripsy';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { styles } from '../../theme/stylesheet';
 import CheckOrderScreen from './CheckOrderScreen';
 import CircleBtn from '../../components/Button/CircleBtn';
@@ -9,12 +9,14 @@ import SuccessfulSaleScreen from './SuccessfulSaleScreen';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/authContext/AuthContext';
 import { PresaleDataSale } from '../../interfaces/UserInterfaces';
+import teamsdb from '../../db/teams.json';
 
 export default function SelingPresaleScreen() {
   const navigation = useNavigation(); //navigation between screens
   const route = useRoute<any>();      //extract params from route
   const{presale} = route.params;      //extract presale data
   const {authState} = useContext(AuthContext);
+  const [sellerLogo, setsellerLogo] = useState<any>('');
 
   const [screenQR, setScreenQR] = useState(false); // var which control the screen info
   const [presaleDataSale, setpresaleDataSale] = useState<PresaleDataSale>({//data about the sale
@@ -23,6 +25,11 @@ export default function SelingPresaleScreen() {
     amount:0,
   });
 
+  useEffect(()=>{
+    const team = teamsdb.find(team=>team._id.$oid===presale.sellerId.$oid);
+    setsellerLogo(team?.logo);
+  },[])
+  
   const setScreen=(amount:number)=>{
     setpresaleDataSale({...presaleDataSale,amount});
     setScreenQR(!screenQR);
@@ -37,7 +44,7 @@ export default function SelingPresaleScreen() {
       {
         screenQR
         // ? <SuccessfulSaleScreen id={presale.sellerId}/>
-        ?<QRScreen presaleDataSale={presaleDataSale}/>
+        ?<QRScreen presaleDataSale={presaleDataSale} logo={sellerLogo}/>
         : <CheckOrderScreen  presale={presale} setScreen={setScreen}/>
       }
     </ScrollView>

@@ -3,18 +3,20 @@ import QRCode from "react-native-qrcode-svg";
 import { View } from "dripsy";
 
 interface Props {
-    codeValue:string
+    codeValue:string,
+    img:any
 }
 
-export default function QRCodeGenerator({codeValue}:Props) {
+export default function QRCodeGenerator({codeValue, img}:Props) {
     return (
         <View sx={qrCodeGenearator.container}>
             <QRCode
                 value={codeValue}
                 size={220}
-                logo={require('../../../assets/img/team1.jpg')}
+                logo={img}
                 logoSize={70}
                 logoBorderRadius={100}
+                logoBackgroundColor="white"
             />
         </View>
     );

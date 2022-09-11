@@ -35,8 +35,11 @@ export default function FavList() {
                         title={fav.name}
                         price={fav.cost}
                         img={{ uri: fav.coverImg }}
-                        onPress={() => navigation.navigate("Mi Comida", {
-                            presaleData: fav
+                        onPress={() => navigation.navigate("FoodNav", {
+                            screen:'Mi Comida',
+                            params:{
+                                presaleData: fav
+                            }
                         })}
                         fav // favorites icon
                     />
