@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import UploadImgBtn from '../../components/Button/UploadImgBtn';
 import LargeBtn from '../../components/Button/LargeBtn';
+//ss
 
 export default function EditPresaleScreen() {
     const navigation = useNavigation<StackNavigationProp<any>>();
