@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import LargeBtn from '../../components/Button/LargeBtn';
 import ItemFoodScreen from '../user/ItemFoodScreen';
+import QRScanner from '../../components/QR/QRScanner';
 
 export default function NewSale() {
     const navigation = useNavigation<StackNavigationProp<any>>();
@@ -27,7 +28,7 @@ export default function NewSale() {
                     </Text>
                 </View>
                     <View sx={newSale.btnContainer}>
-                        <LargeBtn name={'Escanear código QR'} />
+                        <LargeBtn name={'Escanear código QR'}  onPress={()=>navigation.navigate('Escanear QR')}/>
                     </View>
             </ScrollView>
         </View>

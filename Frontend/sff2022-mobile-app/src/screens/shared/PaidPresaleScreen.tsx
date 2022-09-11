@@ -24,7 +24,7 @@ export default function PaidPresaleScreen() {
                         507f1f77bcf86cd799439011
                     </Text>
                 </View>
-                <FoodDescriptionCard/>
+                {/* <FoodDescriptionCard/> */}
                 <View>
                     <Text sx={styles.text}>
                         Cantidad: 1
