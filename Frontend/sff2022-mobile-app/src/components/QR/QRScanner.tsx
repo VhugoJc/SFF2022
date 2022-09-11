@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Button, Alert } from 'react-native';
 import { Camera } from 'expo-camera';
 import { Image, TextInput } from 'dripsy';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import { userAPI } from '../../api/UserApi';
+import { PreliminarySaleData } from '../../interfaces/SalesInterface';
 
 export default function ScanScreen() {
-    const [hasPermission, setHasPermission] = useState(null);
+    const [hasPermission, setHasPermission] = useState<any>(null);
     const [scanned, setScanned] = useState(false);
     const [text, setText] = useState("Not yet scanned");
 
@@ -15,23 +17,37 @@ export default function ScanScreen() {
 
     const askPermissions = () => {
         (async () => {
-            console.log("Asking for permissions");
             const { status } = await BarCodeScanner.requestPermissionsAsync();
             setHasPermission(status == "granted");
         })();
     };
 
-    const handleBarCodeScanned = ({ type, data }) => {
+    const handleBarCodeScanned = async ({ type, data }: any) => {
         setScanned(true);
-        alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+        try {
+            const preliminaryData = await userAPI.post<PreliminarySaleData>('/sale', {
+                jwtSaleData: data
+            });
+            console.log(preliminaryData.data);
+
+        } catch (err: any) {
+            if (err?.response.data.message) {
+                return Alert.alert('Error en la venta', err?.response.data.message, [{
+                    text: 'Ok'
+                }])
+            }
+            Alert.alert('Error en la venta', 'Ocurrió un error inesperado', [{
+                text: 'Ok'
+            }])
+        }
+
     };
     if (hasPermission && hasPermission) {
-        console.log("Camera opened, permission true");
         return (
             <View>
                 <BarCodeScanner
                     onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-                    style={{ minWidth:'100%', minHeight:'90%' }}
+                    style={{ minWidth: '100%', minHeight: '90%' }}
                 />
                 {scanned && <Button title={'Escanear otra vez'} onPress={() => setScanned(false)} />}
             </View>
@@ -53,7 +69,7 @@ export default function ScanScreen() {
                 }}
             >
                 <Text>
-                    Escaneando...
+                    Necesitas aceptar los permisos de la cámara en la aplicación para poder escanear el código QR
                 </Text>
             </View>
         </View>

@@ -10,7 +10,7 @@ import NoLoggedNavigation from './User/NoLoggedNavigation';
 
 export default function Navigation() {
     const { authState } = useContext(AuthContext);
-
+    
     if(authState.status==='checking'){
         return <LoadingScreen/>
     }

@@ -37,7 +37,7 @@ const userSchema = Schema({
         type: Date
     },
     team:{
-        type:String
+        type: Schema.Types.ObjectId
     }
 })
 userSchema.methods.toJSON = function(){
