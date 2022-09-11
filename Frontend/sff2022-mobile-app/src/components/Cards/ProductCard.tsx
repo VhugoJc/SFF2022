@@ -23,7 +23,7 @@ export default function ProductCard() {
                         <Image sx={productCard.img} source={require('../../../assets/img/product4.png')} />
                     </View>
                     <View sx={productCard.editContainer}>
-                        <Icon name='edit' color={'#1D3557'} />
+                        <Text sx={styles.textBold}>245</Text>
                     </View>
                 </View>
                 <View sx={styles.divider} />

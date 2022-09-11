@@ -55,24 +55,23 @@ export const AuthProvider = ({children}:any) =>{
     }
 
     const signIn = async ({email,password}: LoginData) => {
-        console.log(email,email);
         
         try{
             const {data} = await userAPI.post<loginResponse>('/auth/login',{email,password});
-            console.log(data);
             dispatch({type:'SignIn',payload:{user:data.user, token:data.token, status:'authenticated'}});
             await AsyncStorage.setItem("token",data.token);
             
-        }catch(err){
+        }catch(err:any){
             if(err?.response.data.msg){
-                Alert.alert('Error al iniciar sesión',err?.response.data.msg,{
+                Alert.alert('Error al iniciar sesión',err?.response.data.msg,[{
                     text:'Ok'
-                })
+                }])
             }
             logOut();
         }
     }
     const logOut =async () => {
+        await AsyncStorage.removeItem("favs");
         await AsyncStorage.removeItem("token");
         dispatch({type:'LogOut'});
     }

@@ -1,0 +1,49 @@
+[{
+  "_id": {
+    "$oid": "63177b4c8175af177f365988"
+  },
+  "name": "Torta Mega Tortas",
+  "cost": 225.5,
+  "description": "deliciosas tortas en equipo",
+  "sellerId": {
+    "$oid": "6316d5544b82e2aafb701480"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/presales%2Fteam1%2Ffood2.jpg?alt=media",
+  "products": [
+    {
+      "name": "Refresco",
+      "description": "Pepsi",
+      "category": "bebida",
+      "amount": 1,
+      "img": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/products%2Fteam1%2Fproduct2.png?alt=media",
+      "_id": {
+        "$oid": "63177b4c8175af177f365989"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63177b638175af177f36598b"
+  },
+  "name": "TortaFrankie",
+  "cost": 22,
+  "description": "deliciosas tortas en equipo",
+  "sellerId": {
+    "$oid": "6316d5544b82e2aafb701480"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/presales%2Fteam1%2Ffood2.jpg?alt=media",
+  "products": [
+    {
+      "name": "Refresco",
+      "description": "Pepsi",
+      "category": "bebida",
+      "amount": 1,
+      "img": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/products%2Fteam1%2Fproduct2.png?alt=media",
+      "_id": {
+        "$oid": "63177b638175af177f36598c"
+      }
+    }
+  ],
+  "__v": 0
+}]

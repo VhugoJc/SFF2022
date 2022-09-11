@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ImageSourcePropType } from 'react-native';
 import { Image } from "dripsy";
 import CarouselSnap, { Pagination } from "react-native-snap-carousel";
 import { Dimensions } from 'react-native';
 
 interface Props{
-    arrayImages: string[],
+    arrayImages: ImageSourcePropType[],
     height: number,
     hideDots?:boolean
 }
 
 interface itemProps{
-    item:string
+    item:ImageSourcePropType
 }
 
 export default function ImagesCarousel({arrayImages, height, hideDots}:Props) {
@@ -19,7 +19,7 @@ export default function ImagesCarousel({arrayImages, height, hideDots}:Props) {
     const windowWidth = Dimensions.get('window').width;
   
     const renderItem = ({ item }:itemProps) => (
-      <Image source={require('../../../assets/img/team1.jpg')} style={{ height,width:'100%'}} />
+      <Image source={item} style={{ height,width:'100%'}} />
     );
   
     const pagination = () => {
@@ -39,7 +39,7 @@ export default function ImagesCarousel({arrayImages, height, hideDots}:Props) {
       <View style={styles.content}>
         <CarouselSnap
           layout="default"
-          data={arrayImages}
+          data={arrayImages as any}
           sliderWidth={windowWidth}
           itemWidth={windowWidth}
           renderItem={renderItem}

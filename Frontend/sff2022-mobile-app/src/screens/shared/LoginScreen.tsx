@@ -8,12 +8,18 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { AuthContext } from '../../context/authContext/AuthContext';
 import { useState } from 'react';
 import { validateEmail } from '../../utils/validation';
+import { FavContext } from '../../context/FavsContext/FavsContext';
 
 export default function LoginScreen() {
     const navigation = useNavigation<StackNavigationProp<any>>();
     const { authState, signIn, loading } = useContext(AuthContext);
     const [email, setemail] = useState('');
     const [password, setpassword] = useState('');
+    const{empty} = useContext(FavContext);
+
+    useEffect(()=>{
+        empty();
+    },[])
 
     const onClick = () => {
         if (email.length < 6) {

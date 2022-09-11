@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { StyleSheet } from 'react-native';
 import FoodDescriptionCard from '../../components/Cards/FoodDescriptionCard';
+import SellerBanner from '../../components/Shared/SellerBanner';
 
 export default function PaidPresaleScreen() {
     const navigation = useNavigation<StackNavigationProp<any>>();
@@ -23,7 +24,7 @@ export default function PaidPresaleScreen() {
                         507f1f77bcf86cd799439011
                     </Text>
                 </View>
-                <FoodDescriptionCard/>
+                {/* <FoodDescriptionCard/> */}
                 <View>
                     <Text sx={styles.text}>
                         Cantidad: 1
@@ -35,14 +36,7 @@ export default function PaidPresaleScreen() {
                         Total: $49.00
                     </Text>
                 </View>
-                <View>
-                <Text sx={Object.assign({},styles.text,paidPrewsale.seller)}>
-                Vendedor:
-            </Text>
-            {/* <TouchableOpacity> */}
-                    <Image sx={styles.imageTeanm} source={require('../../../assets/img/team1.png')}/>
-            {/* </TouchableOpacity> */}
-                </View>
+                {/* <SellerBanner/> */}
             </ScrollView>
         </View>
     )

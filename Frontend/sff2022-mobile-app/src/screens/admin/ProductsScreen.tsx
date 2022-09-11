@@ -11,7 +11,7 @@ export default function ProductsScreen() {
     const navigation = useNavigation<StackNavigationProp<any>>();
     return (
             <View sx={productScreen.container}>
-                <FixedBtn onPress={()=>navigation.navigate('Editar Producto')}/>
+                {/* <FixedBtn onPress={()=>navigation.navigate('Editar Producto')}/> */}
                 <ScrollView>
                     <ProductsList/>
                 </ScrollView>

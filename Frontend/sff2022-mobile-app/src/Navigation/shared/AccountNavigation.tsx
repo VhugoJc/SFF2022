@@ -2,6 +2,7 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import AccountScreen from '../../screens/shared/AccountScreen';
 import AuthorCredits from '../../screens/shared/AuthorCreditsScreen';
+import ChangePasswordScreen from '../../screens/shared/ChangePasswordScreen';
 
 
 
@@ -21,6 +22,7 @@ export const AccountNavigation = () => {
                 component={AccountScreen} 
             />
             <Stack.Screen name="Acerca de" component={AuthorCredits}/>
+            <Stack.Screen name="Cambiar contraseña" component={ChangePasswordScreen}/>
         </Stack.Navigator>
     )
 }

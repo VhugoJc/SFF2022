@@ -1,36 +1,51 @@
 import React from 'react'
 import { Icon } from '@rneui/base';
-import { View,Image} from 'dripsy';
+import { View, Image } from 'dripsy';
 import { styles } from '../../theme/stylesheet';
 import { StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { SocialMediaInterface } from '../../interfaces/UserInterfaces';
+import * as WebBrowser from 'expo-web-browser';
 
-export default function SocialMedia() {
+interface Props {
+    socialMediaData: SocialMediaInterface
+}
+
+export default function SocialMedia({ socialMediaData }: Props) {
+    const smAux = Object.entries(socialMediaData);
     
+
     return (
         <View sx={styles.flexDirection as any}>
-            <TouchableOpacity onPress={()=>console.log("###")}>
-                <Icon style={socialMedia.icon} color='#1D3557' type='ionicon' name='logo-twitter' />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={()=>console.log("###")}>
-                <Image source={require('../../../assets/img/tt_ionicons.png')} sx={socialMedia.img}/>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={()=>console.log("###")}>        
-                <Icon style={socialMedia.icon} color='#1D3557' type='ionicon' name='logo-instagram' />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={()=>console.log("###")}>        
-                <Icon style={socialMedia.icon} color='#1D3557' type='ionicon' name='logo-facebook' />
-            </TouchableOpacity>        
+            {
+                smAux.map(sm => {
+                    if (sm[1].length > 0) {
+                        if (sm[0] === 'tiktok') {
+                            return (
+                                <TouchableOpacity key={sm[0]} onPress={() => WebBrowser.openBrowserAsync(sm[1])}>
+                                    <Image source={require('../../../assets/img/tt_ionicons.png')} sx={socialMedia.img} />
+                                </TouchableOpacity>
+                            )
+                        } else {
+                            return(<TouchableOpacity key={sm[0]} onPress={() => WebBrowser.openBrowserAsync(sm[1])}>
+                                <Icon style={socialMedia.icon} color='#1D3557' type='ionicon' name={`logo-${sm[0]}`} />
+                            </TouchableOpacity>)
+                        }
+                    }
+                })
+
+            }
+
         </View>
     )
 }
 const socialMedia = StyleSheet.create({
-    img:{
-        width:25,
-        height:25,
+    img: {
+        width: 25,
+        height: 25,
         marginRight: '$4'
     },
-    icon:{
+    icon: {
         marginRight: 32
 
     }

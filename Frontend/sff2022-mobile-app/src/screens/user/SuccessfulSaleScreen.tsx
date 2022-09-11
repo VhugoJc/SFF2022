@@ -2,8 +2,14 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import {View, Text, Image, } from 'dripsy';
 import { styles } from '../../theme/stylesheet';
+import { idDB } from '../../interfaces/UserInterfaces';
+import SellerBanner from '../../components/Shared/SellerBanner';
 
-export default function SuccessfulSaleScreen() {
+interface Props{
+    id: idDB
+}
+export default function SuccessfulSaleScreen({id}:Props) {
+    
     return (
         <View sx={suuccessfulScreen.container}>
             <Text sx={Object.assign({}, styles.subtitle, { color: '$primary',marginBottom:'$3' })}>
@@ -12,10 +18,7 @@ export default function SuccessfulSaleScreen() {
             <Text sx={Object.assign({},styles.text,suuccessfulScreen.instructionsText)}>
                 Tu preventa ha sido registrada con éxito, por favor  verifica que aparezca en la lista de “Mis Preventas”.
             </Text>
-            <Image sx={styles.imageTeanm} source={require('../../../assets/img/team1.png')}/>
-            <Text sx={Object.assign({},styles.text,suuccessfulScreen.instructionsText,{alignSelf:'center'})}>
-                ¡Gracias por tu preferencia!
-            </Text>
+            <SellerBanner id={id}/>
             <Image sx={suuccessfulScreen.imageHand} source={require('../../../assets/img/hand_illustration.png')}/>
         </View>
     )

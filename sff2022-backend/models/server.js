@@ -9,6 +9,9 @@ class Server{
         this.port = process.env.PORT;
         this.usersPath = '/api/user';
         this.authPath = '/api/auth';
+        this.teamPath = '/api/team';
+        this.productPath = '/api/product';
+        this.presalePath = '/api/presale';
 
         //Middleware
         this.middlewares();
@@ -31,11 +34,15 @@ class Server{
         this.app.use(cors());
         //public folders
         this.app.use(express.static('public',{ extensions: ['html'] })); //{ extensions: ['html'] }: Delete html extension on url
+        this.app.use('/uploads', express.static('uploads')); //images
     }
 
     routes(){
         this.app.use(this.usersPath,require('../routes/user'));
         this.app.use(this.authPath,require('../routes/auth'));
+        this.app.use(this.teamPath,require('../routes/team'));
+        this.app.use(this.productPath,require('../routes/product'));
+        this.app.use(this.presalePath,require('../routes/presale'));
     }
 
     listen(){

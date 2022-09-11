@@ -39,7 +39,7 @@ export default function AppNavigation() {
         
         >
         <Tab.Screen name='HomeNoLogNav' options={{headerShown:false, title:"Home"}} component={HomeNavigation}/>
-        <Tab.Screen name='FoodNoLogNav' initialParams={{status:"Equipo"}} options={{headerShown:false, title:"Comida"}} component={FoodNavigation}/>
+        <Tab.Screen name='FoodNav' initialParams={{status:"Equipo"}} options={{headerShown:false, title:"Comida"}} component={FoodNavigation}/>
         {/* <Tab.Screen name='Favoritos' component={FavoritesScreen}/> */}
         {/* <Tab.Screen name='PresaleNav'options={{headerShown:false, title:"Mis Preventas"}}  component={MyPresaleNavigation}/> */}
         <Tab.Screen name='AccountNoLogNav' component={LoginNavigation} options={{headerShown:false,title:"Mi cuenta"}}/>
@@ -55,7 +55,7 @@ const screenOptions = (route:any, color:any, size:any) =>{
             iconName='home';
             break;
 
-        case 'FoodNoLogNav':
+        case 'FoodNav':
             iconName='restaurant';
             break;
         case 'AccountNoLogNav':

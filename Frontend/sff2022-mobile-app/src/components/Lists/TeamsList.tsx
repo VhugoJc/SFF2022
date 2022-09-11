@@ -5,14 +5,24 @@ import { View,} from 'dripsy';
 import TeamCard from '../Cards/TeamCard';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import teamsdb from '../../db/teams.json';
+import { TeamData } from '../../interfaces/UserInterfaces';
 
 export default function TeamsList() {
     const navigation = useNavigation<StackNavigationProp<any>>();
+    const teams:Array<TeamData> = teamsdb;
+
     return (
         <View sx={teamsList.container}>
-            <TeamCard img={require('../../../assets/img/team1.jpg')} onPress={()=>navigation.navigate("Equipo")}/>
-            <TeamCard img={require('../../../assets/img/team2.jpg')}/>
-            <TeamCard img={require('../../../assets/img/team3.jpg')}/>
+            {
+                teams.map(team=>{
+                    return(
+                        <TeamCard key={team._id.$oid}  img={{uri:team.imgs[0]}} onPress={()=>navigation.navigate("Equipo",{
+                            teamData:team
+                        })}/>
+                    )
+                })
+            }
         </View>
     );
 }
