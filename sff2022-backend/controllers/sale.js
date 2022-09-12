@@ -23,7 +23,7 @@ const saleWithQR = async (req = request, res = response) => {
         }
 
 
-        const totalAmount = amount*presale.cost;
+        const totalAmount = amount;
         res.json({presale, user, totalAmount});
     }catch(err){
         res.status(400).json({message:'No se encontró información con el presente código'});

@@ -103,7 +103,7 @@ export default function ItemFoodScreen() {
                         }
                     </View>
                 </ScrollView>
-                <SellerBanner id={presaleData.sellerId} />
+                <SellerBanner id={presaleData.sellerId.$oid} />
                 <View sx={itemFood.btnContainer}>
                     {
                         authState.status === 'authenticated'

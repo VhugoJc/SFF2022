@@ -5,11 +5,13 @@ import { Image, TextInput } from 'dripsy';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { userAPI } from '../../api/UserApi';
 import { PreliminarySaleData } from '../../interfaces/SalesInterface';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 export default function ScanScreen() {
     const [hasPermission, setHasPermission] = useState<any>(null);
     const [scanned, setScanned] = useState(false);
-    const [text, setText] = useState("Not yet scanned");
+    const navigation = useNavigation<StackNavigationProp<any>>();
 
     useEffect(() => {
         askPermissions();
@@ -28,7 +30,12 @@ export default function ScanScreen() {
             const preliminaryData = await userAPI.post<PreliminarySaleData>('/sale', {
                 jwtSaleData: data
             });
-            console.log(preliminaryData.data);
+            const {presale, user, totalAmount}=preliminaryData.data;
+            navigation.navigate('Venta en Proceso',{
+                presale,
+                user,
+                totalAmount
+            });
 
         } catch (err: any) {
             if (err?.response.data.message) {

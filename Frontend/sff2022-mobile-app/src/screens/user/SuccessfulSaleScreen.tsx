@@ -18,7 +18,7 @@ export default function SuccessfulSaleScreen({id}:Props) {
             <Text sx={Object.assign({},styles.text,suuccessfulScreen.instructionsText)}>
                 Tu preventa ha sido registrada con éxito, por favor  verifica que aparezca en la lista de “Mis Preventas”.
             </Text>
-            <SellerBanner id={id}/>
+            <SellerBanner id={id.$oid}/>
             <Image sx={suuccessfulScreen.imageHand} source={require('../../../assets/img/hand_illustration.png')}/>
         </View>
     )

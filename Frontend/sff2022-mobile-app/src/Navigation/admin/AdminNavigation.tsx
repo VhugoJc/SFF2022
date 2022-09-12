@@ -28,11 +28,9 @@ export default function AdminNavigation() {
         }
         >
             <Tab.Screen name='HomeAdmn' options={{headerShown:false, title:"Home"}} component={HomeAdminScreen}/>
-
             <Tab.Screen name='ProductAdmn' options={{headerShown:false, title:"Mis Productos"}} component={ProductsNav}/>
-            <Tab.Screen name='PresalesAdmn' options={{headerShown:false,title:"Mis Preventas"}} component={PresalesNav}/>
-
             <Tab.Screen name='MoneyAdmn' options={{headerShown:false, title:"Mis Ventas"}}  component={MoneyNav}/>
+            <Tab.Screen name='PresalesAdmn' options={{headerShown:false,title:"Mis Preventas"}} component={PresalesNav}/>
             <Tab.Screen name='AccountAdmn' options={{headerShown:false, title:"Mi Cuenta"}} component={AccountNavigation}/>
         </Tab.Navigator>
     )

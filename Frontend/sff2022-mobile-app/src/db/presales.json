@@ -6,7 +6,7 @@
   "cost": 225.5,
   "description": "deliciosas tortas en equipo",
   "sellerId": {
-    "$oid": "6316d5544b82e2aafb701480"
+    "$oid": "6313dae64965321f3d983c78"
   },
   "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/presales%2Fteam1%2Ffood2.jpg?alt=media",
   "products": [
@@ -30,7 +30,7 @@
   "cost": 22,
   "description": "deliciosas tortas en equipo",
   "sellerId": {
-    "$oid": "6316d5544b82e2aafb701480"
+    "$oid": "6313dae64965321f3d983c78"
   },
   "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/presales%2Fteam1%2Ffood2.jpg?alt=media",
   "products": [

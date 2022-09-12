@@ -38,6 +38,9 @@ const userSchema = Schema({
     },
     team:{
         type: Schema.Types.ObjectId
+    },
+    profileImg:{
+        type: String
     }
 })
 userSchema.methods.toJSON = function(){
