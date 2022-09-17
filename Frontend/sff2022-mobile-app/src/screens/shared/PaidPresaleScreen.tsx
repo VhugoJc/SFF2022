@@ -10,6 +10,10 @@ import SellerBanner from '../../components/Shared/SellerBanner';
 import { Presale, User } from '../../interfaces/SalesInterface';
 import { PresaleData } from '../../interfaces/UserInterfaces';
 import LargeBtn from '../../components/Button/LargeBtn';
+import { userAPI } from '../../api/UserApi';
+import { io } from "socket.io-client";
+import { baseSocketURL } from '../../api/SocketApi';
+import { useEffect } from 'react';
 
 interface Props {
     presale: PresaleData;
@@ -24,7 +28,7 @@ export default function PaidPresaleScreen({ presale, user, totalAmount, salesInf
     return (
         <View>
             <ScrollView sx={paidPrewsale.container} bounces={false} showsVerticalScrollIndicator={false}>
-                <View style={{zIndex:1}}>
+                <View style={{ zIndex: 1 }}>
                     <CircleBtn right onPress={() => navigation.goBack()} name='close' />
                 </View>
                 {
@@ -51,6 +55,44 @@ export default function PaidPresaleScreen({ presale, user, totalAmount, salesInf
 }
 
 function CheckingSale({ totalAmount, presale, user }: Props) {
+    const socket = io(baseSocketURL);
+    const navigation = useNavigation<StackNavigationProp<any>>();
+    
+    const onClick = async () => {
+        if (totalAmount) {
+            try {
+                const response = await userAPI.post('/sale/newsale', {
+                    clientId: user._uid,
+                    presaleId: presale._id,
+                    amount: totalAmount,
+                    cost: totalAmount * presale.cost
+                });
+
+                if (response?.data.errors) {
+                    return Alert.alert('Ocurrió un Error', 'Ha ocurrido un error en el registro', [{
+                        text: 'Ok'
+                    }]);
+                }
+
+                socket.emit('successful-sale',{
+                    clientId:user._uid
+                });
+
+                Alert.alert('Venta exitosa','se ha creado la venta con éxito',[{
+                    text:'Ok',
+                    onPress:()=>navigation.goBack()
+                }])
+
+            } catch (err: any) {
+
+
+                if (err?.data.error.message) {
+                    return console.log(err.data.error.message);
+                }
+
+            }
+        }
+    }
     return (
         <>
             <View sx={paidPrewsale.dataContainer as Object}>
@@ -82,11 +124,12 @@ function CheckingSale({ totalAmount, presale, user }: Props) {
                 <SellerBanner btnDisable id={presale.sellerId as any} />
             </View>
             <View sx={paidPrewsale.btnContainer as object}>
-                <LargeBtn name={'Confirmar Venta'} 
+                <LargeBtn name={'Confirmar Venta'}
                     onPress={
-                        ()=>Alert.alert('Confirmación de Venta','Después de cconfirmar, no hay vuelta atrás. ¿Estás seguro de esta venta?',[{
-                            text:'Confirmar', 
-                        },{
+                        () => Alert.alert('Confirmación de Venta', 'Después de cconfirmar, no hay vuelta atrás. ¿Estás seguro de esta venta?', [{
+                            text: 'Confirmar',
+                            onPress: onClick
+                        }, {
                             text: 'Cancelar',
                             style: 'cancel',
                         }])

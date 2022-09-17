@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import {View, Text, Image, } from 'dripsy';
 import { styles } from '../../theme/stylesheet';
 import { idDB } from '../../interfaces/UserInterfaces';
 import SellerBanner from '../../components/Shared/SellerBanner';
+import { io } from "socket.io-client";
+import { baseSocketURL } from '../../api/SocketApi';
 
 interface Props{
     id: idDB
 }
 export default function SuccessfulSaleScreen({id}:Props) {
-    
+    const socket = io(baseSocketURL);
+
+    useEffect(()=>{
+        socket.emit('disconnectUser');
+    },[id])
     return (
         <View sx={suuccessfulScreen.container}>
             <Text sx={Object.assign({}, styles.subtitle, { color: '$primary',marginBottom:'$3' })}>

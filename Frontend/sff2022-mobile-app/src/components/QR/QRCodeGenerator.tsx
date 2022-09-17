@@ -1,18 +1,24 @@
 import { StyleSheet } from "react-native";
 import QRCode from "react-native-qrcode-svg";
 import { View } from "dripsy";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
+import { AuthContext } from "../../context/authContext/AuthContext";
+import { baseSocketURL } from '../../api/SocketApi';
 
 interface Props {
+    
+    setScreen:(amount:number,screen:string)=>void,
     codeValue: string,
     img: any
 }
 
-export default function QRCodeGenerator({ codeValue, img }: Props) {
-    const socket = io('http://192.168.0.10:5000');
+export default function QRCodeGenerator({ codeValue, img , setScreen}: Props) {
+    const socket = io(baseSocketURL);
     const [isConnected, setIsConnected] = useState(socket.connected);
     const [lastPong, setLastPong] = useState(null);
+    const {authState} = useContext(AuthContext);
+    const [Status, setStatus] = useState(false);
 
     
     useEffect(() => {
@@ -20,16 +26,16 @@ export default function QRCodeGenerator({ codeValue, img }: Props) {
             setIsConnected(true);
         });
 
-        socket.on('disconnect', () => {
-            setIsConnected(false);
+        socket.emit('store-qr-client',{
+            jwt:authState.token,
+            id: authState.user?._uid
         });
-        socket.emit('sent-message',{
-            message: 12,
-            date: new Date(),
-            id: 12222
-        },(id:any)=>{
-            console.log(`desde el server ${id}`);
+
+        socket.on('successful-sale',()=>{
+            setScreen(0,'success');
+            
         });
+
     }, []);
     console.log(isConnected);
     

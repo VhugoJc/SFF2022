@@ -14,38 +14,41 @@ import teamsdb from '../../db/teams.json';
 export default function SelingPresaleScreen() {
   const navigation = useNavigation(); //navigation between screens
   const route = useRoute<any>();      //extract params from route
-  const{presale} = route.params;      //extract presale data
-  const {authState} = useContext(AuthContext);
+  const { presale } = route.params;      //extract presale data
+  const { authState } = useContext(AuthContext);
   const [sellerLogo, setsellerLogo] = useState<any>('');
 
-  const [screenQR, setScreenQR] = useState(false); // var which control the screen info
+  const [screenQR, setScreenQR] = useState('check'); // var which control the screen info
   const [presaleDataSale, setpresaleDataSale] = useState<PresaleDataSale>({//data about the sale
-    presaleId:presale._id.$oid,
-    userId:authState.user?._uid,
-    amount:0,
+    presaleId: presale._id.$oid,
+    userId: authState.user?._uid,
+    amount: 0,
   });
 
-  useEffect(()=>{
-    const team = teamsdb.find(team=>team._id.$oid===presale.sellerId.$oid);
+  useEffect(() => {
+    const team = teamsdb.find(team => team._id.$oid === presale.sellerId.$oid);
     setsellerLogo(team?.logo);
-  },[])
-  
-  const setScreen=(amount:number)=>{
-    setpresaleDataSale({...presaleDataSale,amount});
-    setScreenQR(!screenQR);
+  }, [])
+
+  const setScreen = (amount: number, screen: string) => {
+    if (amount) {
+      setpresaleDataSale({ ...presaleDataSale, amount });
+    }
+    setScreenQR(screen);
   }
-  
-  
+
+
   return (
     <ScrollView bounces={false} sx={styles.basicBackgnd}>
       <View>
-          <CircleBtn onPress={() => navigation.goBack()} name='close' />
+        <CircleBtn onPress={() => navigation.goBack()} name='close' />
       </View>
       {
-        screenQR
-        // ? <SuccessfulSaleScreen id={presale.sellerId}/>
-        ?<QRScreen presaleDataSale={presaleDataSale} logo={sellerLogo}/>
-        : <CheckOrderScreen  presale={presale} setScreen={setScreen}/>
+        screenQR === 'success'
+          ? <SuccessfulSaleScreen id={presale.sellerId} />
+          : screenQR === 'QR'
+            ? <QRScreen setScreen={setScreen} presaleDataSale={presaleDataSale} logo={sellerLogo} />
+            : <CheckOrderScreen presale={presale} setScreen={setScreen} />
       }
     </ScrollView>
   )

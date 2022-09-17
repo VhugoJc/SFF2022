@@ -7,11 +7,12 @@ import { PresaleDataSale } from '../../interfaces/UserInterfaces';
 import JWT from 'expo-jwt';
 
 interface Props {
+    setScreen:(amount:number,screen:string)=>void,
     presaleDataSale: PresaleDataSale,
     logo:string
 }
 
-export default function QRScreen({ presaleDataSale,logo }: Props) {
+export default function QRScreen({setScreen, presaleDataSale,logo }: Props) {
     const [jwt, setjwt] = useState('undefined'); //json web token
 
     useEffect(() => {
@@ -25,7 +26,7 @@ export default function QRScreen({ presaleDataSale,logo }: Props) {
                 Comprando preventa
             </Text>
             {/* create QRCode with jwt */}
-            <QRCodeGenerator codeValue={jwt} img={{uri:logo}} />
+            <QRCodeGenerator setScreen={setScreen} codeValue={jwt} img={{uri:logo}} />
             <Text>
             </Text>
             <Text sx={Object.assign({}, styles.text, qrScreen.instructions)}>

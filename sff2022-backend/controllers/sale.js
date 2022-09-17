@@ -2,6 +2,26 @@ const jwt = require('jsonwebtoken');
 const { response, request } = require('express');
 const Presale = require('../models/presale');
 const User = require('../models/user');
+const Sale = require('../models/sale');
+const { default: mongoose } = require('mongoose');
+
+const postSale = async (req = request, res = response) => {
+    const{clientId,presaleId,amount,cost} = req.body;
+    const sellerMemberId = req.user._id;
+    const SellerTeamId = req.user.team;
+    console.log(clientId);
+    
+    
+    try{
+        const newSale = new Sale({clientId,presaleId,amount,cost,sellerMemberId,SellerTeamId});
+        await newSale.save();
+        res.json({newSale});
+    }catch(err){
+        console.log(err);
+        res.json(err);
+    }
+}
+
 
 const saleWithQR = async (req = request, res = response) => {
     const admin = req.user;
@@ -32,5 +52,6 @@ const saleWithQR = async (req = request, res = response) => {
 }
 
 module.exports={
-    saleWithQR
+    saleWithQR,
+    postSale
 }

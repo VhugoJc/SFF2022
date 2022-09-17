@@ -8,7 +8,7 @@ import LargeBtn from '../../components/Button/LargeBtn';
 import { PresaleData } from '../../interfaces/UserInterfaces';
 
 interface Props{
-    setScreen:(amount:number)=>void,
+    setScreen:(amount:number,screen:string)=>void,
     presale:PresaleData,
     
 }
@@ -18,7 +18,7 @@ export default function CheckOrderScreen({setScreen,presale,}:Props) {
     const maxAmount = 5;
 
     const onClick = () =>{
-        setScreen(counter);
+        setScreen(counter,'QR');
     }
 
     const handleCounter = (add: boolean) => {

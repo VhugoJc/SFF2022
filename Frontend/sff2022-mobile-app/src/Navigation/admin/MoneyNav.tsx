@@ -24,7 +24,7 @@ export const MoneyNav = () => {
             <Stack.Screen name="Nueva Venta" options={{ headerShown: false, presentation: "modal" }} component={NewSale} />
             <Stack.Screen name="Escanear QR" component={QRScannerScreen} />
             <Stack.Screen name="Ventas Anteriores" component={OldSales} />
-            <Stack.Screen name="Mi Preventa" options={{ headerShown: false, presentation: "modal" }} component={PaidPresaleScreen} />
+            {/* <Stack.Screen name="Mi Preventa" options={{ headerShown: false, presentation: "modal" }} component={PaidPresaleScreen} /> */}
             <Stack.Screen name="Venta en Proceso" options={{ headerShown: false, presentation: "modal" }} component={CheckSalesDataScreen} />
 
         </Stack.Navigator>

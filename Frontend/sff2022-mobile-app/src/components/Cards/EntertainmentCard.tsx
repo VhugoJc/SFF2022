@@ -13,11 +13,7 @@ export default function EntertainmentCard({img,title,date}:Props) {
     return (
         <ImageBackground imageStyle={entertainmentCard.imgBckg}  source={img}>
             <View sx={entertainmentCard.container}>
-                <Text sx={Object.assign({}, styles.text as any, entertainmentCard.title)}>{title}</Text>
-                <Text sx={Object.assign({},styles.text,{color:"$blueLight"})}>
-                    {/* {`${date.getHours().toString()}:${date.getMinutes().toString()}`} */}
-                    {date.toLocaleString('en-US', { hour: 'numeric', hour12: true, minute:'numeric' })}
-                    </Text>
+                
             </View>
         </ImageBackground>
     )
@@ -35,7 +31,6 @@ const entertainmentCard = StyleSheet.create({
         justifyContent:'center',
         padding:'$3',
         height:150,
-        backgroundColor:"$primaryTransparent",
     },
     title:{
         color: '$light',
