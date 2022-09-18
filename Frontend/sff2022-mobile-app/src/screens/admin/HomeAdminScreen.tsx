@@ -1,4 +1,4 @@
-import { ImageBackground, StyleSheet } from 'react-native';
+import { ImageBackground, StyleSheet, RefreshControl } from 'react-native';
 import React from 'react'
 import { Image, ScrollView, Text, View, } from 'dripsy';
 import { styles } from '../../theme/stylesheet';
@@ -6,8 +6,25 @@ import WeekSalesChart from '../../components/Charts/WeekSalesChart';
 import MyTeamMates from '../../components/Lists/MyTeamMates';
 
 export default function HomeAdminScreen() {
+    const [refreshing, setRefreshing] = React.useState(false);
+
+    const onRefresh = () => {
+        setRefreshing(true);
+        setTimeout(function () {
+            setRefreshing(false);
+        }, 500);
+    }
+
     return (
-        <ScrollView sx={homeAdmnScreen.container}>
+        <ScrollView
+            sx={homeAdmnScreen.container}
+            refreshControl={
+                <RefreshControl
+                    refreshing={refreshing}
+                    onRefresh={onRefresh}
+                />
+            }
+        >
             <View>
                 <ImageBackground style={homeAdmnScreen.imgTop} source={require('../../../assets/img/home_background_admin.jpg')}>
                     <Text sx={styles.title}>
@@ -25,7 +42,7 @@ export default function HomeAdminScreen() {
                         $35,00.00
                     </Text>
                 </View>
-                <MyTeamMates/>
+                <MyTeamMates />
             </View>
             {/* <WeekSaplesChart/> */}
         </ScrollView>
