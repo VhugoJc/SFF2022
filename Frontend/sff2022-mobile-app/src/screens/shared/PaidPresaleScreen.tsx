@@ -2,7 +2,7 @@ import { View, Text, ScrollView, Image } from 'dripsy';
 import React from 'react';
 import CircleBtn from '../../components/Button/CircleBtn';
 import { styles } from '../../theme/stylesheet';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { StyleSheet, Alert } from 'react-native';
 import FoodDescriptionCard from '../../components/Cards/FoodDescriptionCard';
@@ -14,6 +14,8 @@ import { userAPI } from '../../api/UserApi';
 import { io } from "socket.io-client";
 import { baseSocketURL } from '../../api/SocketApi';
 import { useEffect } from 'react';
+import moment from 'moment'
+import 'moment/locale/es';
 
 interface Props {
     presale: PresaleData;
@@ -22,42 +24,51 @@ interface Props {
     salesInfo?: any //if includes salesInfo, it means this is a recipt else, it is a checking sale
 }
 
-export default function PaidPresaleScreen({ presale, user, totalAmount, salesInfo }: Props) {
+export default function PaidPresaleScreen() {
     const navigation = useNavigation<StackNavigationProp<any>>();
+    const route = useRoute();
+    const { amount, presale, cost, _id, saleDate, SellerTeamId }: any = route.params;
 
+    
     return (
-        <View>
-            <ScrollView sx={paidPrewsale.container} bounces={false} showsVerticalScrollIndicator={false}>
-                <View style={{ zIndex: 1 }}>
-                    <CircleBtn right onPress={() => navigation.goBack()} name='close' />
-                </View>
-                {
-                    // <View sx={paidPrewsale.idContainer}>
-                    //     <Text sx={styles.text}>
-                    //         ID:
-                    //     </Text>
-                    //         <Text sx={Object.assign({}, styles.text, { color: '$secondary' })}>
-                    //             507f1f77bcf86cd799439011
-                    //         </Text>
-                    // </View>
-                }
-                <View>
-                    {
-                        totalAmount
-                            ? <CheckingSale presale={presale} totalAmount={totalAmount} user={user} />
-                            : null //value from database 
-                    }
-                </View>
+        <ScrollView sx={paidPrewsale.container} bounces={false} showsVerticalScrollIndicator={false}>
+            <View style={{ zIndex: 1 }}>
+                <CircleBtn right onPress={() => navigation.goBack()} name='close' />
+            </View>
+            <View sx={paidPrewsale.dataContainer as Object}>
 
-            </ScrollView>
-        </View>
+                <Text sx={styles.subtitle}>Mi Preventa</Text>
+                <Text sx={styles.text}>
+                        Fecha: {`${moment(saleDate).locale('fr').format('LLL')}`}
+                    </Text>
+                <View sx={paidPrewsale.idContainer}>
+                    <Text sx={styles.text}>
+                        ID:
+                    </Text>
+                    <Text sx={Object.assign({}, styles.text, { color: '$secondary' })}>
+                        {_id} 
+                    </Text>
+                    
+                </View>
+                <FoodDescriptionCard btnDisable presale={presale} />
+                {/* cantidad */}
+                <Text sx={styles.text}>
+                    Cantidad: {`${amount}`}
+                </Text>
+                <Text sx={styles.subtitle}>
+                    Total: {`$${cost.toFixed(2)}`}
+                </Text>
+                <SellerBanner btnDisable id={SellerTeamId} />
+            </View>
+
+        </ScrollView>
     )
 }
 
-function CheckingSale({ totalAmount, presale, user }: Props) {
+export function CheckingSale({ totalAmount, presale, user }: Props) {
     const socket = io(baseSocketURL);
     const navigation = useNavigation<StackNavigationProp<any>>();
-    
+
     const onClick = async () => {
         if (totalAmount) {
             try {
@@ -74,68 +85,76 @@ function CheckingSale({ totalAmount, presale, user }: Props) {
                     }]);
                 }
 
-                socket.emit('successful-sale',{
-                    clientId:user._uid
+                socket.emit('successful-sale', {
+                    clientId: user._uid
                 });
 
-                Alert.alert('Venta exitosa','se ha creado la venta con éxito',[{
-                    text:'Ok',
-                    onPress:()=>navigation.goBack()
+                Alert.alert('Venta exitosa', 'se ha creado la venta con éxito', [{
+                    text: 'Ok',
+                    onPress: () => navigation.goBack()
                 }])
 
             } catch (err: any) {
-
-
                 if (err?.data.error.message) {
+                    Alert.alert('Error', 'Ha ocurrido un error en el proceso de pago', [{
+                        text: 'Ok'
+                    }]);
                     return console.log(err.data.error.message);
                 }
-
+                Alert.alert('Error', 'Ha ocurrido un error en el proceso de pago', [{
+                    text: 'Ok'
+                }]);
             }
         }
     }
     return (
         <>
-            <View sx={paidPrewsale.dataContainer as Object}>
-                <Text sx={styles.subtitle}>Mi Preventa</Text>
-                <View sx={paidPrewsale.instructions}>
-                    <Text sx={styles.textBold}>
-                        Instrucciones:
-                    </Text>
-                    <Text sx={Object.assign({}, styles.text, { color: '$secondary' })}>
-                        Verifica que la información es correcta y  cuando estés seguro, realiza el cobro.
-                    </Text>
+            <ScrollView sx={paidPrewsale.container} bounces={false} showsVerticalScrollIndicator={false}>
+                <View style={{ zIndex: 1 }}>
+                    <CircleBtn right onPress={() => navigation.goBack()} name='close' />
                 </View>
-                <View sx={paidPrewsale.userData}>
-                    <Text sx={styles.text}>
-                        Preventa para
+                <View sx={paidPrewsale.dataContainer as Object}>
+                    <Text sx={styles.subtitle}>Mi Preventa</Text>
+                    <View sx={paidPrewsale.instructions}>
                         <Text sx={styles.textBold}>
-                            {` ${user.name} ${user.lastname}`}
+                            Instrucciones:
                         </Text>
+                        <Text sx={Object.assign({}, styles.text, { color: '$secondary' })}>
+                            Verifica que la información es correcta y  cuando estés seguro, realiza el cobro.
+                        </Text>
+                    </View>
+                    <View sx={paidPrewsale.userData}>
+                        <Text sx={styles.text}>
+                            Preventa para
+                            <Text sx={styles.textBold}>
+                                {` ${user.name} ${user.lastname}`}
+                            </Text>
 
+                        </Text>
+                    </View>
+                    <FoodDescriptionCard btnDisable presale={presale} />
+                    <Text sx={styles.text}>
+                        Cantidad: {`${totalAmount}`}
                     </Text>
+                    <Text sx={styles.subtitle}>
+                        Total: {`$${(totalAmount ? totalAmount * presale.cost : 0).toFixed(2)}`}
+                    </Text>
+                    <SellerBanner btnDisable id={presale.sellerId as any} />
                 </View>
-                <FoodDescriptionCard btnDisable presale={presale} />
-                <Text sx={styles.text}>
-                    Cantidad: {`${totalAmount}`}
-                </Text>
-                <Text sx={styles.subtitle}>
-                    Total: {`$${(totalAmount ? totalAmount * presale.cost : 0).toFixed(2)}`}
-                </Text>
-                <SellerBanner btnDisable id={presale.sellerId as any} />
-            </View>
-            <View sx={paidPrewsale.btnContainer as object}>
-                <LargeBtn name={'Confirmar Venta'}
-                    onPress={
-                        () => Alert.alert('Confirmación de Venta', 'Después de cconfirmar, no hay vuelta atrás. ¿Estás seguro de esta venta?', [{
-                            text: 'Confirmar',
-                            onPress: onClick
-                        }, {
-                            text: 'Cancelar',
-                            style: 'cancel',
-                        }])
-                    }
-                />
-            </View>
+                <View sx={paidPrewsale.btnContainer as object}>
+                    <LargeBtn name={'Confirmar Venta'}
+                        onPress={
+                            () => Alert.alert('Confirmación de Venta', 'Después de cconfirmar, no hay vuelta atrás. ¿Estás seguro de esta venta?', [{
+                                text: 'Confirmar',
+                                onPress: onClick
+                            }, {
+                                text: 'Cancelar',
+                                style: 'cancel',
+                            }])
+                        }
+                    />
+                </View>
+            </ScrollView>
         </>
     );
 }

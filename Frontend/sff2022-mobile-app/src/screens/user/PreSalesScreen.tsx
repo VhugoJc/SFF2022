@@ -4,8 +4,6 @@ import PaidList from '../../components/Lists/PaidList';
 
 export default function PreSalesScreen() {
   return (
-    <ScrollView>
       <PaidList/>
-    </ScrollView>
   )
 }

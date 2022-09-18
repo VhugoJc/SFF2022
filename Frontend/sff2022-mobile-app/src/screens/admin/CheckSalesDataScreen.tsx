@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { useRoute } from '@react-navigation/native';
-import PaidPresaleScreen from '../shared/PaidPresaleScreen';
+import { CheckingSale } from '../shared/PaidPresaleScreen';
 
 export default function CheckSalesDataScreen() {
     const route = useRoute<any>();
@@ -9,7 +9,7 @@ export default function CheckSalesDataScreen() {
     
     return (
         <View>
-            <PaidPresaleScreen presale={presale} user={user} totalAmount={totalAmount}/>
+            <CheckingSale presale={presale} user={user} totalAmount={totalAmount}/>
         </View>
     )
 }

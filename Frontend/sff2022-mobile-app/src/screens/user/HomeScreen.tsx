@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView } from 'react-native';
+import {ScrollView, RefreshControl } from 'react-native';
 
 
 import HomeBanner from '../../components/Banner/HomeBanner';
@@ -10,8 +10,23 @@ import CalendarBanner from '../../components/Banner/CalendarBanner';
 
 
 export default function HomeScreen() {
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    setTimeout(function () {
+      setRefreshing(false);
+    }, 500);
+  }
   return (
-    <ScrollView scrollsToTop >
+    <ScrollView  
+    refreshControl={
+      <RefreshControl
+        refreshing={refreshing}
+        onRefresh={onRefresh}
+      />
+    }
+    >
         <HomeBanner/>
         <Article/>
         <EventsBanner/>
