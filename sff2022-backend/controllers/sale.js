@@ -66,38 +66,74 @@ const getMyPresales = async (req = request, res = response) => {
 const mytotalSales = async (req = request, res = response) => {
     const { team } = req.user;
     let totalMoney = 0;
+    let weekMoney = 0;
+    let todayMoney = 0;
     try {
         const sales = await Sale.find({ SellerTeamId: team });
         if (sales.length <= 0) { // sales validation
-            return res.json({ total: totalMoney });
+            return res.json({
+                total: totalMoney,
+                week: weekMoney,
+                today: todayMoney
+            });
         }
         sales.forEach(sale => {
-            totalMoney += sale.cost
+            totalMoney += sale.cost;
+
+            const a = moment(); //today
+            const b = moment(sale.saleDate); //sale day
+
+            if (a.diff(b, 'days') < 7) {    //week
+                weekMoney += sale.cost
+            }
+
+            if (a.diff(b, 'hours') < 24) {  //today
+                todayMoney += sale.cost
+            }
         });
-        return res.json({ total: totalMoney });
+        return res.json({
+            total: totalMoney,
+            week: weekMoney,
+            today: todayMoney
+        });
     } catch (err) {
         return res.json({ message: 'Ha ocurrido un error' });
     }
 }
 
-const myWeekSales = async (req = request, res = response) => {
-    const { team } = req.user;
-    let totalMoney = 0;
+const myTeamSales = async (req = request, res = response) => {
     try {
-        const sales = await Sale.find({ SellerTeamId: team });
-        if (sales.length <= 0) { // sales validation
-            return res.json({ total: totalMoney });
+        const { team } = req.user;
+        let sales = await Sale.find({ SellerTeamId: team }).sort({ saleDate: -1 });
+
+        for (let i = 0; i < sales.length; i++) {
+            sales[i].clienData = await User.findById(sales[i].clientId);
         }
-        sales.forEach(sale => {
-            const a = moment();
-            const b = moment(sale.saleDate);
-            if(a.diff(b, 'days')<7){
-                totalMoney += sale.cost
-            }
-        });
-        return res.json({ total: totalMoney });
+
+        res.json({ sales });
     } catch (err) {
-        return res.json({ message: 'Ha ocurrido un error' });
+        res.json({ message: 'Ocurrió un error en el servidor' });
+    }
+}
+
+const myPresaleStadistic = async (req = request, res = response) => {
+    try {
+        const { id } = req.params;
+        const { team } = req.user;
+        let total = 0;
+        let amount = 0;
+
+        const sales = await Sale.find({ SellerTeamId: team, presaleId: id });
+        for (let i = 0; i < sales.length; i++) {
+            total += sales[i].cost;
+            amount += sales[i].amount;
+        }
+        res.json({
+            total,
+            amount
+        });
+    } catch (err) {
+        res.json({ message: 'Ocurrió un error en el servidor' });
     }
 }
 
@@ -106,5 +142,6 @@ module.exports = {
     postSale,
     getMyPresales,
     mytotalSales,
-    myWeekSales
+    myTeamSales,
+    myPresaleStadistic
 }

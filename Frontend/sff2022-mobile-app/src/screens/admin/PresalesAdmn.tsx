@@ -1,4 +1,4 @@
-import {ScrollView, View } from 'dripsy';
+import { ScrollView, View } from 'dripsy';
 import React from 'react';
 import { StyleSheet, RefreshControl } from 'react-native';
 import EditFoodList from '../../components/Lists/EditFoodList';
@@ -19,25 +19,25 @@ export default function PresalesAdmn() {
 
     return (
         <View sx={presalesAdmn.container}>
-            <FixedBtn onPress={()=>navigation.navigate("Editar Preventa")}/>
+            {/* <FixedBtn onPress={()=>navigation.navigate("Editar Preventa")}/> */}
             <ScrollView
-                  refreshControl={
+                refreshControl={
                     <RefreshControl
                         refreshing={refreshing}
                         onRefresh={onRefresh}
                     />
                 }
             >
-                <EditFoodList/>
+                <EditFoodList />
             </ScrollView>
         </View>
     )
 }
 
 const presalesAdmn = StyleSheet.create({
-    container:{
-        backgroundColor:'$background',
-        zIndex:1,
-        flex:1,
+    container: {
+        backgroundColor: '$background',
+        zIndex: 1,
+        flex: 1,
     }
 });

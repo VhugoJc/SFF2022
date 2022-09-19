@@ -1,5 +1,8 @@
 const { Schema, model } = require('mongoose');
 const saleSchema = Schema({
+    clienData:{
+        type:Object
+    },
     cost:{
         type: Number,
         required: [true, 'El costo no se registró']

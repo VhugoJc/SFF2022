@@ -27,9 +27,9 @@ interface Props {
 export default function PaidPresaleScreen() {
     const navigation = useNavigation<StackNavigationProp<any>>();
     const route = useRoute();
-    const { amount, presale, cost, _id, saleDate, SellerTeamId }: any = route.params;
+    const { amount, presale, cost, _id, saleDate, SellerTeamId, clienData }: any = route.params;
 
-    
+
     return (
         <ScrollView sx={paidPrewsale.container} bounces={false} showsVerticalScrollIndicator={false}>
             <View style={{ zIndex: 1 }}>
@@ -38,27 +38,53 @@ export default function PaidPresaleScreen() {
             <View sx={paidPrewsale.dataContainer as Object}>
 
                 <Text sx={styles.subtitle}>Mi Preventa</Text>
-                <Text sx={styles.text}>
-                        Fecha: {`${moment(saleDate).locale('fr').format('LLL')}`}
-                    </Text>
                 <View sx={paidPrewsale.idContainer}>
                     <Text sx={styles.text}>
                         ID:
                     </Text>
                     <Text sx={Object.assign({}, styles.text, { color: '$secondary' })}>
-                        {_id} 
+                        {_id}
                     </Text>
-                    
+
                 </View>
+                
+                <Text sx={Object.assign({},styles.text,{marginBottom: '$5'})}>
+                    Fecha: {`${moment(saleDate).locale('fr').format('LLL')}`}
+                </Text>
+
                 <FoodDescriptionCard btnDisable presale={presale} />
-                {/* cantidad */}
+
                 <Text sx={styles.text}>
                     Cantidad: {`${amount}`}
                 </Text>
+
                 <Text sx={styles.subtitle}>
                     Total: {`$${cost.toFixed(2)}`}
                 </Text>
-                <SellerBanner btnDisable id={SellerTeamId} />
+
+                {
+                    clienData
+                        ? (<View sx={paidPrewsale.clientInfo as object}>
+                            <Text sx={styles.text}>
+                                Cliente:
+                                <Text sx={styles.textBold}>
+                                    {` ${clienData.name} ${clienData.lastname}`}
+                                </Text>
+                            </Text>
+                            <Text sx={styles.text}>
+                                Correo Electrónico:
+                                <Text sx={styles.textBold}>
+                                    {` ${clienData.email} `}
+                                </Text>
+                            </Text>
+                        </View>)
+                        : null
+                }
+                {
+                    clienData
+                    ? null
+                    : <SellerBanner btnDisable id={SellerTeamId} />
+                }
             </View>
 
         </ScrollView>
@@ -162,6 +188,7 @@ export function CheckingSale({ totalAmount, presale, user }: Props) {
 const paidPrewsale = StyleSheet.create({
     dataContainer: {
         paddingHorizontal: '$3',
+        marginBottom: '$2'
     },
     container: {
         backgroundColor: '$background',
@@ -171,7 +198,7 @@ const paidPrewsale = StyleSheet.create({
     },
     idContainer: {
         flexDirection: 'row',
-        marginBottom: '$5'
+        
     },
     seller: {
         fontSize: '$2',
@@ -190,5 +217,8 @@ const paidPrewsale = StyleSheet.create({
         marginVertical: '$3',
         alignItems: 'center',
 
+    },
+    clientInfo: {
+        marginVertical: '$4'
     }
 });

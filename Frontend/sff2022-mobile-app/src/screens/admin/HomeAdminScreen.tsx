@@ -1,15 +1,29 @@
 import { ImageBackground, StyleSheet, RefreshControl } from 'react-native';
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import { Image, ScrollView, Text, View, } from 'dripsy';
 import { styles } from '../../theme/stylesheet';
 import WeekSalesChart from '../../components/Charts/WeekSalesChart';
 import MyTeamMates from '../../components/Lists/MyTeamMates';
+import { userAPI } from '../../api/UserApi';
 
 export default function HomeAdminScreen() {
-    const [refreshing, setRefreshing] = React.useState(false);
+    const [refreshing, setRefreshing] = useState(false);
+    const [total, settotal] = useState(0);
+    const getApi = async () => {
+        try {
+            const response = await userAPI.get('/sale/total-team');
+            settotal(response.data.total);
+        } catch (err) {
+            settotal(0);
+        }
+    }
 
+    useEffect(() => {
+        getApi();
+    }, [])
     const onRefresh = () => {
         setRefreshing(true);
+        getApi();
         setTimeout(function () {
             setRefreshing(false);
         }, 500);
@@ -39,7 +53,7 @@ export default function HomeAdminScreen() {
                         Ventas Totales
                     </Text>
                     <Text sx={styles.subtitle}>
-                        $35,00.00
+                        {`$${total.toFixed(2)}`}
                     </Text>
                 </View>
                 <MyTeamMates />

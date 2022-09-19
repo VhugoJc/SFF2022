@@ -1,20 +1,42 @@
-import { StyleSheet, RefreshControl } from 'react-native';
-import React from 'react';
+import { StyleSheet, RefreshControl, Alert } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import { View, Text, Image, ScrollView } from 'dripsy';
 import { styles } from '../../theme/stylesheet';
 import LargeBtn from '../../components/Button/LargeBtn';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { userAPI } from '../../api/UserApi';
 
 export default function MoneyScreen() {
   const navigation = useNavigation<StackNavigationProp<any>>();
-  const [refreshing, setRefreshing] = React.useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+  const [total, settotal] = useState(0);
+  const [week, setWeek] = useState(0);
+  const [today, setToday] = useState(0);
 
+  const getApi = async () => {
+    try {
+      const response = await userAPI.get('/sale/total-team');
+      settotal(response.data.total);
+      setWeek(response.data.week);
+      setToday(response.data.today);
+
+    } catch (err) {
+      Alert.alert('Error', 'Ha ocurrido un error al realizar la petición', [{
+        text: 'Ok'
+      }])
+    }
+  }
+
+  useEffect(() => {
+    getApi();
+  }, [])
   const onRefresh = () => {
-      setRefreshing(true);
-      setTimeout(function () {
-          setRefreshing(false);
-      }, 500);
+    setRefreshing(true);
+    getApi();
+    setTimeout(function () {
+      setRefreshing(false);
+    }, 500);
   }
 
   return (
@@ -23,10 +45,10 @@ export default function MoneyScreen() {
       // bounces={false}
       refreshControl={
         <RefreshControl
-            refreshing={refreshing}
-            onRefresh={onRefresh}
+          refreshing={refreshing}
+          onRefresh={onRefresh}
         />
-    }
+      }
     >
       <Image sx={Object.assign({}, moneyScreen.img, styles.shadowProp)} source={require('../../../assets/img/sell_illustration.png')} />
       <View sx={moneyScreen.txtContainer as any}>
@@ -34,7 +56,7 @@ export default function MoneyScreen() {
           Ventas Totales
         </Text>
         <Text sx={styles.text}>
-          $35,000.00
+          {`$${total.toFixed(2)}`}
         </Text>
       </View>
       <View sx={moneyScreen.txtContainer as object}>
@@ -42,7 +64,7 @@ export default function MoneyScreen() {
           Ventas Hoy
         </Text>
         <Text sx={styles.text}>
-          $5,000.00
+          {`$${today.toFixed(2)}`}
         </Text>
       </View>
       <View sx={moneyScreen.txtContainer as object}>
@@ -50,7 +72,7 @@ export default function MoneyScreen() {
           Ventas Esta Semana
         </Text>
         <Text sx={styles.text}>
-          $15,000.00
+          {`$${week.toFixed(2)}`}
         </Text>
       </View>
       <View sx={moneyScreen.btnContainer}>

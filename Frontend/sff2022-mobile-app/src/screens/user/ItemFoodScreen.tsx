@@ -1,4 +1,4 @@
-import { ImageBackground, ScrollView, StyleSheet } from 'react-native';
+import { ImageBackground, ScrollView, StyleSheet, Alert } from 'react-native';
 import { View, Text, Image } from 'dripsy';
 import React, { useEffect } from 'react';
 import { styles } from '../../theme/stylesheet';
@@ -12,6 +12,7 @@ import { ProductData, idDB } from '../../interfaces/UserInterfaces';
 import SellerBanner from '../../components/Shared/SellerBanner';
 import { FavContext } from '../../context/FavsContext/FavsContext';
 import { AuthContext } from '../../context/authContext/AuthContext';
+import { userAPI } from '../../api/UserApi';
 
 
 export default function ItemFoodScreen() {
@@ -62,7 +63,7 @@ export default function ItemFoodScreen() {
             <View sx={showHeader ? itemFood.headerTop : { zIndex: 2 } as any}>
                 <CircleBtn name='close' onPress={() => navigation.goBack()} />
                 {
-                    authState.status === 'authenticated'
+                    authState.status === 'authenticated' && authState.user?.role === 'USER_ROLE'
                         ? <CircleBtn
                             name={favIcon ? 'favorite' : 'favorite-border'}
                             onPress={() => handleFavs(presaleData._id)} right
@@ -103,10 +104,16 @@ export default function ItemFoodScreen() {
                         }
                     </View>
                 </ScrollView>
-                <SellerBanner id={presaleData.sellerId.$oid} />
+                {
+                    authState.user?.role === 'ADMIN_ROLE'
+                        ? <PresaleAdminData id={presaleData._id.$oid} />
+                        : <SellerBanner id={presaleData.sellerId.$oid} />
+
+                }
+
                 <View sx={itemFood.btnContainer}>
                     {
-                        authState.status === 'authenticated'
+                        authState.status === 'authenticated' && authState.user?.role === 'USER_ROLE'
                             ? <LargeBtn name='Comprar preventa' onPress={() => navigation.navigate("Mi Pedido", {
                                 presale: presaleData
                             })} />
@@ -118,6 +125,45 @@ export default function ItemFoodScreen() {
     )
 }
 
+const PresaleAdminData = ({ id }: any) => {
+    const [total, settotal] = useState(0);
+    const [amount, setamount] = useState(0);
+    useEffect(() => {
+        const getApi = async () => {
+            try {
+                const sales = await userAPI.get(`/sale/presale-stadistic/${id}`);
+                settotal(sales.data.total);
+                setamount(sales.data.amount);
+            } catch (err) {
+                Alert.alert('Error', 'Ha ocurrido un error en la petición', [{
+                    text: 'Ok'
+                }])
+            }
+
+        }
+        getApi();
+    }, []);
+
+    return (
+        <View sx={itemFood.header as object}>
+            <Text sx={styles.subtitle}>
+                Finanzas
+            </Text>
+            <Text sx={styles.text}>
+                Total ganado con esta preventa:
+                <Text sx={styles.textBold}>
+                    {` $${total.toFixed(2)}`}
+                </Text>
+            </Text>
+            <Text sx={styles.text}>
+                Número de preventas vendidas:
+                <Text sx={styles.textBold}>
+                    {` ${amount}`}
+                </Text>
+            </Text>
+        </View>
+    );
+}
 const itemFood = StyleSheet.create({
     // const itemFood = ({
     container: {

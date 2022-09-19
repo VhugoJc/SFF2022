@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import EditPresaleScreen from '../../screens/admin/EditPresaleScreen';
 import PreSalesScreen from '../../screens/user/PreSalesScreen';
 import PresalesAdmn from '../../screens/admin/PresalesAdmn';
+import ItemFoodScreen from '../../screens/user/ItemFoodScreen';
 
 
 
@@ -18,6 +19,7 @@ export const PresalesNav = () => {
         }}
         >
         <Stack.Screen  name="Mis Preventas"  component={PresalesAdmn} />
+        <Stack.Screen  name="MiPrev" options={{headerShown:false,presentation:"modal"}} component={ItemFoodScreen} />
         <Stack.Screen  name="Editar Preventa" options={{headerShown:false,presentation:"modal"}} component={EditPresaleScreen} />   
         </Stack.Navigator>
     )
