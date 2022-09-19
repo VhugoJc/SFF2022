@@ -22,7 +22,7 @@ export default function FavList() {
             });
             setfavFood(auxArray);
 
-        }else{
+        } else {
             setfavFood([]);
         }
     }, [favsState])
@@ -30,31 +30,28 @@ export default function FavList() {
     return (
         <View sx={favList.container}>
             {
-                favFood.length>0
+                favFood.length > 0
 
-                ?(favFood.map((fav) => {
-                    return <FoodCard
-                        key={fav._id.$oid}
-                        title={fav.name}
-                        price={fav.cost}
-                        img={{ uri: fav.coverImg }}
-                        onPress={() => navigation.navigate("FoodNav", {
-                            screen:'Mi Comida',
-                            params:{
+                    ? (favFood.map((fav) => {
+                        return <FoodCard
+                            key={fav._id.$oid}
+                            title={fav.name}
+                            price={fav.cost}
+                            img={{ uri: fav.coverImg }}
+                            onPress={() => navigation.navigate("Mi Comida Fav", {
                                 presaleData: fav
-                            }
-                        })}
-                        fav // favorites icon
-                    />
-                }))
-                : (
-                    <View sx={favList.empty}>
-                        <Image source={require('../../../assets/img/dog_illustration.png')} sx={favList.img}/>
-                        <Text sx={Object.assign({},styles.text,{textAlign:'center'} as object)}>
-                            Al parecer aún no has agregado ningún combo a favoritos
-                        </Text>
-                    </View>
-                )
+                            })}
+                            fav // favorites icon
+                        />
+                    }))
+                    : (
+                        <View sx={favList.empty}>
+                            <Image source={require('../../../assets/img/dog_illustration.png')} sx={favList.img} />
+                            <Text sx={Object.assign({}, styles.text, { textAlign: 'center' } as object)}>
+                                Al parecer aún no has agregado ningún combo a favoritos
+                            </Text>
+                        </View>
+                    )
             }
         </View>
     )
@@ -62,20 +59,20 @@ export default function FavList() {
 
 const favList = StyleSheet.create({
     container: {
-        flex:1,
+        flex: 1,
         backgroundColor: '$background',
         // minHeight: '100%',
         paddingHorizontal: '$3',
         // paddingBottom: '$3'
     },
-    img:{
-        width:250,
-        height:250,
+    img: {
+        width: 250,
+        height: 250,
     },
-    empty:{
-        marginTop:'$5',
-        alignItems:'center',
-        justifyContent:'center',
-        
+    empty: {
+        marginTop: '$5',
+        alignItems: 'center',
+        justifyContent: 'center',
+
     }
 });

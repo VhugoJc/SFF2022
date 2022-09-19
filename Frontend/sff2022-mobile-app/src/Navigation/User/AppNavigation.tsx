@@ -14,6 +14,7 @@ import { AccountNavigation } from '../shared/AccountNavigation';
 // single screens
 import FavoritesScreen from '../../screens/user/FavoritesScreen';
 import { MyPresaleNavigation } from './MyPresaleNavigation';
+import { FavNavigation } from './FavNavigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -39,7 +40,7 @@ export default function AppNavigation() {
         >
         <Tab.Screen name='HomeNav' options={{headerShown:false, title:"Home"}} component={HomeNavigation}/>
         <Tab.Screen name='FoodNav' initialParams={{status:"Equipo"}} options={{headerShown:false, title:"Comida"}} component={FoodNavigation}/>
-        <Tab.Screen name='Favoritos' component={FavoritesScreen}/>
+        <Tab.Screen name='FavNav' options={{headerShown:false, title:"Favoritos"}} component={FavNavigation}/>
         <Tab.Screen name='PresaleNav'options={{headerShown:false, title:"Mis Preventas"}}  component={MyPresaleNavigation}/>
         <Tab.Screen name='AccountNav' component={AccountNavigation} options={{headerShown:false,title:"Mi cuenta"}}/>
     </Tab.Navigator>
@@ -58,7 +59,7 @@ const screenOptions = (route:any, color:any, size:any) =>{
             iconName='restaurant';
             break;
 
-        case 'Favoritos':
+        case 'FavNav':
             iconName='favorite';
             break;
 
