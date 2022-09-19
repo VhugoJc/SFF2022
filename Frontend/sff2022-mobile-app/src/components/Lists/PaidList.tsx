@@ -1,11 +1,12 @@
-import { Alert, StyleSheet, Text, ScrollView, RefreshControl } from 'react-native';
+import { Alert, StyleSheet,  ScrollView, RefreshControl } from 'react-native';
 import React, { useCallback, useEffect, useState } from 'react'
 import FoodCard from '../Cards/FoodCard'
-import { View } from 'dripsy';
+import { Image, Text, View } from 'dripsy';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { userAPI } from '../../api/UserApi';
 import presalesdb from '../../db/presales.json';
+import { styles } from '../../theme/stylesheet';
 
 
 export default function PaidList() {
@@ -64,7 +65,14 @@ export default function PaidList() {
               );
             })
           )
-          : null
+          : (
+            <View sx={paidList.empty}>
+              <Image source={require('../../../assets/img/rocket_illustration.png')} sx={paidList.img} />
+              <Text sx={Object.assign({}, styles.text, { textAlign: 'center' } as object)}>
+                Al parecer aún no has comprado ninguna preventa ¿Qué esperas?
+              </Text>
+            </View>
+          )
       }
       <Text>
 
@@ -75,24 +83,24 @@ export default function PaidList() {
 
 function PaidFoodCard({ id, presaleSoldData }: any) {
   const navigation = useNavigation<StackNavigationProp<any>>();
-  const presale= presalesdb.find(presale => presale._id.$oid === id);
+  const presale = presalesdb.find(presale => presale._id.$oid === id);
 
-  const { name, coverImg }: any=presale;
-  const {amount,cost,_id,saleDate,SellerTeamId} = presaleSoldData;
+  const { name, coverImg }: any = presale;
+  const { amount, cost, _id, saleDate, SellerTeamId } = presaleSoldData;
 
   return (
-    <FoodCard 
-      onPress={() => navigation.navigate("Mi Preventa",{
+    <FoodCard
+      onPress={() => navigation.navigate("Mi Preventa", {
         amount,
         presale,
         cost,
         _id,
         saleDate,
         SellerTeamId
-      })} 
-      paid 
-      title={name} 
-      price={cost} 
+      })}
+      paid
+      title={name}
+      price={cost}
       img={{ uri: coverImg }} />
   );
 }
@@ -111,4 +119,14 @@ const paidList = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  img:{
+    width:250,
+    height:250,
+},
+empty:{
+    marginTop:'$5',
+    alignItems:'center',
+    justifyContent:'center',
+    paddingHorizontal:'$3',
+}
 });

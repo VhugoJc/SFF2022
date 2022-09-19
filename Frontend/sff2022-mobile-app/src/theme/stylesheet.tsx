@@ -31,6 +31,8 @@ export const styles = ({
     height: '100%',
   },
   container: {
+    flex:1,
+    backgroundColor:'$background'
   },
   iconBtn: {
     color: '$primary',
