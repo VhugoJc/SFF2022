@@ -98,10 +98,9 @@ export default function ItemFoodScreen() {
                     <View sx={styles.flexDirection as any}>
                         {
                             presaleData.products.map((product: any) => {
-                                const myProduct = productdb.find(item=>item._id.$oid===product._id.$oid);
-                                
+                                const myProduct = productdb.find(item => item._id.$oid === product.$oid);
                                 return (
-                                    <ProductsCard key={product._id.$oid} product={myProduct as ProductData} />
+                                    <ProductsCard key={product.$oid} product={myProduct as ProductData} />
                                 );
                             })
                         }

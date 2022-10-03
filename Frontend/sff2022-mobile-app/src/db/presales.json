@@ -12,14 +12,10 @@
     "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/presales%2Fteam1%2Ffood2.jpg?alt=media",
     "products": [
       {
-        "_id": {
-          "$oid": "633917d23f2653998755b05b"
-        }
+        "$oid": "633917d23f2653998755b05b"
       },
       {
-        "_id": {
-          "$oid": "6339182a3f2653998755b05f"
-        }
+        "$oid": "6339182a3f2653998755b05f"
       }
     ],
     "__v": 0
@@ -37,9 +33,7 @@
     "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/presales%2Fteam1%2Ffood2.jpg?alt=media",
     "products": [
       {
-        "_id": {
-          "$oid": "6339182a3f2653998755b05f"
-        }
+        "$oid": "6339182a3f2653998755b05f"
       }
     ],
     "__v": 0
