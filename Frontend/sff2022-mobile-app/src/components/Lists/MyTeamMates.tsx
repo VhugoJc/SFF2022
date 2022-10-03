@@ -29,7 +29,7 @@ export default function MyTeamMates() {
             <View sx={myteam.container}>
                 <Text sx={styles.subtitle}>Mi Equipo</Text>
             </View>
-            <ScrollView horizontal>
+            <ScrollView horizontal style={{minWidth:'100%'}}>
                 {
                     team.map(user => {
                         return (

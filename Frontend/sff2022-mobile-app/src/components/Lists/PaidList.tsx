@@ -1,4 +1,4 @@
-import { Alert, StyleSheet,  ScrollView, RefreshControl } from 'react-native';
+import { Alert, StyleSheet, ScrollView, RefreshControl } from 'react-native';
 import React, { useCallback, useEffect, useState } from 'react'
 import FoodCard from '../Cards/FoodCard'
 import { Image, Text, View } from 'dripsy';
@@ -47,6 +47,7 @@ export default function PaidList() {
 
   return (
     <ScrollView
+      style={{ minHeight: '100%' }}
       refreshControl={
         <RefreshControl
           refreshing={refreshing}
@@ -119,14 +120,14 @@ const paidList = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  img:{
-    width:250,
-    height:250,
-},
-empty:{
-    marginTop:'$5',
-    alignItems:'center',
-    justifyContent:'center',
-    paddingHorizontal:'$3',
-}
+  img: {
+    width: 250,
+    height: 250,
+  },
+  empty: {
+    marginTop: '$5',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: '$3',
+  }
 });

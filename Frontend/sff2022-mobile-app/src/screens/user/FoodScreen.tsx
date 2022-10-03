@@ -37,6 +37,7 @@ export default function FoodScreen({ route }: Props) {
   return (
     <View sx={food.background}>
       <ScrollView
+        style={{ minHeight: '100%' }}
         refreshControl={
           <RefreshControl
             refreshing={refreshing}
@@ -67,8 +68,8 @@ const food = StyleSheet.create({
     paddingVertical: '$4',
     backgroundColor: '$background'
   },
-  background:{
-    flex:1,
-    backgroundColor:'$background'
+  background: {
+    flex: 1,
+    backgroundColor: '$background'
   }
 });

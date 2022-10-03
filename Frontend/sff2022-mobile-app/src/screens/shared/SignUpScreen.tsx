@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, Image, TextInput } from 'dripsy';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Alert, StyleSheet, TouchableOpacity } from 'react-native';
 import LargeBtn from '../../components/Button/LargeBtn';
 import { styles } from '../../theme/stylesheet';
@@ -9,9 +9,14 @@ import { useState } from 'react';
 import { NewUser } from '../../interfaces/UserInterfaces';
 import { userAPI } from '../../api/UserApi';
 import { validateEmail } from '../../utils/validation';
+import Navigation from '../../Navigation/Index';
 
 
 export default function SignUpScreen() {
+    useEffect(()=>{
+        setuserData(InitialState);
+    },[]);
+    
     const navigation = useNavigation<StackNavigationProp<any>>();
     const InitialState = {
         name: '',
@@ -48,7 +53,7 @@ export default function SignUpScreen() {
                 password: userData.password
             });
             Alert.alert('Usuario creado', 'Se ha creado exitosamente su cuenta, se le enviará un correo electrónico para terminar su registro', [
-                { text: 'OK', onPress: () => setuserData(InitialState) },
+                { text: 'OK', onPress: () => navigation.goBack()},
             ]);
 
         } catch (err:any) {

@@ -13,6 +13,7 @@ class Server {
         this.teamPath = '/api/team';
         this.presalePath = '/api/presale';
         this.salePath = '/api/sale';
+        this.product = '/api/product';
 
         //socket config:
         this.server = require('http').createServer(this.app);
@@ -53,6 +54,7 @@ class Server {
         this.app.use(this.teamPath, require('../routes/team'));
         this.app.use(this.presalePath, require('../routes/presale'));
         this.app.use(this.salePath, require('../routes/sale'));
+        this.app.use(this.product, require('../routes/product'));
     }
 
     listen() {

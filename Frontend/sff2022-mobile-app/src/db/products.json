@@ -1,0 +1,27 @@
+[{
+  "_id": {
+    "$oid": "633917d23f2653998755b05b"
+  },
+  "name": "Tortas",
+  "description": "Bistek, pastor, chorizo",
+  "category": "comida",
+  "amount": 2,
+  "img": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/products%2Fteam1%2Fproduct4.png?alt=media",
+  "teamSellerId": {
+    "$oid": "6313dae64965321f3d983c78"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6339182a3f2653998755b05f"
+  },
+  "name": "Refrescos",
+  "description": "Pendiente",
+  "category": "bebida",
+  "amount": 1,
+  "img": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/products%2Fteam1%2Fproduct2.png?alt=media",
+  "teamSellerId": {
+    "$oid": "6313dae64965321f3d983c78"
+  },
+  "__v": 0
+}]

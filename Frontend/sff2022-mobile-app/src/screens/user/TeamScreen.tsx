@@ -39,6 +39,7 @@ export default function TeamScreen() {
 
     return (
         <ScrollView showsVerticalScrollIndicator={false}
+            style={{ minHeight: '100%' }}
             refreshControl={
                 <RefreshControl
                     refreshing={refreshing}

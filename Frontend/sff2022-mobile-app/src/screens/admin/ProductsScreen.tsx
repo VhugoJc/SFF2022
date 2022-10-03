@@ -22,6 +22,7 @@ export default function ProductsScreen() {
         <View sx={productScreen.container}>
             {/* <FixedBtn onPress={()=>navigation.navigate('Editar Producto')}/> */}
             <ScrollView
+                style={{ minHeight: '100%' }}
                 refreshControl={
                     <RefreshControl
                         refreshing={refreshing}

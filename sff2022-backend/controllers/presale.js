@@ -1,5 +1,5 @@
 const { response } = require('express');
-const Product = require('../models/presale');
+const Presale = require('../models/presale');
 
 const postPresale = async (req, res = response) =>{
     const {
@@ -11,7 +11,7 @@ const postPresale = async (req, res = response) =>{
         coverImg
     }=req.body;
     try{
-        let newProduct = new Product({
+        let newProduct = new Presale({
             name,
             cost,
             description,

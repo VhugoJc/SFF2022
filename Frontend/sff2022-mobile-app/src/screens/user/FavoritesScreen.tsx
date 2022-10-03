@@ -16,6 +16,7 @@ export default function FavoritesScreen() {
   return (
     <View sx={styles.container}>
       <ScrollView
+        style={{ minHeight: '100%' }}
         refreshControl={
           <RefreshControl
             refreshing={refreshing}

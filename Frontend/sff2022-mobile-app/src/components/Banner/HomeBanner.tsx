@@ -21,6 +21,7 @@ export default function HomeBanner() {
                 <ScrollView
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
+                    style={{minHeight:'100%'}}
                 >
                     <View sx={{ flexDirection: 'row', paddingLeft: '$3', marginTop: '$3' }}>
                         <IconBtn  onPress={() => navigation.navigate("FoodNav",{
