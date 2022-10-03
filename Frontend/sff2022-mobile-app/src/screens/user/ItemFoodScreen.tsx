@@ -13,6 +13,7 @@ import SellerBanner from '../../components/Shared/SellerBanner';
 import { FavContext } from '../../context/FavsContext/FavsContext';
 import { AuthContext } from '../../context/authContext/AuthContext';
 import { userAPI } from '../../api/UserApi';
+import productdb from '../../db/products.json';
 
 
 export default function ItemFoodScreen() {
@@ -96,9 +97,11 @@ export default function ItemFoodScreen() {
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                     <View sx={styles.flexDirection as any}>
                         {
-                            presaleData.products.map((product: ProductData) => {
+                            presaleData.products.map((product: any) => {
+                                const myProduct = productdb.find(item=>item._id.$oid===product._id.$oid);
+                                
                                 return (
-                                    <ProductsCard key={product._id.$oid} product={product} />
+                                    <ProductsCard key={product._id.$oid} product={myProduct as ProductData} />
                                 );
                             })
                         }
