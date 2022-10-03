@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Image, TextInput } from 'dripsy';
+import { View, Text, ScrollView, Image, TextInput, ActivityIndicator } from 'dripsy';
 import React, { useEffect } from 'react'
 import { Alert, StyleSheet, TouchableOpacity } from 'react-native';
 import LargeBtn from '../../components/Button/LargeBtn';
@@ -13,6 +13,8 @@ import Navigation from '../../Navigation/Index';
 
 
 export default function SignUpScreen() {
+    const [loadingFunc, setLoadingFunc] = useState(false);
+
     useEffect(()=>{
         setuserData(InitialState);
     },[]);
@@ -28,18 +30,22 @@ export default function SignUpScreen() {
     const [userData, setuserData] = useState<NewUser>(InitialState);
 
     const onClick = async () => {
+        setLoadingFunc(true);
         const emailValidated = validateEmail(userData.email);
         if (!emailValidated) {
+            setLoadingFunc(false);
             return Alert.alert('Usuario no creado', 'El email es incorrecto', [
                 { text: 'OK' },
             ]);
         }
         if (userData.password.length < 6) {
+            setLoadingFunc(false);
             return Alert.alert('Usuario no creado', 'La contraseña es muy corta', [
                 { text: 'OK' },
             ]);
         }
         if (userData.password !== userData.confirmpassword) {
+            setLoadingFunc(false);
             return Alert.alert('Usuario no creado', 'Las contraseñas no coinciden', [
                 { text: 'OK' },
             ]);
@@ -52,11 +58,13 @@ export default function SignUpScreen() {
                 email: userData.email,
                 password: userData.password
             });
+            setLoadingFunc(false);
             Alert.alert('Usuario creado', 'Se ha creado exitosamente su cuenta, se le enviará un correo electrónico para terminar su registro', [
                 { text: 'OK', onPress: () => navigation.goBack()},
             ]);
 
         } catch (err:any) {
+            setLoadingFunc(false);
             if (err?.response?.data?.error?.message) {
                 // Request made and server responded
                 Alert.alert('Usuario no creado', err.response.data.error.message, [
@@ -89,6 +97,11 @@ export default function SignUpScreen() {
                 <TextInput sx={styles.input} value={userData.confirmpassword} onChangeText={(e) => setuserData({ ...userData, confirmpassword: e })} placeholder='Confirmar Contraseña' secureTextEntry={true} />
             </View>
             <View sx={loginScreen.btnContainer}>
+            {
+                    loadingFunc
+                        ? <ActivityIndicator />
+                        : <LargeBtn name={'Crear cuenta'} onPress={onClick} />
+                }
                 <LargeBtn name={'Crear cuenta'} onPress={onClick} />
             </View>
             <View sx={loginScreen.txtContainer}>

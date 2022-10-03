@@ -1,4 +1,4 @@
-import { View, Text, Image, TextInput, ScrollView } from 'dripsy';
+import { View, Text, Image, TextInput, ScrollView, ActivityIndicator } from 'dripsy';
 import React, { useContext, useEffect } from 'react'
 import { StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import LargeBtn from '../../components/Button/LargeBtn';
@@ -15,30 +15,36 @@ export default function LoginScreen() {
     const { authState, signIn, loading } = useContext(AuthContext);
     const [email, setemail] = useState('');
     const [password, setpassword] = useState('');
-    const{empty} = useContext(FavContext);
+    const [loadingFunc, setLoadingFunc] = useState(false);
+    const { empty } = useContext(FavContext);
 
-    useEffect(()=>{
+    useEffect(() => {
         empty();
-    },[])
+    }, [])
 
     const onClick = () => {
+        setLoadingFunc(true);
         if (email.length < 6) {
+            setLoadingFunc(false);
             return Alert.alert('No válido', 'Correo electrónico no es válido', [
                 { text: 'OK' },
             ]);
         }
         if (password.length < 6) {
+            setLoadingFunc(false);
             return Alert.alert('No válida', 'La contraseña debe ser de al menos 6 caracteres', [
                 { text: 'OK' },
             ]);
         }
         const emailValidated = validateEmail(email);
         if (emailValidated === null) {
+            setLoadingFunc(false);
             return Alert.alert('No válida', 'La contraseña debe ser de al menos 6 caracteres', [
                 { text: 'OK' },
             ]);
         }
         // loading();
+        setLoadingFunc(false);
         signIn({ email, password });
     }
     return (
@@ -61,9 +67,15 @@ export default function LoginScreen() {
                 </TouchableOpacity>
             </View>
             <View sx={loginScreen.btnContainer}>
-                <LargeBtn name={'Iniciar Sesión'}
-                    onPress={onClick}
-                />
+                {
+                    loadingFunc
+                        ? <ActivityIndicator />
+                        : (
+                            <LargeBtn name={'Iniciar Sesión'}
+                                onPress={onClick}
+                            />
+                        )
+                }
             </View>
             <View sx={loginScreen.txtContainer}>
                 <Text sx={styles.text}>
@@ -81,7 +93,7 @@ export default function LoginScreen() {
 
 const loginScreen = StyleSheet.create({
     container: {
-        paddingBottom:'$4',
+        paddingBottom: '$4',
         flex: 1,
         backgroundColor: '$background',
     },
@@ -108,6 +120,6 @@ const loginScreen = StyleSheet.create({
     txtContainer2: {
         // marginVertical: '$5',
         flexDirection: 'row',
-        paddingHorizontal:'$3'
+        paddingHorizontal: '$3'
     }
 });
