@@ -5,7 +5,15 @@ import { StyleSheet } from 'react-native';
 import { styles } from '../../theme/stylesheet';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export default function ProductCard() {
+
+interface Props{
+    name: string,
+    description: string,
+    img: string,
+    amount: number
+}
+
+export default function ProductCard({name,description,img,amount}:Props) {
 
     return (
         <View>
@@ -13,17 +21,17 @@ export default function ProductCard() {
                 <View sx={productCard.container}>
                     <View sx={productCard.descContainer}>
                         <Text sx={styles.text}>
-                            Torta
+                            {name}
                         </Text>
                         <Text sx={Object.assign({}, styles.text, productCard.descTxt)}>
-                            Bistek, pastor, chorizo
+                            {description}
                         </Text>
                     </View>
                     <View sx={productCard.imgContainer}>
-                        <Image sx={productCard.img} source={require('../../../assets/img/product4.png')} />
+                        <Image sx={productCard.img} source={{uri:img}} />
                     </View>
                     <View sx={productCard.editContainer}>
-                        <Text sx={styles.textBold}>245</Text>
+                        <Text sx={styles.textBold}>{amount}</Text>
                     </View>
                 </View>
                 <View sx={styles.divider} />

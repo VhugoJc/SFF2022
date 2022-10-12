@@ -1,19 +1,19 @@
 import { View, Text, TextInput } from 'dripsy';
-import React from 'react'
+import React,{useState} from 'react'
 import { styles } from '../../theme/stylesheet';
 import {  StyleSheet } from 'react-native';
 import { Icon } from '@rneui/base';
 import SalesList from '../../components/Lists/SalesList';
 
 export default function OldSales() {
-
+    const [searcher, setsearcher] = useState("");
     return (
         <View sx={oldSales.container}>
             <View sx={Object.assign({}, oldSales.searchSection, styles.serchInput)}>
                 <Icon style={oldSales.searchIcon} name='search' size={20} color="#A6A6A6" />
-                <TextInput sx={oldSales.input} placeholder='Buscar ' />
+                <TextInput onChangeText={e=>setsearcher(e)} sx={oldSales.input} placeholder='Buscar ' />
             </View>
-            <SalesList />
+            <SalesList searcher={searcher} />
         </View>
     )
 }

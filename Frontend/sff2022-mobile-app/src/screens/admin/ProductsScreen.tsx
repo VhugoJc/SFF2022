@@ -1,21 +1,35 @@
 import { StyleSheet, RefreshControl } from 'react-native';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, ScrollView } from 'dripsy';
 import FixedBtn from '../../components/Shared/FixedBtn';
 import HomeBanner from '../../components/Banner/HomeBanner';
 import ProductsList from '../../components/Lists/ProductsList';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { userAPI } from '../../api/UserApi';
 
 export default function ProductsScreen() {
     const navigation = useNavigation<StackNavigationProp<any>>();
-    const [refreshing, setRefreshing] = React.useState(false);
+    const [refreshing, setRefreshing] = useState(false);
+    const [products, setproducts] = useState([]);
 
-    const onRefresh = () => {
+    useEffect(() => {
+        getApi();
+    }, [])
+
+    const getApi = async () => {
+        try {
+            const response = await userAPI.get('/product');
+            setproducts(response.data.data);
+        } catch (err) {
+            console.log(err);
+
+        }
+    }
+    const onRefresh = async () => {
         setRefreshing(true);
-        setTimeout(function () {
-            setRefreshing(false);
-        }, 500);
+        await getApi();
+        setRefreshing(false);
     }
 
     return (
@@ -30,7 +44,7 @@ export default function ProductsScreen() {
                     />
                 }
             >
-                <ProductsList />
+                <ProductsList products={products} />
             </ScrollView>
         </View>
     )
