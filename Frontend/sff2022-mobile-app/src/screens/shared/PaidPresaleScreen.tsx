@@ -43,7 +43,7 @@ export default function PaidPresaleScreen() {
                         ID:
                     </Text>
                     <Text sx={Object.assign({}, styles.text, { color: '$secondary' })}>
-                        {_id}
+                        {_id.slice(20,24)}
                     </Text>
 
                 </View>

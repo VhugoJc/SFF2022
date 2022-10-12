@@ -56,7 +56,7 @@ export default function HomeAdminScreen() {
                         {`$${total.toFixed(2)}`}
                     </Text>
                 </View>
-                <MyTeamMates />
+                {/* <MyTeamMates /> */}
             </View>
             {/* <WeekSaplesChart/> */}
         </ScrollView>
