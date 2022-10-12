@@ -3,19 +3,31 @@ const { response, request } = require('express');
 const Presale = require('../models/presale');
 const User = require('../models/user');
 const Sale = require('../models/sale');
+const Team = require('../models/team');
 const moment = require('moment');
+const { sendMail } = require('../helper/nodemailer');
+const { saleEmailTemplateHTML, saleEmailTemplateTxt } = require('../helper/SaleEmailTemplate');
 
 
 const postSale = async (req = request, res = response) => {
     const { clientId, presaleId, amount, cost } = req.body;
     const sellerMemberId = req.user._id;
     const SellerTeamId = req.user.team;
-    const {products} = await Presale.findById(presaleId);
-
 
     try {
-        const newSale = new Sale({ clientId, presaleId, amount, cost, sellerMemberId, SellerTeamId, products});
+        const {products,description,name,_id,coverImg} = await Presale.findById(presaleId);
+        const team = await Team.findById(SellerTeamId);
+        const teamName = team.name;
+        const client = await User.findById(clientId);
+        const userName = `${client.name} ${client.lastname}`;
+        // create sale
+        const newSale = new Sale({ clientId, presaleId, amount, cost, sellerMemberId, SellerTeamId, products,});
         await newSale.save();
+        //email:
+        const htmlTemplate = saleEmailTemplateHTML(userName,cost,description,name,_id.toString().slice(20,24),coverImg,teamName);
+        const txtTemplate = saleEmailTemplateTxt(userName,cost,description,name,_id.toString().slice(20,24),coverImg,teamName);
+        sendMail(htmlTemplate, 'Confirmación de correo electrónico📧', txtTemplate, client.email);
+
         res.json({ newSale });
     } catch (err) {
         console.log(err);
