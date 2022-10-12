@@ -7,39 +7,42 @@ import { userAPI } from '../../api/UserApi';
 import presalesdb from '../../db/presales.json';
 import { ScrollView } from 'dripsy';
 
-export default function SalesList({searcher}:any) {
+export default function SalesList({ searcher }: any) {
     const navigation = useNavigation<StackNavigationProp<any>>();
     const [soldPresales, setsoldPresales] = useState([]);
     const [soldPresalesAux, setsoldPresalesAux] = useState([]);
 
     const [refreshing, setRefreshing] = useState(false);
+
     useEffect(()=>{
-        console.log(searcher);
-        if(searcher!==""){
-            const newData = soldPresales.filter((presale:any)=>{
-                const {name, lastname} =presale.clienData;
-                const id = presale._id.slice(20,24);
-                console.log(id);
-                
+        getApi();
+    },[])
+
+    useEffect(() => {
+        if (searcher !== "") {
+            const newData = soldPresales.filter((presale: any) => {
+                const { name, lastname } = presale.clienData;
+                const id = presale._id.slice(20, 24);
                 const fullName = `${name} ${lastname}`;
-                if(id.includes(searcher.trim().replace(/\s/g, "")) || fullName.includes(searcher.trim().replace(/\s/g, ""))){
+                if (id.toUpperCase().includes(searcher.toUpperCase().trim().replace(/\s/g, "")) || fullName.toUpperCase().includes(searcher.toUpperCase().trim().replace(/\s/g, ""))) {
                     return true;
                 }
                 return false;
             })
             setsoldPresalesAux(newData);
-            
-            
-        }else{
+        } else {
             setsoldPresalesAux(soldPresales);
         }
-        
-    },[searcher]);
+
+    }, [searcher]);
 
     const getApi = async () => {
         try {
             const response = await userAPI.get('/sale/my-team');
             setsoldPresales(response.data.sales);
+            if (searcher === "") {
+                setsoldPresalesAux(soldPresales);
+            }
         } catch (err) {
             Alert.alert('Error', 'Ha ocurrido un error al realizar la petición', [{
                 text: 'Ok'
@@ -55,9 +58,7 @@ export default function SalesList({searcher}:any) {
         }, 500);
     }
 
-    useEffect(() => {
-        getApi();
-    }, [])
+
     return (
 
         <ScrollView
@@ -74,7 +75,7 @@ export default function SalesList({searcher}:any) {
                         return (
                             <PresaleSoldCard
                                 key={item._id}
-                                soldPresale={{...item,_id:item._id.slice(20,24)}}
+                                soldPresale={{ ...item, _id: item._id.slice(20, 24) }}
                                 clientName={`${item.clienData.name} ${item.clienData.lastname}`}
                                 onPress={() => navigation.navigate("Mi Preventa", {
                                     amount: item.amount,
