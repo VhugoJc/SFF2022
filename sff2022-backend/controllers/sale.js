@@ -10,11 +10,11 @@ const postSale = async (req = request, res = response) => {
     const { clientId, presaleId, amount, cost } = req.body;
     const sellerMemberId = req.user._id;
     const SellerTeamId = req.user.team;
-    console.log(clientId);
+    const {products} = await Presale.findById(presaleId);
 
 
     try {
-        const newSale = new Sale({ clientId, presaleId, amount, cost, sellerMemberId, SellerTeamId });
+        const newSale = new Sale({ clientId, presaleId, amount, cost, sellerMemberId, SellerTeamId, products});
         await newSale.save();
         res.json({ newSale });
     } catch (err) {
