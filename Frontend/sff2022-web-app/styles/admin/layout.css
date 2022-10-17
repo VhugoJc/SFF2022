@@ -1,0 +1,35 @@
+.layout-menu {
+    z-index: 2;
+    position: fixed;
+    background: #001529 !important;
+    height: 100vh;
+}
+
+.layout-flex-container {
+    display: flex;
+}
+
+.layout-children{
+    /* flex: 2; */
+    margin-top: 50px;
+    padding: 20px 20px 20px 20px;
+    background: var(--grey);
+    min-height: calc(100vh - 50px);
+}
+.layout-children-1{
+    margin-left: 80px;  
+    width: 100%;
+}
+.layout-children-2{
+    margin-left: 180px;
+    width: calc(100vw - 180px);
+}
+
+.layout-top-menu{
+    z-index: 1;
+    position: fixed;
+    background: #001529 !important;
+    height: 52px;
+    width: 100%;
+    text-align: center;
+}
