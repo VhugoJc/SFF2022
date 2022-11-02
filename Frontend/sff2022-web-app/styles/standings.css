@@ -1,0 +1,21 @@
+.standings {
+    background: var(--blue);
+    min-height: 100vh;
+}
+.standings-card{
+    background-color: rgba(0,0,0,0.3) !important;
+    border-color: transparent !important;
+}
+.standings-header{
+    text-align:center;
+}
+.standings-header-img{
+    margin-top: 15px;
+    height: 10vh ;
+}
+.standings-header-logo{
+    height: 15vh ;
+}
+.standings-chart-container{
+    margin: 20px 10px 20px 10px;
+}

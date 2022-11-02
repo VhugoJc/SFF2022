@@ -6,43 +6,43 @@ export default function DemoColumn() {
     const data = [
         {
             type: 'Equipo 1',
-            sales: 38,
+            sales: 6590,
         },
         {
             type: 'Equipo 2',
-            sales: 38,
+            sales: 4200,
         },
         {
             type: 'Equipo 3',
-            sales: 38,
+            sales: 3100,
         },
         {
             type: 'Equipo 4',
-            sales: 38,
+            sales: 3000,
         },
         {
             type: 'Equipo 5',
-            sales: 38,
+            sales: 2900,
         },
         {
             type: 'Equipo 6',
-            sales: 38,
+            sales: 2900,
         },
         {
             type: 'Equipo 7',
-            sales: 38,
+            sales: 2800,
         },
         {
             type: 'Equipo 8',
-            sales: 38,
+            sales: 2600,
         },
         {
             type: 'Equipo 9',
-            sales: 38,
+            sales: 1800,
         },
         {
             type: 'Equipo 10',
-            sales: 38,
+            sales: 1700,
         },
     ];
     const config = {
@@ -65,5 +65,5 @@ export default function DemoColumn() {
             },
         },
     };
-    return <Column {...config} />;
+    return <Column style={{color:"red"}} {...config} />;
 };
