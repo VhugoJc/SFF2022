@@ -1,11 +1,8 @@
 import React from 'react'
 import { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../context/authContext/AuthContext';
-import AdminNavigation from './admin/AdminNavigation';
 import AppNavigation from './User/AppNavigation';
-import LoginNavigation from './shared/LoginNavigation';
 import LoadingScreen from '../screens/shared/LoadingScreen';
-import NoLoggedNavigation from './User/NoLoggedNavigation';
 
 
 export default function Navigation() {
