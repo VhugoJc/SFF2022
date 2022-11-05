@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "sff2022-mobile-app",
-    "slug": "sff2022",
+    "name": "Sales Force Fest",
+    "slug": "SalesForceFest",
     "owner":"vic0201",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -22,6 +22,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package":"com.sff.SalesForceFest",
+      "versionCode":1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
