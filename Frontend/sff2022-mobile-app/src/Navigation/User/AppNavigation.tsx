@@ -41,7 +41,7 @@ export default function AppNavigation() {
         <Tab.Screen name='HomeNav' options={{headerShown:false, title:"Home"}} component={HomeNavigation}/>
         <Tab.Screen name='FoodNav' initialParams={{status:"Equipo"}} options={{headerShown:false, title:"Comida"}} component={FoodNavigation}/>
         <Tab.Screen name='FavNav' options={{headerShown:false, title:"Favoritos"}} component={FavNavigation}/>
-        <Tab.Screen name='PresaleNav'options={{headerShown:false, title:"Mis Preventas"}}  component={MyPresaleNavigation}/>
+        {/* <Tab.Screen name='PresaleNav'options={{headerShown:false, title:"Mis Preventas"}}  component={MyPresaleNavigation}/> */}
         <Tab.Screen name='AccountNav' component={AccountNavigation} options={{headerShown:false,title:"Mi cuenta"}}/>
     </Tab.Navigator>
     ); 

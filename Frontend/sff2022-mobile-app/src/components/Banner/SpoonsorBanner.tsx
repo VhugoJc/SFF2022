@@ -10,9 +10,11 @@ export default function SpoonsorBanner() {
             <Text sx={Object.assign({},styles.text,{paddingLeft:'$3'})}>Marcas que hacen posible este evento</Text> 
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                 <View sx={sponsorBanner.scroll}>
-                    <ImageSponsor img={require('../../../assets/img/sponsor1.jpg')}/>
-                    <ImageSponsor img={require('../../../assets/img/sponsor2.png')}/>
-                    <ImageSponsor img={require('../../../assets/img/sponsor3.png')}/>
+                    <ImageSponsor img={require('../../../assets/img/sponsor1.png')}/>
+                    <ImageSponsor img={require('../../../assets/img/sponsor2.jpg')}/>
+                    <ImageSponsor img={require('../../../assets/img/sponsor3.jpg')}/>
+                    <ImageSponsor img={require('../../../assets/img/sponsor4.jpg')}/>
+                    <ImageSponsor img={require('../../../assets/img/sponsor5.jpg')}/>
                 </View>
             </ScrollView>
         </View>

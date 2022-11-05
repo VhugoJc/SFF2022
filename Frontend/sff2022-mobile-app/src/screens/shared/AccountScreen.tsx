@@ -12,24 +12,24 @@ import { AuthContext } from '../../context/authContext/AuthContext';
 
 export default function AccountScreen() {
   const navigation = useNavigation<StackNavigationProp<any>>();
-  const { logOut, loading, authState } = useContext(AuthContext);
-  const { user } = authState;
+  // const { logOut, loading, authState } = useContext(AuthContext);
+  // const { user } = authState;
 
-  const onClick = () => {
-    loading();
-    logOut();
-  }
+  // const onClick = () => {
+  //   loading();
+  //   logOut();
+  // }
   return (
     <ScrollView bounces={false} sx={accountScreen.container}>
       <View style={{ minHeight: '100%' }}>
         <View sx={accountScreen.header}>
-          <Image sx={accountScreen.imgAvatar} source={require('../../../assets/img/avatar.jpg')} />
+          <Image sx={accountScreen.imgAvatar} source={require('../../../assets/img/logo.jpg')} />
           <View sx={{ marginLeft: '$3' }}>
             <Text sx={Object.assign({}, styles.text, { width: '100%', fontSize: '$2' })}>
-              {`${user?.name} ${user?.lastname}`}
+              Sales Force Fest
             </Text>
             <Text sx={Object.assign({}, styles.text, { color: '$grey' })}>
-              {`${user?.email}`}
+              2022
             </Text>
           </View>
           {/* <View style={{flex:1}}>
@@ -38,11 +38,11 @@ export default function AccountScreen() {
         </View>
         <View sx={styles.divider} />
         <View style={{ flex: 5 }}>
-          <OptionsAccount text='Ayuda' icon='help' />
+          {/* <OptionsAccount text='Ayuda' icon='help' /> */}
           <OptionsAccount onPress={() => navigation.navigate("Acerca de")} text='Acera de' icon='info' type='red' />
-          <OptionsAccount onPress={() => navigation.navigate("Cambiar contraseña")} text='Cambiar mi contraseña' icon='fingerprint' type='primary' />
+          {/* <OptionsAccount onPress={() => navigation.navigate("Cambiar contraseña")} text='Cambiar mi contraseña' icon='fingerprint' type='primary' /> */}
         </View>
-        <View sx={accountScreen.logOut}>
+        {/* <View sx={accountScreen.logOut}>
           <LargeBtn onPress={() =>
             Alert.alert('Cerrar sesión', '¿Estás seguro de cerrar Sesión?', [
               {
@@ -56,7 +56,7 @@ export default function AccountScreen() {
             ])
           }
             name='Cerrar Sesión' type='red' />
-        </View>
+        </View> */}
       </View>
     </ScrollView>
   )
@@ -76,7 +76,7 @@ const accountScreen = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: '$3',
-    flex: 1,
+    paddingVertical:'$4'
   },
   logOut: {
     flex: 5,

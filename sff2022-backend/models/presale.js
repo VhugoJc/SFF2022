@@ -20,7 +20,16 @@ const presaleSchema = Schema({
     },
     products: [
         {
-            type: Schema.Types.ObjectId
+            name: {
+                type: String,
+                required: [true, 'El nombre es obligatorio']
+            },
+            description: {
+                type: String,
+            },
+            img: {
+                type: String,
+            },
         }
     ]
 

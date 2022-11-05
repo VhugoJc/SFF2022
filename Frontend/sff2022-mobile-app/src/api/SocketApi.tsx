@@ -1,1 +1,1 @@
-export const baseSocketURL = 'http://192.168.0.10:5000';
+export const baseSocketURL = 'http://192.168.50.230:5000';

@@ -12,11 +12,11 @@ export default function ProductsCard({product}:Props) {
 
     return (
         <View sx={productsCard.container}>
-            <Image
+            {/* <Image
                 source={{uri:product.img}}
                 sx={productsCard.img}
-            />
-            <Text sx={styles.text}>{`${product.amount} ${product.name}`}</Text>
+            /> */}
+            <Text sx={styles.text}>{`${product.name}`}</Text>
             <Text sx={Object.assign({},styles.text,{color:'$blueLight'})}>{product.description} </Text>
         </View>
     )

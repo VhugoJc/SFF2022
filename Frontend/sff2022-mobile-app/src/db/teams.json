@@ -1,21 +1,293 @@
 [{
   "_id": {
-    "$oid": "6313dae64965321f3d983c78"
+    "$oid": "636370903441967324723777"
   },
-  "name": "FrankieTort",
+  "name": "La bella y la torta",
   "imgs": [
-    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2Fbanners%2Fteam1%2Fteam1.jpg?alt=media",
-    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2Fbanners%2Fteam1%2F71098793_123779915672035_2063207773948084224_n.png?alt=media"
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F01BellaYTorta%2F01LaBellaYLaTorta_background.jpg?alt=media&token=b3d12591-583f-406d-b15f-665db0510eae",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F01BellaYTorta%2F01LaBellaYLaTorta_01.jpg?alt=media&token=11a2bb30-b05b-48df-83dd-9b1d7d291e68",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F01BellaYTorta%2F01LaBellaYLaTorta_02.jpg?alt=media&token=dbc537c8-98cc-467c-abbe-c89c7ffea8d0"
   ],
   "socialMedia": {
-    "twitter": "",
-    "facebook": "https://fb.watch/fjZF7buKEc/?mibextid=bZN3Wv",
-    "tiktok": "",
-    "instagram": "",
-    "whatsapp":"https://fb.watch/fjZF7buKEc/?mibextid=bZN3Wv"
+    "facebook": "https://www.facebook.com/profile.php?id=100085134386630",
+    "instagram": "https://instagram.com/labella_ylatorta",
+    "tiktok": "https://www.tiktok.com/@labellaylatorta",
+    "twitter": ""
   },
-  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,",
-  "logo": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2Flogos%2Fteam1.png?alt=media",
+  "description": "Y tu ya estas listo!!\nTe contamos que Bella esta muy preocupada porque no encuentra a la Bestia, ha iniciado con su búsqueda por todo el castillo. \n¿Donde estará la bestia?\nAyudarías a Bella a encontrarlo y que por fin tengan su final feliz.\nTe esperamos a ti, y a toda tu familia. \nLa bella y la torta te invita a ir a nuestro castillo donde te volverás protagonista de esta gran historia. ",
+  "logo": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F01BellaYTorta%2F01LaBellaYTorta.png?alt=media&token=71526891-f681-4bde-911b-f719d85e488d",
+  "status": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636377c63441967324723779"
+  },
+  "name": "Wonka’s Tortas",
+  "imgs": [
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F02WonkasTorta%2F02Wonkas_background.jpg?alt=media&token=0e1a8aa3-ab6c-403b-b4b7-7271a64b021c",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F02WonkasTorta%2F02Wonkas_1.jpg?alt=media&token=aad783c3-dc9d-42d2-b945-96981742052a",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F02WonkasTorta%2F02Wonkas_2.jpg?alt=media&token=f4ff25e8-e40b-4aac-9869-2112caf2a416"
+  ],
+  "socialMedia": {
+    "facebook": "https://www.facebook.com/kamikazes.upslp",
+    "instagram": "https://www.instagram.com/wonkastortas/",
+    "twitter": "",
+    "tiktok": ""
+  },
+  "description": "La imprenta en La Fábrica de Tortas de Willy Wonka estuvo trabajando toda la mañana para difundir este comunicado especial de su anfitrión. Este año, por ocasión única, Willy Wonka les extiende una cordial invitación para la gran inauguración de su nueva fábrica de Tortas. Ven a pasar este Festival con nosotros, tenemos dinámicas, atracciones y premios que no encontrarás en ningún otro lugar.",
+  "logo": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F02WonkasTorta%2F02Wanka.png?alt=media&token=057c7b6f-2ef1-4bcd-a87a-756758bc6d26",
+  "status": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63637d49344196732472377b"
+  },
+  "name": "Entortados",
+  "imgs": [
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F03Entortados%2F03Entortados_background.jpg?alt=media&token=b60ca639-debe-4098-875a-bc8c969ca63a",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F03Entortados%2F03Entortados_1.jpg?alt=media&token=7f5beb27-3c38-4ee1-83ad-1603ad3b0379",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F03Entortados%2F03Entortados_2.jpg?alt=media&token=4ad7cefe-75cb-4d26-bc88-406567b7a161"
+  ],
+  "socialMedia": {
+    "facebook": "https://www.facebook.com/profile.php?id=100084352407702",
+    "instagram": "https://instagram.com/entortados",
+    "twitter": "",
+    "tiktok": "",
+    "whatsapp": ""
+  },
+  "description": "Una torre de sabor. ⭐️ Su mejor Opción para pasar este gran evento. ⭐️",
+  "logo": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F03Entortados%2F03Entortados.png?alt=media&token=4485df66-77ca-4a91-8bb2-2ae31c22c9ee",
+  "status": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6363824a344196732472377d"
+  },
+  "name": "Little Hungry",
+  "imgs": [
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F04LittleHungry%2F04LittleHungry_background.jpg?alt=media&token=66b6265f-ddcb-41ca-9550-426f12cc97fa",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F04LittleHungry%2F04LittleHungry_1.jpg?alt=media&token=223881a0-5755-4de2-a3e7-e94fdbb9f0bd",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F04LittleHungry%2F04LittleHungry_2.jpg?alt=media&token=dff20d13-9691-47b1-a389-40139b4b7db5"
+  ],
+  "socialMedia": {
+    "facebook": "https://www.facebook.com/profile.php?id=100086023204809 ",
+    "instagram": "https://www.instagram.com/littlehungry22",
+    "tiktok": "https://www.tiktok.com/@littlehungry22",
+    "twitter": "",
+    "whatsapp": ""
+  },
+  "description": "Acompáñanos en esta nueva aventura... 🤩  Little Hungry en Sales Force Fest 2022. 🍭 La magia y el deleite en un solo bocado.😋",
+  "logo": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F04LittleHungry%2F04LittleHungry.png?alt=media&token=0c52e405-1ad6-4b2b-8b16-e2a0d0f6677e",
+  "status": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636389b1344196732472377f"
+  },
+  "name": "Las Tortas de Oz",
+  "imgs": [
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F05LasTortasDeOz%2F07LasTortasDeOz_background.jpg?alt=media&token=15dcddec-08fe-424a-a06c-ac2c5e20a028",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F05LasTortasDeOz%2F05LasTortasDeOz_1.jpg?alt=media&token=d782f3a4-b807-4043-a305-3548df42839d",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F05LasTortasDeOz%2F05LasTortasDeOz_2.jpg?alt=media&token=18f1b259-2831-4cc3-8824-4b18b9afab3f"
+  ],
+  "socialMedia": {
+    "facebook": "https://www.facebook.com/profile.php?id=100080541783210",
+    "instagram": "https://www.instagram.com/lastortasdeoz/",
+    "twitter": "",
+    "tiktok": "",
+    "whatsapp": ""
+  },
+  "description": "Síguenos en nuestras redes sociales y no te pierdas las sorpresas que tenemos preparadas para ti.",
+  "logo": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F05LasTortasDeOz%2F07LasTortasDeOz.png?alt=media&token=b3b48384-08fe-41ae-94c7-6a500be1ff37",
+  "status": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63638d153441967324723781"
+  },
+  "name": "Tortaline y las Tortas Secretas",
+  "imgs": [
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F06Tortaline%2F06Tortaline_background.jpg?alt=media&token=3d2ac153-baf0-46bd-88a3-3b302df3e741",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F06Tortaline%2F06Tortaline_1.jpg?alt=media&token=054f8e77-87e1-492d-8bfb-c57529d37572",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F06Tortaline%2F06Tortaline_2.jpg?alt=media&token=6a8554a9-d577-4d29-900e-447e3e05078a"
+  ],
+  "socialMedia": {
+    "facebook": "https://www.facebook.com/rocknboingupslp",
+    "instagram": "https://www.instagram.com/coralineteam_upslp/",
+    "twitter": "",
+    "tiktok": "",
+    "whatsapp": ""
+  },
+  "description": "Holaaa!! nos encontramos a Coraline y Wybie y nos invitan al Sales Forcé 2022!!🗝️🖤 Te invitamos este 11 de Noviembre a nuestro stand Tortaline y la torta secreta!🗝️🤍 los esperamos ",
+  "logo": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F06Tortaline%2F06Tortaline.png?alt=media&token=1cc21c89-ec37-4d2c-bc09-c531147c8845",
+  "status": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63638eff3441967324723783"
+  },
+  "name": "Las Tortas del Fauno",
+  "imgs": [
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F07LasTortasDelFauno%2F05TortasDelFauno_background.jpg?alt=media&token=601a110a-9c3a-46bb-b838-b1053c3857ac",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F07LasTortasDelFauno%2F07TortasDelFauno_1.jpg?alt=media&token=b141cd50-0fa6-4efb-a637-d16b8e2350db",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F07LasTortasDelFauno%2F07TortasDelFauno_2.jpg?alt=media&token=503c7526-3f5f-4538-90af-2287cdf40988"
+  ],
+  "socialMedia": {
+    "facebook": "https://www.facebook.com/profile.php?id=100085314231968",
+    "instagram": "https://www.instagram.com/las.tortas.del.fauno/",
+    "twitter": "",
+    "tiktok": "",
+    "whatsapp": ""
+  },
+  "description": "-La puerta está cerrada -En ese caso, haced vuestra propia puerta 🍄SALES FORCE FEST 2022🍄",
+  "logo": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F07LasTortasDelFauno%2F05LasTortasDelFauno.png?alt=media&token=8302ca51-6c4d-40fc-b4ab-253aef725779",
+  "status": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636391873441967324723785"
+  },
+  "name": "Tortaland",
+  "imgs": [
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F08Tortaland%2F08Tortaland_background.jpg?alt=media&token=6af4c878-0252-44df-a5a5-d68ce774b6c3",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F08Tortaland%2F08Tortaland_2.jpg?alt=media&token=ed5a5092-faf7-40c2-9759-29a902456ccd",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F08Tortaland%2F08Tortaland_1.jpg?alt=media&token=506e055f-41bb-4e0a-acd3-ef020ff97a55"
+  ],
+  "socialMedia": {
+    "facebook": "https://www.facebook.com/tortaland12",
+    "instagram": "https://www.instagram.com/p/CkMxhK7u2xF/",
+    "tiktok": "https://www.tiktok.com/@tortaland12",
+    "twitter": "",
+    "whatsapp": ""
+  },
+  "description": "Conoce a nuestro gran equipo y vive con nosotros la magia de volar y llegar a ❤️#Tortaland ",
+  "logo": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F08Tortaland%2F08TortaLand.png?alt=media&token=5298b07a-87ce-4c87-9357-e59e504ba76e",
+  "status": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6363dd9ff12ddb1f1ee935c5"
+  },
+  "name": "Du-Dumbé",
+  "imgs": [
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F09Du-Dumb%C3%A9%2F09TortasDuDumbe_background.jpg?alt=media&token=27ec63a8-5812-4dbf-a5cb-5d0a0f8c1ef9",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F09Du-Dumb%C3%A9%2F09Du-Dumb%C3%A9_1.jpg?alt=media&token=ea2fb367-758d-4b5e-9a19-2109d7aeffed",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F09Du-Dumb%C3%A9%2F09Du-Dumb%C3%A9_2.jpg?alt=media&token=c1946f86-27c4-4eb4-9bf7-584213b1fce4"
+  ],
+  "socialMedia": {
+    "facebook": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F09Du-Dumb%C3%A9%2F09TortasDuDumbe_background.jpg?alt=media&token=27ec63a8-5812-4dbf-a5cb-5d0a0f8c1ef9",
+    "instagram": "https://www.instagram.com/p/CkfATz0tUZN/",
+    "twitter": "",
+    "tiktok": "",
+    "whatsapp": ""
+  },
+  "description": "Disfruta de esta gran experiencia de sabores sumergiéndote en la magia de Dumbo🐘❣️ Sales Force Fest 2022✨ 🎪11/11/22🎪",
+  "logo": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F09Du-Dumb%C3%A9%2F09TortasDuDumbe.png?alt=media&token=2b7a94f6-ced5-40b0-9a45-9fee747131bc",
+  "status": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6363df6af12ddb1f1ee935c7"
+  },
+  "name": "Las Tortas del Shrek",
+  "imgs": [
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F10LasTortasDelShrek%2F10LasTortasDelShrek_background.jpg?alt=media&token=50b551be-87e5-4bf4-bbff-799f5532fcfa",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F10LasTortasDelShrek%2F10sHREK_1.jpg?alt=media&token=61e7f261-8aee-4efe-9c49-3fc5d56765f0",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F10LasTortasDelShrek%2F10sHREK_2.jpg?alt=media&token=cd114448-ade0-48a1-bfdd-5c03d9552658"
+  ],
+  "socialMedia": {
+    "facebook": "https://www.facebook.com/profile.php?id=100086281381204",
+    "instagram": "https://www.instagram.com/lastortasdelshrek_/",
+    "tiktok": "https://www.tiktok.com/@lastortasdelshrek",
+    "twitter": "",
+    "whatsapp": ""
+  },
+  "description": "Traga como ogro, siéntete como princesa🧌👑 Sales Force Fest 2022 Te esperamos este 11 de Noviembre!✨",
+  "logo": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F10LasTortasDelShrek%2F10LasTortasDelShrek.png?alt=media&token=9b1968c9-d1cd-4dce-a9cd-0589de62abb3",
+  "status": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6363e2f5f12ddb1f1ee935c9"
+  },
+  "name": "El genio de las tortas",
+  "imgs": [
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F11ElGenioDeLasTortas%2F11ElGenioDeLasTortas_background.jpg?alt=media&token=cfccd8f9-eb17-48a0-9156-10237493e1e5",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F11ElGenioDeLasTortas%2F11ElGenio_2.jpg?alt=media&token=a4ad0854-4de4-4dcf-942b-c25140621f69",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F11ElGenioDeLasTortas%2F11ElGenio_1.jpg?alt=media&token=629515dd-cf9a-4a3b-a356-ddeb6ece13df"
+  ],
+  "socialMedia": {
+    "facebook": "https://www.facebook.com/profile.php?id=100086750056331",
+    "instagram": "https://www.instagram.com/elgeniodelastortas_/",
+    "tiktok": "https://www.tiktok.com/@elgeniodelastortas",
+    "twitter": "",
+    "whatsapp": ""
+  },
+  "description": "-Al fin están aquí‼️ Disculpa, ¿Me estás mirando? ¿Frotaste mi lámpara? ¿Me despertaste? ¿Me trajiste aquí? ¿Y de repente me vas a abandonar? No lo creo. ¡No ahora mismo! Estás consiguiendo tus deseos, ¡así que siéntate! -💜🧞‍♂️ No te quedes sin tu preventa, consiguelas ya con tus amigos del genio de las tortas🐒🔮",
+  "logo": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F11ElGenioDeLasTortas%2F11ElGenio.png?alt=media&token=e71e955d-0d22-4b81-b3dd-7650f791dc7e",
+  "status": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6363e4dff12ddb1f1ee935cb"
+  },
+  "name": "Twelve O’ Torts",
+  "imgs": [
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F12TwelveOTort%2F12twelveOTorts_background.jpg?alt=media&token=604565be-915b-4207-9808-3f83e3c5d632",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F12TwelveOTort%2F12Twelve_1.jpg?alt=media&token=96dfa86e-1315-4f83-9571-e59e1071bd4f",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F12TwelveOTort%2F12Twelve_2.jpg?alt=media&token=64365f15-b1f7-4490-b647-aa686f768f5c"
+  ],
+  "socialMedia": {
+    "facebook": "https://www.facebook.com/profile.php?id=100086758830591",
+    "instagram": "https://www.instagram.com/cenicientaupslp/",
+    "twitter": "",
+    "tiktok": "",
+    "whatsapp": ""
+  },
+  "description": "Nosotros somos el equipo Twelve O’ Torts👸🏼 Estamos muy contentos de estar participando en el evento Sales Force Fest 2022 🏆 Para este gran camino a todos ustedes les tenemos…  🎉 Sorpresas ✅Promos increíbles ✨Experiencias de en Sueño 🔜 Síguenos en todas nuestras redes sociales para que no te pierdas de todo lo que tenemos preparado💎",
+  "logo": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F12TwelveOTort%2F12Twelve.png?alt=media&token=bed761b8-9093-4278-851e-5c34b4a934d2",
+  "status": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6363e7abf12ddb1f1ee935cd"
+  },
+  "name": "Bajo El Mar",
+  "imgs": [
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F13TortasBajoElMar%2F13TortasBajoElMar_background.jpg?alt=media&token=7ee1cd8e-e260-43ae-a00d-fa8ed18c60ed",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F13TortasBajoElMar%2F13_BajoElMar_1.jpg?alt=media&token=a82bbec9-0743-4cf9-a9a4-70c8d882c3de",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F13TortasBajoElMar%2F13_BajoElMar_2.jpg?alt=media&token=c393439b-9a54-467b-9738-96199f5163a4"
+  ],
+  "socialMedia": {
+    "facebook": "https://www.facebook.com/profile.php?id=100085298362172",
+    "instagram": "https://www.instagram.com/bajo.el.maar/",
+    "twitter": "",
+    "tiktok": "",
+    "whatsapp": ""
+  },
+  "description": "!Conoce más sobre este gran evento y acompáñanos con tus personas favoritas!💙🌊 #bajoelmar🐠 #lasirenita #salesforce #upslp",
+  "logo": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F13TortasBajoElMar%2F13TortasBajoElMar.png?alt=media&token=647e81a6-ebed-4257-85f8-14bd18dc4cb7",
+  "status": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6363e9d3f12ddb1f1ee935cf"
+  },
+  "name": "Alice in tortaworld",
+  "imgs": [
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F14AliceInTortaWorld%2F14AliceInTortaWorld_background.jpg?alt=media&token=76a2b072-7b22-4311-b488-ed564d198194",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F14AliceInTortaWorld%2F14Alice_1.jpg?alt=media&token=d9186950-7b30-4f90-9263-c51ba8f8ab52",
+    "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F14AliceInTortaWorld%2F14Alice_2.jpg?alt=media&token=b927b0c3-997e-4514-b479-d89da80cc90b"
+  ],
+  "socialMedia": {
+    "facebook": "https://www.facebook.com/Frutifresh09090909",
+    "instagram": "https://www.instagram.com/aliceintortaworld/",
+    "twitter": "",
+    "tiktok": "",
+    "whatsapp": ""
+  },
+  "description": "🎩Nuestros deliciosos combos han llegado… ya puedes adquirir tus boletos de preventa con nosotros, ¡no te quedes sin el tuyo!🗝️",
+  "logo": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F14AliceInTortaWorld%2F14AliceInTortaWorld.png?alt=media&token=3fe658de-dfcd-40e6-b72e-00a024ef7096",
   "status": false,
   "__v": 0
 }]

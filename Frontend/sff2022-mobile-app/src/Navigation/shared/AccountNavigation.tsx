@@ -22,7 +22,7 @@ export const AccountNavigation = () => {
                 component={AccountScreen} 
             />
             <Stack.Screen name="Acerca de" component={AuthorCredits}/>
-            <Stack.Screen name="Cambiar contraseña" component={ChangePasswordScreen}/>
+            {/* <Stack.Screen name="Cambiar contraseña" component={ChangePasswordScreen}/> */}
         </Stack.Navigator>
     )
 }

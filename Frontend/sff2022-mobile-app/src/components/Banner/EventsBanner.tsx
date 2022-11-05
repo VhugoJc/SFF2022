@@ -18,10 +18,11 @@ export default function EventsBanner() {
         >
             <View sx={events.container}>
                 <Text sx={Object.assign({}, styles.subtitle, { color: '$light' })}>
-                    Los mejores eventos
+                Había una vez... ¡una torta!
                 </Text>
                 <Text sx={Object.assign({}, styles.text, { color: '$light' })}>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                Tendremos una tarde llena de música, excelente sabor y muchas sorpresas más...
+                Te esperamos ¡Asiste con tu familia y amigos!
                     {"\n"}
                 </Text>
                 <IconBtn onPress={() => navigation.navigate("Entretenimiento" as any)} name='Descubrir' type='light' />

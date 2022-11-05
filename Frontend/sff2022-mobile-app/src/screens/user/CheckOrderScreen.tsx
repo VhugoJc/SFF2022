@@ -34,7 +34,7 @@ export default function CheckOrderScreen({setScreen,presale,}:Props) {
     }
     return (
 
-        <View sx={checkOrder.container}>
+        <ScrollView sx={checkOrder.container}>
             <Text sx={Object.assign({}, styles.subtitle, { color: '$primary' })}>
                 Comprando preventa
             </Text>
@@ -54,13 +54,14 @@ export default function CheckOrderScreen({setScreen,presale,}:Props) {
             <View sx={checkOrder.btnContainer}>
                 <LargeBtn onPress={onClick} name='Generar QR Para pagar' />
             </View>
-        </View>
+        </ScrollView>
     )
 }
 
 
 const checkOrder = StyleSheet.create({
     container: {
+        flex: 1,
         top: '$4',
         paddingHorizontal: '$3'
     },
@@ -79,6 +80,7 @@ const checkOrder = StyleSheet.create({
     },
     btnContainer: {
         marginTop: '$4',
-        alignItems: 'center'
+        alignItems: 'center',
+        height: 200
     }
 });

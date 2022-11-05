@@ -17,7 +17,7 @@ export default function Navigation() {
 
     return (
         <>
-            {
+            {/* {
                 authState.status ==='authenticated' //if the user is Logged
                     ? authState.user?.role === "ADMIN_ROLE" //if the user role is admin
                         ? <AdminNavigation />
@@ -25,7 +25,8 @@ export default function Navigation() {
                             ? <AppNavigation />
                             : <LoginNavigation /> 
                     : <NoLoggedNavigation />
-            }
+            } */}
+            <AppNavigation />
         </>
     )
 }

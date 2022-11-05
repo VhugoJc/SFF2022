@@ -1,41 +1,2409 @@
-[
-  {
-    "_id": {
-      "$oid": "63177b4c8175af177f365988"
-    },
-    "name": "Torta Mega Tortas",
-    "cost": 225.5,
-    "description": "deliciosas tortas en equipo",
-    "sellerId": {
-      "$oid": "6313dae64965321f3d983c78"
-    },
-    "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/presales%2Fteam1%2Ffood2.jpg?alt=media",
-    "products": [
-      {
-        "$oid": "633917d23f2653998755b05b"
-      },
-      {
-        "$oid": "6339182a3f2653998755b05f"
-      }
-    ],
-    "__v": 0
+[{
+  "_id": {
+    "$oid": "636415380103b559e26b04c6"
   },
-  {
-    "_id": {
-      "$oid": "63177b638175af177f36598b"
-    },
-    "name": "TortaFrankie",
-    "cost": 22,
-    "description": "deliciosas tortas en equipo",
-    "sellerId": {
-      "$oid": "6313dae64965321f3d983c78"
-    },
-    "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/presales%2Fteam1%2Ffood2.jpg?alt=media",
-    "products": [
-      {
-        "$oid": "6339182a3f2653998755b05f"
+  "name": "Bella",
+  "cost": 69,
+  "description": "Adquiere tu combo ahora mismo!!!\n11 de noviembre ",
+  "sellerId": {
+    "$oid": "636370903441967324723777"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F01BellaYTorta%2Fcombos%2FBellaYLaTorta_1.jpg?alt=media&token=2de5b561-2b4e-4e7e-892c-3f9ba0034533",
+  "products": [
+    {
+      "name": "1 torta",
+      "description": "bistec, pastor, chorizo o combinada",
+      "img": "",
+      "_id": {
+        "$oid": "636415380103b559e26b04c7"
       }
-    ],
-    "__v": 0
-  }
-]
+    },
+    {
+      "name": "1 jugo",
+      "description": "boing de 500 ml🧃",
+      "img": "",
+      "_id": {
+        "$oid": "636415380103b559e26b04c8"
+      }
+    },
+    {
+      "name": "1 galleta",
+      "description": " chispas de chocolate 🍪",
+      "img": "",
+      "_id": {
+        "$oid": "636415380103b559e26b04c9"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63641adb0103b559e26b04cb"
+  },
+  "name": "La bella y la bestia",
+  "cost": 159,
+  "description": "Combo -La bella y la bestia- ideal para aquellos enamorados",
+  "sellerId": {
+    "$oid": "636370903441967324723777"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F01BellaYTorta%2Fcombos%2FBellaYLaTorta_2.jpg?alt=media&token=c65db4c4-3c6c-4db3-97bf-020483253f4f",
+  "products": [
+    {
+      "name": "2 tortas",
+      "description": "bistec, pastor,  chorizo o combinada",
+      "img": "",
+      "_id": {
+        "$oid": "63641adb0103b559e26b04cc"
+      }
+    },
+    {
+      "name": "2 jugos",
+      "description": "500 ml 🧃",
+      "img": "",
+      "_id": {
+        "$oid": "63641adb0103b559e26b04cd"
+      }
+    },
+    {
+      "name": "1 galleta",
+      "description": "chispas de chocolate 🍪",
+      "img": "",
+      "_id": {
+        "$oid": "63641adb0103b559e26b04ce"
+      }
+    },
+    {
+      "name": "1 blizzard",
+      "description": "🍦",
+      "img": "",
+      "_id": {
+        "$oid": "63641adb0103b559e26b04cf"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63641bfe0103b559e26b04d1"
+  },
+  "name": "Familia Potts",
+  "cost": 279,
+  "description": "Combo -Familia Potts- ideal para que compartas y disfrutes junto a toda tu familia",
+  "sellerId": {
+    "$oid": "636370903441967324723777"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F01BellaYTorta%2Fcombos%2FBellaYLaTorta_3.jpg?alt=media&token=fc099832-8f34-4345-8b7d-7d494c45857e",
+  "products": [
+    {
+      "name": "4 tortas",
+      "description": "bistec, pastor,  chorizo o combinada",
+      "img": "",
+      "_id": {
+        "$oid": "63641bfe0103b559e26b04d2"
+      }
+    },
+    {
+      "name": "2 jugos",
+      "description": "250 ml 🧃",
+      "img": "",
+      "_id": {
+        "$oid": "63641bfe0103b559e26b04d3"
+      }
+    },
+    {
+      "name": "2 jugos",
+      "description": "500 ml 🧃",
+      "img": "",
+      "_id": {
+        "$oid": "63641bfe0103b559e26b04d4"
+      }
+    },
+    {
+      "name": "2 galletas",
+      "description": "chispas de chocolate 🍪",
+      "img": "",
+      "_id": {
+        "$oid": "63641bfe0103b559e26b04d5"
+      }
+    },
+    {
+      "name": "1 blizzard 🍦",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63641bfe0103b559e26b04d6"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63641cc00103b559e26b04dc"
+  },
+  "name": "Chip",
+  "cost": 85,
+  "description": "Combo -Chip- ideal para los más pequeños ",
+  "sellerId": {
+    "$oid": "636370903441967324723777"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F01BellaYTorta%2Fcombos%2FBellaYLaTorta_4.jpg?alt=media&token=a43c4792-a2e5-4869-9b26-5cdf07c80a20",
+  "products": [
+    {
+      "name": "1 torta",
+      "description": "bistec, pastor,  chorizo o combinada",
+      "img": "",
+      "_id": {
+        "$oid": "63641cc00103b559e26b04dd"
+      }
+    },
+    {
+      "name": "1 jugo",
+      "description": "250 ml 🧃",
+      "img": "",
+      "_id": {
+        "$oid": "63641cc00103b559e26b04de"
+      }
+    },
+    {
+      "name": "1 blizzard",
+      "description": "Oreo 🍦",
+      "img": "",
+      "_id": {
+        "$oid": "63641cc00103b559e26b04df"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63641d430103b559e26b04e1"
+  },
+  "name": "Gastón",
+  "cost": 79,
+  "description": "Combo -Gastón- ideal para aquellos que les gusta lo único y diferente",
+  "sellerId": {
+    "$oid": "636370903441967324723777"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F01BellaYTorta%2Fcombos%2FBellaYLaTorta_5.jpg?alt=media&token=7ffd9069-59ca-43c8-83ed-1689458198bd",
+  "products": [
+    {
+      "name": "1 torta",
+      "description": "ahogada o chilaquiles",
+      "img": "",
+      "_id": {
+        "$oid": "63641d430103b559e26b04e2"
+      }
+    },
+    {
+      "name": "1 jugo",
+      "description": "500 ml 🧃",
+      "img": "",
+      "_id": {
+        "$oid": "63641d430103b559e26b04e3"
+      }
+    },
+    {
+      "name": "1 galleta",
+      "description": "chispas de chocolate 🍪",
+      "img": "",
+      "_id": {
+        "$oid": "63641d430103b559e26b04e4"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63641dca0103b559e26b04e6"
+  },
+  "name": "Lumiere y Din Don",
+  "cost": 135,
+  "description": "Combo -Lumiere y Din Don- ideal para ti y tu persona favorita",
+  "sellerId": {
+    "$oid": "636370903441967324723777"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F01BellaYTorta%2Fcombos%2FBellaYLaTorta_6.jpg?alt=media&token=670e3161-0602-4722-9bd9-c271fd44bd77",
+  "products": [
+    {
+      "name": "2 tortas",
+      "description": "pastor, chorizo, bistec y combianda",
+      "img": "",
+      "_id": {
+        "$oid": "63641dca0103b559e26b04e7"
+      }
+    },
+    {
+      "name": "2 jugos",
+      "description": "500 ml 🧃",
+      "img": "",
+      "_id": {
+        "$oid": "63641dca0103b559e26b04e8"
+      }
+    },
+    {
+      "name": "2 galletas",
+      "description": "chispas de chocolate 🍪",
+      "img": "",
+      "_id": {
+        "$oid": "63641dca0103b559e26b04e9"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636425050103b559e26b04eb"
+  },
+  "name": "CHARLIE",
+  "cost": 120,
+  "description": "justo para aquellos que les encanta compartir sus buenos momentos con la persona más especial de sus vidas",
+  "sellerId": {
+    "$oid": "636377c63441967324723779"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F02WonkasTorta%2Fcombos%2Fcharlie.jpg?alt=media&token=237e2c86-8506-40f1-8a5e-062d50964341",
+  "products": [
+    {
+      "name": "2 tortas",
+      "description": "pastor, bistec, chorizo o combinada",
+      "img": "",
+      "_id": {
+        "$oid": "636425050103b559e26b04ec"
+      }
+    },
+    {
+      "name": "2 bebidas",
+      "description": "Boing lata o Néctasis",
+      "img": "",
+      "_id": {
+        "$oid": "636425050103b559e26b04ed"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636425cc0103b559e26b04ef"
+  },
+  "name": "GLOOP",
+  "cost": 300,
+  "description": " ideal para aquellos con gusto insaciable y que no tienen límites a la hora de comer",
+  "sellerId": {
+    "$oid": "636377c63441967324723779"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F02WonkasTorta%2Fcombos%2Fgloop.jpg?alt=media&token=ca382c11-b974-4fa7-8c62-a53e23a9e4d7",
+  "products": [
+    {
+      "name": "6 tortas",
+      "description": "pastor, bistec, chorizo o combinada",
+      "img": "",
+      "_id": {
+        "$oid": "636425cc0103b559e26b04f0"
+      }
+    },
+    {
+      "name": "5 bebidas",
+      "description": "Boing lata o Néctasis",
+      "img": "",
+      "_id": {
+        "$oid": "636425cc0103b559e26b04f1"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636426460103b559e26b04f3"
+  },
+  "name": "OOMPA LOOMPA",
+  "cost": 65,
+  "description": "para ti que solo necesitas de tu presencia para sentirte como un ejército de Oompa Loompas. Aunque, también es ideal para aquellos que miden menos de cinco subways.",
+  "sellerId": {
+    "$oid": "636377c63441967324723779"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F02WonkasTorta%2Fcombos%2Foompaloompa.jpg?alt=media&token=430f2cf3-a542-4851-981a-61b95c6d68ad",
+  "products": [
+    {
+      "name": "1 torta",
+      "description": "pastor, bistec, chorizo o combinada",
+      "img": "",
+      "_id": {
+        "$oid": "636426460103b559e26b04f4"
+      }
+    },
+    {
+      "name": "1 bebida",
+      "description": "Boing lata o Néctasis",
+      "img": "",
+      "_id": {
+        "$oid": "636426460103b559e26b04f5"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636426b20103b559e26b04f7"
+  },
+  "name": "VERUCA",
+  "cost": 210,
+  "description": "para aquellos que les encanta pedir y quieren tenerlo todo. Aquí nosotros les damos exactamente lo que sus deseos pidan, sin pensarlo dos veces.",
+  "sellerId": {
+    "$oid": "636377c63441967324723779"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F02WonkasTorta%2Fcombos%2Fveruca.jpg?alt=media&token=e57f85eb-0605-49c2-a5d1-5bb1dd2e297e",
+  "products": [
+    {
+      "name": "4 tortas",
+      "description": "pastor, bistec, chorizo o combinada",
+      "img": "",
+      "_id": {
+        "$oid": "636426b20103b559e26b04f8"
+      }
+    },
+    {
+      "name": "3 bebidas",
+      "description": "Boing lata o Néctasis",
+      "img": "",
+      "_id": {
+        "$oid": "636426b20103b559e26b04f9"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636428700103b559e26b04fb"
+  },
+  "name": "Entortados",
+  "cost": 95,
+  "description": "",
+  "sellerId": {
+    "$oid": "63637d49344196732472377b"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F03Entortados%2Fcombos%2FEntortados.jpg?alt=media&token=9d4cf224-e2bd-4689-9735-4181c3d2ec6b",
+  "products": [
+    {
+      "name": "2 Tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "636428700103b559e26b04fc"
+      }
+    },
+    {
+      "name": "1 Bebida",
+      "description": "Boing",
+      "img": "",
+      "_id": {
+        "$oid": "636428700103b559e26b04fd"
+      }
+    },
+    {
+      "name": "1 Dona",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "636428700103b559e26b04fe"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636429160103b559e26b0500"
+  },
+  "name": "La Flor",
+  "cost": 175,
+  "description": "",
+  "sellerId": {
+    "$oid": "63637d49344196732472377b"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F03Entortados%2Fcombos%2FLa%20Flor.jpg?alt=media&token=1ae0d3a6-0191-47a6-9dd5-861623d5d638",
+  "products": [
+    {
+      "name": "4 Tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "636429160103b559e26b0501"
+      }
+    },
+    {
+      "name": "2 Bebidas",
+      "description": "Boing",
+      "img": "",
+      "_id": {
+        "$oid": "636429160103b559e26b0502"
+      }
+    },
+    {
+      "name": "1 Dona",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "636429160103b559e26b0503"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636429690103b559e26b0505"
+  },
+  "name": "La Realeza",
+  "cost": 370,
+  "description": "",
+  "sellerId": {
+    "$oid": "63637d49344196732472377b"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F03Entortados%2Fcombos%2FLa%20Realeza.jpg?alt=media&token=884c5213-2686-49b6-84ac-94575513688f",
+  "products": [
+    {
+      "name": "5 Tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "636429690103b559e26b0506"
+      }
+    },
+    {
+      "name": "4 Bebidas",
+      "description": "Boing",
+      "img": "",
+      "_id": {
+        "$oid": "636429690103b559e26b0507"
+      }
+    },
+    {
+      "name": "4 Donas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "636429690103b559e26b0508"
+      }
+    },
+    {
+      "name": "2 papotas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "636429690103b559e26b0509"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636429b50103b559e26b050b"
+  },
+  "name": "Rapunzel",
+  "cost": 45,
+  "description": "",
+  "sellerId": {
+    "$oid": "63637d49344196732472377b"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F03Entortados%2Fcombos%2FRapunzel.jpg?alt=media&token=a2755df9-a737-4c44-a4f5-bf331aa6f10c",
+  "products": [
+    {
+      "name": "1 Torta",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "636429b50103b559e26b050c"
+      }
+    },
+    {
+      "name": "1 Bebida",
+      "description": "Boing",
+      "img": "",
+      "_id": {
+        "$oid": "636429b50103b559e26b050d"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63642a1b0103b559e26b050f"
+  },
+  "name": "Torre",
+  "cost": 55,
+  "description": "",
+  "sellerId": {
+    "$oid": "63637d49344196732472377b"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F03Entortados%2Fcombos%2FTorre.jpg?alt=media&token=e2429626-e4c1-4f18-a5bb-35e9be0594af",
+  "products": [
+    {
+      "name": "1 Torta",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63642a1b0103b559e26b0510"
+      }
+    },
+    {
+      "name": "1 Bebida",
+      "description": "Boing",
+      "img": "",
+      "_id": {
+        "$oid": "63642a1b0103b559e26b0511"
+      }
+    },
+    {
+      "name": "1 dona",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63642a1b0103b559e26b0512"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63642d980103b559e26b0514"
+  },
+  "name": "ABANDONADOS",
+  "cost": 120,
+  "description": "",
+  "sellerId": {
+    "$oid": "6363824a344196732472377d"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F04LittleHungry%2Fcombos%2FAbandonados.jpg?alt=media&token=c354033c-917f-4cc1-b5a0-947ee73e97ee",
+  "products": [
+    {
+      "name": "2 Tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63642d980103b559e26b0515"
+      }
+    },
+    {
+      "name": "1 Jugo",
+      "description": "Boing",
+      "img": "",
+      "_id": {
+        "$oid": "63642d980103b559e26b0516"
+      }
+    },
+    {
+      "name": "1 Bolis",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63642d980103b559e26b0517"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63642df70103b559e26b0519"
+  },
+  "name": "DULCE HOGAR",
+  "cost": 370,
+  "description": "",
+  "sellerId": {
+    "$oid": "6363824a344196732472377d"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F04LittleHungry%2Fcombos%2FDulceHogar.jpg?alt=media&token=7821e723-6531-40c1-a524-d2c8ffcf149d",
+  "products": [
+    {
+      "name": "5 Tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63642df70103b559e26b051a"
+      }
+    },
+    {
+      "name": "3 Jugos",
+      "description": "Boing",
+      "img": "",
+      "_id": {
+        "$oid": "63642df70103b559e26b051b"
+      }
+    },
+    {
+      "name": "2 Blizzards",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63642df70103b559e26b051c"
+      }
+    },
+    {
+      "name": "1 Regalo",
+      "description": "Sorpresa",
+      "img": "",
+      "_id": {
+        "$oid": "63642df70103b559e26b051d"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63642e440103b559e26b051f"
+  },
+  "name": "HANSEL Y GRETEL",
+  "cost": 235,
+  "description": "",
+  "sellerId": {
+    "$oid": "6363824a344196732472377d"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F04LittleHungry%2Fcombos%2FHanselYGretel.jpg?alt=media&token=92bb7b6b-e1f6-4b24-a373-8c99d26a8d1e",
+  "products": [
+    {
+      "name": "4 Tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63642e440103b559e26b0520"
+      }
+    },
+    {
+      "name": "2 Jugos",
+      "description": "Boing",
+      "img": "",
+      "_id": {
+        "$oid": "63642e440103b559e26b0521"
+      }
+    },
+    {
+      "name": "1 Blizzard",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63642e440103b559e26b0522"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63642e9e0103b559e26b0524"
+  },
+  "name": "MIGAJAS",
+  "cost": 70,
+  "description": "",
+  "sellerId": {
+    "$oid": "6363824a344196732472377d"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F04LittleHungry%2Fcombos%2FMigajas.jpg?alt=media&token=f0fef4f6-0477-4c62-bfde-bb314a195b00",
+  "products": [
+    {
+      "name": "1 Torta",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63642e9e0103b559e26b0525"
+      }
+    },
+    {
+      "name": "1 Jugo",
+      "description": "Boing",
+      "img": "",
+      "_id": {
+        "$oid": "63642e9e0103b559e26b0526"
+      }
+    },
+    {
+      "name": "1 Bolis",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63642e9e0103b559e26b0527"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63642ef50103b559e26b0529"
+  },
+  "name": "PARA EL CAMINO",
+  "cost": 130,
+  "description": "",
+  "sellerId": {
+    "$oid": "6363824a344196732472377d"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F04LittleHungry%2Fcombos%2FParaElCamino.jpg?alt=media&token=3c69a388-4598-4057-891d-5e6fe334b8aa",
+  "products": [
+    {
+      "name": "2 Tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63642ef50103b559e26b052a"
+      }
+    },
+    {
+      "name": "1 Jugo",
+      "description": "Boing",
+      "img": "",
+      "_id": {
+        "$oid": "63642ef50103b559e26b052b"
+      }
+    },
+    {
+      "name": "1 Blizzard",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63642ef50103b559e26b052c"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636436df0103b559e26b052e"
+  },
+  "name": "COMBO TOTO",
+  "cost": 50,
+  "description": "",
+  "sellerId": {
+    "$oid": "636389b1344196732472377f"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F05LasTortasDeOz%2Fcombos%2Ftoto.png?alt=media&token=5b757625-9705-4406-9de6-ddd4c756766d",
+  "products": [
+    {
+      "name": "1 Torta",
+      "description": "Sencilla",
+      "img": "",
+      "_id": {
+        "$oid": "636436df0103b559e26b052f"
+      }
+    },
+    {
+      "name": "1 Jugo",
+      "description": "Boing 500 ml",
+      "img": "",
+      "_id": {
+        "$oid": "636436df0103b559e26b0530"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6364374e0103b559e26b0532"
+  },
+  "name": "COMBO TORNADO",
+  "cost": 69,
+  "description": "",
+  "sellerId": {
+    "$oid": "636389b1344196732472377f"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F05LasTortasDeOz%2Fcombos%2Ftornado.png?alt=media&token=1118ed69-2624-4a20-8e1f-f0627a514b87",
+  "products": [
+    {
+      "name": "1 Torta",
+      "description": "Sencilla",
+      "img": "",
+      "_id": {
+        "$oid": "6364374e0103b559e26b0533"
+      }
+    },
+    {
+      "name": "1 Jugo",
+      "description": "Boing 500 ml",
+      "img": "",
+      "_id": {
+        "$oid": "6364374e0103b559e26b0534"
+      }
+    },
+    {
+      "name": "1 Blizzard",
+      "description": "Oreo",
+      "img": "",
+      "_id": {
+        "$oid": "6364374e0103b559e26b0536"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636437970103b559e26b0538"
+  },
+  "name": "COMBO ESMERALDA",
+  "cost": 299,
+  "description": "",
+  "sellerId": {
+    "$oid": "636389b1344196732472377f"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F05LasTortasDeOz%2Fcombos%2Fesmeralda.png?alt=media&token=0a407d09-12c5-4069-a405-1900efbf371f",
+  "products": [
+    {
+      "name": "5 Tortas",
+      "description": "Sencillas",
+      "img": "",
+      "_id": {
+        "$oid": "636437970103b559e26b0539"
+      }
+    },
+    {
+      "name": "3 Jugos",
+      "description": "Boing 500 ml",
+      "img": "",
+      "_id": {
+        "$oid": "636437970103b559e26b053a"
+      }
+    },
+    {
+      "name": "3 Blizzard",
+      "description": "Oreo",
+      "img": "",
+      "_id": {
+        "$oid": "636437970103b559e26b053b"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636438290103b559e26b053d"
+  },
+  "name": "COMBO DOROTHY",
+  "cost": 184,
+  "description": "",
+  "sellerId": {
+    "$oid": "636389b1344196732472377f"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F05LasTortasDeOz%2Fcombos%2Fdorothy.png?alt=media&token=a6eda63e-2592-4451-ada1-e9f1972fc784",
+  "products": [
+    {
+      "name": "3 Tortas",
+      "description": "Sencillas",
+      "img": "",
+      "_id": {
+        "$oid": "636438290103b559e26b053e"
+      }
+    },
+    {
+      "name": "2 Jugos",
+      "description": "Boing 500 ml",
+      "img": "",
+      "_id": {
+        "$oid": "636438290103b559e26b053f"
+      }
+    },
+    {
+      "name": "2 Blizzard",
+      "description": "Oreo",
+      "img": "",
+      "_id": {
+        "$oid": "636438290103b559e26b0540"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63643ab70103b559e26b0546"
+  },
+  "name": "La Torta Acrobata",
+  "cost": 95,
+  "description": "",
+  "sellerId": {
+    "$oid": "63638d153441967324723781"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F06Tortaline%2Fcombos%2Facrobata.jpg?alt=media&token=7b6c04a2-4a71-4f49-b431-0d21ac72d3e1",
+  "products": [
+    {
+      "name": "1 Blizzard",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63643ab70103b559e26b0547"
+      }
+    },
+    {
+      "name": "1 Torta",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63643ab70103b559e26b0548"
+      }
+    },
+    {
+      "name": "1 Bebida",
+      "description": "Boing",
+      "img": "",
+      "_id": {
+        "$oid": "63643ab70103b559e26b0549"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63643af60103b559e26b054f"
+  },
+  "name": "Combo-Tones",
+  "cost": 140,
+  "description": "",
+  "sellerId": {
+    "$oid": "63638d153441967324723781"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F06Tortaline%2Fcombos%2Fcombo-tones.jpg?alt=media&token=a824b0a7-ffbd-464c-8be7-84d27fc09990",
+  "products": [
+    {
+      "name": "1 Blizzard",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63643af60103b559e26b0550"
+      }
+    },
+    {
+      "name": "2 Tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63643af60103b559e26b0551"
+      }
+    },
+    {
+      "name": "1 Bebida",
+      "description": "Boing",
+      "img": "",
+      "_id": {
+        "$oid": "63643af60103b559e26b0552"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63643b540103b559e26b0554"
+  },
+  "name": "La Otra Torta",
+  "cost": 85,
+  "description": "",
+  "sellerId": {
+    "$oid": "63638d153441967324723781"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F06Tortaline%2Fcombos%2Fla%20otra%20torta.jpg?alt=media&token=38689d3a-af33-41e2-b5cb-08e2e3ad7023",
+  "products": [
+    {
+      "name": "1 Bebida",
+      "description": "Boing",
+      "img": "",
+      "_id": {
+        "$oid": "63643b540103b559e26b0555"
+      }
+    },
+    {
+      "name": "1 Torta",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63643b540103b559e26b0556"
+      }
+    },
+    {
+      "name": "1 Blizzard",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63643b540103b559e26b0557"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63643b9b0103b559e26b0559"
+  },
+  "name": "Muñeca Tortaline",
+  "cost": 255,
+  "description": "",
+  "sellerId": {
+    "$oid": "63638d153441967324723781"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F06Tortaline%2Fcombos%2Fla%20otra%20torta.jpg?alt=media&token=38689d3a-af33-41e2-b5cb-08e2e3ad7023",
+  "products": [
+    {
+      "name": "2 Complementos",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63643b9b0103b559e26b055a"
+      }
+    },
+    {
+      "name": "4 Tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63643b9b0103b559e26b055b"
+      }
+    },
+    {
+      "name": "2 Bebidas",
+      "description": "Boing",
+      "img": "",
+      "_id": {
+        "$oid": "63643b9b0103b559e26b055c"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63643bdb0103b559e26b055e"
+  },
+  "name": "La Torta Secreta",
+  "cost": 150,
+  "description": "",
+  "sellerId": {
+    "$oid": "63638d153441967324723781"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F06Tortaline%2Fcombos%2Fsecreta.jpg?alt=media&token=568505db-4e64-4e53-ab71-fd009aaf3780",
+  "products": [
+    {
+      "name": "1 Blizzard",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63643bdb0103b559e26b055f"
+      }
+    },
+    {
+      "name": "2 Tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63643bdb0103b559e26b0560"
+      }
+    },
+    {
+      "name": "1 Bebida",
+      "description": "Boing",
+      "img": "",
+      "_id": {
+        "$oid": "63643bdb0103b559e26b0561"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63643cac0103b559e26b0563"
+  },
+  "name": "Tort Palace",
+  "cost": 245,
+  "description": "",
+  "sellerId": {
+    "$oid": "63638d153441967324723781"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F06Tortaline%2Fcombos%2Ftort-palace.jpg?alt=media&token=eb0c0528-7536-40e7-a0e0-42aeb3fc5376",
+  "products": [
+    {
+      "name": "2 Complementos",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63643cac0103b559e26b0564"
+      }
+    },
+    {
+      "name": "4 Tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63643cac0103b559e26b0565"
+      }
+    },
+    {
+      "name": "2 Bebidas",
+      "description": "Boing",
+      "img": "",
+      "_id": {
+        "$oid": "63643cac0103b559e26b0566"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63643cff0103b559e26b0568"
+  },
+  "name": "Tortaline Jones",
+  "cost": 75,
+  "description": "",
+  "sellerId": {
+    "$oid": "63638d153441967324723781"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F06Tortaline%2Fcombos%2FtortalineJones.jpg?alt=media&token=543ce4d7-724f-480e-93d4-98a5078df2b0",
+  "products": [
+    {
+      "name": "1 Torta",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63643cff0103b559e26b0569"
+      }
+    },
+    {
+      "name": "1 Bebida",
+      "description": "Boing",
+      "img": "",
+      "_id": {
+        "$oid": "63643cff0103b559e26b056a"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63643d970103b559e26b056c"
+  },
+  "name": "Tortaline Jones",
+  "cost": 65,
+  "description": "",
+  "sellerId": {
+    "$oid": "63638d153441967324723781"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F06Tortaline%2Fcombos%2Ftortinsky.jpg?alt=media&token=0dd4b449-3f6c-418e-851c-da57e5e4c8d1",
+  "products": [
+    {
+      "name": "1 Torta",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63643d970103b559e26b056d"
+      }
+    },
+    {
+      "name": "1 Bebida",
+      "description": "Boing",
+      "img": "",
+      "_id": {
+        "$oid": "63643d970103b559e26b056e"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6364489791bed9b79a6f6cdc"
+  },
+  "name": "COMBO FAUNO",
+  "cost": 299,
+  "description": "",
+  "sellerId": {
+    "$oid": "63638eff3441967324723783"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F07LasTortasDelFauno%2Fcombos%2Ffauno.jpg?alt=media&token=03d264a3-621c-45d6-ac74-9b4fa6685e51",
+  "products": [
+    {
+      "name": "4 tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6364489791bed9b79a6f6cdd"
+      }
+    },
+    {
+      "name": "1 Bebida",
+      "description": "Refresco 2L",
+      "img": "",
+      "_id": {
+        "$oid": "6364489791bed9b79a6f6cde"
+      }
+    },
+    {
+      "name": "3 Carlotas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6364489791bed9b79a6f6cdf"
+      }
+    },
+    {
+      "name": "2 Papas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6364489791bed9b79a6f6ce0"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6364497991bed9b79a6f6ce2"
+  },
+  "name": "COMBO HADA",
+  "cost": 60,
+  "description": "",
+  "sellerId": {
+    "$oid": "63638eff3441967324723783"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F07LasTortasDelFauno%2Fcombos%2Fhada.jpg?alt=media&token=13312c2c-e5d4-4ba4-860c-36ee6858570d",
+  "products": [
+    {
+      "name": "1 Torta",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6364497991bed9b79a6f6ce3"
+      }
+    },
+    {
+      "name": "1 Jugo",
+      "description": "Boing",
+      "img": "",
+      "_id": {
+        "$oid": "6364497991bed9b79a6f6ce4"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636449d691bed9b79a6f6ce6"
+  },
+  "name": "COMBO OFELIA",
+  "cost": 89,
+  "description": "",
+  "sellerId": {
+    "$oid": "63638eff3441967324723783"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F07LasTortasDelFauno%2Fcombos%2Fofelia.jpg?alt=media&token=a6fded5a-b1b1-47dc-9b25-ddc528a396e4",
+  "products": [
+    {
+      "name": "1 Torta",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "636449d691bed9b79a6f6ce7"
+      }
+    },
+    {
+      "name": "1 Jugo",
+      "description": "Boing",
+      "img": "",
+      "_id": {
+        "$oid": "636449d691bed9b79a6f6ce8"
+      }
+    },
+    {
+      "name": "1 Carlota",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "636449d691bed9b79a6f6ce9"
+      }
+    },
+    {
+      "name": "1 Papas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "636449d691bed9b79a6f6cea"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63644a1691bed9b79a6f6cec"
+  },
+  "name": "COMBO PALIDO",
+  "cost": 159,
+  "description": "",
+  "sellerId": {
+    "$oid": "63638eff3441967324723783"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F07LasTortasDelFauno%2Fcombos%2Fpalido.jpg?alt=media&token=495f4aaa-51d5-44fd-a6b5-bd153f3f1ed5",
+  "products": [
+    {
+      "name": "2 Tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63644a1691bed9b79a6f6ced"
+      }
+    },
+    {
+      "name": "2 Jugos",
+      "description": "Boing",
+      "img": "",
+      "_id": {
+        "$oid": "63644a1691bed9b79a6f6cee"
+      }
+    },
+    {
+      "name": "2 Carlotas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63644a1691bed9b79a6f6cef"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6364b022dabe2a7f69a7c923"
+  },
+  "name": "Los Piratas de GARFIO",
+  "cost": 255,
+  "description": "",
+  "sellerId": {
+    "$oid": "636391873441967324723785"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F08Tortaland%2Fcombos%2FPiratas.png?alt=media&token=e4e71bb9-df9a-4061-8664-654e35a9293d",
+  "products": [
+    {
+      "name": "4 Tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6364b022dabe2a7f69a7c924"
+      }
+    },
+    {
+      "name": "3 Bebidas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6364b022dabe2a7f69a7c925"
+      }
+    },
+    {
+      "name": "3 Complementos",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6364b022dabe2a7f69a7c926"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6364b09edabe2a7f69a7c928"
+  },
+  "name": "PETER Y WENDY",
+  "cost": 155,
+  "description": "",
+  "sellerId": {
+    "$oid": "636391873441967324723785"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F08Tortaland%2Fcombos%2FPeterWendy.png?alt=media&token=1f61f2f5-3341-4987-910a-e8c8dbf0211c",
+  "products": [
+    {
+      "name": "2 Tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6364b09edabe2a7f69a7c929"
+      }
+    },
+    {
+      "name": "2 Bebidas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6364b09edabe2a7f69a7c92a"
+      }
+    },
+    {
+      "name": "2 Complementos",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6364b09edabe2a7f69a7c92b"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636556f5499664177bfc228a"
+  },
+  "name": "Niño Perdido",
+  "cost": 79,
+  "description": "",
+  "sellerId": {
+    "$oid": "636391873441967324723785"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F08Tortaland%2Fcombos%2FNi%C3%B1o.png?alt=media&token=39352f6a-74a7-4a22-a339-8898902b8750",
+  "products": [
+    {
+      "name": "1 Torta",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "636556f5499664177bfc228b"
+      }
+    },
+    {
+      "name": "1 Bebida",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "636556f5499664177bfc228c"
+      }
+    },
+    {
+      "name": "1 Complemento",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "636556f5499664177bfc228d"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63655791499664177bfc228f"
+  },
+  "name": "Campanita",
+  "cost": 60,
+  "description": "",
+  "sellerId": {
+    "$oid": "636391873441967324723785"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F08Tortaland%2Fcombos%2FCampanita.png?alt=media&token=97658632-e6dd-4498-a1ec-30ce470fd0cd",
+  "products": [
+    {
+      "name": "1 Torta",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63655791499664177bfc2290"
+      }
+    },
+    {
+      "name": "1 Bebida",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63655791499664177bfc2291"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63658cb6499664177bfc2293"
+  },
+  "name": "Dumbo",
+  "cost": 130,
+  "description": "Deja tus dudas a un lado y vuela ✨️🎪",
+  "sellerId": {
+    "$oid": "6363dd9ff12ddb1f1ee935c5"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F09Du-Dumb%C3%A9%2Fcombos%2Fdumbo.jpg?alt=media&token=3f6a42b7-6916-4ae9-9e18-6f058fa7822f",
+  "products": [
+    {
+      "name": "2 Bebidas",
+      "description": "Jugo Boing de Lata",
+      "img": "",
+      "_id": {
+        "$oid": "63658cb6499664177bfc2294"
+      }
+    },
+    {
+      "name": "2 Tortas",
+      "description": "Ahogada ($5.00 Extra), Lomo, Pierna o Planchada",
+      "img": "",
+      "_id": {
+        "$oid": "63658cb6499664177bfc2295"
+      }
+    },
+    {
+      "name": "2 Postres",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63658cb6499664177bfc2296"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63659374499664177bfc2298"
+  },
+  "name": "Jumbo",
+  "cost": 250,
+  "description": "Creo que lo habré visto todo cuando vea volar un elefante 🐘✨️",
+  "sellerId": {
+    "$oid": "6363dd9ff12ddb1f1ee935c5"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F09Du-Dumb%C3%A9%2Fcombos%2Fjumbo.jpg?alt=media&token=088ae856-7451-47ac-9f10-d650b16a35f7",
+  "products": [
+    {
+      "name": "2 Bebidas",
+      "description": "Jugo Boing de Lata",
+      "img": "",
+      "_id": {
+        "$oid": "63659374499664177bfc2299"
+      }
+    },
+    {
+      "name": "2 Tortas",
+      "description": "Ahogada ($5.00 Extra), Lomo, Pierna o Planchada",
+      "img": "",
+      "_id": {
+        "$oid": "63659374499664177bfc229a"
+      }
+    },
+    {
+      "name": "2 Blizzard",
+      "description": "Oreo",
+      "img": "",
+      "_id": {
+        "$oid": "63659374499664177bfc229b"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636593e2499664177bfc229d"
+  },
+  "name": "Timothy",
+  "cost": 60,
+  "description": "Elige el sabor de tu torta y vuela 🐘✨️",
+  "sellerId": {
+    "$oid": "6363dd9ff12ddb1f1ee935c5"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F09Du-Dumb%C3%A9%2Fcombos%2Ftimothy.jpg?alt=media&token=2d00c912-444f-4e2b-85b5-4ad7c287d0fd",
+  "products": [
+    {
+      "name": "1 Bebida",
+      "description": "Jugo Boing de Lata",
+      "img": "",
+      "_id": {
+        "$oid": "636593e2499664177bfc229e"
+      }
+    },
+    {
+      "name": "1 Torta",
+      "description": "Ahogada ($5.00 Extra), Lomo, Pierna o Planchada",
+      "img": "",
+      "_id": {
+        "$oid": "636593e2499664177bfc229f"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63659723499664177bfc22a5"
+  },
+  "name": "Cajita Medieval Feliz",
+  "cost": 65,
+  "description": "Después de ver la segunda película de Shrek…¿Te quedaste con ganas de pedir tu cajita medieval feliz? Nosotros la tenemos especialmente para ti🤗💚",
+  "sellerId": {
+    "$oid": "6363df6af12ddb1f1ee935c7"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F10LasTortasDelShrek%2Fcombos%2Fcajitamedieval.jpg?alt=media&token=6df5776b-ebc7-4b98-89e5-c877adffcc4f",
+  "products": [
+    {
+      "name": "1 Jugo Boing",
+      "description": "Mango o Guayaba",
+      "img": "",
+      "_id": {
+        "$oid": "63659723499664177bfc22a6"
+      }
+    },
+    {
+      "name": "1 Torta",
+      "description": "Pastor, Bistec o Chorizo",
+      "img": "",
+      "_id": {
+        "$oid": "63659723499664177bfc22a7"
+      }
+    },
+    {
+      "name": "1 Postre",
+      "description": "Carlota",
+      "img": "",
+      "_id": {
+        "$oid": "63659723499664177bfc22a8"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636597f5499664177bfc22aa"
+  },
+  "name": "Felices para siempre",
+  "cost": 110,
+  "description": "Para aquellos que tengan una parejita y anden enamorados, tenemos el paquete perfecto para ustedes -Felices para Siempre😍💚-",
+  "sellerId": {
+    "$oid": "6363df6af12ddb1f1ee935c7"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F10LasTortasDelShrek%2Fcombos%2Ffelicesxsiempre.jpg?alt=media&token=6a0ce9f1-76be-48c6-bbac-b1a29106d5ca",
+  "products": [
+    {
+      "name": "1 Jugo Boing",
+      "description": "Mango o Guayaba",
+      "img": "",
+      "_id": {
+        "$oid": "636597f5499664177bfc22ab"
+      }
+    },
+    {
+      "name": "2 Tortas",
+      "description": "Pastor, Bistec o Chorizo",
+      "img": "",
+      "_id": {
+        "$oid": "636597f5499664177bfc22ac"
+      }
+    },
+    {
+      "name": "1 Postre",
+      "description": "Carlota",
+      "img": "",
+      "_id": {
+        "$oid": "636597f5499664177bfc22ad"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63659869499664177bfc22af"
+  },
+  "name": "¿Qué tal un caramelito de menta?",
+  "cost": 220,
+  "description": "Un combo perfecto para un grupo de amigos más pequeño “¿Qué tal un caramelito de menta?”👀💚",
+  "sellerId": {
+    "$oid": "6363df6af12ddb1f1ee935c7"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F10LasTortasDelShrek%2Fcombos%2Fquetaluncaramelito.jpg?alt=media&token=0ddf42fe-0fdd-4f8d-ae82-bf153c8c6586",
+  "products": [
+    {
+      "name": "2 Jugos Boing",
+      "description": "Mango o Guayaba",
+      "img": "",
+      "_id": {
+        "$oid": "63659869499664177bfc22b0"
+      }
+    },
+    {
+      "name": "4 Tortas",
+      "description": "Pastor, Bistec o Chorizo",
+      "img": "",
+      "_id": {
+        "$oid": "63659869499664177bfc22b1"
+      }
+    },
+    {
+      "name": "2 Postres",
+      "description": "Carlota",
+      "img": "",
+      "_id": {
+        "$oid": "63659869499664177bfc22b2"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63659964499664177bfc22b4"
+  },
+  "name": "Y en la mañana yo preparo las tortas",
+  "cost": 334,
+  "description": "Tenemos el combo ideal para aquellos que se piden 12 tacos en el puesto de la esquina y se quedan con hambre🤤💚",
+  "sellerId": {
+    "$oid": "6363df6af12ddb1f1ee935c7"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F10LasTortasDelShrek%2Fcombos%2Fyenlama%C3%B1ana.jpg?alt=media&token=b7ec3be0-ec35-4927-bffd-3fbbf255c146",
+  "products": [
+    {
+      "name": "4 Jugos Boing",
+      "description": "Mango o Guayaba",
+      "img": "",
+      "_id": {
+        "$oid": "63659964499664177bfc22b5"
+      }
+    },
+    {
+      "name": "6 Tortas",
+      "description": "Pastor, Bistec o Chorizo",
+      "img": "",
+      "_id": {
+        "$oid": "63659964499664177bfc22b6"
+      }
+    },
+    {
+      "name": "2 Postres",
+      "description": "Carlota",
+      "img": "",
+      "_id": {
+        "$oid": "63659964499664177bfc22b7"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63659b3a499664177bfc22b9"
+  },
+  "name": "Agrabah",
+  "cost": 255,
+  "description": "No te quedes sin tu preventa, consiguelas ya con tus amigos del genio de las tortas🐒🔮",
+  "sellerId": {
+    "$oid": "6363e2f5f12ddb1f1ee935c9"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F11ElGenioDeLasTortas%2Fcombos%2Fagragab.jpg?alt=media&token=e61fb1d9-493b-4225-98b0-7aeaa2347e67",
+  "products": [
+    {
+      "name": "4 Tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63659b3a499664177bfc22ba"
+      }
+    },
+    {
+      "name": "3 Jugos",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63659b3a499664177bfc22bb"
+      }
+    },
+    {
+      "name": "2 Postres",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63659b3a499664177bfc22bc"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63659b7d499664177bfc22be"
+  },
+  "name": "Aladdin",
+  "cost": 59,
+  "description": "No te quedes sin tu preventa, consiguelas ya con tus amigos del genio de las tortas🐒🔮",
+  "sellerId": {
+    "$oid": "6363e2f5f12ddb1f1ee935c9"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F11ElGenioDeLasTortas%2Fcombos%2Faladdin.jpg?alt=media&token=121ba82b-a063-4c72-8ac5-4cf25ec0c44e",
+  "products": [
+    {
+      "name": "1 Torta",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63659b7d499664177bfc22bf"
+      }
+    },
+    {
+      "name": "1 Jugo",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63659b7d499664177bfc22c0"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63659bb1499664177bfc22c2"
+  },
+  "name": "Aladdin",
+  "cost": 59,
+  "description": "No te quedes sin tu preventa, consiguelas ya con tus amigos del genio de las tortas🐒🔮",
+  "sellerId": {
+    "$oid": "6363e2f5f12ddb1f1ee935c9"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F11ElGenioDeLasTortas%2Fcombos%2Fdeseo.jpg?alt=media&token=bbdb194b-ba10-423e-bba4-8457acf77013",
+  "products": [
+    {
+      "name": "1 Torta",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63659bb1499664177bfc22c3"
+      }
+    },
+    {
+      "name": "1 Jugo",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63659bb1499664177bfc22c4"
+      }
+    },
+    {
+      "name": "1 Postre",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63659bb1499664177bfc22c5"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63659be2499664177bfc22c7"
+  },
+  "name": "La Torta Ideal",
+  "cost": 155,
+  "description": "No te quedes sin tu preventa, consiguelas ya con tus amigos del genio de las tortas🐒🔮",
+  "sellerId": {
+    "$oid": "6363e2f5f12ddb1f1ee935c9"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F11ElGenioDeLasTortas%2Fcombos%2Fideal.jpg?alt=media&token=d66d8d28-0353-410e-bc2c-c8868020a9d1",
+  "products": [
+    {
+      "name": "2 Tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63659be2499664177bfc22c8"
+      }
+    },
+    {
+      "name": "2 Jugos",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63659be2499664177bfc22c9"
+      }
+    },
+    {
+      "name": "1 Postre",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "63659be2499664177bfc22ca"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6365a56e499664177bfc22cc"
+  },
+  "name": "Anastasia",
+  "cost": 119,
+  "description": "¡ Especialmente para l@s BFF’s ! 👫✌🏼",
+  "sellerId": {
+    "$oid": "6363e4dff12ddb1f1ee935cb"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F12TwelveOTort%2Fcombos%2FAnastasia.jpg?alt=media&token=721b68c1-1f11-4a20-a88c-304225790183",
+  "products": [
+    {
+      "name": "2 Tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6365a56e499664177bfc22cd"
+      }
+    },
+    {
+      "name": "2 Bebidas",
+      "description": "jugo Boing",
+      "img": "",
+      "_id": {
+        "$oid": "6365a56e499664177bfc22ce"
+      }
+    },
+    {
+      "name": "1 Postre",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6365a56e499664177bfc22cf"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6365adbd85088ded1a03d300"
+  },
+  "name": "El gran Duque",
+  "cost": 199,
+  "description": "¿Para tu Chic@ y tu mejor ami@? 😏👌🏼✨",
+  "sellerId": {
+    "$oid": "6363e4dff12ddb1f1ee935cb"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F12TwelveOTort%2Fcombos%2FElGranDuque.jpg?alt=media&token=ff08ad37-307a-4835-ad41-8f00628dd828",
+  "products": [
+    {
+      "name": "4 Tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6365adbd85088ded1a03d301"
+      }
+    },
+    {
+      "name": "2 Bebidas",
+      "description": "jugo Boing",
+      "img": "",
+      "_id": {
+        "$oid": "6365adbd85088ded1a03d302"
+      }
+    },
+    {
+      "name": "1 Postre",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6365adbd85088ded1a03d303"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6365ae3585088ded1a03d305"
+  },
+  "name": "Felices para Siempre",
+  "cost": 389,
+  "description": "Especialmente para esos familia-herman@s del alma",
+  "sellerId": {
+    "$oid": "6363e4dff12ddb1f1ee935cb"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F12TwelveOTort%2Fcombos%2FFelicesParaSiempre.jpg?alt=media&token=1d0f75ce-e2d5-4202-a5d6-1422173beed6",
+  "products": [
+    {
+      "name": "8 Tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6365ae3585088ded1a03d306"
+      }
+    },
+    {
+      "name": "4 Bebidas",
+      "description": "jugo Boing",
+      "img": "",
+      "_id": {
+        "$oid": "6365ae3585088ded1a03d307"
+      }
+    },
+    {
+      "name": "2 Postre",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6365ae3585088ded1a03d308"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6365aed185088ded1a03d30a"
+  },
+  "name": "Gus Gus",
+  "cost": 299,
+  "description": "¡ Pa’ cotorrear con los compas ! 🤙🏼🕺🏻💃🏼",
+  "sellerId": {
+    "$oid": "6363e4dff12ddb1f1ee935cb"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F12TwelveOTort%2Fcombos%2Fgusgus.jpg?alt=media&token=24eae5a6-112f-444c-8aeb-953f300781a5",
+  "products": [
+    {
+      "name": "6 Tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6365aed185088ded1a03d30b"
+      }
+    },
+    {
+      "name": "3 Bebidas",
+      "description": "jugo Boing",
+      "img": "",
+      "_id": {
+        "$oid": "6365aed185088ded1a03d30c"
+      }
+    },
+    {
+      "name": "2 Postre",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6365aed185088ded1a03d30d"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6365af4a85088ded1a03d30f"
+  },
+  "name": "Hada Madrina",
+  "cost": 89,
+  "description": "¡ Especialmente para ti !",
+  "sellerId": {
+    "$oid": "6363e4dff12ddb1f1ee935cb"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F12TwelveOTort%2Fcombos%2Fhada.jpg?alt=media&token=1f5df4a6-fe24-4186-9773-77a7c7c1757a",
+  "products": [
+    {
+      "name": "2 Tortas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6365af4a85088ded1a03d310"
+      }
+    },
+    {
+      "name": "1 Bebida",
+      "description": "jugo Boing",
+      "img": "",
+      "_id": {
+        "$oid": "6365af4a85088ded1a03d311"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6365bb9885088ded1a03d313"
+  },
+  "name": "Brisa de mar",
+  "cost": 275,
+  "description": "Si lo tuyo es compartir, tenemos este combo para ti!!! 🤩🧜🏻‍♀️💙",
+  "sellerId": {
+    "$oid": "6363e7abf12ddb1f1ee935cd"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F13TortasBajoElMar%2Fcombos%2FbrisaDelMar.jpg?alt=media&token=9cb2a5eb-cd3c-4508-b5a2-2ca30a48c0e7",
+  "products": [
+    {
+      "name": "4 Tortas",
+      "description": "Pastor, Bistec, Lomo, Vegana, Ahogada, Chilaquiles o Guiso",
+      "img": "",
+      "_id": {
+        "$oid": "6365bb9885088ded1a03d314"
+      }
+    },
+    {
+      "name": "3 Bebidas",
+      "description": "jugo Boing",
+      "img": "",
+      "_id": {
+        "$oid": "6365bb9885088ded1a03d315"
+      }
+    },
+    {
+      "name": "2 Cookies and Cream",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6365bb9885088ded1a03d316"
+      }
+    },
+    {
+      "name": "1 Papas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6365bb9885088ded1a03d317"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6365bc5485088ded1a03d31d"
+  },
+  "name": "Cantos de sirena",
+  "cost": 375,
+  "description": "Si lo tuyo es compartir, tenemos este combo para ti!!! 🤩🧜🏻‍♀️💙",
+  "sellerId": {
+    "$oid": "6363e7abf12ddb1f1ee935cd"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F13TortasBajoElMar%2Fcombos%2Fcantos.jpg?alt=media&token=a6e4f8c7-c147-4c2f-bcb8-560ee349a32c",
+  "products": [
+    {
+      "name": "6 Tortas",
+      "description": "Pastor, Bistec, Lomo, Vegana, Ahogada, Chilaquiles o Guiso",
+      "img": "",
+      "_id": {
+        "$oid": "6365bc5485088ded1a03d31e"
+      }
+    },
+    {
+      "name": "4 Bebidas",
+      "description": "jugo Boing",
+      "img": "",
+      "_id": {
+        "$oid": "6365bc5485088ded1a03d31f"
+      }
+    },
+    {
+      "name": "2 Cookies and Cream",
+      "description": "o 3 Galletas",
+      "img": "",
+      "_id": {
+        "$oid": "6365bc5485088ded1a03d320"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6365bce585088ded1a03d322"
+  },
+  "name": "Dos mundos distintos",
+  "cost": 150,
+  "description": "Si lo tuyo es compartir, tenemos este combo para ti!!! 🤩🧜🏻‍♀️💙",
+  "sellerId": {
+    "$oid": "6363e7abf12ddb1f1ee935cd"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F13TortasBajoElMar%2Fcombos%2FdosMundos.jpg?alt=media&token=f4d4d631-30ae-44f3-85f0-664ec66b62c9",
+  "products": [
+    {
+      "name": "2 Tortas",
+      "description": "Pastor, Bistec, Lomo, Vegana, Ahogada, Chilaquiles o Guiso",
+      "img": "",
+      "_id": {
+        "$oid": "6365bce585088ded1a03d323"
+      }
+    },
+    {
+      "name": "2 Bebidas",
+      "description": "jugo Boing",
+      "img": "",
+      "_id": {
+        "$oid": "6365bce585088ded1a03d324"
+      }
+    },
+    {
+      "name": "2 Galletas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6365bce585088ded1a03d325"
+      }
+    },
+    {
+      "name": "1 Papas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6365bce585088ded1a03d326"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6365bd4f85088ded1a03d328"
+  },
+  "name": "Tortas en la marea",
+  "cost": 80,
+  "description": "Si lo tuyo es compartir, tenemos este combo para ti!!! 🤩🧜🏻‍♀️💙",
+  "sellerId": {
+    "$oid": "6363e7abf12ddb1f1ee935cd"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F13TortasBajoElMar%2Fcombos%2Fmarea.jpg?alt=media&token=f2ee7292-6145-4610-b500-92eeaf2e3707",
+  "products": [
+    {
+      "name": "1 Torta",
+      "description": "Pastor, Bistec, Lomo, Vegana, Ahogada, Chilaquiles o Guiso",
+      "img": "",
+      "_id": {
+        "$oid": "6365bd4f85088ded1a03d329"
+      }
+    },
+    {
+      "name": "1 Bebida",
+      "description": "jugo Boing",
+      "img": "",
+      "_id": {
+        "$oid": "6365bd4f85088ded1a03d32a"
+      }
+    },
+    {
+      "name": "1 Galleta",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6365bd4f85088ded1a03d32b"
+      }
+    },
+    {
+      "name": "1 Papas",
+      "description": "",
+      "img": "",
+      "_id": {
+        "$oid": "6365bd4f85088ded1a03d32c"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6365c0fd85088ded1a03d32e"
+  },
+  "name": "Combo Gemelos",
+  "cost": 135,
+  "description": "🎩Nuestros deliciosos combos han llegado… ya puedes adquirir tus boletos de preventa con nosotros, ¡no te quedes sin el tuyo!🗝️",
+  "sellerId": {
+    "$oid": "6363e9d3f12ddb1f1ee935cf"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F14AliceInTortaWorld%2Fcombos%2FGemelos.jpg?alt=media&token=1d2f770f-4d4f-4254-b3fe-571185f2b7dd",
+  "products": [
+    {
+      "name": "2 Tortas",
+      "description": "Arrachera ($10.00 extra), Adobada o Barbacoa",
+      "img": "",
+      "_id": {
+        "$oid": "6365c0fd85088ded1a03d32f"
+      }
+    },
+    {
+      "name": "2 Jugos Boing",
+      "description": "Mango, Guayaba o Manzana",
+      "img": "",
+      "_id": {
+        "$oid": "6365c0fd85088ded1a03d330"
+      }
+    },
+    {
+      "name": "2 Donas",
+      "description": "Maple, Chocolate o Rosa",
+      "img": "",
+      "_id": {
+        "$oid": "6365c0fd85088ded1a03d331"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6365c13185088ded1a03d333"
+  },
+  "name": "Combo Sombrerero",
+  "cost": 235,
+  "description": "🎩Nuestros deliciosos combos han llegado… ya puedes adquirir tus boletos de preventa con nosotros, ¡no te quedes sin el tuyo!🗝️",
+  "sellerId": {
+    "$oid": "6363e9d3f12ddb1f1ee935cf"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F14AliceInTortaWorld%2Fcombos%2FSombrerero.jpg?alt=media&token=d67bce04-7a0b-4b43-a4b2-a814046586b8",
+  "products": [
+    {
+      "name": "4 Tortas",
+      "description": "Arrachera ($10.00 extra), Adobada o Barbacoa",
+      "img": "",
+      "_id": {
+        "$oid": "6365c13185088ded1a03d334"
+      }
+    },
+    {
+      "name": "2 Jugos Boing",
+      "description": "Mango, Guayaba o Manzana",
+      "img": "",
+      "_id": {
+        "$oid": "6365c13185088ded1a03d335"
+      }
+    },
+    {
+      "name": "2 Donas",
+      "description": "Maple, Chocolate o Rosa",
+      "img": "",
+      "_id": {
+        "$oid": "6365c13185088ded1a03d336"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6365c16b85088ded1a03d338"
+  },
+  "name": "Combo Sonriente",
+  "cost": 65,
+  "description": "🎩Nuestros deliciosos combos han llegado… ya puedes adquirir tus boletos de preventa con nosotros, ¡no te quedes sin el tuyo!🗝️",
+  "sellerId": {
+    "$oid": "6363e9d3f12ddb1f1ee935cf"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F14AliceInTortaWorld%2Fcombos%2FSonriente.jpg?alt=media&token=3d099560-5f28-4a31-abe6-b9001313f4d4",
+  "products": [
+    {
+      "name": "1 Torta",
+      "description": "Arrachera ($10.00 extra), Adobada o Barbacoa",
+      "img": "",
+      "_id": {
+        "$oid": "6365c16b85088ded1a03d339"
+      }
+    },
+    {
+      "name": "1 Jugo Boing",
+      "description": "Mango, Guayaba o Manzana",
+      "img": "",
+      "_id": {
+        "$oid": "6365c16b85088ded1a03d33a"
+      }
+    },
+    {
+      "name": "1 Dona",
+      "description": "Maple, Chocolate o Rosa",
+      "img": "",
+      "_id": {
+        "$oid": "6365c16b85088ded1a03d33b"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6365c1ba85088ded1a03d33d"
+  },
+  "name": "Combo Reina Roja",
+  "cost": 380,
+  "description": "🎩Nuestros deliciosos combos han llegado… ya puedes adquirir tus boletos de preventa con nosotros, ¡no te quedes sin el tuyo!🗝️",
+  "sellerId": {
+    "$oid": "6363e9d3f12ddb1f1ee935cf"
+  },
+  "coverImg": "https://firebasestorage.googleapis.com/v0/b/sff2022-cd740.appspot.com/o/teams%2F14AliceInTortaWorld%2Fcombos%2FreynaRoja.jpg?alt=media&token=23bd508a-838a-4c13-b1e7-ab61a78451a7",
+  "products": [
+    {
+      "name": "6 Tortas",
+      "description": "Arrachera ($10.00 extra), Adobada o Barbacoa",
+      "img": "",
+      "_id": {
+        "$oid": "6365c1ba85088ded1a03d33e"
+      }
+    },
+    {
+      "name": "4 Jugos Boing",
+      "description": "Mango, Guayaba o Manzana",
+      "img": "",
+      "_id": {
+        "$oid": "6365c1ba85088ded1a03d33f"
+      }
+    },
+    {
+      "name": "4 Donas",
+      "description": "Maple, Chocolate o Rosa",
+      "img": "",
+      "_id": {
+        "$oid": "6365c1ba85088ded1a03d340"
+      }
+    }
+  ],
+  "__v": 0
+}]

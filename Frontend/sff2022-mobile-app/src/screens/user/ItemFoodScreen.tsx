@@ -13,7 +13,6 @@ import SellerBanner from '../../components/Shared/SellerBanner';
 import { FavContext } from '../../context/FavsContext/FavsContext';
 import { AuthContext } from '../../context/authContext/AuthContext';
 import { userAPI } from '../../api/UserApi';
-import productdb from '../../db/products.json';
 
 
 export default function ItemFoodScreen() {
@@ -63,14 +62,18 @@ export default function ItemFoodScreen() {
         >
             <View sx={showHeader ? itemFood.headerTop : { zIndex: 2 } as any}>
                 <CircleBtn name='close' onPress={() => navigation.goBack()} />
-                {
+                {/* {
                     authState.status === 'authenticated' && authState.user?.role === 'USER_ROLE'
                         ? <CircleBtn
                             name={favIcon ? 'favorite' : 'favorite-border'}
                             onPress={() => handleFavs(presaleData._id)} right
                         />
                         : null
-                }
+                } */}
+                <CircleBtn
+                    name={favIcon ? 'favorite' : 'favorite-border'}
+                    onPress={() => handleFavs(presaleData._id)} right
+                />
             </View>
             <ScrollView showsVerticalScrollIndicator={false} bounces={false} scrollEventThrottle={16} onScroll={handleScroll}>
                 <ImageBackground
@@ -98,10 +101,7 @@ export default function ItemFoodScreen() {
                     <View sx={styles.flexDirection as any}>
                         {
                             presaleData.products.map((product: any) => {
-                                const myProduct = productdb.find(item => item._id.$oid === product.$oid);
-                                return (
-                                    <ProductsCard key={product.$oid} product={myProduct as ProductData} />
-                                );
+                                return <ProductsCard key={product._id.$oid} product={product as ProductData} />
                             })
                         }
                     </View>
@@ -114,13 +114,16 @@ export default function ItemFoodScreen() {
                 }
 
                 <View sx={itemFood.btnContainer}>
-                    {
+                    {/* {
                         authState.status === 'authenticated' && authState.user?.role === 'USER_ROLE'
                             ? <LargeBtn name='Comprar preventa' onPress={() => navigation.navigate("Mi Pedido", {
                                 presale: presaleData
                             })} />
                             : null
-                    }
+                    } */}
+                    <LargeBtn name='Generar QR' onPress={() => navigation.navigate("Mi Pedido", {
+                        presale: presaleData
+                    })} />
                 </View>
             </ScrollView>
         </View>
