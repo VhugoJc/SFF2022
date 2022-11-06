@@ -6,7 +6,7 @@ import { styles } from '../../theme/stylesheet';
 interface Props {
     img: ImageSourcePropType,
     title: string,
-    date: Date
+    date: string
 }
 
 export default function EntertainmentCard({ img, title, date }: Props) {
@@ -16,7 +16,7 @@ export default function EntertainmentCard({ img, title, date }: Props) {
                 <Text sx={Object.assign({}, styles.text as any, entertainmentCard.title)}>{title}</Text>
                 <Text sx={Object.assign({}, styles.text, { color: "$blueLight" })}>
                     {/* {`${date.getHours().toString()}:${date.getMinutes().toString()}`} */}
-                    {date.toLocaleString('en-US', { hour: 'numeric', hour12: true, minute: 'numeric' })}
+                    {date}
                 </Text>
             </View>
         </ImageBackground>

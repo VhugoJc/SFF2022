@@ -1,8 +1,6 @@
 import { StyleSheet } from "react-native";
 import QRCode from "react-native-qrcode-svg";
 import { View } from "dripsy";
-import { useContext, useEffect, useRef, useState } from "react";
-import { debug } from "react-native-reanimated";
 
 interface Props {
     

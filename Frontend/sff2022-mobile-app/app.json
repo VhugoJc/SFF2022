@@ -2,7 +2,7 @@
   "expo": {
     "name": "Sales Force Fest",
     "slug": "SalesForceFest",
-    "owner":"vic0201",
+    "owner": "vic0201",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -19,11 +19,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sff.SalesForceFest"
     },
     "android": {
-      "package":"com.sff.SalesForceFest",
-      "versionCode":1,
+      "package": "com.sff.SalesForceFest",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -31,6 +32,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "79690dd0-1223-4246-a70f-da3336967c97"
+      }
     }
   }
 }
