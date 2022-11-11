@@ -14,7 +14,7 @@ const postUser = async (req = request, res = response) => {
     let newUserCreated = false;
     const uuid = uuidv4();
     try {
-        const newUser = new User({ name, lastname, email, password });
+        const newUser = new User({ name, lastname, email, password});
         //email validation
         const emailExists = await User.findOne({ email });
         if (emailExists) {
@@ -35,10 +35,10 @@ const postUser = async (req = request, res = response) => {
         res.status(404).json(error);
     } finally {
         if (newUserCreated) { //confirm email configuration:
-            const link = `${process.env.URLFRONT}/account/auth/confirm-email?token=${uuid}`
-            const htmlTemplate = confirmEmailTemplateHTML(name, link);
-            const txtTemplate = confirmEmailTemplatePlaneTxt(name, link);
-            sendMail(htmlTemplate, 'Confirmación de correo electrónico📧', txtTemplate, email);
+            // const link = `${process.env.URLFRONT}/account/auth/confirm-email?token=${uuid}`
+            // const htmlTemplate = confirmEmailTemplateHTML(name, link);
+            // const txtTemplate = confirmEmailTemplatePlaneTxt(name, link);
+            // sendMail(htmlTemplate, 'Confirmación de correo electrónico📧', txtTemplate, email);
             res.json({ message: 'Hemos enviado un correo para confirmar tu correo electrónico' })
         }
     }

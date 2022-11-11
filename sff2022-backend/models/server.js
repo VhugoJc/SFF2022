@@ -2,16 +2,22 @@ const express = require('express')
 require('dotenv').config();
 const cors = require('cors');
 const { dbConnection } = require('../db/config');
+const { socketController } = require('../socket/socketController');
 
-class Server{
-    constructor(){
+class Server {
+    constructor() {
         this.app = express();
         this.port = process.env.PORT;
         this.usersPath = '/api/user';
         this.authPath = '/api/auth';
         this.teamPath = '/api/team';
-        this.productPath = '/api/product';
         this.presalePath = '/api/presale';
+        this.salePath = '/api/sale';
+        this.product = '/api/product';
+
+        //socket config:
+        this.server = require('http').createServer(this.app);
+        this.io = require('socket.io')(this.server); //info sockets
 
         //Middleware
         this.middlewares();
@@ -21,34 +27,47 @@ class Server{
 
         //data base connection
         this.dataBaseConnection();
+
+        //socket events
+        this.sockets();
+
+
     }
 
-    async dataBaseConnection(){
+    async dataBaseConnection() {
         await dbConnection();
     }
 
-    middlewares(){
+    middlewares() {
         // parse and read body
         this.app.use(express.json());
         //CORS
         this.app.use(cors());
         //public folders
-        this.app.use(express.static('public',{ extensions: ['html'] })); //{ extensions: ['html'] }: Delete html extension on url
+        this.app.use(express.static('public', { extensions: ['html'] })); //{ extensions: ['html'] }: Delete html extension on url
         this.app.use('/uploads', express.static('uploads')); //images
     }
 
-    routes(){
-        this.app.use(this.usersPath,require('../routes/user'));
-        this.app.use(this.authPath,require('../routes/auth'));
-        this.app.use(this.teamPath,require('../routes/team'));
-        this.app.use(this.productPath,require('../routes/product'));
-        this.app.use(this.presalePath,require('../routes/presale'));
+    routes() {
+        this.app.use(this.usersPath, require('../routes/user'));
+        this.app.use(this.authPath, require('../routes/auth'));
+        this.app.use(this.teamPath, require('../routes/team'));
+        this.app.use(this.presalePath, require('../routes/presale'));
+        this.app.use(this.salePath, require('../routes/sale'));
+        this.app.use(this.product, require('../routes/product'));
     }
 
-    listen(){
-        this.app.listen(this.port,()=>{
+    listen() {
+        this.server.listen(this.port, () => {
             console.log(`Server Running in port ${this.port}`);
-        })
+        });
+        
+    }
+
+    sockets(){
+        this.io.on('connection', socket => {
+            socketController(socket);
+        });
     }
 }
 
