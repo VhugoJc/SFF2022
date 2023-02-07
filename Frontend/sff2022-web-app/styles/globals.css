@@ -1,9 +1,11 @@
 @import './home.css';
 @import './reset-password.css';
 @import './loading-page.css';
-@import './admin/layout.css';
 @import './standings.css';
 
+
+@import './admin/layout.css';
+@import './admin/crud.css';
 
 :root {
   --green: #91C678ff;
@@ -26,7 +28,7 @@ body {
   
 }
 
-a,h1,h2,h3,p{
+h1,h2,h3{
   color: white !important;
 }
 a {

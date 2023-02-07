@@ -9,7 +9,7 @@ const AdminLayout = ({ children }: any) => {
         <div>
             <div className="layout-top-menu">
                 <h1>
-                    SALES FORCE FEST 2022
+                    SALES FORCE FEST
                 </h1>
             </div>
             <div className="layout-flex-container">

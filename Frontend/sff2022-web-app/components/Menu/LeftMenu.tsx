@@ -9,7 +9,7 @@ import {
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Button, Menu } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {useRouter} from 'next/router';
 
@@ -32,37 +32,28 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-    getItem('Gráficas', '1', <PieChartOutlined />),
-    getItem('Organización', '2', <TeamOutlined />),
+    getItem('Gráficas', '/admin', <PieChartOutlined />),
+    getItem('Organización', '/admin/crud', <TeamOutlined />),
     getItem('Transacciones', '3', <CreditCardOutlined />),
     getItem('Configuración', '4', <SettingOutlined />),
 ];
 
 const MenuLeft = ({setCollapsed,collapsed}:any) => {
     const router = useRouter();
-    const [selectedKey, setselectedKey] = useState(['1'])
+    const [selectedKey, setselectedKey] = useState([''])
+    
+    useEffect(()=>{
+        const pathname = router.pathname;
+        setselectedKey([pathname]);
+    },[])
     
     const toggleCollapsed = () => {
         setCollapsed(!collapsed);
     };
 
-    
-    const onClick: MenuProps['onClick'] = (e) => {
 
-        let path = '/admin';
-        switch(e.key){
-            case '1':
-                setselectedKey(['1']);    
-                router.push('/admin');
-                break;
-            case '2':
-                setselectedKey(['2']);    
-                router.push('/admin/crud');
-                break;
-            default:
-                break;
-        }                    
-        
+    const onClick: MenuProps['onClick'] = (e) => {
+        router.push(e.key);
     };
 
 
@@ -72,6 +63,7 @@ const MenuLeft = ({setCollapsed,collapsed}:any) => {
                 {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             </Button>
             <Menu
+            selectedKeys={selectedKey}
                 onClick={onClick}
                 defaultSelectedKeys={selectedKey}
                 // defaultOpenKeys={['sub1']}
