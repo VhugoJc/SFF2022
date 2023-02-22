@@ -34,8 +34,8 @@ function getItem(
 const items: MenuItem[] = [
     getItem('Gráficas', '/admin', <PieChartOutlined />),
     getItem('Organización', '/admin/crud', <TeamOutlined />),
-    getItem('Transacciones', '3', <CreditCardOutlined />),
-    getItem('Configuración', '4', <SettingOutlined />),
+    getItem('Transacciones', '/admin/transactions', <CreditCardOutlined />),
+    getItem('Configuración', '/admin/settings', <SettingOutlined />),
 ];
 
 const MenuLeft = ({setCollapsed,collapsed}:any) => {

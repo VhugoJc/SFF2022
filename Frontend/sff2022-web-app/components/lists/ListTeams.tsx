@@ -42,11 +42,11 @@ function ListTeams({ }: Props) {
                         pageSize: 3,
                     }}
                     dataSource={data}
-                    footer={
-                        <div>
-                            <b>ant design</b> footer part
-                        </div>
-                    }
+                    // footer={
+                    //     <div>
+                    //         <b>ant design</b> footer part
+                    //     </div>
+                    // }
                     renderItem={item => (
                         <a onClick={onClick}>
                             <List.Item

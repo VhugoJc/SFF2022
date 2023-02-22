@@ -1,13 +1,11 @@
 import { EditOutlined, PlusOutlined, SearchOutlined } from '@ant-design/icons';
-import type { InputRef } from 'antd';
+import { InputRef } from 'antd';
 import { Button, Input, Space, Table } from 'antd';
 import type { ColumnsType, ColumnType } from 'antd/es/table';
 import type { FilterConfirmProps } from 'antd/es/table/interface';
 import React, { useRef, useState } from 'react';
 import Highlighter from 'react-highlight-words';
-
 import Modal from '../Modal/Index';
-// import Highlighter from 'react-highlight-words';
 
 interface DataType {
     key: string;
@@ -45,9 +43,7 @@ const data: DataType[] = [
     },
 ];
 
-type Props = {}
-
-function MembersTable({ }: Props) {
+const Foodtable: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const [searchText, setSearchText] = useState('');
@@ -68,6 +64,14 @@ function MembersTable({ }: Props) {
         clearFilters();
         setSearchText('');
     };
+
+    const onClickEdit=(data:DataType)=>{
+        setIsModalOpen(true);
+        // send data to forms
+        console.log(data);
+        
+
+    }
 
     const getColumnSearchProps = (dataIndex: DataIndex): ColumnType<DataType> => ({
         filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
@@ -134,25 +138,18 @@ function MembersTable({ }: Props) {
         //     }
         // },
         render: text =>
-        searchedColumn === dataIndex ? (
-            <Highlighter
-                highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
-                searchWords={[searchText]}
-                autoEscape
-                textToHighlight={text ? text.toString() : ''}
-            />
-        ) : (
-            text
-        ),
+            searchedColumn === dataIndex ? (
+                <Highlighter
+                    highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
+                    searchWords={[searchText]}
+                    autoEscape
+                    textToHighlight={text ? text.toString() : ''}
+                />
+            ) : (
+                text
+            ),
     });
 
-    const onClickEdit=(data:DataType)=>{
-        setIsModalOpen(true);
-        // send data to forms
-        console.log(data);
-        
-
-    }
     const columns: ColumnsType<DataType> = [
         {
             title: 'Name',
@@ -194,11 +191,12 @@ function MembersTable({ }: Props) {
         }
     ];
 
+
     return (
         <>
             <div style={{ width: '100%', height: '100px' }}>
-                <Button onClick={()=>setIsModalOpen(true)} style={{ float: 'right' }} type='primary'>
-                    <PlusOutlined /> Agregar Integrantes
+                <Button onClick={() => setIsModalOpen(true)} style={{ float: 'right' }} type='primary'>
+                    <PlusOutlined /> Agregar Combo
                 </Button>
             </div>
 
@@ -213,7 +211,6 @@ function MembersTable({ }: Props) {
             </Modal>
         </>
     )
-        ;
-}
+};
 
-export default MembersTable
+export default Foodtable;
