@@ -1,0 +1,26 @@
+.login{
+    height: 100vh;
+    background-color: var(--primary);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.login-card{
+    min-height: 60vh;
+    width: 50vw;
+    height: '100%';
+    border-radius: 10px !important;
+}
+@media(max-width:720px){
+    .login-card{
+        width: 80vw;
+    }
+}
+
+.login-card-img{
+    width: 100px !important;
+    margin: 10px 10px 50px 10px;
+}

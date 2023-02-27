@@ -4,8 +4,17 @@
 @import './standings.css';
 
 
+/*PAGES*/
+@import './login.css';
+
+
+@import './Forms/loginForm.css';
+
+
 @import './admin/layout.css';
 @import './admin/crud.css';
+
+
 
 :root {
   --green: #91C678ff;
@@ -14,6 +23,13 @@
   --violet: #AD8DBFff;
   --red: #BD1520ff;
   --grey: #F1F1F1;
+  --primary: #0F4C81;
+
+  --xs:540px;
+  --sm:570px;
+  --md:720px;
+  --lg:960px;
+  --xl:1140px;
 }
 
 html,
