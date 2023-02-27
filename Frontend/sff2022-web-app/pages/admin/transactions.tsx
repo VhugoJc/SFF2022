@@ -1,6 +1,7 @@
 import { Button, Card, Col, Row, Statistic } from 'antd'
 import React from 'react'
 import AdminLayout from '../../components/layout/AdminLayout'
+import TransactionsTable from '../../components/tables/TransactionsTable'
 
 type Props = {}
 
@@ -9,7 +10,7 @@ function Transactions({ }: Props) {
         <AdminLayout>
             <Card className='crud-container'>
                 <div>
-                    <Row gutter={16}>
+                    <Row gutter={24}>
                         <Col span={12}>
                             <Statistic title="Usuarios activos " value={112893} />
                         </Col>
@@ -19,6 +20,9 @@ function Transactions({ }: Props) {
                                 Recharge
                             </Button> */}
                         </Col>
+                    </Row>
+                    <Row>
+                        <TransactionsTable/>
                     </Row>
                 </div>
             </Card>
