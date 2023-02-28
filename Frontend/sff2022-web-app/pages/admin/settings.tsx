@@ -1,5 +1,6 @@
-import { Card } from 'antd'
+import { Card, Divider } from 'antd'
 import React from 'react'
+import SettingsForm from '../../components/forms/SettingsForm'
 import AdminLayout from '../../components/layout/AdminLayout'
 
 type Props = {}
@@ -7,9 +8,9 @@ type Props = {}
 function settings({ }: Props) {
     return (
         <AdminLayout>
-        <Card className='crud-container'>
-            Configuracion
-        </Card>
+            <Card className='crud-container'>
+                <SettingsForm/>
+            </Card>
         </AdminLayout>
     )
 }
