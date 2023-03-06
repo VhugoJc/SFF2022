@@ -1,4 +1,4 @@
-import { Card, Divider } from 'antd'
+import { Card, Tabs } from 'antd'
 import React from 'react'
 import SettingsForm from '../../components/forms/SettingsForm'
 import AdminLayout from '../../components/layout/AdminLayout'
@@ -9,7 +9,12 @@ function settings({ }: Props) {
     return (
         <AdminLayout>
             <Card className='crud-container'>
-                <SettingsForm/>
+                <Tabs tabPosition='left'>
+                    <Tabs.TabPane tab="General" key='1'>
+                        <SettingsForm/>
+                    </Tabs.TabPane>
+                </Tabs>
+
             </Card>
         </AdminLayout>
     )

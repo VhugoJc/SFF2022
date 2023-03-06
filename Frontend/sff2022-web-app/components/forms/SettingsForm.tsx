@@ -10,7 +10,7 @@ function SettingsForm({ }: Props) {
         <div>
             <Divider>
                 <p>
-                    General
+                    Configuración General
                 </p>
             </Divider>
             <Form
@@ -19,7 +19,7 @@ function SettingsForm({ }: Props) {
                 layout="horizontal"
             >
                 <Form.Item
-                    name="urlLogo"
+                    name="logo"
                     label="Logo"
                     rules={[{ required: true }, { type: 'url', warningOnly: true }, { type: 'string', min: 6 }]}
                 >
