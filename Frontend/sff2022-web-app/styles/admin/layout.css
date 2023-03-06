@@ -10,27 +10,44 @@
     background: var(--grey);
 }
 
-.layout-children{
+.layout-children {
     /* flex: 2; */
     margin-top: 50px;
     padding: 20px 20px 20px 20px;
     background: var(--grey);
     min-height: calc(100vh - 50px);
 }
-.layout-children-1{
-    margin-left: 80px;  
+
+.layout-children-1 {
+    margin-left: 80px;
     width: 100%;
 }
-.layout-children-2{
+
+.layout-children-2 {
     margin-left: 180px;
     width: calc(100vw - 180px);
 }
 
-.layout-top-menu{
+.layout-top-menu {
     z-index: 1;
     position: fixed;
     background: #001529 !important;
     height: 52px;
     width: 100%;
     text-align: center;
+}
+
+.layout-top-menu_logout {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    z-index: 2;
+}
+
+.ant-btn-ghost {
+    color: white !important;
+    border: transparent !important;
+}
+.ant-btn-ghost:hover{
+    color: rgb(152, 150, 150) !important;
 }

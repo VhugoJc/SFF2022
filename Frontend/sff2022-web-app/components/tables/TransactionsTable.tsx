@@ -94,7 +94,7 @@ function TransactionsTable({ }: Props) {
                 <br />
                 <br />
                 <p>Transacciones</p>
-                <Table columns={columns} dataSource={data} />;
+                <Table  columns={columns} dataSource={data} />;
             </div>       
             <div>
                 </div> 

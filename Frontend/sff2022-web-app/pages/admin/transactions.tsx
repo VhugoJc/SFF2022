@@ -21,8 +21,10 @@ function Transactions({ }: Props) {
                             </Button> */}
                         </Col>
                     </Row>
-                    <Row>
-                        <TransactionsTable/>
+                    <Row gutter={24}>
+                        <Col span={24}>
+                            <TransactionsTable/>
+                        </Col>
                     </Row>
                 </div>
             </Card>

@@ -1,5 +1,7 @@
 import MenuLeft from "../Menu/LeftMenu";
 import React, { useState } from 'react';
+import { LogoutOutlined } from "@ant-design/icons";
+import { Button } from "antd";
 
 
 const AdminLayout = ({ children }: any) => {
@@ -11,6 +13,11 @@ const AdminLayout = ({ children }: any) => {
                 <h1>
                     SALES FORCE FEST
                 </h1>
+                <div className="layout-top-menu_logout">
+                    <Button type="ghost">
+                        <LogoutOutlined/>
+                    </Button>
+                </div>
             </div>
             <div className="layout-flex-container">
                 <div className="layout-menu">
