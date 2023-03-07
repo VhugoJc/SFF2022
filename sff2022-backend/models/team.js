@@ -39,4 +39,9 @@ const teamSchema = Schema({
         default:false
     }
 })
+teamSchema.methods.toJSON = function(){
+    const {__v,status,...team} = this.toObject();
+    return team; //team data without status and version is returned
+}
+
 module.exports = model('Team', teamSchema);

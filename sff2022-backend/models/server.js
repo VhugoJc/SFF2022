@@ -15,6 +15,8 @@ class Server {
         this.salePath = '/api/sale';
         this.product = '/api/product';
 
+        this.dashboard = '/api/dashboard';
+
         //socket config:
         this.server = require('http').createServer(this.app);
         this.io = require('socket.io')(this.server); //info sockets
@@ -55,6 +57,8 @@ class Server {
         this.app.use(this.presalePath, require('../routes/presale'));
         this.app.use(this.salePath, require('../routes/sale'));
         this.app.use(this.product, require('../routes/product'));
+        
+        this.app.use(this.dashboard, require('../routes/dashboard'));
     }
 
     listen() {
