@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { Column } from '@ant-design/plots';
+import { Bar, Column } from '@ant-design/plots';
 
-export default function DemoColumn() {
+export default function BasicBar() {
     const data = [
         {
             type: 'Equipo 1',
@@ -47,24 +47,10 @@ export default function DemoColumn() {
     ];
     const config = {
         data,
-        xField: 'type',
-        yField: 'sales',
-        columnWidthRatio: 0.8,
+        xField: 'sales',
+        yField: 'type',
+        seriesField: 'type'
         
-        xAxis: {
-            label: {
-                autoHide: true,
-                autoRotate: false,
-            },
-        },
-        meta: {
-            type: {
-                alias: 'tipo',
-            },
-            sales: {
-                alias: 'ventas',
-            },
-        },
     };
-    return <Column  {...config} />;
+    return <Bar style={{color:"red",height:"100%"}} {...config} />;
 };

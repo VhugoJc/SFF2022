@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { Column } from '@ant-design/plots';
+import { Column, Pie } from '@ant-design/plots';
 
 export default function DemoColumn() {
     const data = [
@@ -46,25 +46,21 @@ export default function DemoColumn() {
         },
     ];
     const config = {
+        appendPadding: 10,
         data,
-        xField: 'type',
-        yField: 'sales',
-        columnWidthRatio: 0.8,
-        
-        xAxis: {
-            label: {
-                autoHide: true,
-                autoRotate: false,
-            },
+        angleField: 'sales',
+        colorField: 'type',
+        radius: 0.9,
+        label: {
+            type: 'inner',
+            offset: '-30%',
+            content: ({ percent }) => `${(percent * 100).toFixed(0)}%`,
         },
-        meta: {
-            type: {
-                alias: 'tipo',
+        interactions: [
+            {
+                type: 'element-active',
             },
-            sales: {
-                alias: 'ventas',
-            },
-        },
+        ],
     };
-    return <Column  {...config} />;
+    return <Pie {...config} />;
 };

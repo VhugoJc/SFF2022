@@ -10,9 +10,9 @@ const AdminLayout = ({ children }: any) => {
     return (
         <div>
             <div className="layout-top-menu">
-                <h1>
+                {/* <h1>
                     SALES FORCE FEST
-                </h1>
+                </h1> */}
                 <div className="layout-top-menu_logout">
                     <Button type="ghost">
                         <LogoutOutlined/>

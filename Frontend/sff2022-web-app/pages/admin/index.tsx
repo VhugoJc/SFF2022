@@ -1,6 +1,8 @@
 import { Card, Row, Col } from 'antd'
 import React from 'react';
+import BasicBar from '../../components/charts/BasicBar';
 import BasicColumn from '../../components/charts/BasicColumn';
+import BasicPie from '../../components/charts/BasicPie';
 import AdminLayout from '../../components/layout/AdminLayout';
 
 export default function Admin() {
@@ -8,28 +10,34 @@ export default function Admin() {
         <div className='admin'>
             <AdminLayout>
                 <Row
-                    
+                    gutter={[16,16]}
                 >
-                    <Col md={24} lg={12}>
-                        <Card style={{width:"98%",marginBottom:'5px'}}>
-                            <BasicColumn />
+                    <Col md={24} lg={24}>
+                        <Card title="Ventas totales" >
+                            <a href="/admin/charts/sales">
+                                <BasicColumn />
+                            </a>
                         </Card>
                     </Col>
                     <Col md={24} lg={12}>
-                        <Card style={{width:"98%",marginBottom:'5px'}}>
-                            <BasicColumn />
+                        <Card title="Tortas Vendidas" >
+                            <a href="/admin/charts/sales-1">
+                                <BasicBar />
+                            </a>
                         </Card>
                     </Col>
                     <Col md={24} lg={12}>
-                        <Card style={{width:"98%",marginBottom:'5px'}}>
-                            <BasicColumn />
+                        <Card title="Combos vendidos" >
+                            <a href="/admin/charts/sales-2">
+                                <BasicPie />
+                            </a>
                         </Card>
                     </Col>
-                    <Col md={24} lg={12}>
-                        <Card style={{width:"98%",marginBottom:'5px'}}>
+                    {/* <Col md={24} lg={12}>
+                        <Card title="Ventas" >
                             <BasicColumn />
                         </Card>
-                    </Col>
+                    </Col> */}
                 </Row>
             </AdminLayout>
         </div>

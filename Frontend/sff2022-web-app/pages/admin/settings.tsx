@@ -11,7 +11,9 @@ function settings({ }: Props) {
             <Card className='crud-container'>
                 <Tabs tabPosition='left'>
                     <Tabs.TabPane tab="General" key='1'>
-                        <SettingsForm/>
+                        <div style={{ minHeight: 'calc(100vh - 200px)' }}>
+                            <SettingsForm />
+                        </div>
                     </Tabs.TabPane>
                 </Tabs>
 
