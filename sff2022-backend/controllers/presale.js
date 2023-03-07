@@ -1,32 +1,56 @@
-const { response } = require('express');
-const Presale = require('../models/presale');
+const { response } = require("express");
+const Presale = require("../models/presale");
 
-const postPresale = async (req, res = response) =>{
-    const {
-        name,
-        cost,
-        description,
-        sellerId,
-        products,
-        coverImg
-    }=req.body;
-    try{
+const postPresale = async (req, res = response) => {
+    const { name, cost, description, sellerId, products, coverImg, tortas } =
+        req.body;
+    try {
         let newProduct = new Presale({
             name,
             cost,
             description,
             sellerId,
             products,
-            coverImg
-
+            coverImg,
+            tortas,
         });
         await newProduct.save();
-        res.json({message:'Preventa registrado exitosamente'});
-    }catch(err){
-        res.json({err});
+        res.json({ message: "Preventa registrado exitosamente" });
+    } catch (err) {
+        res.json({ err });
+    }
+};
+
+const getPresale = async (req, res = response) => {
+    try {
+        const presales = await Presale.find({ $or: [{ status: true }] });
+        res.json(presales);
+    } catch (err) {
+        res.json(err);
+    }
+};
+
+const updatePresale = async (req, res = response) => {
+    const data = req.body;
+    try {
+        await Presale.updateOne({_id:data._id},data);
+        res.json({message:"Exitoso"});
+    } catch (err) {
+        res.json(err);
     }
 }
-
-module.exports={
-    postPresale
+const deletePresale = async (req, res = response) => {
+    const data = req.body;
+    try {
+        await Presale.updateOne({_id:data._id},{status:false});
+        res.json({message:"Exitoso"});
+    } catch (err) {
+        res.json(err);
+    }
 }
+module.exports = {
+    postPresale,
+    getPresale,
+    updatePresale,
+    deletePresale
+};
