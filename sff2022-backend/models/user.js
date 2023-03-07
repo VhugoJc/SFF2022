@@ -23,7 +23,7 @@ const userSchema = Schema({
     role:{
         type: String,
         required:[true, 'Rol incorrecto'],
-        enum: ['ADMIN_ROLE','USER_ROLE'],
+        enum: ['ADMIN_ROLE','USER_ROLE','SUPER_ADMIN_ROLE'],
         default:'USER_ROLE'
     },
     status:{
