@@ -1,5 +1,5 @@
 const {Router} = require('express');
-const { postDashboardTeam } = require('../controllers/dashboard');
+const { check } = require('express-validator');
 
 const {
     postTeam, 
@@ -9,16 +9,34 @@ const {
 }= require('../controllers/team'); // teamsController
 
 
+const { postSeller, getSellers, updateSellers, deleteUser } = require('../controllers/user');
+const { fieldsValidation } = require('../middleware/fieldsValidation');
 
-const router = Router();
+
+
 //Route: /api/dashboard
-
+const router = Router();
 // dashboard routes works with other controller file
 
+//team
 router.post('/team',postTeam);//create new team     [Dashboard]
 router.get('/team',getTeams);//get active teams     [Dashboard]
 router.put('/team',updateTeam);//update team        [Dashboard]
-router.delete('/team',deleteTeam);//set status team    [Dashboard]
+router.delete('/team',deleteTeam);//set status team [Dashboard]
+
+//saller
+router.post('/seller',[
+    check('email','El correo no es valido').isEmail(),
+    check('name','El nombre es obligatorio').not().isEmpty(),
+    check('lastname','El apellido es obligatorio').not().isEmpty(),
+    check('password','La contraseña debe ser mayor a 6 letras').isLength({min:6}),
+    fieldsValidation
+],postSeller);               //create new seller     [Dashboard]
+
+router.get('/seller',getSellers);//get active sellers     [Dashboard]
+router.put('/seller',updateSellers);//update seller     [Dashboard]
+router.delete('/seller',deleteUser);//update seller     [Dashboard]
+
 
 
 
