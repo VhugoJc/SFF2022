@@ -1,10 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { EditOutlined } from '@ant-design/icons';
-import { Avatar, Button, List, Space } from 'antd';
+import { Avatar, Button, List, message, Space } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import Modal from '../Modal/Index';
+import TeamsForm from '../forms/TeamsForm';
+import { BASEURL } from '../../api/config';
+import axios from 'axios';
+import { Team } from '../../interfaces/teams';
 
 type Props = {}
+
 
 const data = Array.from({ length: 23 }).map((_, i) => ({
     href: 'https://ant.design',
@@ -19,7 +24,27 @@ const data = Array.from({ length: 23 }).map((_, i) => ({
 
 function ListTeams({ }: Props) {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [teamsData, setteamsData] = useState<Team[]|[]>([]);
+    const [refresh, setrefresh] = useState(true);
 
+    useEffect(() => {
+        const options = {
+            method: 'GET',
+            url: `${BASEURL}/dashboard/team`,
+            // headers: {
+            //     'x-token': `${query.token}`
+            // },
+        };
+        axios.request(options).then(function (response) {
+            setteamsData(response.data);
+            console.log(response.data);
+
+        }).catch(function (error) {
+            console.log(error);
+            message.error('Error al obtener los equipos');
+        });
+        setrefresh(false);
+    }, [refresh])
     const onClick = () => {
         setIsModalOpen(true);
     }
@@ -27,7 +52,7 @@ function ListTeams({ }: Props) {
     return (
         <div>
             <div style={{ width: '100%', height: '100px' }}>
-                <Button style={{ float: 'right' }} type='primary'>
+                <Button onClick={() => onClick()} style={{ float: 'right' }} type='primary'>
                     <PlusOutlined /> Agregar Equipos
                 </Button>
             </div>
@@ -41,7 +66,7 @@ function ListTeams({ }: Props) {
                         },
                         pageSize: 3,
                     }}
-                    dataSource={data}
+                    dataSource={teamsData}
                     // footer={
                     //     <div>
                     //         <b>ant design</b> footer part
@@ -50,31 +75,38 @@ function ListTeams({ }: Props) {
                     renderItem={item => (
                         <a onClick={onClick}>
                             <List.Item
-                                key={item.title}
+                                key={item.name as any}
                                 extra={
                                     <img
                                         width={272}
                                         alt="logo"
-                                        src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+                                        src={item.imgs![0] ? item.imgs![0] : "https://www.nbmchealth.com/wp-content/uploads/2018/04/default-placeholder.png"}
                                     />
                                 }
                             >
                                 <List.Item.Meta
-                                    title={<p>{item.title}</p>}
-                                    description={item.description}
+                                    title={<p>{item.name}</p>}
+                                    description={Object.keys(item.socialMedia).map(function (key, index) {
+                                        if (item.socialMedia[key]) {
+                                            return <span key={key}>{item.socialMedia[key]} </span>
+                                        }
+
+                                    })}
                                 />
-                                {item.content}
+                                {
+                                    item.description
+                                }
                             </List.Item>
                         </a>
                     )}
                 />
             </div>
             <Modal
-                title='Equipo'
+                title='Nuevo Equipo'
                 isModalOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}
             >
-                Hola mundo
+                <TeamsForm setrefresh={setrefresh}  setIsModalOpen={setIsModalOpen}/>
             </Modal>
         </div>
     )
