@@ -1,52 +1,74 @@
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons'
 import { Button, Form, Input, message, Space } from 'antd'
 import axios from 'axios';
-import React, { Dispatch, SetStateAction, useState } from 'react'
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 import { BASEURL } from '../../api/config';
+import { TeamForm } from '../../interfaces/teams';
 
 type Props = {
     setrefresh: Dispatch<SetStateAction<boolean>>
     setIsModalOpen: Dispatch<SetStateAction<boolean>>
+    teamData: TeamForm | null
+    isUpdate: boolean
 }
 
-function TeamsForm({ setrefresh, setIsModalOpen}: Props) {
+function TeamsForm({ setrefresh, setIsModalOpen, teamData, isUpdate }: Props) {
     const [form] = Form.useForm();
+    useEffect(() => {
+        form.setFieldsValue(teamData);
+    }, [teamData]);
 
     const onFinish = async (values: any) => {
         const { name, description, imgs, tiktok, whatsapp, facebook, instagram } = values;
         const data = {
-            name, description, imgs,
+            name, description, imgs,_id:teamData?._id,
             socialMedia: { tiktok, whatsapp, facebook, instagram }
         }
-        const options = {
-            method: 'POST',
+        console.log(data);
+        
+        const options = { // Same url, different method between update and create
+            method: '',
             url: `${BASEURL}/dashboard/team`,
             // headers: {
             //     'x-token': `${query.token}`
             // },
             data
         };
-        axios.request(options).then(function (response) {
-            form.resetFields();
-            message.success('Usuario creado exitosamente');
-            setrefresh(true);
-            setIsModalOpen(false);
-            
 
-        }).catch(function (error) {
-            console.log(error);
-            message.error('Error al crear el equipo');
-        });
+        if (!isUpdate) { //create
+            options.method = 'POST';
+            axios.request(options).then(function (response) {
+                form.resetFields();
+                message.success('Equipo creado exitosamente');
+                setrefresh(true);
+                setIsModalOpen(false);
+            }).catch(function (error) {
+                console.log(error);
+                message.error('Error al crear el equipo');
+            });
+        } else { // update 
+            options.method = 'PUT';
+            axios.request(options).then(function (response) {
+                form.resetFields();
+                message.success('Equipo actualizado exitosamente');
+                setrefresh(true);
+                setIsModalOpen(false);
+            }).catch(function (error) {
+                console.log(error);
+                message.error('Error al actualizar el equipo');
+            });
+        }
 
     }
     return (
         <Form
+            // initialValues={teamData as any}
             form={form}
             onFinish={onFinish}
         >
-            <Form.Item name='name' 
-                rules={[{ required: true, message: 'El nombre es obligatorio!' },{min:4, message: 'El nombre es obligatorio!'}]}
+            <Form.Item name='name'
+                rules={[{ required: true, message: 'El nombre es obligatorio!' }, { min: 4, message: 'El nombre es obligatorio!' }]}
             >
                 <Input placeholder='Nombre del equipo' />
             </Form.Item>
@@ -92,7 +114,7 @@ function TeamsForm({ setrefresh, setIsModalOpen}: Props) {
                 <Input placeholder='Url Instagram' />
             </Form.Item>            <Form.Item>
                 <Button type="primary" htmlType="submit">
-                    Submit
+                    {isUpdate ?"Actualizar" :"Crear"}
                 </Button>
             </Form.Item>
         </Form>

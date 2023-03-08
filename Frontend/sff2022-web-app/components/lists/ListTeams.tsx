@@ -6,28 +6,20 @@ import Modal from '../Modal/Index';
 import TeamsForm from '../forms/TeamsForm';
 import { BASEURL } from '../../api/config';
 import axios from 'axios';
-import { Team } from '../../interfaces/teams';
+import { Team, TeamForm } from '../../interfaces/teams';
 
 type Props = {}
-
-
-const data = Array.from({ length: 23 }).map((_, i) => ({
-    href: 'https://ant.design',
-    title: `ant design part ${i}`,
-    avatar: 'https://joeschmoe.io/api/v1/random',
-    description:
-        'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-    content:
-        'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-}));
-
 
 function ListTeams({ }: Props) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [teamsData, setteamsData] = useState<Team[]|[]>([]);
     const [refresh, setrefresh] = useState(true);
+    const [teamDataForm, setteamDataForm] = useState<TeamForm|null>(null);
+    const [isUpdate, setisUpdate] = useState(false);
+
 
     useEffect(() => {
+        // get teams from deb
         const options = {
             method: 'GET',
             url: `${BASEURL}/dashboard/team`,
@@ -35,24 +27,52 @@ function ListTeams({ }: Props) {
             //     'x-token': `${query.token}`
             // },
         };
+        //request
         axios.request(options).then(function (response) {
-            setteamsData(response.data);
-            console.log(response.data);
+            setteamsData(response.data); // assign values to usestate
 
         }).catch(function (error) {
             console.log(error);
-            message.error('Error al obtener los equipos');
+            message.error('Error al obtener los equipos'); // show error message
         });
-        setrefresh(false);
-    }, [refresh])
-    const onClick = () => {
+        setrefresh(false); //reset refresh variable
+    }, [refresh]) // update when refresh variable changes
+
+    const onClickToAdd = () => {
+        setteamDataForm({
+            name:"",
+            imgs:[],
+            description:"",
+            facebook:"",
+            whatsapp:"",
+            tiktok: "",
+            instagram: ""
+        });
         setIsModalOpen(true);
+        setisUpdate(false);
+    }
+    
+    const onClickToEdit = (teamData:Team) => {
+        console.log(teamData);
+        
+        setteamDataForm({
+            _id:teamData?._id,
+            name:teamData?.name,
+            imgs:teamData?.imgs,
+            description:teamData?.description,
+            facebook:teamData?.socialMedia.facebook,
+            whatsapp: teamData?.socialMedia.whatsapp,
+            tiktok: teamData?.socialMedia.tiktok,
+            instagram: teamData?.socialMedia.instagram
+        });
+        setIsModalOpen(true);
+        setisUpdate(true);
     }
 
     return (
         <div>
             <div style={{ width: '100%', height: '100px' }}>
-                <Button onClick={() => onClick()} style={{ float: 'right' }} type='primary'>
+                <Button onClick={() => onClickToAdd()} style={{ float: 'right' }} type='primary'>
                     <PlusOutlined /> Agregar Equipos
                 </Button>
             </div>
@@ -62,18 +82,13 @@ function ListTeams({ }: Props) {
                     size="large"
                     pagination={{
                         onChange: page => {
-                            console.log(page);
+                            // console.log(page);
                         },
                         pageSize: 3,
                     }}
                     dataSource={teamsData}
-                    // footer={
-                    //     <div>
-                    //         <b>ant design</b> footer part
-                    //     </div>
-                    // }
                     renderItem={item => (
-                        <a onClick={onClick}>
+                        <a onClick={()=>onClickToEdit(item)}>
                             <List.Item
                                 key={item.name as any}
                                 extra={
@@ -106,7 +121,7 @@ function ListTeams({ }: Props) {
                 isModalOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}
             >
-                <TeamsForm setrefresh={setrefresh}  setIsModalOpen={setIsModalOpen}/>
+                <TeamsForm teamData={teamDataForm} setrefresh={setrefresh}  setIsModalOpen={setIsModalOpen} isUpdate={isUpdate}/>
             </Modal>
         </div>
     )
