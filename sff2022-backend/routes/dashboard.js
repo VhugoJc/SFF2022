@@ -31,6 +31,7 @@ router.post('/seller',[
     check('name','El nombre es obligatorio').not().isEmpty(),
     check('lastname','El apellido es obligatorio').not().isEmpty(),
     check('password','La contraseña debe ser mayor a 6 letras').isLength({min:6}),
+    check('team','El Id del equipo es obligatorio').not().isEmpty(),
     fieldsValidation
 ],postSeller);               //create new seller     [Dashboard]
 

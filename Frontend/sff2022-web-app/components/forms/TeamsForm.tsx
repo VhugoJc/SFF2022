@@ -25,8 +25,6 @@ function TeamsForm({ setrefresh, setIsModalOpen, teamData, isUpdate }: Props) {
             name, description, imgs,_id:teamData?._id,
             socialMedia: { tiktok, whatsapp, facebook, instagram }
         }
-        console.log(data);
-        
         const options = { // Same url, different method between update and create
             method: '',
             url: `${BASEURL}/dashboard/team`,
@@ -85,6 +83,7 @@ function TeamsForm({ setrefresh, setIsModalOpen, teamData, isUpdate }: Props) {
                                     style={{ width: "100%" }}
                                     {...restField}
                                     name={[name]}
+                                    rules={[{type:'url',message:'La url no es válida'}]}
                                 // rules={[{ required: true, message: 'Missing first name' }]}
                                 >
                                     <Input className='ant-input' placeholder="Url de imagen" />
@@ -101,16 +100,16 @@ function TeamsForm({ setrefresh, setIsModalOpen, teamData, isUpdate }: Props) {
                 )}
             </Form.List>
             Redes sociales:
-            <Form.Item name='tiktok'>
+            <Form.Item name='tiktok' rules={[{type:'url',message:'La url no es válida'}]}>
                 <Input placeholder='Url Tiktok' />
             </Form.Item>
-            <Form.Item name='whatsapp'>
+            <Form.Item name='whatsapp' rules={[{type:'url',message:'La url no es válida'}]}>
                 <Input placeholder='Url Whatsapp' />
             </Form.Item>
-            <Form.Item name='facebook'>
+            <Form.Item name='facebook' rules={[{type:'url',message:'La url no es válida'}]}>
                 <Input placeholder='Url Facebook' />
             </Form.Item>
-            <Form.Item name='instagram'>
+            <Form.Item name='instagram' rules={[{type:'url',message:'La url no es válida'}]}>
                 <Input placeholder='Url Instagram' />
             </Form.Item>            <Form.Item>
                 <Button type="primary" htmlType="submit">

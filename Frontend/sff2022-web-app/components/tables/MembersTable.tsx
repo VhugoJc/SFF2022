@@ -3,8 +3,12 @@ import type { InputRef } from 'antd';
 import { Button, Input, Space, Table } from 'antd';
 import type { ColumnsType, ColumnType } from 'antd/es/table';
 import type { FilterConfirmProps } from 'antd/es/table/interface';
-import React, { useRef, useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useRef, useState } from 'react';
 import Highlighter from 'react-highlight-words';
+import { BASEURL } from '../../api/config';
+import { Seller } from '../../interfaces/seller';
+import MembersForm from '../forms/MembersForm';
 
 import Modal from '../Modal/Index';
 // import Highlighter from 'react-highlight-words';
@@ -48,11 +52,34 @@ const data: DataType[] = [
 type Props = {}
 
 function MembersTable({ }: Props) {
+    const [usersData, setUsersData]= useState<Seller [] >([]);
+    
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const [refresh, setrefresh] = useState(true);
 
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
+    const [isUpdate, setisUpdate] = useState(false);
     const searchInput = useRef<InputRef>(null);
+    
+    
+    useEffect(()=>{
+        const options = { // Same url, different method between update and create
+            method: 'GET',
+            url: `${BASEURL}/dashboard/seller`,
+            // headers: {
+            //     'x-token': `${query.token}`
+            // },
+        };
+        axios.request(options).then((response)=>{
+            setUsersData(response.data);
+        }).catch((err)=>{
+
+        });
+
+        setrefresh(false);
+    },[refresh])
 
     const handleSearch = (
         selectedKeys: string[],
@@ -193,7 +220,7 @@ function MembersTable({ }: Props) {
             }
         }
     ];
-
+  
     return (
         <>
             <div style={{ width: '100%', height: '100px' }}>
@@ -205,11 +232,11 @@ function MembersTable({ }: Props) {
             <Table columns={columns} dataSource={data} />
 
             <Modal
-                title='Equipo'
+                title='Nuevo Vendedor'
                 isModalOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}
             >
-                Hola mundo
+                <MembersForm/>
             </Modal>
         </>
     )

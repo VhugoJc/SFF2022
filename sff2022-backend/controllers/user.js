@@ -45,10 +45,10 @@ const postUser = async (req = request, res = response) => {
 }
 
 const postSeller = async (req = request, res = response) => {
-    const { name, lastname, email, password } = req.body;
+    const { name, lastname, email, password,team } = req.body;
     const uuid = uuidv4();
     try {
-        const newUser = new User({ name, lastname, email, password, status:true,role:'ADMIN_ROLE'}); //status true, role admin
+        const newUser = new User({ name, lastname, email, password, status:true,role:'ADMIN_ROLE',team}); //status true, role admin
         //email validation
         const emailExists = await User.findOne({ email });
         if (emailExists) {

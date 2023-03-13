@@ -117,7 +117,7 @@ function ListTeams({ }: Props) {
                 />
             </div>
             <Modal
-                title='Nuevo Equipo'
+                title={isUpdate ?'Editar '+teamDataForm?.name :'Nuevo Equipo'}
                 isModalOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}
             >
