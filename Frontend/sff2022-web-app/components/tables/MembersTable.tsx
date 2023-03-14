@@ -1,5 +1,5 @@
 import { EditOutlined, PlusOutlined, SearchOutlined } from '@ant-design/icons';
-import type { InputRef } from 'antd';
+import { InputRef, message } from 'antd';
 import { Button, Input, Space, Table } from 'antd';
 import type { ColumnsType, ColumnType } from 'antd/es/table';
 import type { FilterConfirmProps } from 'antd/es/table/interface';
@@ -7,55 +7,25 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import Highlighter from 'react-highlight-words';
 import { BASEURL } from '../../api/config';
-import { Seller } from '../../interfaces/seller';
+import { Seller, SellerForm } from '../../interfaces/seller';
+import { Team } from '../../interfaces/teams';
 import MembersForm from '../forms/MembersForm';
 
 import Modal from '../Modal/Index';
 // import Highlighter from 'react-highlight-words';
 
-interface DataType {
-    key: string;
-    name: string;
-    age: number;
-    address: string;
-}
+type DataIndex = keyof Seller;
 
-type DataIndex = keyof DataType;
 
-const data: DataType[] = [
-    {
-        key: '1',
-        name: 'John Brown',
-        age: 32,
-        address: 'New York No. 1 Lake Park',
-    },
-    {
-        key: '2',
-        name: 'Joe Black',
-        age: 42,
-        address: 'London No. 1 Lake Park',
-    },
-    {
-        key: '3',
-        name: 'Jim Green',
-        age: 32,
-        address: 'Sidney No. 1 Lake Park',
-    },
-    {
-        key: '4',
-        name: 'Jim Red',
-        age: 32,
-        address: 'London No. 2 Lake Park',
-    },
-];
 
 type Props = {}
 
 function MembersTable({ }: Props) {
-    const [usersData, setUsersData]= useState<Seller [] >([]);
-    
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [usersData, setUsersData] = useState<Seller[]>([]);
+    const [sellerDataForm, setsellerDataForm] = useState<SellerForm|null>(null);
+    const [teams, setteams] = useState<Team[]>([]);
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [refresh, setrefresh] = useState(true);
 
     const [searchText, setSearchText] = useState('');
@@ -63,8 +33,21 @@ function MembersTable({ }: Props) {
     const [isUpdate, setisUpdate] = useState(false);
     const searchInput = useRef<InputRef>(null);
     
-    
-    useEffect(()=>{
+    useEffect(() => {
+        const options = {
+            method: 'GET',
+            url: `${BASEURL}/dashboard/team`,
+            // headers: {
+            //     'x-token': `${query.token}`
+            // },
+        }
+        axios.request(options).then((res) => {
+            setteams(res.data);
+        });
+
+    }, [])
+
+    useEffect(() => {
         const options = { // Same url, different method between update and create
             method: 'GET',
             url: `${BASEURL}/dashboard/seller`,
@@ -72,14 +55,17 @@ function MembersTable({ }: Props) {
             //     'x-token': `${query.token}`
             // },
         };
-        axios.request(options).then((response)=>{
-            setUsersData(response.data);
-        }).catch((err)=>{
+        axios.request(options).then((response) => {
 
+            setUsersData(response.data);
+            console.log(response.data);
+
+        }).catch((err) => {
+            message.error('Error al cargar los vendedores');
         });
 
         setrefresh(false);
-    },[refresh])
+    }, [refresh])
 
     const handleSearch = (
         selectedKeys: string[],
@@ -96,7 +82,7 @@ function MembersTable({ }: Props) {
         setSearchText('');
     };
 
-    const getColumnSearchProps = (dataIndex: DataIndex): ColumnType<DataType> => ({
+    const getColumnSearchProps = (dataIndex: DataIndex): ColumnType<Seller> => ({
         filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
             <div style={{ padding: 8 }} onKeyDown={e => e.stopPropagation()}>
                 <Input
@@ -161,82 +147,119 @@ function MembersTable({ }: Props) {
         //     }
         // },
         render: text =>
-        searchedColumn === dataIndex ? (
-            <Highlighter
-                highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
-                searchWords={[searchText]}
-                autoEscape
-                textToHighlight={text ? text.toString() : ''}
-            />
-        ) : (
-            text
-        ),
+            searchedColumn === dataIndex ? (
+                <Highlighter
+                    highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
+                    searchWords={[searchText]}
+                    autoEscape
+                    textToHighlight={text ? text.toString() : ''}
+                />
+            ) : (
+                text
+            ),
     });
 
-    const onClickEdit=(data:DataType)=>{
+    const onClickEdit = (data: Seller) => {
+        setisUpdate(true);
+        setsellerDataForm({
+            _uid:data._uid,
+            name: data.name,
+            lastname:data.lastname,
+            email:data.email,
+            password:'',
+            confirm:'',
+            team:data.team
+        });
         setIsModalOpen(true);
-        // send data to forms
-        console.log(data);
-        
-
     }
-    const columns: ColumnsType<DataType> = [
+    const onClickAdd = () => {
+        setisUpdate(false);
+        setsellerDataForm(null);
+        setIsModalOpen(true);
+    }
+
+
+    const columns: ColumnsType<Seller> = [
         {
-            title: 'Name',
+            title: 'Nombre(s)',
             dataIndex: 'name',
             key: 'name',
-            width: '30%',
+            width: '20%',
             ...getColumnSearchProps('name'),
         },
         {
-            title: 'Age',
-            dataIndex: 'age',
-            key: 'age',
+            title: 'Apellido(s)',
+            dataIndex: 'lastname',
+            key: 'lastname',
             width: '20%',
-            ...getColumnSearchProps('age'),
+            ...getColumnSearchProps('lastname'),
         },
         {
-            title: 'Address',
-            dataIndex: 'address',
-            key: 'address',
-            ...getColumnSearchProps('address'),
-            sorter: (a, b) => a.address.length - b.address.length,
-            sortDirections: ['descend', 'ascend'],
+            title: 'Correo Electrónico',
+            dataIndex: 'email',
+            key: 'email',
+            width: '20%',
+            ...getColumnSearchProps('email'),
         },
+        {
+            title: 'Equipo',
+            dataIndex: 'team',
+            key: 'team',
+            width: '20%',
+            render: (value, record)=>{
+                const team = teams.find(team=>team._id===value);
+                return team?.name
+            },
+            // ...getColumnSearchProps('team'),
+        },
+        // {
+        //     title: 'Address',
+        //     dataIndex: 'address',
+        //     key: 'address',
+        //     ...getColumnSearchProps('address'),
+        //     sorter: (a, b) => a.address.length - b.address.length,
+        //     sortDirections: ['descend', 'ascend'],
+        // },
         {
             dataIndex: "link",
             title: "",
-            render: (value,record) => {
+            width: '5%',
+            render: (value, record) => {
                 return (
                     <a
-                        onClick={(event) =>  onClickEdit(record)
+                        onClick={(event) => onClickEdit(record)
                         }
                         href={value}
                         target="_blank"
                     >
-                        <EditOutlined/>
+                        <EditOutlined />
                     </a>
                 );
             }
         }
     ];
-  
+
     return (
         <>
             <div style={{ width: '100%', height: '100px' }}>
-                <Button onClick={()=>setIsModalOpen(true)} style={{ float: 'right' }} type='primary'>
+                <Button onClick={()=>onClickAdd()} style={{ float: 'right' }} type='primary'>
                     <PlusOutlined /> Agregar Integrantes
                 </Button>
             </div>
 
-            <Table columns={columns} dataSource={data} />
+            <Table columns={columns} rowKey="_uid" dataSource={usersData} />
 
             <Modal
-                title='Nuevo Vendedor'
+                title={isUpdate ?'Actualizando a '+sellerDataForm?.name :'Nuevo vendedor'}
                 isModalOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}
             >
-                <MembersForm/>
+                <MembersForm 
+                    setIsModalOpen={setIsModalOpen} 
+                    setrefresh={setrefresh} 
+                    sellerDataForm={sellerDataForm}
+                    isUpdate={isUpdate }
+                />
             </Modal>
         </>
     )

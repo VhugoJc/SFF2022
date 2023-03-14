@@ -1,17 +1,21 @@
 import { Button, Form, Input, message, Select } from 'antd'
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { BASEURL } from '../../api/config';
 import { SellerForm } from '../../interfaces/seller';
 import { Team } from '../../interfaces/teams';
 
-type Props = {}
+type Props = {
+    setrefresh: Dispatch<SetStateAction<boolean>>,
+    setIsModalOpen: Dispatch<SetStateAction<boolean>>,
+    sellerDataForm: SellerForm | null,
+    isUpdate: boolean
+}
 
-function MembersForm({ }: Props) {
+function MembersForm({ setrefresh, setIsModalOpen, sellerDataForm, isUpdate }: Props) {
     const [form] = Form.useForm();
     const [teams, setteams] = useState<Team[]>([]);
-
-
+    
     useEffect(() => {
         const options = {
             method: 'GET',
@@ -25,8 +29,18 @@ function MembersForm({ }: Props) {
         });
 
     }, [])
+    
+    useEffect(() => {
+        if (sellerDataForm) {
+            form.setFieldsValue(sellerDataForm);
+        } else {
+            form.resetFields();
+        }
+    }, [sellerDataForm]);
+
+
     const onFinish = (values: SellerForm) => {
-        const options = { // Same url, different method between update and create
+        const options = {
             method: 'POST',
             url: `${BASEURL}/dashboard/seller`,
             // headers: {
@@ -34,23 +48,48 @@ function MembersForm({ }: Props) {
             // },
             data: values
         };
+        options.method = 'POST';
         axios.request(options).then((response) => {
-            console.log(response);
             form.resetFields();
             message.success('Vendedor creado exitosamente');
-            // refresh list
-            //close modal
-
+            setrefresh(true);
+            setIsModalOpen(false);
         }).catch((err) => {
             console.log(err);
             message.error('Error creando al vendedor');
         })
 
     }
+    const onFinishUpdate = (values: any) => {
+        if(values.password===''){
+            delete values.password
+        }
+        values._uid=sellerDataForm?._uid;
+
+        const options = {
+            method: '',
+            url: `${BASEURL}/dashboard/seller`,
+            // headers: {
+            //     'x-token': `${query.token}`
+            // },
+            data:values
+        };
+
+        options.method = 'PUT';
+        axios.request(options).then((response) => {
+            form.resetFields();
+            message.success('Vendedor actualizado exitosamente');
+            setrefresh(true);
+            setIsModalOpen(false);
+        }).catch((err) => {
+            console.log(err);
+            message.error('Error actualizando al vendedor');
+        })
+    }
     return (
         <Form
             form={form}
-            onFinish={onFinish}
+            onFinish={isUpdate ?onFinishUpdate :onFinish}
         >
             <Form.Item
                 hasFeedback
@@ -69,31 +108,41 @@ function MembersForm({ }: Props) {
             <Form.Item
                 hasFeedback
                 name='email'
-                rules={[{ required: true, message: 'El correo es obligatorio!' }, { type: "email", message: 'El correo no es válido' }]}
+                rules={[
+                    {
+                        required:true,
+                        message: 'Por favor confirme su contraseña!',
+                    },
+                    { type: "email", message: 'El correo no es válido' }]}
             >
                 <Input type='email' placeholder='Correo Electrónico' />
             </Form.Item>
             <Form.Item
                 name='password'
                 hasFeedback
-                rules={[{ required: true, message: 'La contraseña es obligatoria!' }, { min: 5, message: 'La contraseña es muy corta!' }]}
+                rules={[{ required: !isUpdate, message: 'La contraseña es obligatoria!' }, { min: 5, message: 'La contraseña es muy corta!' }]}
             >
                 <Input.Password placeholder='Contraseña' />
             </Form.Item>
+
             <Form.Item
                 name="confirm"
                 dependencies={['password']}
                 hasFeedback
                 rules={[
                     {
-                        required: true,
+                        required: !isUpdate,
                         message: 'Por favor confirme su contraseña!',
                     },
                     ({ getFieldValue }) => ({
                         validator(_, value) {
+                            if(getFieldValue('password')!=''&&value===''){
+                                return Promise.reject(new Error('Por favor confirme su contraseña!!'));
+                            }
                             if (!value || getFieldValue('password') === value) {
                                 return Promise.resolve();
                             }
+                            
                             return Promise.reject(new Error('Las dos contraseñas no coinciden'));
                         },
                     }),
@@ -101,6 +150,7 @@ function MembersForm({ }: Props) {
             >
                 <Input.Password placeholder='Confirmar contraseña' />
             </Form.Item>
+
             Equipo
             <Form.Item
                 name='team'
@@ -121,7 +171,11 @@ function MembersForm({ }: Props) {
             </Form.Item>
             <Form.Item>
                 <Button type='primary' htmlType='submit'>
-                    Crear Vendedor
+                    {
+                        isUpdate
+                            ? 'Actualizar vendedor'
+                            : 'Crear vendedor'
+                    }
                 </Button>
             </Form.Item>
         </Form>

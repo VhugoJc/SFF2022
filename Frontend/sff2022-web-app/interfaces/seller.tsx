@@ -1,9 +1,11 @@
 export interface SellerForm {
+    _uid?: string,
     name: string,
     lastname: string,
     email: string,
     password: string,
-    confirm: string
+    confirm: string,
+    team:String
 }
 
 export interface Seller {
@@ -12,6 +14,7 @@ export interface Seller {
     email: string,
     role: string,
     status: boolean,
-    _id: string,
+    _uid: string,
+    team:String
 
 }
