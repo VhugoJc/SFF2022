@@ -11,14 +11,17 @@ function Transactions({ }: Props) {
             <Card className='crud-container'>
                 <div>
                     <Row gutter={24}>
-                        <Col span={12}>
+                        <Col  lg={6}>
                             <Statistic title="Usuarios activos " value={112893} />
                         </Col>
-                        <Col span={12}>
+                        <Col lg={6}>
+                            <Statistic title="Tortas vendidas" value={112}/>
+                        </Col>
+                        <Col lg={6}>
+                            <Statistic title="Combos vendidos" value={12} />
+                        </Col>
+                        <Col lg={6}>
                             <Statistic prefix={'$'} title="Balance actual (MXN)" value={112893.4} precision={2} />
-                            {/* <Button style={{ marginTop: 16 }} type="primary">
-                                Recharge
-                            </Button> */}
                         </Col>
                     </Row>
                     <Row gutter={24}>
