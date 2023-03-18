@@ -8,6 +8,7 @@ class Server {
     constructor() {
         this.app = express();
         this.port = process.env.PORT;
+        this.url = process.env.URLFRONT;
         this.usersPath = '/api/user';
         this.authPath = '/api/auth';
         this.teamPath = '/api/team';
@@ -64,6 +65,7 @@ class Server {
     listen() {
         this.server.listen(this.port, () => {
             console.log(`Server Running in port ${this.port}`);
+            console.log(`The Frontend URL is running in ${this.url}`);
         });
         
     }
