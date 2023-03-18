@@ -11,8 +11,9 @@ const presaleSchema = Schema({
     description: {
         type: String
     },
-    sellerId: {
-        type: Schema.Types.ObjectId
+    sellerId: { //team
+        type: Schema.Types.ObjectId,
+        required:[true, 'ID del vendedor inválido'],
     },
     coverImg: {
         type: String,
@@ -42,4 +43,9 @@ const presaleSchema = Schema({
     },
 
 });
+presaleSchema.methods.toJSON = function(){
+    const {__v,status,...products} = this.toObject();
+    return products; //user data without status and version is returned
+}
+
 module.exports = model('Presale', presaleSchema);

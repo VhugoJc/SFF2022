@@ -210,6 +210,8 @@ function MembersTable({ }: Props) {
                 const team = teams.find(team=>team._id===value);
                 return team?.name
             },
+            sorter: (a, b) => a.team.localeCompare(b.team as any),
+            sortDirections: ['descend', 'ascend'],
             // ...getColumnSearchProps('team'),
         },
         // {

@@ -1,54 +1,56 @@
 import { EditOutlined, PlusOutlined, SearchOutlined } from '@ant-design/icons';
-import { InputRef } from 'antd';
+import { InputRef, message } from 'antd';
 import { Button, Input, Space, Table } from 'antd';
 import type { ColumnsType, ColumnType } from 'antd/es/table';
 import type { FilterConfirmProps } from 'antd/es/table/interface';
-import React, { useRef, useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useRef, useState } from 'react';
 import Highlighter from 'react-highlight-words';
+import { BASEURL } from '../../api/config';
+import { Presale } from '../../interfaces/Presale';
+import { Team } from '../../interfaces/teams';
+import PresaleForm from '../forms/PresaleForm';
 import Modal from '../Modal/Index';
 
-interface DataType {
-    key: string;
-    name: string;
-    age: number;
-    address: string;
-}
-
-type DataIndex = keyof DataType;
-
-const data: DataType[] = [
-    {
-        key: '1',
-        name: 'John Brown',
-        age: 32,
-        address: 'New York No. 1 Lake Park',
-    },
-    {
-        key: '2',
-        name: 'Joe Black',
-        age: 42,
-        address: 'London No. 1 Lake Park',
-    },
-    {
-        key: '3',
-        name: 'Jim Green',
-        age: 32,
-        address: 'Sidney No. 1 Lake Park',
-    },
-    {
-        key: '4',
-        name: 'Jim Red',
-        age: 32,
-        address: 'London No. 2 Lake Park',
-    },
-];
+type DataIndex = keyof Presale;
 
 const Foodtable: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [refresh, setrefresh] = useState(true);
+    const [isUpdate, setisUpdate] = useState(false);
 
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
     const searchInput = useRef<InputRef>(null);
+
+    const [foodData, setFoodData] = useState<Presale[]>([]);
+    const [foodDataForm, setFoodDataForm] = useState<Presale>();
+    const [teams, setteams] = useState<Team[]>([]);
+
+    useEffect(() => {
+        const options = {
+            method: 'GET',
+            url: `${BASEURL}/dashboard/presale`,
+            // credentials
+        }
+        axios.request(options).then(res => {
+            setFoodData(res.data);
+        });
+        setrefresh(false);
+    }, [refresh])
+
+    useEffect(() => {
+        const conf = {
+            method: 'GET',
+            url: `${BASEURL}/dashboard/team`,
+            // headers: {
+            //     'x-token': `${query.token}`
+            // },
+        }
+        axios.request(conf).then((res) => {
+            setteams(res.data);
+        });
+    }, [])
 
     const handleSearch = (
         selectedKeys: string[],
@@ -65,15 +67,27 @@ const Foodtable: React.FC = () => {
         setSearchText('');
     };
 
-    const onClickEdit=(data:DataType)=>{
+    const onClickEdit = (data: Presale) => {        
+        setFoodDataForm(data);
         setIsModalOpen(true);
-        // send data to forms
-        console.log(data);
-        
-
+        setisUpdate(true);
+    }
+    const onClickAdd = () => {
+        setisUpdate(false);
+        setFoodDataForm({
+            _id:'',
+            name:'',
+            sellerId:'',
+            cost:0,
+            coverImg:'',
+            tortas:0,
+            description:'',
+            products:[]
+        })
+        setIsModalOpen(true);
     }
 
-    const getColumnSearchProps = (dataIndex: DataIndex): ColumnType<DataType> => ({
+    const getColumnSearchProps = (dataIndex: DataIndex): ColumnType<Presale> => ({
         filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
             <div style={{ padding: 8 }} onKeyDown={e => e.stopPropagation()}>
                 <Input
@@ -150,41 +164,50 @@ const Foodtable: React.FC = () => {
             ),
     });
 
-    const columns: ColumnsType<DataType> = [
+    const columns: ColumnsType<Presale> = [
         {
-            title: 'Name',
+            title: 'Nombre',
             dataIndex: 'name',
             key: 'name',
             width: '30%',
             ...getColumnSearchProps('name'),
         },
         {
-            title: 'Age',
-            dataIndex: 'age',
-            key: 'age',
+            title: 'Costo',
+            dataIndex: 'cost',
+            key: 'cost',
             width: '20%',
-            ...getColumnSearchProps('age'),
         },
         {
-            title: 'Address',
-            dataIndex: 'address',
-            key: 'address',
-            ...getColumnSearchProps('address'),
-            sorter: (a, b) => a.address.length - b.address.length,
+            title: 'Tortas',
+            dataIndex: 'tortas',
+            key: 'tortas',
+            width: '20%',
+        },
+        {
+            title: 'Equipo',
+            dataIndex: 'sellerId',
+            key: 'sellerId',
+            width: '20%',
+            render: (value, record) => {
+                const team = teams.find(team => team._id === value);
+                return team?.name
+            },
+            sorter: (a, b) => a.sellerId.localeCompare(b.sellerId as any),
             sortDirections: ['descend', 'ascend'],
         },
         {
             dataIndex: "link",
             title: "",
-            render: (value,record) => {
+            render: (value, record) => {
                 return (
                     <a
-                        onClick={(event) =>  onClickEdit(record)
+                        onClick={(event) => onClickEdit(record)
                         }
                         href={value}
                         target="_blank"
                     >
-                        <EditOutlined/>
+                        <EditOutlined />
                     </a>
                 );
             }
@@ -195,19 +218,19 @@ const Foodtable: React.FC = () => {
     return (
         <>
             <div style={{ width: '100%', height: '100px' }}>
-                <Button onClick={() => setIsModalOpen(true)} style={{ float: 'right' }} type='primary'>
+                <Button onClick={() => onClickAdd()} style={{ float: 'right' }} type='primary'>
                     <PlusOutlined /> Agregar Combo
                 </Button>
             </div>
 
-            <Table columns={columns} dataSource={data} />
+            <Table rowKey="_id" columns={columns} dataSource={foodData} />
 
             <Modal
-                title='Equipo'
+                title={isUpdate ?'Actualizar '+foodDataForm?.name :'Crear nuevo combo'}
                 isModalOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}
             >
-                Hola mundo
+                <PresaleForm setIsModalOpen={setIsModalOpen} foodDataForm={foodDataForm} setrefresh={setrefresh} isUpdate={isUpdate}/>
             </Modal>
         </>
     )

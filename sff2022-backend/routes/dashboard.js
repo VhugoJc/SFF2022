@@ -40,7 +40,14 @@ router.put('/seller',updateSellers);//update seller     [Dashboard]
 router.delete('/seller',deleteUser);//update seller     [Dashboard]
 
 //presales
-router.post('/presale',postPresale); //create new presale     [Dashboard]
+router.post('/presale',[
+    check('sellerId','El ID del equipo es obligatorio').not().isEmpty(),
+    check('name','El nombre es obligatorio').not().isEmpty(),
+    check('tortas','La cantidad de tortas es obligatoria').isNumeric(),
+    check('cost','El costo es obligatorio').isNumeric(),
+    fieldsValidation
+],postPresale); //create new presale     [Dashboard]
+
 router.get('/presale',getPresale); //get active presale     [Dashboard]
 router.put('/presale',updatePresale); //create new presale     [Dashboard]
 router.delete('/presale',deletePresale); //create new presale     [Dashboard]
