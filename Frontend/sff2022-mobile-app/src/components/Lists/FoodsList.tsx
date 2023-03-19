@@ -1,29 +1,56 @@
-import { Text, StyleSheet } from 'react-native';
-import React from 'react';
+import { Text, StyleSheet, Alert } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import { View, } from 'dripsy';
 import FoodCard from '../Cards/FoodCard';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import presalesdb from '../../db/presales.json';
+import { Presale } from '../../interfaces/PresaleInterface';
+import { userAPI } from '../../api/UserApi';
 
-export default function FoodList() {
-  const presales = presalesdb;
-  
-  
+interface Props{
+  refreshing: boolean
+}
+
+export default function FoodList({refreshing}:Props) {
+  // const presales = presalesdb;
+  const [presales, setPresales] = useState<Presale[]>([]);
+
+  useEffect(() => {
+    
+    const getPraseles = async () => {
+      try {
+        const response = await userAPI.get('/presale');
+        if (response?.data) {
+          setPresales(response.data);
+        }
+
+      } catch (err) {
+        Alert.alert('Error inesperado', 'Verifica tu conexión a internet', [{
+          text: 'Ok'
+        }])
+
+      }
+    }
+    if(!refreshing){
+      getPraseles();
+    }
+  }, [refreshing])
+
+
   const navigation = useNavigation<StackNavigationProp<any>>();
   return (
     <View sx={foodsList.container}>
       {
-        presales.map(presale=>{
-          return(
-            <FoodCard 
-            key={presale._id.$oid} 
-            title={presale.name}
-            price={presale.cost} 
-            img={{uri:presale.coverImg}} 
-            onPress={()=>navigation.navigate("Mi Comida",{
-              presaleData:presale
-            })} />
+        presales.map(presale => {
+          return (
+            <FoodCard
+              key={presale._id}
+              title={presale.name}
+              price={presale.cost}
+              img={{ uri: presale.coverImg }}
+              onPress={() => navigation.navigate("Mi Comida", {
+                presaleData: presale
+              })} />
           );
         })
       }

@@ -14,7 +14,7 @@ export default function FoodScreen({ route }: Props) {
 
   const [buttonActivated, setButtonActivated] = useState('Equipo');
   const status = typeof route.params !== 'undefined' ? route.params.status : null;
-  const [refreshing, setRefreshing] = React.useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = () => {
     setRefreshing(true);
@@ -53,7 +53,7 @@ export default function FoodScreen({ route }: Props) {
         {
           buttonActivated === 'Equipo'
             ? <TeamsList />
-            : <FoodList />
+            : <FoodList refreshing={refreshing}/>
         }
       </ScrollView>
     </View>

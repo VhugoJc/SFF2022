@@ -16,7 +16,7 @@ export default function ProductsList({ products }: Props) {
                         key={item.product._id}
                         name={item.product.name}
                         description={item.product.description}
-                        img={item.product.img}
+                        img={ item.product?.img ?item.product.img :'https://dicesabajio.com.mx/wp-content/uploads/2021/06/no-image.jpeg'}
                         amount={item.product.amount*item.sold}
                     />
                 })

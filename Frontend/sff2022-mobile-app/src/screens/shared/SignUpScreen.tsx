@@ -102,7 +102,7 @@ export default function SignUpScreen() {
                         ? <ActivityIndicator />
                         : <LargeBtn name={'Crear cuenta'} onPress={onClick} />
                 }
-                <LargeBtn name={'Crear cuenta'} onPress={onClick} />
+                
             </View>
             <View sx={loginScreen.txtContainer}>
                 <Text sx={styles.text}>

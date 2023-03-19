@@ -30,7 +30,7 @@ export default function ItemFoodScreen() {
 
     useEffect(() => {
         const favs = favsState.FoodIds;
-        const favExists = favs.find(item => item === presaleData._id.$oid);
+        const favExists = favs.find(item => item === presaleData._id);
         if (favExists) {
             setfavIcon(true);
         }
@@ -98,9 +98,8 @@ export default function ItemFoodScreen() {
                     <View sx={styles.flexDirection as any}>
                         {
                             presaleData.products.map((product: any) => {
-                                const myProduct = productdb.find(item => item._id.$oid === product.$oid);
                                 return (
-                                    <ProductsCard key={product.$oid} product={myProduct as ProductData} />
+                                    <ProductsCard key={product._id} product={product} />
                                 );
                             })
                         }

@@ -9,14 +9,15 @@ interface Props{
 }
 
 export default function ProductsCard({product}:Props) {
-
+    console.log(product);
+    
     return (
         <View sx={productsCard.container}>
             <Image
-                source={{uri:product.img}}
+                source={product?.img ?{uri:product.img} :{uri:'https://dicesabajio.com.mx/wp-content/uploads/2021/06/no-image.jpeg'}}
                 sx={productsCard.img}
             />
-            <Text sx={styles.text}>{`${product.amount} ${product.name}`}</Text>
+            <Text sx={styles.text}>{`${product.name}`}</Text>
             <Text sx={Object.assign({},styles.text,{color:'$blueLight'})}>{product.description} </Text>
         </View>
     )
