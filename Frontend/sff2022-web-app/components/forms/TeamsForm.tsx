@@ -20,9 +20,11 @@ function TeamsForm({ setrefresh, setIsModalOpen, teamData, isUpdate }: Props) {
     }, [teamData]);
 
     const onFinish = async (values: any) => {
-        const { name, description, imgs, tiktok, whatsapp, facebook, instagram } = values;
+        const { name, description, imgs, tiktok, whatsapp, facebook, instagram,logo } = values;
+        console.log(logo);
+        
         const data = {
-            name, description, imgs,_id:teamData?._id,
+            name, description, imgs,_id:teamData?._id, logo,
             socialMedia: { tiktok, whatsapp, facebook, instagram }
         }
         const options = { // Same url, different method between update and create
@@ -72,6 +74,9 @@ function TeamsForm({ setrefresh, setIsModalOpen, teamData, isUpdate }: Props) {
             </Form.Item>
             <Form.Item name='description'>
                 <Input.TextArea placeholder='Descripción' />
+            </Form.Item>
+            <Form.Item name='logo'  rules={[{required:true,type:'url',message:'La url no es válida'}]}>
+                <Input placeholder='Url del logo' />
             </Form.Item>
             Imagenes:
             <Form.List name="imgs">

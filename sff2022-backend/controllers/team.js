@@ -40,7 +40,15 @@ const deleteTeam = async (req=request, res=response)=>{
         res.json(err);
     }
 }
-
+const getTeamsById =  async (req = request, res = response) =>{
+    const {id} = req.params;
+    try{
+        const myTeams = await Team.findOne({$and:[{status:true},{_id:id}]}); // filter: status = true 
+        res.json(myTeams);
+    }catch(err){
+        res.json({err});
+    }
+}
 module.exports={
-    postTeam, getTeams, updateTeam, deleteTeam
+    postTeam, getTeams, updateTeam, deleteTeam,getTeamsById
 }

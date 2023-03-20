@@ -33,7 +33,10 @@ const teamSchema = Schema({
     description: {
         type: String
     },
-    logo: String,
+    logo: {
+        type:String,
+        require:true
+    },
     status: {
         type: Boolean,
         default:false

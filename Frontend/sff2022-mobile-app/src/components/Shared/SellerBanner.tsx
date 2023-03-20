@@ -1,11 +1,13 @@
 import { View, Text, Image } from 'dripsy'
 import React, { useEffect, useState } from 'react'
-import { StyleSheet } from 'react-native';
+import { Alert, StyleSheet } from 'react-native';
 import { styles } from '../../theme/stylesheet';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import teamsdb from '../../db/teams.json';
+import { userAPI } from '../../api/UserApi';
+import { TeamData } from '../../interfaces/UserInterfaces';
+
 
 
 interface Props {
@@ -14,9 +16,22 @@ interface Props {
 }
 
 
+
 export default function SellerBanner({ id, btnDisable=false }: Props) {
     const navigation = useNavigation<StackNavigationProp<any>>();
-    const team = teamsdb.find(item => item._id.$oid === id);
+    const [team, setteam] = useState<TeamData>();
+    useEffect(()=>{
+        const getTeam = async()=>{
+            const response = await userAPI.get('/team/'+id);
+            if(response.data){
+                setteam(response.data);
+            }else{
+                Alert.alert('Error de conexión');
+            }
+        }
+        getTeam();
+    },[]);
+
     return (
         <View>
             <View sx={seller.header as any}>

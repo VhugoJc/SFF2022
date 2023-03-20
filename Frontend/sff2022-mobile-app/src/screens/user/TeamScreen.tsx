@@ -22,7 +22,6 @@ export default function TeamScreen() {
     const navigation = useNavigation<StackNavigationProp<any>>();
     const route = useRoute<any>();
     const { teamData } = route.params;
-    // const presales = presalesdb.filter(presale => presale.sellerId.$oid === teamData._id.$oid);
     const [presales, setpresales] = useState<Presale[]>([]);
     const [refreshing, setRefreshing] = React.useState(false);
 

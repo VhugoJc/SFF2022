@@ -46,7 +46,8 @@ function ListTeams({ }: Props) {
             facebook:"",
             whatsapp:"",
             tiktok: "",
-            instagram: ""
+            instagram: "",
+            logo:""
         });
         setIsModalOpen(true);
         setisUpdate(false);
@@ -63,7 +64,8 @@ function ListTeams({ }: Props) {
             facebook:teamData?.socialMedia.facebook,
             whatsapp: teamData?.socialMedia.whatsapp,
             tiktok: teamData?.socialMedia.tiktok,
-            instagram: teamData?.socialMedia.instagram
+            instagram: teamData?.socialMedia.instagram,
+            logo:teamData?.logo
         });
         setIsModalOpen(true);
         setisUpdate(true);

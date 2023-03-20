@@ -106,8 +106,8 @@ export default function ItemFoodScreen() {
                 </ScrollView>
                 {
                     authState.user?.role === 'ADMIN_ROLE'
-                        ? <PresaleAdminData id={presaleData._id.$oid} />
-                        : <SellerBanner id={presaleData.sellerId.$oid} />
+                        ? <PresaleAdminData id={presaleData._id} />
+                        : <SellerBanner id={presaleData.sellerId} />
 
                 }
 
