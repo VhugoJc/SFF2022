@@ -32,9 +32,6 @@ interface ErrorUser {
     code?: number;
 }
 
-export interface idDB{
-    $oid: string
-}
 export interface SocialMediaInterface{
     facebook:string,
     instagram:string,
@@ -61,12 +58,12 @@ export interface TeamData{
 }
 
 export interface PresaleData{
-    _id:idDB,
+    _id:string,
     cost:number,
     coverImg:string,
     description:string,
     products:Array<ProductData>,
-    sellerId:idDB,
+    sellerId:string,
     name:string,
 }
 

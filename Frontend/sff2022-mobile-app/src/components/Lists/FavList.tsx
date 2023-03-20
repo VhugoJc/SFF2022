@@ -5,10 +5,11 @@ import FoodCard from '../Cards/FoodCard';
 import { useContext } from 'react';
 import { FavContext } from '../../context/FavsContext/FavsContext';
 import { PresaleData } from '../../interfaces/UserInterfaces';
-import presalesdb from '../../db/presales.json';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { styles } from '../../theme/stylesheet';
+import { userAPI } from '../../api/UserApi';
+import { Presale } from '../../interfaces/PresaleInterface'
 
 export default function FavList() {
     const { favsState } = useContext(FavContext);
@@ -16,12 +17,17 @@ export default function FavList() {
     const navigation = useNavigation<StackNavigationProp<any>>();
 
     useEffect(() => {
+        const getPresale = async () => {
+            const response = await userAPI.get('/presale');
+            if (response.data) {
+                const auxArray: any = favsState.FoodIds.map(foodId => {
+                    return response.data.find((item: Presale) => item._id === foodId);
+                });
+                setfavFood(auxArray);
+            }
+        }
         if (favsState.FoodIds.length > 0) {
-            const auxArray: any = favsState.FoodIds.map(foodId => {
-                return presalesdb.find(item => item._id.$oid === foodId);
-            });
-            setfavFood(auxArray);
-
+            getPresale();
         } else {
             setfavFood([]);
         }
@@ -33,16 +39,18 @@ export default function FavList() {
                 favFood.length > 0
 
                     ? (favFood.map((fav) => {
-                        return <FoodCard
-                            key={fav._id.$oid}
-                            title={fav.name}
-                            price={fav.cost}
-                            img={{ uri: fav.coverImg }}
-                            onPress={() => navigation.navigate("Mi Comida Fav", {
-                                presaleData: fav
-                            })}
-                            fav // favorites icon
-                        />
+                        if (fav) {
+                            return <FoodCard
+                                key={fav._id}
+                                title={fav.name}
+                                price={fav.cost}
+                                img={{ uri: fav.coverImg }}
+                                onPress={() => navigation.navigate("Mi Comida Fav", {
+                                    presaleData: fav
+                                })}
+                                fav // favorites icon
+                            />
+                        }
                     }))
                     : (
                         <View sx={favList.empty}>

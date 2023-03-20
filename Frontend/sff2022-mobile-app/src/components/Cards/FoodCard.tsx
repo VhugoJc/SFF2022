@@ -5,7 +5,6 @@ import { Icon } from '@rneui/base';
 import { View, Text, Image } from 'dripsy';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import CircleBtn from '../Button/CircleBtn';
-import { idDB } from '../../interfaces/UserInterfaces';
 
 interface FoodCardProps {
     img: ImageSourcePropType,
@@ -14,7 +13,7 @@ interface FoodCardProps {
     paid?: boolean,
     fav?: boolean,
     edit?: boolean,
-    _id?: idDB
+    _id?: string
     onPress?(): void
 }
 export default function FoodCard({ img, title, price, paid = false, fav = false, edit = false, onPress }: FoodCardProps) {

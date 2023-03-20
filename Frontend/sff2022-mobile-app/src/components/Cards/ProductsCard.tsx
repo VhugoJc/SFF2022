@@ -9,8 +9,6 @@ interface Props{
 }
 
 export default function ProductsCard({product}:Props) {
-    console.log(product);
-    
     return (
         <View sx={productsCard.container}>
             <Image

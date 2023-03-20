@@ -2,13 +2,12 @@ import React, { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import {View, Text, Image, } from 'dripsy';
 import { styles } from '../../theme/stylesheet';
-import { idDB } from '../../interfaces/UserInterfaces';
 import SellerBanner from '../../components/Shared/SellerBanner';
 import { io } from "socket.io-client";
 import { baseSocketURL } from '../../api/SocketApi';
 
 interface Props{
-    id: idDB
+    id: string
 }
 export default function SuccessfulSaleScreen({id}:Props) {
     const socket = io(baseSocketURL);
@@ -24,7 +23,7 @@ export default function SuccessfulSaleScreen({id}:Props) {
             <Text sx={Object.assign({},styles.text,suuccessfulScreen.instructionsText)}>
                 Tu preventa ha sido registrada con éxito, por favor  verifica que aparezca en la lista de “Mis Preventas”.
             </Text>
-            <SellerBanner id={id.$oid}/>
+            <SellerBanner id={id}/>
             <Image sx={suuccessfulScreen.imageHand} source={require('../../../assets/img/hand_illustration.png')}/>
         </View>
     )

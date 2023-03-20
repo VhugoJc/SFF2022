@@ -33,8 +33,6 @@ export default function TeamsList() {
         <View sx={teamsList.container}>
             {
                 teams.map(team => {
-                    console.log(team.imgs[0]);
-                    
                     return (
                         <TeamCard key={team._id} img={{uri: team.imgs[0]}} onPress={() => navigation.navigate("Equipo", {
                             teamData: team

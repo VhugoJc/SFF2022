@@ -8,7 +8,6 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { useState, useContext } from 'react';
 import ProductsCard from '../../components/Cards/ProductsCard';
 import LargeBtn from '../../components/Button/LargeBtn';
-import { ProductData, idDB } from '../../interfaces/UserInterfaces';
 import SellerBanner from '../../components/Shared/SellerBanner';
 import { FavContext } from '../../context/FavsContext/FavsContext';
 import { AuthContext } from '../../context/authContext/AuthContext';
@@ -46,7 +45,7 @@ export default function ItemFoodScreen() {
         }
     }
 
-    const handleFavs = (id: idDB) => {
+    const handleFavs = (id: string) => {
         if (!favIcon) {
             addFood(id);
             setfavIcon(true);

@@ -1,7 +1,6 @@
 import React, { createContext, useEffect, useReducer } from "react"
 import { favReducer } from './FavReducer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { idDB } from '../../interfaces/UserInterfaces';
 
 export interface FavsState {
     FoodIds:string[]
@@ -15,8 +14,8 @@ export const favInitialState: FavsState ={
 //what share the context
 export interface FavsContextProps {
     favsState: FavsState;
-    addFood:(id:idDB)=>void
-    deleteFood:(id:idDB)=>void,
+    addFood:(id:string)=>void
+    deleteFood:(id:string)=>void,
     empty:()=>void
 }
 
@@ -39,16 +38,16 @@ export default function FavProvider({children}:any) {
         dispatch({type:'AddFood',payload:{newArray:favsFoodArray}});
     }
 
-    const addFood = async(id:idDB)=>{
-        let newArray=[...favsState.FoodIds,id.$oid];
+    const addFood = async(id:string)=>{
+        let newArray=[...favsState.FoodIds,id];
         await AsyncStorage.setItem('favs', JSON.stringify(newArray));
         dispatch({type:'AddFood',payload:{newArray}});
         console.log(favsState.FoodIds);
         
     }
-    const deleteFood = async(id:idDB)=>{
+    const deleteFood = async(id:string)=>{
         let newArray = favsState.FoodIds;
-        newArray = newArray.filter(item=>item!==id.$oid);
+        newArray = newArray.filter(item=>item!==id);
         await AsyncStorage.setItem('favs', JSON.stringify(newArray));
         dispatch({type:'DeleteFood',payload:{newArray:newArray}})
     }

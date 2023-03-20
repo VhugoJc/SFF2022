@@ -1,4 +1,4 @@
-import { StyleSheet, RefreshControl } from 'react-native';
+import { StyleSheet, RefreshControl, Alert } from 'react-native';
 import React, { useEffect, useState } from 'react'
 import { View, Text, ScrollView } from 'dripsy';
 import FixedBtn from '../../components/Shared/FixedBtn';
@@ -22,7 +22,7 @@ export default function ProductsScreen() {
             const response = await userAPI.get('/product');
             setproducts(response.data.data);
         } catch (err) {
-            console.log(err);
+            Alert.alert('Error de conexión');
 
         }
     }

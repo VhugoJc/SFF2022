@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { StyleSheet } from 'react-native';
 import { styles } from '../../theme/stylesheet';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { idDB, TeamData } from '../../interfaces/UserInterfaces';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import teamsdb from '../../db/teams.json';
