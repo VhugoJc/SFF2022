@@ -1,5 +1,5 @@
-import { ScrollView, StyleSheet, ImageBackground, TouchableOpacity, RefreshControl } from 'react-native';
-import React from 'react';
+import { ScrollView, StyleSheet, ImageBackground, TouchableOpacity, RefreshControl, Alert } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import { View, Text, Image } from 'dripsy';
 import { Icon } from '@rneui/base';
 import ImagesCarousel from '../../components/Banner/ImagesCarousel';
@@ -9,7 +9,9 @@ import FoodDescriptionCard from '../../components/Cards/FoodDescriptionCard';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import teamsdb from '../../db/teams.json';
-import presalesdb from '../../db/presales.json';
+import { Presale } from '../../interfaces/SalesInterface';
+import { userAPI } from '../../api/UserApi';
+// import presalesdb from '../../db/presales.json';
 
 
 interface Props {
@@ -20,7 +22,8 @@ export default function TeamScreen() {
     const navigation = useNavigation<StackNavigationProp<any>>();
     const route = useRoute<any>();
     const { teamData } = route.params;
-    const presales = presalesdb.filter(presale => presale.sellerId.$oid === teamData._id.$oid);
+    // const presales = presalesdb.filter(presale => presale.sellerId.$oid === teamData._id.$oid);
+    const [presales, setpresales] = useState<Presale[]>([]);
     const [refreshing, setRefreshing] = React.useState(false);
 
     const onRefresh = () => {
@@ -30,7 +33,19 @@ export default function TeamScreen() {
         }, 500);
     }
 
-
+    useEffect(()=>{
+        const getPresales = async() =>{
+            try {
+                const response = await userAPI.get('presale/'+teamData._id);
+                if(response?.data){
+                    setpresales(response.data);
+                }
+            } catch (error) {
+                Alert.alert('Error al obtener los combos');
+            }
+        }
+        getPresales();
+    },[])
 
 
     const teams = teamsdb;
@@ -78,7 +93,8 @@ export default function TeamScreen() {
                     </Text>
                     {
                         presales.map(food => {
-                            return <FoodDescriptionCard presale={food} key={food._id.$oid} />
+                            
+                            return <FoodDescriptionCard presale={food} key={food._id} />
                         })
                     }
                 </View>

@@ -1,4 +1,4 @@
-import { Text, StyleSheet, Alert } from 'react-native';
+import { Text, StyleSheet, Alert,ImageBackground } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { View, } from 'dripsy';
 import FoodCard from '../Cards/FoodCard';

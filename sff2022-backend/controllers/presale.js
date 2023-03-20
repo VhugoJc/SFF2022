@@ -1,4 +1,4 @@
-const { response } = require("express");
+const { response, request } = require("express");
 const Presale = require("../models/presale");
 
 const postPresale = async (req, res = response) => {
@@ -20,7 +20,6 @@ const postPresale = async (req, res = response) => {
         res.json({ err });
     }
 };
-
 const getPresale = async (req, res = response) => {
     try {
         const presales = await Presale.find({ $or: [{ status: true }] });
@@ -29,7 +28,6 @@ const getPresale = async (req, res = response) => {
         res.json(err);
     }
 };
-
 const updatePresale = async (req, res = response) => {
     const data = req.body;
     try {
@@ -48,9 +46,20 @@ const deletePresale = async (req, res = response) => {
         res.json(err);
     }
 }
+const getPresaleById = async (req=request, res = response)=>{
+    const data = req.params;
+    console.log(data);
+    try {
+        const presales = await Presale.find({$and: [{status:true},{sellerId:data.sellerId}]});
+        res.json(presales);
+    } catch (err) {
+        res.json(err);
+    }
+}
 module.exports = {
     postPresale,
     getPresale,
     updatePresale,
-    deletePresale
+    deletePresale,
+    getPresaleById
 };

@@ -42,7 +42,7 @@ export interface SocialMediaInterface{
     twitter:string
 }
 export interface ProductData{
-    _id:idDB,
+    _id:string,
     amount:number,
     category:string,
     description:string,
@@ -51,7 +51,7 @@ export interface ProductData{
 }
 export interface TeamData{
     __v:number,
-    _id:idDB,
+    _id:string,
     description:string,
     imgs:Array<string>,
     logo:string,
