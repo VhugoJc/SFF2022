@@ -4,7 +4,6 @@ import PresaleSoldCard from '../Cards/PresaleSoldCard';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { userAPI } from '../../api/UserApi';
-import presalesdb from '../../db/presales.json';
 import { ScrollView } from 'dripsy';
 
 export default function SalesList({ searcher }: any) {
@@ -79,7 +78,7 @@ export default function SalesList({ searcher }: any) {
                                 clientName={`${item.clienData.name} ${item.clienData.lastname}`}
                                 onPress={() => navigation.navigate("Mi Preventa", {
                                     amount: item.amount,
-                                    presale: presalesdb.find(presale => presale._id.$oid === item.presaleId),
+                                    presale: item,
                                     cost: item.cost,
                                     _id: item._id,
                                     saleDate: item.saleDate,

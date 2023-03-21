@@ -8,8 +8,8 @@ import CircleBtn from '../Button/CircleBtn';
 
 interface FoodCardProps {
     img: ImageSourcePropType,
-    title: string,
-    price: number,
+    title?: string,
+    price?: number,
     paid?: boolean,
     fav?: boolean,
     edit?: boolean,
@@ -37,7 +37,7 @@ export default function FoodCard({ img, title, price, paid = false, fav = false,
                     }
                 </ImageBackground>
                 <Text sx={Object.assign({}, styles.text, { textTransform: 'uppercase' }) as object}>{title}</Text>
-                <Text sx={styles.blueLabel}>${price.toFixed(2)}</Text>
+                <Text sx={styles.blueLabel}>${price ?price.toFixed(2) :null}</Text>
             </View>
         </TouchableOpacity>
     )

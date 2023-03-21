@@ -10,6 +10,8 @@ import { useContext } from 'react';
 import { AuthContext } from '../../context/authContext/AuthContext';
 import { PresaleDataSale } from '../../interfaces/UserInterfaces';
 import teamsdb from '../../db/teams.json';
+import { userAPI } from '../../api/UserApi';
+import { Alert } from 'react-native';
 
 export default function SelingPresaleScreen() {
   const navigation = useNavigation(); //navigation between screens
@@ -20,17 +22,24 @@ export default function SelingPresaleScreen() {
 
   const [screenQR, setScreenQR] = useState('check'); // var which control the screen info
   const [presaleDataSale, setpresaleDataSale] = useState<PresaleDataSale>({//data about the sale
-    presaleId: presale._id.$oid,
+    presaleId: presale._id,
     userId: authState.user?._uid,
     amount: 0,
   });
 
-  useEffect(() => {
-    const team = teamsdb.find(team => team._id.$oid === presale.sellerId.$oid);
-    setsellerLogo(team?.logo);
-  }, [])
+  useEffect(()=>{
+    const getTeam = async()=>{
+        const response = await userAPI.get('/team/'+presale.sellerId);
+        if(response.data){
+          setsellerLogo(response.data.logo);
+        }else{
+            Alert.alert('Error de conexión');
+        }
+    }
+    getTeam();
+},[]);
 
-  const setScreen = (amount: number, screen: string) => {
+const setScreen = (amount: number, screen: string) => {
     if (amount) {
       setpresaleDataSale({ ...presaleDataSale, amount });
     }

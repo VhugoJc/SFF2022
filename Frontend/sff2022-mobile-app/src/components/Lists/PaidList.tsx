@@ -7,6 +7,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { userAPI } from '../../api/UserApi';
 import presalesdb from '../../db/presales.json';
 import { styles } from '../../theme/stylesheet';
+import { Presale } from '../../interfaces/SalesInterface';
 
 
 export default function PaidList() {
@@ -84,10 +85,22 @@ export default function PaidList() {
 
 function PaidFoodCard({ id, presaleSoldData }: any) {
   const navigation = useNavigation<StackNavigationProp<any>>();
-  const presale = presalesdb.find(presale => presale._id.$oid === id);
-
-  const { name, coverImg }: any = presale;
+  const [presale, setpresale] = useState<Presale>();
   const { amount, cost, _id, saleDate, SellerTeamId } = presaleSoldData;
+
+  useEffect(()=>{ 
+    const getPresaleData = async()=>{
+      try {
+        const response = await userAPI('/presale/byid/'+id);
+        if(response.data){
+          setpresale(response.data);
+        }
+      } catch (error) {
+        Alert.alert('Error cargando las preventas');
+      }
+    }
+    getPresaleData();
+  },[]);
 
   return (
     <FoodCard
@@ -100,9 +113,9 @@ function PaidFoodCard({ id, presaleSoldData }: any) {
         SellerTeamId
       })}
       paid
-      title={name}
-      price={cost}
-      img={{ uri: coverImg }} />
+      title={presale?.name}
+      price={presale?.cost}
+      img={{ uri: presale?.coverImg }} />
   );
 }
 

@@ -46,12 +46,20 @@ const deletePresale = async (req, res = response) => {
         res.json(err);
     }
 }
-const getPresaleById = async (req=request, res = response)=>{
+const getPresaleBSelleryId = async (req=request, res = response)=>{
     const data = req.params;
-    console.log(data);
     try {
         const presales = await Presale.find({$and: [{status:true},{sellerId:data.sellerId}]});
         res.json(presales);
+    } catch (err) {
+        res.json(err);
+    }
+}
+const getPresaleById = async (req=request, res = response)=>{
+    const data = req.params;
+    try {
+        const presale = await Presale.findOne({$and: [{status:true},{_id:data.id}]});
+        res.json(presale);
     } catch (err) {
         res.json(err);
     }
@@ -61,5 +69,6 @@ module.exports = {
     getPresale,
     updatePresale,
     deletePresale,
-    getPresaleById
+    getPresaleById,
+    getPresaleBSelleryId
 };

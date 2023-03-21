@@ -1,14 +1,20 @@
 import { ImageBackground, StyleSheet, RefreshControl } from 'react-native';
-import React, { useEffect,useState } from 'react'
+import React, { useContext, useEffect,useState } from 'react'
 import { Image, ScrollView, Text, View, } from 'dripsy';
 import { styles } from '../../theme/stylesheet';
 import WeekSalesChart from '../../components/Charts/WeekSalesChart';
 import MyTeamMates from '../../components/Lists/MyTeamMates';
 import { userAPI } from '../../api/UserApi';
 
+import { AuthContext } from '../../context/authContext/AuthContext';
+import SellerBanner from '../../components/Shared/SellerBanner';
+
 export default function HomeAdminScreen() {
     const [refreshing, setRefreshing] = useState(false);
     const [total, settotal] = useState(0);
+    const { logOut, loading, authState } = useContext(AuthContext);
+    const { user } = authState;
+
     const getApi = async () => {
         try {
             const response = await userAPI.get('/sale/total-team');
@@ -47,7 +53,7 @@ export default function HomeAdminScreen() {
                 </ImageBackground>
             </View>
             <View>
-                <Image sx={styles.imageTeanm} source={require('../../../assets/img/team1.png')} />
+                <SellerBanner btnDisable id={user?.team ?user.team :''}/>
                 <View sx={homeAdmnScreen.sales as Object}>
                     <Text sx={styles.subtitle}>
                         Ventas Totales

@@ -10,6 +10,7 @@ export interface User {
     role: string;
     status: boolean;
     _uid: string;
+    team?: string;
 }
 
 export interface loginResponse {

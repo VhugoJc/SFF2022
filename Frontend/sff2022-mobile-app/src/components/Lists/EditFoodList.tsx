@@ -1,25 +1,29 @@
-import { StyleSheet } from 'react-native';
-import React, { useContext } from 'react'
+import { Alert, StyleSheet } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react'
 import FoodCard from '../Cards/FoodCard';
 import { View, Text } from 'dripsy';
-import presalesdb from '../../db/presales.json';
 import { AuthContext } from '../../context/authContext/AuthContext';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { Presale } from '../../interfaces/SalesInterface';
+import { userAPI } from '../../api/UserApi';
 
-export default function EditFoodList() {
+interface Props{
+    presales: Array<Presale>
+}
+export default function EditFoodList({presales}:Props) {
     const { authState } = useContext(AuthContext);
-    const { user }: any = authState;
-    const presales = presalesdb.filter(item => item.sellerId.$oid === user.team);
+    const { user } = authState;
+    
     const navigation = useNavigation<StackNavigationProp<any>>();
-
+    
     return (
         <View sx={editFoodList.container}>
             {
-                presales
+                presales.length>0
                     ? presales.map(item => {
                         return <FoodCard
-                            key={item._id.$oid}
+                            key={item._id}
                             title={item.name}
                             price={item.cost}
                             img={{ uri: item.coverImg }}
@@ -28,7 +32,7 @@ export default function EditFoodList() {
                             })}
                         />
                     })
-                    : null
+                    : <Text>[]</Text>
             }
         </View>
     )
