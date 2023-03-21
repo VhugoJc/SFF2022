@@ -11,10 +11,10 @@ const moment = require('moment');
 const login = async (req, res = response) => {
 
     const { email, password } = req.body;
-
+    
     try {
         // check if the email already exists
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ email:email.toLowerCase() });
         if (!user) {
             return res.status(400).json({
                 msg: 'Contraseña o correo incorrectos'
@@ -79,7 +79,7 @@ const confirmEmail = async (req, res = response) => {
 }
 const passwordRecovery = async (req, res = response) => {
     const { email } = req.body;
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email:email.toLowerCase()  });
     const today = moment();
     try {
         if (user) { //if the user exists:

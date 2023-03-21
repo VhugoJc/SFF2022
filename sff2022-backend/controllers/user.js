@@ -14,11 +14,11 @@ const postUser = async (req = request, res = response) => {
     let newUserCreated = false;
     const uuid = uuidv4();
     try {
-        const newUser = new User({ name, lastname, email, password });
+        const newUser = new User({ name, lastname, email:email.toLowerCase(), password });
         //email validation
-        const emailExists = await User.findOne({ email });
+        const emailExists = await User.findOne({ email:email.toLowerCase() });
         if (emailExists) {
-            throw { error: { message: "El correo ya existe" } }
+            return res.status(500).json({message:'El correo ya ha sido creado'});
         }
         //encript password
         const salt = bcrypt.genSaltSync();
@@ -48,11 +48,11 @@ const postSeller = async (req = request, res = response) => {
     const { name, lastname, email, password,team } = req.body;
     const uuid = uuidv4();
     try {
-        const newUser = new User({ name, lastname, email, password, status:true,role:'ADMIN_ROLE',team}); //status true, role admin
+        const newUser = new User({ name, lastname, email:email.toLowerCase(), password, status:true,role:'ADMIN_ROLE',team}); //status true, role admin
         //email validation
-        const emailExists = await User.findOne({ email });
+        const emailExists = await User.findOne({ email:email.toLowerCase() });
         if (emailExists) {
-            throw { error: { message: "El correo ya existe" } }
+            return res.status(500).json({message:'El correo ya ha sido creado'});
         }
         //encript password
         const salt = bcrypt.genSaltSync();
