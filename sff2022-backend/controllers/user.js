@@ -79,7 +79,15 @@ const getSellers = async(req=request, res=response) => {
     }
 }
 const updateSellers= async(req=request, res=response) => {
-    const data = req.body;
+    let data = req.body;
+    const uuid = uuidv4();
+    
+    
+    if(data?.password && typeof data?.password !== 'undefined'){
+        //encript password
+        const salt = bcrypt.genSaltSync();
+        data.password=bcrypt.hashSync(data.password, salt);
+    }
     try {
         await User.updateOne({_id:data._uid},data);
         res.json({message:"Exitoso"})
