@@ -14,6 +14,7 @@ export default function TeamsList() {
     const [teams, setteams] = useState<TeamData[]>([]);
 
     useEffect(() => {
+        let isMounted = true;
         const getTeam = async () => {
             try {
                 const response = await userAPI.get('/team');
@@ -25,6 +26,10 @@ export default function TeamsList() {
                     text: 'Ok'
                 }])
             }
+            return () => {
+                // 👇️ when the component unmounts, set isMounted to false
+                isMounted = false;
+            };
         }
         getTeam();
     }, [])
@@ -34,7 +39,7 @@ export default function TeamsList() {
             {
                 teams.map(team => {
                     return (
-                        <TeamCard key={team._id} img={{uri: team.imgs[0]}} onPress={() => navigation.navigate("Equipo", {
+                        <TeamCard key={team._id} img={{ uri: team.imgs[0] }} onPress={() => navigation.navigate("Equipo", {
                             teamData: team
                         })} />
                     )
