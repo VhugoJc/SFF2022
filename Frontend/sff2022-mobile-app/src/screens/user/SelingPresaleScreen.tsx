@@ -48,7 +48,7 @@ const setScreen = (amount: number, screen: string) => {
 
 
   return (
-    <ScrollView bounces={false} sx={styles.basicBackgnd}>
+    <ScrollView bounces={false} sx={Object.assign({},styles.basicBackgnd,{flex:1})}>
       <View>
         <CircleBtn onPress={() => navigation.goBack()} name='close' />
       </View>

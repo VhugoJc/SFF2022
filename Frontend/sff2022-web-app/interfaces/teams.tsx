@@ -17,7 +17,7 @@ export interface Team{
 export interface TeamForm{
     _id?:String,
     name: String | undefined,
-    logo: String | undefined,
+    logo: String| undefined | any,
     imgs: Array<String| undefined> | any,
     description: String | undefined,
     facebook:String | undefined,

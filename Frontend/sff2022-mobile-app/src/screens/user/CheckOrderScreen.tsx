@@ -61,6 +61,7 @@ export default function CheckOrderScreen({setScreen,presale,}:Props) {
 
 const checkOrder = StyleSheet.create({
     container: {
+        flex: 1,
         top: '$4',
         paddingHorizontal: '$3'
     },
@@ -79,6 +80,7 @@ const checkOrder = StyleSheet.create({
     },
     btnContainer: {
         marginTop: '$4',
-        alignItems: 'center'
+        alignItems: 'center',
+        height: 200
     }
 });

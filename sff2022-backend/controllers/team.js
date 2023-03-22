@@ -23,7 +23,6 @@ const getTeams =  async (req = request, res = response) =>{
 }
 const updateTeam = async (req=request,res=response) =>{
     const data = req.body; //team object complete with all data which will be changed
-    console.log(data);
     try {
         await Team.updateOne({_id:data._id},data);
         res.json({message:"Exitoso"});

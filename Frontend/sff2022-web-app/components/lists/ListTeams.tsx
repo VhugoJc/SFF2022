@@ -97,7 +97,7 @@ function ListTeams({ }: Props) {
                                     <img
                                         width={272}
                                         alt="logo"
-                                        src={item.imgs![0] ? item.imgs![0] : "https://www.nbmchealth.com/wp-content/uploads/2018/04/default-placeholder.png"}
+                                        src={item?.logo ? item?.logo : "https://www.nbmchealth.com/wp-content/uploads/2018/04/default-placeholder.png"}
                                     />
                                 }
                             >

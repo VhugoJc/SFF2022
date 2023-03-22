@@ -5,7 +5,7 @@ export interface PreliminarySaleData {
    }
    
    export interface Presale {
-    __v:         number;
+    __v?:         number;
     _id:         string;
     cost:        number;
     coverImg:    string;
