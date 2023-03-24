@@ -21,3 +21,15 @@ Once you have these dependencies installed, you can clone the SFF2022 repository
 
 ```bash
 git clone https://github.com/VhugoJc/SFF2022.git
+
+Next, navigate into the project directory:
+```bash
+cd SFF2022
+
+Install the project dependencies:
+```bash
+npm install
+Finally, start the development server:
+```bash
+npm run dev
+The SFF2022 app should now be running on http://localhost:3000.
