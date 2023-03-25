@@ -19,6 +19,13 @@ function SettingsForm({ }: Props) {
                 layout="horizontal"
             >
                 <Form.Item
+                    name="website"
+                    label="Sitio web"
+                    rules={[{ required: true }, { type: 'url', warningOnly: true }, { type: 'string', min: 6 }]}
+                >
+                    <Input placeholder="Url sitio de contacto" />
+                </Form.Item>
+                <Form.Item
                     name="logo"
                     label="Logo"
                     rules={[{ required: true }, { type: 'url', warningOnly: true }, { type: 'string', min: 6 }]}
