@@ -44,10 +44,23 @@ const getSponsors=async(req=request,res=response)=>{
         res.json(error);
     }
 }
+const getSettingsData=async(req=request,res=response)=>{
+    const query = { name: "Settings" };
+    try {
+        let mySettings = await Settings.findOne(query);
+        delete mySettings.events;
+        delete mySettings.sponsors;
+
+        res.json({settings:mySettings});
+    } catch (error) {
+        res.json(error);
+    }
+}
 
 module.exports={
     getEvents,
     postSettings,
     getSponsors,
-    getSettings
+    getSettings,
+    getSettingsData
 }

@@ -25,16 +25,46 @@ const sponsorSchema = Schema({
 });
 
 const settingsScrema = Schema({
-    name:String,
-    webSite:String,
-    logo:String,
-    date: Date,
+    name:{
+        type:String,
+        required:true
+    },
+    webSite:{
+        type:String,
+        required:true
+    },
+    logo:{
+        type:String,
+        required:true
+    },
+    date: {
+        type:Date,
+        required:false
+    },
+    homeData:{
+        title:{
+            type:String,
+            required:true
+        },
+        description:{
+            type:String,
+            required:true
+        },
+        url:{
+            type:String,
+            required:true
+        },
+        img:{
+            type:String,
+            required:true
+        },
+    },
     sponsors:{
         type: [sponsorSchema]
     },
     events:{
         type: [eventsSchema]
-    }
+    },
 })
 
 settingsScrema.methods.toJSON = function(){
