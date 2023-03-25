@@ -19,19 +19,19 @@ export default function TeamsList() {
             try {
                 const response = await userAPI.get('/team');
                 if (response?.data) {
-                    setteams(response.data);
+                    if(isMounted) setteams(response.data);
                 }
             } catch (error) {
                 Alert.alert('Error inesperado', 'Verifica tu conexión a internet', [{
                     text: 'Ok'
                 }])
             }
-            return () => {
-                // 👇️ when the component unmounts, set isMounted to false
-                isMounted = false;
-            };
         }
         getTeam();
+        return () => {
+            // 👇️ when the component unmounts, set isMounted to false
+            isMounted = false;
+        };
     }, [])
 
     return (

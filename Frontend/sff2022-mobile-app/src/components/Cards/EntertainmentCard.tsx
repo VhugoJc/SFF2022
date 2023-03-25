@@ -4,16 +4,19 @@ import { View, Text,} from 'dripsy';
 import { styles } from '../../theme/stylesheet';
 
 interface Props{
-    img: ImageSourcePropType,
+    img: string,
     title:string,
-    date: Date
+    date: String
 }
 
 export default function EntertainmentCard({img,title,date}:Props) {
     return (
-        <ImageBackground imageStyle={entertainmentCard.imgBckg}  source={img}>
+        <ImageBackground imageStyle={entertainmentCard.imgBckg}  source={{uri:img}}>
             <View sx={entertainmentCard.container}>
-                
+                <Text sx={entertainmentCard.title}>
+                    {title}
+                </Text>
+                <Text sx={entertainmentCard.date}>{date.toString()}</Text>
             </View>
         </ImageBackground>
     )
@@ -31,9 +34,16 @@ const entertainmentCard = StyleSheet.create({
         justifyContent:'center',
         padding:'$3',
         height:150,
+        backgroundColor:'$primaryTransparent',
     },
     title:{
         color: '$light',
-        textTransform:'uppercase'
+        textTransform:'uppercase',
+        fontWeight:'700'
+    },
+    date:{
+        color: '$light',
+        fontSize:12
+
     }
 });

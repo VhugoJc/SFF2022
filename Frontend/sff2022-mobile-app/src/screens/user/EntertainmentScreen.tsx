@@ -1,56 +1,52 @@
-import {StyleSheet } from 'react-native';
-import React, { useState } from 'react';
+import { Alert, RefreshControl, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView } from 'dripsy';
 import EntrreteinmentCard from '../../components/Cards/EntertainmentCard';
+import { Event } from '../../interfaces/EventInterface';
+import { userAPI } from '../../api/UserApi';
 
 
 export default function Entreteinment() {
-    const [events, setEvents] = useState([
-        {
-            id:1,
-            img: require('../../../assets/img/ent_1.png'),
-            date: new Date('December 17, 1995 11:00:00'),
-            title:'Inaguracion'
-        },
-        {
-            id:2,
-            img: require('../../../assets/img/ent_2.png'),
-            date: new Date('December 17, 1995 12:00:00'),
-            title:'DJ Kevin Bautista'
-        },
-        {
-            id:3,
-            img: require('../../../assets/img/ent_3.png'),
-            date: new Date('December 17, 1995 12:30:00'),
-            title:'Stones Rec'
-        },
-        // {
-        //     id:4,
-        //     img: require('../../../assets/img/ent_4.jpg'),
-        //     date: new Date('December 17, 1995 13:00:00'),
-        //     title:'Coro UPSLP'
-        // },
-        // {
-        //     id:5,
-        //     img: require('../../../assets/img/ent_5.jpg'),
-        //     date: new Date('December 17, 1995 14:00:00'),
-        //     title:'Vital Banda'
-        // },
-        // {
-        //     id:6,
-        //     img: require('../../../assets/img/ent_6.jpg'),
-        //     date: new Date('December 17, 1995 13:00:00'),
-        //     title:'Mariachi'
-        // }
-    ])
+    const [events, setevents] = useState<Event[]>([]);
+    const [refreshing, setRefreshing] = useState(false);
+
+
+    useEffect(() => {
+        const getEvents = async () => {
+            try {
+                const myEvents = await userAPI.get('/settings/event');
+                setevents(myEvents.data.events);
+
+            } catch (error) {
+                Alert.alert('Error cargando los datos');
+            }
+        }
+        getEvents();
+    }, [refreshing]);
+
+    const onRefresh = () => {
+        setRefreshing(true);
+        setTimeout(function () {
+            setRefreshing(false);
+        }, 500);
+    }
+
     return (
-        <ScrollView bounces={false} sx={entreteinment.scrollView}>
+        <ScrollView
+            sx={entreteinment.scrollView}
+            refreshControl={
+                <RefreshControl
+                    refreshing={refreshing}
+                    onRefresh={onRefresh}
+                />
+            }
+        >
             <View sx={entreteinment.container}>
                 {
-                    events.map(event=>{
-                        return(
+                    events.map(event => {
+                        return (
                             <View sx={entreteinment.card}
-                            key={event.id} 
+                                key={event._id}
                             >
                                 <EntrreteinmentCard
                                     img={event.img}
@@ -61,22 +57,23 @@ export default function Entreteinment() {
                         );
                     })
                 }
-                
-        </View>
+
+            </View>
         </ScrollView>
     )
 }
 const entreteinment = StyleSheet.create({
-    container:{
-        backgroundColor:'$background',
-        flex:1,
+    container: {
+        backgroundColor: '$background',
+        flex: 1,
         flexDirection: "row",
         flexWrap: "wrap",
-        minHeight:'100%',
+        minHeight: '100%',
     },
-    card:{
-        width:'50%'
+    card: {
+        width: '50%'
     },
-    scrollView:{
+    scrollView: {
+        backgroundColor:'white'
     }
 });
