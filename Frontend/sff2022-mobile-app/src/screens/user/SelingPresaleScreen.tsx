@@ -28,9 +28,13 @@ export default function SelingPresaleScreen() {
   });
 
   useEffect(()=>{
+    
     const getTeam = async()=>{
+      console.log("SellingPresaleScreen: "+presaleDataSale.presaleId);
+      
         const response = await userAPI.get('/team/'+presale.sellerId);
         if(response.data){
+          
           setsellerLogo(response.data.logo);
         }else{
             Alert.alert('Error de conexión');

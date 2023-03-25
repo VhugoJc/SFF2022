@@ -1,26 +1,23 @@
 import { StyleSheet } from "react-native";
 import QRCode from "react-native-qrcode-svg";
-import { View } from "dripsy";
+import { Image, View } from "dripsy";
 import { useContext, useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { baseSocketURL } from '../../api/SocketApi';
 
 interface Props {
-    
     setScreen:(amount:number,screen:string)=>void,
     codeValue: string,
-    img: any
 }
 
-export default function QRCodeGenerator({ codeValue, img , setScreen}: Props) {
+export default function QRCodeGenerator({ codeValue,setScreen}: Props) {
     const socket = io(baseSocketURL);
     const [isConnected, setIsConnected] = useState(socket.connected);
     const [lastPong, setLastPong] = useState(null);
     const {authState} = useContext(AuthContext);
     const [Status, setStatus] = useState(false);
 
-    
     useEffect(() => {
         socket.on('connect', () => {
             setIsConnected(true);
@@ -35,7 +32,7 @@ export default function QRCodeGenerator({ codeValue, img , setScreen}: Props) {
             setScreen(0,'success');
             
         });
-
+        
     }, []);
     console.log(isConnected);
     
@@ -44,10 +41,10 @@ export default function QRCodeGenerator({ codeValue, img , setScreen}: Props) {
             <QRCode
                 value={codeValue}
                 size={220}
-                logo={img}
-                logoSize={70}
-                logoBorderRadius={100}
-                logoBackgroundColor="white"
+                // logo={{uri:img}}
+                // logoSize={70}
+                // logoBorderRadius={100}
+                // logoBackgroundColor="white"
             />
         </View>
     );
