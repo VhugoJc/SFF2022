@@ -30,8 +30,6 @@ export default function HomeScreen() {
       try {
         const response = await userAPI.get('/settings');
         if(response.data.settings){
-          console.log(response.data);
-          
           setsettings(response.data.settings);
         }
       } catch (error) {
@@ -55,10 +53,10 @@ export default function HomeScreen() {
         }
       >
         <HomeBanner />
-        <Article />
+        <Article homeData={settings?.homeData}/>
         <EventsBanner />
         <SpoonsorBanner sponsors={settings?.sponsors} />
-        <CalendarBanner />
+        <CalendarBanner date={settings?.date} />
       </ScrollView>
     </View>
   )

@@ -3,17 +3,21 @@ import {StyleSheet } from 'react-native'
 import React from 'react'
 import { styles } from '../../theme/stylesheet';
 import IconBtn from '../Button/IconBtn';
-
-export default function Article() {
+import { HomeData } from '../../interfaces/SettingsInterface';
+import * as WebBrowser from 'expo-web-browser';
+interface Props{
+  homeData:HomeData | undefined 
+}
+export default function Article({homeData}:Props) {
   return (
     <View sx={articles.container}>
-      <Image sx={articles.img} source={require('../../../assets/img/sff_2019.jpg')} />
-      <Text sx={styles.subtitle}>El Sales Force Fest regresa de forma presencial a la UPSLP</Text>
+      <Image sx={articles.img} source={{uri:homeData?.img}} />
+      <Text sx={styles.subtitle}>{homeData?.title}</Text>
       <Text sx={styles.text}>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+      {homeData?.description}
       {"\n"}
       </Text>
-      <IconBtn type='blueLight' name='Ver más...'/>
+      <IconBtn onPress={()=> WebBrowser.openBrowserAsync(homeData?.url as any)} type='blueLight' name='Ver más...'/>
     </View>
   )
 }

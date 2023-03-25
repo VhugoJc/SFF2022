@@ -9,12 +9,18 @@ export interface Events{
     img:string,
     date:string
 }
-
+export interface HomeData{
+    title:String,
+    description:String,
+    url:String,
+    img:any
+}
 export interface Settings{
     name: string,
     website:string,
     logo:string,
     date:Date,
     sponsors: Array<Sponsors>,
-    events:Array<Events>
+    events:Array<Events>,
+    homeData:HomeData
 }
