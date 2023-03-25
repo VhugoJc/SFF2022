@@ -14,7 +14,8 @@ const eventsSchema = Schema({
     }
 });
 
-const settingsScrema = ({
+const settingsScrema = Schema({
+    name:String,
     events:{
         type: [eventsSchema]
     }
@@ -24,4 +25,4 @@ settingsScrema.methods.toJSON = function(){
     const {__v,...settings} = this.toObject();
     return settings; //settings data without version is returned
 }
-module.exports = model('Events', settingsScrema);
+module.exports = model('Settings', settingsScrema);
