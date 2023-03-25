@@ -2,17 +2,23 @@ import React from 'react';
 import { ImageSourcePropType, StyleSheet } from 'react-native';
 import { View, Text, Image, ScrollView } from 'dripsy';
 import { styles } from '../../theme/stylesheet';
+import { Sponsors } from '../../interfaces/SettingsInterface';
 
-export default function SpoonsorBanner() {
+interface Props{
+    sponsors: Sponsors[] | undefined
+}
+export default function SpoonsorBanner({sponsors}:Props) {
     return (
         <View sx={sponsorBanner.container}>
             <Text sx={Object.assign({},styles.subtitle,{paddingLeft:'$3'})}>Nuestros Patrocinadores</Text> 
             <Text sx={Object.assign({},styles.text,{paddingLeft:'$3'})}>Marcas que hacen posible este evento</Text> 
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                 <View sx={sponsorBanner.scroll}>
-                    <ImageSponsor img={require('../../../assets/img/sponsor1.jpg')}/>
-                    <ImageSponsor img={require('../../../assets/img/sponsor2.png')}/>
-                    <ImageSponsor img={require('../../../assets/img/sponsor3.png')}/>
+                    {
+                        sponsors?.map(sponsor=>{
+                            return <ImageSponsor key={sponsor._id} img={{uri:sponsor.img}}/>
+                        })
+                    }
                 </View>
             </ScrollView>
         </View>

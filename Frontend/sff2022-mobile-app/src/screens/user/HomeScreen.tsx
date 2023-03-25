@@ -1,5 +1,5 @@
-import React from 'react';
-import { ScrollView, RefreshControl } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ScrollView, RefreshControl, Alert,  } from 'react-native';
 
 
 import HomeBanner from '../../components/Banner/HomeBanner';
@@ -9,17 +9,40 @@ import SpoonsorBanner from '../../components/Banner/SpoonsorBanner';
 import CalendarBanner from '../../components/Banner/CalendarBanner';
 import { View } from 'dripsy';
 import { styles } from '../../theme/stylesheet';
+import { userAPI } from '../../api/UserApi';
+import { Settings } from '../../interfaces/SettingsInterface';
 
 
 export default function HomeScreen() {
-  const [refreshing, setRefreshing] = React.useState(false);
-
+  const [refreshing, setRefreshing] = useState(false);
+  const  [settings, setsettings] = useState<Settings>();
+  
   const onRefresh = () => {
     setRefreshing(true);
     setTimeout(function () {
       setRefreshing(false);
     }, 500);
   }
+  
+  useEffect(()=>{
+    
+    const getSettigs = async()=>{
+      try {
+        const response = await userAPI.get('/settings');
+        if(response.data.settings){
+          console.log(response.data);
+          
+          setsettings(response.data.settings);
+        }
+      } catch (error) {
+        Alert.alert('Error de conexión')
+      }
+    }
+    getSettigs();
+
+  },[refreshing])
+
+  
   return (
     <View sx={Object.assign({},styles.container,{backgroundColor:'$primary'})}>
 
@@ -34,7 +57,7 @@ export default function HomeScreen() {
         <HomeBanner />
         <Article />
         <EventsBanner />
-        <SpoonsorBanner />
+        <SpoonsorBanner sponsors={settings?.sponsors} />
         <CalendarBanner />
       </ScrollView>
     </View>
