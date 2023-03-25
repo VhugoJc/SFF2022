@@ -13,9 +13,25 @@ const eventsSchema = Schema({
         type: String
     }
 });
+const sponsorSchema = Schema({
+    img:{
+        required:true,
+        type: String
+    },
+    name:{
+        required:true,
+        type: String
+    }
+});
 
 const settingsScrema = Schema({
     name:String,
+    webSite:String,
+    logo:String,
+    date: Date,
+    sponsors:{
+        type: [sponsorSchema]
+    },
     events:{
         type: [eventsSchema]
     }
