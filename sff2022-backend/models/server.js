@@ -17,8 +17,12 @@ class Server {
     this.salePath = "/api/sale"; // Sale API endpoint
     this.product = "/api/product"; // Product API endpoint
 
+
+    // admin dashboard API's
     this.dashboard = "/api/dashboard"; // Dashboard API endpoint
     this.event = "/api/settings"; // event API endpoint
+    this.transactions = '/api/transactions'; // transactions API endpoint
+
 
     // Initialize socket.io configuration
     this.server = require("http").createServer(this.app); // HTTP server instance
@@ -73,9 +77,10 @@ class Server {
     this.app.use(this.presalePath, require("../routes/presale"));
     this.app.use(this.salePath, require("../routes/sale"));
     this.app.use(this.product, require("../routes/product"));
-    this.app.use(this.event, require("../routes/settings"));
 
-    // Register route for dashboard API
+    // Register route for admin dashboard 
+    this.app.use(this.event, require("../routes/settings"));
+    this.app.use(this.transactions, require("../routes/transactions"));
     this.app.use(this.dashboard, require("../routes/dashboard"));
   }
   /**

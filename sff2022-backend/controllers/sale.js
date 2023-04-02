@@ -15,13 +15,13 @@ const postSale = async (req = request, res = response) => {
     const SellerTeamId = req.user.team;
 
     try {
-        const {products,description,name,_id,coverImg} = await Presale.findById(presaleId);
+        const {products,description,name,_id,coverImg,tortas} = await Presale.findById(presaleId);
         const team = await Team.findById(SellerTeamId);
         const teamName = team.name;
         const client = await User.findById(clientId);
         const userName = `${client.name} ${client.lastname}`;
         // create sale
-        const newSale = new Sale({ clientId, presaleId, amount, cost, sellerMemberId, SellerTeamId, products,});
+        const newSale = new Sale({ clientId, presaleId, amount, cost, sellerMemberId, SellerTeamId, products,tortasTotal:(tortas*amount)});
         await newSale.save();
         //email:
         const htmlTemplate = saleEmailTemplateHTML(userName,cost,description,name,_id.toString().slice(20,24),coverImg,teamName);

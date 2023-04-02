@@ -31,11 +31,9 @@ const saleSchema = Schema({
         type: Date,
         default: Date.now
     },
-    products:
-        [
-            {
-                type: Schema.Types.ObjectId
-            }
-        ]
+    tortasTotal :{
+        type: Number,
+        required: true
+    } 
 });
 module.exports = model('Sale', saleSchema);
