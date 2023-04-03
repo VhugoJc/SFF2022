@@ -1,55 +1,45 @@
-import { Card, Col, List, Row } from 'antd';
-import React from 'react'
+import { Card, Col, List, message, Row } from 'antd';
+import React, { useEffect, useState } from 'react'
 import AdminLayout from '../../../components/layout/AdminLayout';
 import BasicPie from '../../../components/charts/BasicPie';
 import ListSales from '../../../components/lists/ListSales';
+import axios from 'axios';
+import { BASEURL } from '../../../api/config';
 type Props = {}
 
 function Sales2({ }: Props) {
-    const data = [
-        {
-            title: 'Title 1',
-        },
-        {
-            title: 'Title 2',
-        },
-        {
-            title: 'Title 3',
-        },
-        {
-            title: 'Title 4',
-        },
-        {
-            title: 'Title 5',
-        },
-        {
-            title: 'Title 6',
-        },
-        {
-            title: 'Title 7',
-        },
-        {
-            title: 'Title 8',
-        },
-        {
-            title: 'Title 9',
-        },
-        {
-            title: 'Title 10',
-        },
-        {
-            title: 'Title 11',
-        },
-    ];
+    const [data, setdata] = useState();
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const response = await axios.get(BASEURL + '/transactions/teams');
+                if (response.data) {
+                    setdata(response.data);
+                }
+
+            } catch (error) {
+                message.error('Error al extraer los datos')
+            }
+        }
+        getData();
+    }, []);
     return (
         <AdminLayout>
             <Card className='crud-container'>
                 <div style={{height:"calc(100vh - 175px)",textAlign:"center",marginBottom:"100px"}}>
                     <h1>Combos vendidos</h1>
-                    <BasicPie />
+                    {
+                        data? <BasicPie data={data} />
+                        : null
+                    }
                 </div>
                 <div>
-                    <ListSales data={data} />
+                    {
+                        data
+                        ?<ListSales type='presales' data={data} />
+                        :null
+                    }
                 </div>
             </Card>
         </AdminLayout>

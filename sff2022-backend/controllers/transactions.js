@@ -53,14 +53,13 @@ const getTransactionsTeam = async (req = request, res = response) => {
         const teams = await Team.find({ $and: [{ status: true }] });
 
         const data = dataTeams.map((item) => {
-            return teams.find((itemTeam) => itemTeam._id === item._id);
+            return {
+                id:item._id,
+                transaction:item,
+                team: teams.find((itemTeam) => itemTeam._id .equals(item._id))
+            };
         });
-
-        console.log(data);
-        res.json({
-            transactionData: dataTeams,
-            teams,
-        });
+        res.json(data);
     } catch (err) {
         res.json(err);
         console.log(err);
