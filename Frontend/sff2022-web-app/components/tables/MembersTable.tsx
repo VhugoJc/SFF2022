@@ -7,7 +7,7 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import Highlighter from 'react-highlight-words';
 import { BASEURL } from '../../api/config';
-import { Seller, SellerForm } from '../../interfaces/seller';
+import { Seller, SellerForm } from '../../interfaces/Users';
 import { Team } from '../../interfaces/teams';
 import MembersForm from '../forms/MembersForm';
 

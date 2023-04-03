@@ -12,5 +12,6 @@ export interface Presale {
     coverImg:string,
     sellerId:string,
     tortas:number,
-    products: Array<Products>
+    products?: Array<Products>
+    saleDate?:Date
 }

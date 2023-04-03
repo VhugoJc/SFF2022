@@ -18,3 +18,11 @@ export interface Seller {
     team:String
 
 }
+export interface User {
+    name: string,
+    lastname: string,
+    email: string,
+    role: string,
+    status: boolean,
+    _uid: string,
+}

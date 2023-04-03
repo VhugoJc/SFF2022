@@ -2,7 +2,7 @@ import { Button, Form, Input, message, Select } from 'antd'
 import axios from 'axios';
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { BASEURL } from '../../api/config';
-import { SellerForm } from '../../interfaces/seller';
+import { SellerForm } from '../../interfaces/Users';
 import { Team } from '../../interfaces/teams';
 
 type Props = {
