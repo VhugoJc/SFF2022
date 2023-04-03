@@ -34,6 +34,15 @@ const saleSchema = Schema({
     tortasTotal :{
         type: Number,
         required: true
+    },
+    status:{
+        type: Boolean,
+        required:true,
+        default: true
     } 
 });
+saleSchema.methods.toJSON = function(){
+    const {status,__v,...sale} =  this.toObject();;
+    return sale;
+}
 module.exports = model('Sale', saleSchema);
