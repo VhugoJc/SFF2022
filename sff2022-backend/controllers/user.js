@@ -105,11 +105,41 @@ const deleteUser = async(req=request, res=response) =>{
         res.json(err);
     }
 }
+
+const postSuperSeller = async (req = request, res = response) => {
+    const { name, lastname, email, password } = req.body;
+    const uuid = uuidv4();
+    if(typeof name==='undefined'|| typeof lastname==='undefined' ||typeof email==='undefined' ||typeof password==='undefined'){
+        return res.status(404).json({message:'Todos los campos son requeridos'});
+    }
+    try {
+        const newUser = new User({ name, lastname, email:email.toLowerCase(), password, status:true,role:'SUPER_ADMIN_ROLE',}); //status true, role admin
+        //email validation
+        const emailExists = await User.findOne({ email:email.toLowerCase() });
+        if (emailExists) {
+            return res.status(500).json({message:'El correo ya ha sido creado'});
+        }
+        //encript password
+        const salt = bcrypt.genSaltSync();
+        newUser.password = bcrypt.hashSync(password, salt);
+
+        
+        newUser.tokenEmail=uuid;
+
+        await newUser.save();
+        res.json(newUser);
+
+    } catch (err) {
+        console.log(err);
+        res.json(err);
+    } 
+}
 module.exports = {
     postUser,
     loginUser,
     postSeller,
     getSellers,
     updateSellers,
-    deleteUser
+    deleteUser,
+    postSuperSeller
 };

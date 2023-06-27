@@ -82,7 +82,6 @@ const getAllTransactions = async (req = require, res = response) => {
                 team: team.find(tm=>tm._id.equals(item.SellerTeamId))
             }
         })
-        console.log(data);
         res.json(data)
     } catch (error) {
         res.json(error);

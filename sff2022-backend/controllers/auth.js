@@ -133,11 +133,62 @@ const resetPassword = async (req, res = response) => {
         res.json({message:'Error actualizando la contraseña'});
     }
 }
+// admin
+const loginAdmin = async (req, res = response) => {
+
+    const { email, password } = req.body;
+    
+    try {
+        // check if the email already exists
+        const user = await User.findOne({ email:email.toLowerCase() });
+        if (!user) {
+            return res.status(400).json({
+                msg: 'Contraseña o correo incorrectos'
+            });
+        }
+
+        // check if the user is active
+        if (!user.status) {
+            return res.status(400).json({
+                msg: 'Necesitas confirmar tu correo electrónico'
+            });
+        }
+
+        // check if the password is the same
+        const validPassword = bcrypt.compareSync(password, user.password);
+        if (!validPassword) {
+            return res.status(400).json({
+                msg: 'Contraseña o correo incorrectos'
+            });
+        }
+
+        if(user.role !== 'SUPER_ADMIN_ROLE'){
+            return res.status(401).json({
+                msg: 'Usuario no authorizado'
+            });
+        }
+        // Generar el JWT
+        const token = await generarJWT(user.id);
+
+        res.json({
+            user,
+            token
+        })
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            msg: 'Hable con el administrador'
+        });
+    }
+
+}
 
 module.exports = {
     login,
     UsrTokenValidator,
     confirmEmail,
     passwordRecovery,
-    resetPassword
+    resetPassword,
+    loginAdmin
 }
