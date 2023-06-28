@@ -1,13 +1,40 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
-import { Button, Checkbox, Form, Input } from 'antd'
+import { Button, Checkbox, Form, Input, message } from 'antd'
+import axios from 'axios';
 import React from 'react'
-
+import { BASEURL } from '../../api/config';
+import useAuth from "../../Hooks/useAuth";
+import { useRouter } from 'next/router';
 type Props = {}
 
 function LoginForm({ }: Props) {
-    const onFinish = (values: any) => {
-        console.log('Received values of form: ', values);
+    const {login} = useAuth();
+    const { push} = useRouter();
+
+    const onFinish = async (values: any) => {
+        const options = {
+            method: 'POST',
+            url: `${BASEURL}/dashboard/login`,
+            // headers: {
+            //     'x-token': `${query.token}`
+            // },
+            data: values
+        };
+        axios.request(options).then((response) => {
+            login(response.data.token);
+            push("/admin");
+        }).catch((err) => {
+            if(err.response.data?.msg){
+                message.error(err.response.data.msg);
+                return;
+            }
+            console.log(err);
+            
+            message.error('Error al iniciar sesión');
+        })
+
     };
+    
     return (
         <Form
             style={{width:'100%'}}
@@ -17,14 +44,14 @@ function LoginForm({ }: Props) {
             onFinish={onFinish}
         >
             <Form.Item
-                name="username"
+                name="email"
                 rules={[{ required: true, message: 'Please input your Username!' }]}
             >
-                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="correo electrónico" />
             </Form.Item>
             <Form.Item
                 name="password"
-                rules={[{ required: true, message: 'Please input your Password!' }]}
+                rules={[{ required: true, message: 'Tu contraseña!' }]}
             >
                 <Input
                     prefix={<LockOutlined className="site-form-item-icon" />}
@@ -33,22 +60,9 @@ function LoginForm({ }: Props) {
                 />
             </Form.Item>
             <Form.Item>
-                <Form.Item name="remember" valuePropName="checked" noStyle>
-                    <Checkbox>Remember me</Checkbox>
-                </Form.Item>
-                <br />
-                <a className="login-form-forgot" href="">
-                    Forgot password
-                </a>
-            </Form.Item>
-            <Form.Item>
                 <Button type="primary" htmlType="submit" className="login-form-button">
                     Log in
                 </Button>
-                <br />
-                Or 
-                <br />
-                <a href="">register now!</a>
             </Form.Item>
         </Form>
     )

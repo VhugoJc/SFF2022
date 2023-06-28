@@ -1,12 +1,29 @@
 import MenuLeft from "../Menu/LeftMenu";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { LogoutOutlined } from "@ant-design/icons";
 import { Button } from "antd";
+import useAuth from "../../Hooks/useAuth";
+import { useRouter } from "next/router";
 
 
 const AdminLayout = ({ children }: any) => {
     const [collapsed, setCollapsed] = useState(false);
+    const {isAuth, logOut} = useAuth();
+    const {push} = useRouter();
+    const [checked, setChecked] = useState(false);
+    useEffect(()=>{
+        console.log(isAuth());
+        
+        if(!isAuth()){
+            push("/account/auth/login");
+        }else{
+            setChecked(true);
+        }
 
+    },[]);
+    if(!checked){
+        return null;
+    }
     return (
         <div>
             <div className="layout-top-menu">
@@ -14,7 +31,7 @@ const AdminLayout = ({ children }: any) => {
                     SALES FORCE FEST
                 </h1> */}
                 <div className="layout-top-menu_logout">
-                    <Button type="ghost">
+                    <Button type="ghost" onClick={()=>logOut()}>
                         <LogoutOutlined/>
                     </Button>
                 </div>
