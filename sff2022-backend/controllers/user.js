@@ -134,6 +134,10 @@ const postSuperSeller = async (req = request, res = response) => {
         res.json(err);
     } 
 }
+
+const validUser = async (req = request, res = response) => {
+    res.json(req.user);
+}
 module.exports = {
     postUser,
     loginUser,
@@ -141,5 +145,6 @@ module.exports = {
     getSellers,
     updateSellers,
     deleteUser,
-    postSuperSeller
+    postSuperSeller,
+    validUser
 };

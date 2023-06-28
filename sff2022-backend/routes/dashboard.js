@@ -10,9 +10,10 @@ const {
 }= require('../controllers/team'); // teamsController
 
 
-const { postSeller, getSellers, updateSellers, deleteUser, postSuperSeller } = require('../controllers/user');
+const { postSeller, getSellers, updateSellers, deleteUser, postSuperSeller, validUser } = require('../controllers/user');
 const { fieldsValidation } = require('../middleware/fieldsValidation');
 const { loginAdmin } = require('../controllers/auth');
+const { jwtSprAdminValidator } = require('../middleware/jwt-validator');
 
 
 
@@ -55,8 +56,9 @@ router.delete('/presale',deletePresale); //create new presale     [Dashboard]
 
 
 //login
-router.post('/admin/new',postSuperSeller); //remove after new admin
+router.post('/admin/new',postSuperSeller); //remove aftercreate new admin
 router.post('/login', loginAdmin);
+router.get('/admin/me',jwtSprAdminValidator,validUser);
 
 
 
