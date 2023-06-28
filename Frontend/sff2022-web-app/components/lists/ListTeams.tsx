@@ -7,6 +7,7 @@ import TeamsForm from '../forms/TeamsForm';
 import { BASEURL } from '../../api/config';
 import axios from 'axios';
 import { Team, TeamForm } from '../../interfaces/teams';
+import useAuth from '../../Hooks/useAuth';
 
 type Props = {}
 
@@ -16,16 +17,18 @@ function ListTeams({ }: Props) {
     const [refresh, setrefresh] = useState(true);
     const [teamDataForm, setteamDataForm] = useState<TeamForm|null>(null);
     const [isUpdate, setisUpdate] = useState(false);
+    const {getToken} = useAuth();
 
 
     useEffect(() => {
         // get teams from deb
+        const token = getToken();
         const options = {
             method: 'GET',
             url: `${BASEURL}/dashboard/team`,
-            // headers: {
-            //     'x-token': `${query.token}`
-            // },
+            headers: {
+                'x-token': `${token}`
+            },
         };
         //request
         axios.request(options).then(function (response) {

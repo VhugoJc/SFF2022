@@ -5,6 +5,7 @@ import { Transaction } from '../../interfaces/Transaction';
 import axios from 'axios';
 import { BASEURL } from '../../api/config';
 import moment from 'moment';
+import useAuth from '../../Hooks/useAuth';
 
 type Props = {}
 
@@ -59,23 +60,34 @@ const columns: ColumnsType<Transaction> = [
 
 
 function TransactionsTable({ }: Props) {
+    const { getToken } = useAuth();
+
     const [TransactionsData, setTransactionsData] = useState<Transaction[] | undefined>([]);
     const [pagination, setpagination] = useState<TablePaginationConfig>({
         current: 1,
-        pageSize:5
+        pageSize: 5
     })
     useEffect(() => {
-        const getData = async () => {
-            try {
-                let response = await axios.get(BASEURL + '/transactions/all');
+        const getData =  () => {
+            const token = getToken();
+            const options = {
+                method: 'GET',
+                url: `${BASEURL}/transactions/all`,
+                // credentials
+                headers: {
+                    'x-token': `${token}`
+                },
+            }
+            axios.request(options).then(response => {
                 if (response?.data) {
                     response.data.reverse(); // most recent first
                     setTransactionsData(response.data);
                 }
-
-            } catch (error) {
+            }).catch(error => {
                 message.error('Error recuperando las transacciones');
-            }
+                console.log(error);
+
+            })
         }
         getData();
     }, []);
@@ -85,7 +97,7 @@ function TransactionsTable({ }: Props) {
                 <br />
                 <br />
                 <p>Transacciones</p>
-                <Table onChange={(pg:TablePaginationConfig)=>setpagination(pg)
+                <Table onChange={(pg: TablePaginationConfig) => setpagination(pg)
                 } rowKey={'_id'} pagination={pagination} columns={columns} dataSource={TransactionsData} />;
             </div>
             <div>

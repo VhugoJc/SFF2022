@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Button, Col, Form, Image, Input, Result } from 'antd';
 import axios from "axios";
 import { useRouter } from 'next/router';
+import useAuth from '../../Hooks/useAuth';
 
 interface Props {
     setstaus: any
@@ -10,8 +11,10 @@ interface Props {
 export const ResetPassworForm = ({ setstaus }: Props) => {
     const { query } = useRouter();
     const [response, setresponse] = useState(false);
+    const {getToken} = useAuth();
 
     const onFinish = (values: any) => {
+        const token = getToken();
         const { password } = values;
         const hostName = location.port === ""
             ? location.protocol + "//" + location.host
@@ -21,7 +24,7 @@ export const ResetPassworForm = ({ setstaus }: Props) => {
             method: 'POST',
             url: `${hostName}/api/auth/reset-password`,
             headers: {
-                'x-token': `${query.token}`
+                'x-token': `${token}`
             },
             data: { newPassword: password }
         };

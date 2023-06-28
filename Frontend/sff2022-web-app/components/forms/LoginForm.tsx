@@ -15,9 +15,6 @@ function LoginForm({ }: Props) {
         const options = {
             method: 'POST',
             url: `${BASEURL}/dashboard/login`,
-            // headers: {
-            //     'x-token': `${query.token}`
-            // },
             data: values
         };
         axios.request(options).then((response) => {

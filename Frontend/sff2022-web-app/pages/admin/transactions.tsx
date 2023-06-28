@@ -4,10 +4,12 @@ import React, { useEffect, useState } from 'react'
 import { BASEURL } from '../../api/config'
 import AdminLayout from '../../components/layout/AdminLayout'
 import TransactionsTable from '../../components/tables/TransactionsTable'
+import useAuth from '../../Hooks/useAuth'
 
 type Props = {}
 
 function Transactions({ }: Props) {
+    const {getToken} = useAuth();
     const [transactionsData, settransactionsData] = useState({
         users:0,
         tortas:0,
@@ -16,15 +18,25 @@ function Transactions({ }: Props) {
     });
 
     useEffect(()=>{
-        const getData = async()=>{
-            try {
-                const response = await axios.get(BASEURL+'/transactions');
+        const getData = () =>{
+            const token = getToken();
+            const options = {
+                method: 'GET',
+                url: `${BASEURL}/transactions`,
+                // credentials
+                headers: {
+                    'x-token': `${token}`
+                },
+            }
+            axios.request(options).then(response => {
                 if(response.data){
                     settransactionsData(response.data);
                 }
-            } catch (error){
+            }).catch(error=>{
                 message.error('Error al recolectar los datos de la transaccion');
-            }
+                console.log(error);
+                
+            })
         }
         getData();
     },[]);

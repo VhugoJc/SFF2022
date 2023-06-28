@@ -11,10 +11,13 @@ import { Presale } from '../../interfaces/Presale';
 import { Team } from '../../interfaces/teams';
 import PresaleForm from '../forms/PresaleForm';
 import Modal from '../Modal/Index';
+import useAuth from '../../Hooks/useAuth';
 
 type DataIndex = keyof Presale;
 
 const Foodtable: React.FC = () => {
+    const {getToken} = useAuth();
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [refresh, setrefresh] = useState(true);
     const [isUpdate, setisUpdate] = useState(false);
@@ -28,10 +31,14 @@ const Foodtable: React.FC = () => {
     const [teams, setteams] = useState<Team[]>([]);
 
     useEffect(() => {
+        const token = getToken();
         const options = {
             method: 'GET',
             url: `${BASEURL}/dashboard/presale`,
             // credentials
+            headers: {
+                    'x-token': `${token}`
+                },
         }
         axios.request(options).then(res => {
             setFoodData(res.data);
@@ -40,12 +47,13 @@ const Foodtable: React.FC = () => {
     }, [refresh])
 
     useEffect(() => {
+        const token = getToken();
         const conf = {
             method: 'GET',
             url: `${BASEURL}/dashboard/team`,
-            // headers: {
-            //     'x-token': `${query.token}`
-            // },
+            headers: {
+                'x-token': `${token}`
+            },
         }
         axios.request(conf).then((res) => {
             setteams(res.data);

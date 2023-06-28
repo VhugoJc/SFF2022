@@ -3,6 +3,7 @@ import axios from 'axios'
 import moment from 'moment'
 import React, { useEffect, useState } from 'react'
 import { BASEURL } from '../../api/config'
+import useAuth from '../../Hooks/useAuth'
 
 type Props = {}
 
@@ -10,14 +11,16 @@ type Props = {}
 function SettingsForm({ }: Props) {
     const [settings, setSettings] = useState<any>();
     const [form] = Form.useForm();
+    const {getToken} = useAuth();
 
     useEffect(() => {
+        const token = getToken();
         const options = {
             method: 'GET',
             url: `${BASEURL}/settings/data`,
-            // headers: {
-            //     'x-token': `${query.token}`
-            // },
+            headers: {
+                'x-token': `${token}`
+            },
         }
         axios.request(options).then((res) => {
             setSettings(res.data.settings);
@@ -32,12 +35,13 @@ function SettingsForm({ }: Props) {
     }, [])
 
     const onFinish = (values: any) => {
+        const token = getToken();
         const options = {
             method: 'PUT',
             url: `${BASEURL}/settings`,
-            // headers: {
-            //     'x-token': `${query.token}`
-            // },
+            headers: {
+                'x-token': `${token}`
+            },
             data:values
         }
         axios.request(options).then((res) => {

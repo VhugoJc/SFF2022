@@ -4,6 +4,7 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { BASEURL } from '../../api/config';
 import { SellerForm } from '../../interfaces/Users';
 import { Team } from '../../interfaces/teams';
+import useAuth from '../../Hooks/useAuth';
 
 type Props = {
     setrefresh: Dispatch<SetStateAction<boolean>>,
@@ -15,14 +16,16 @@ type Props = {
 function MembersForm({ setrefresh, setIsModalOpen, sellerDataForm, isUpdate }: Props) {
     const [form] = Form.useForm();
     const [teams, setteams] = useState<Team[]>([]);
+    const {getToken} = useAuth();
     
     useEffect(() => {
+        const token = getToken();
         const options = {
             method: 'GET',
             url: `${BASEURL}/dashboard/team`,
-            // headers: {
-            //     'x-token': `${query.token}`
-            // },
+            headers: {
+                'x-token': `${token}`
+            },
         }
         axios.request(options).then((res) => {
             setteams(res.data);
@@ -40,12 +43,13 @@ function MembersForm({ setrefresh, setIsModalOpen, sellerDataForm, isUpdate }: P
 
 
     const onFinish = (values: SellerForm) => {
+        const token = getToken();
         const options = {
             method: 'POST',
             url: `${BASEURL}/dashboard/seller`,
-            // headers: {
-            //     'x-token': `${query.token}`
-            // },
+            headers: {
+                'x-token': `${token}`
+            },
             data: values
         };
         options.method = 'POST';
@@ -61,6 +65,7 @@ function MembersForm({ setrefresh, setIsModalOpen, sellerDataForm, isUpdate }: P
 
     }
     const onFinishUpdate = (values: any) => {
+        const token = getToken();
         if(values.password===''){
             delete values.password
         }
@@ -69,9 +74,9 @@ function MembersForm({ setrefresh, setIsModalOpen, sellerDataForm, isUpdate }: P
         const options = {
             method: '',
             url: `${BASEURL}/dashboard/seller`,
-            // headers: {
-            //     'x-token': `${query.token}`
-            // },
+            headers: {
+                'x-token': `${token}`
+            },
             data:values
         };
 

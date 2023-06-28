@@ -5,6 +5,7 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 import { BASEURL } from '../../api/config';
 import { TeamForm } from '../../interfaces/teams';
+import useAuth from '../../Hooks/useAuth';
 
 type Props = {
     setrefresh: Dispatch<SetStateAction<boolean>>
@@ -14,6 +15,7 @@ type Props = {
 }
 
 function TeamsForm({ setrefresh, setIsModalOpen, teamData, isUpdate }: Props) {
+    const {getToken} = useAuth();
     const [form] = Form.useForm();
     useEffect(() => {
         form.setFieldsValue(teamData);
@@ -21,8 +23,7 @@ function TeamsForm({ setrefresh, setIsModalOpen, teamData, isUpdate }: Props) {
 
     const onFinish = async (values: any) => {
         const { name, description, imgs, tiktok, whatsapp, facebook, instagram,logo } = values;
-        console.log(logo);
-        
+        const token = getToken();
         const data = {
             name, description, imgs,_id:teamData?._id, logo,
             socialMedia: { tiktok, whatsapp, facebook, instagram }
@@ -30,9 +31,9 @@ function TeamsForm({ setrefresh, setIsModalOpen, teamData, isUpdate }: Props) {
         const options = { // Same url, different method between update and create
             method: '',
             url: `${BASEURL}/dashboard/team`,
-            // headers: {
-            //     'x-token': `${query.token}`
-            // },
+            headers: {
+                'x-token': `${token}`
+            },
             data
         };
 

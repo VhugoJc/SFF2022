@@ -12,6 +12,7 @@ import { Team } from '../../interfaces/teams';
 import MembersForm from '../forms/MembersForm';
 
 import Modal from '../Modal/Index';
+import useAuth from '../../Hooks/useAuth';
 // import Highlighter from 'react-highlight-words';
 
 type DataIndex = keyof Seller;
@@ -21,6 +22,8 @@ type DataIndex = keyof Seller;
 type Props = {}
 
 function MembersTable({ }: Props) {
+    const {getToken} = useAuth();
+
     const [usersData, setUsersData] = useState<Seller[]>([]);
     const [sellerDataForm, setsellerDataForm] = useState<SellerForm|null>(null);
     const [teams, setteams] = useState<Team[]>([]);
@@ -34,12 +37,13 @@ function MembersTable({ }: Props) {
     const searchInput = useRef<InputRef>(null);
     
     useEffect(() => {
+        const token = getToken();
         const options = {
             method: 'GET',
             url: `${BASEURL}/dashboard/team`,
-            // headers: {
-            //     'x-token': `${query.token}`
-            // },
+            headers: {
+                'x-token': `${token}`
+            },
         }
         axios.request(options).then((res) => {
             setteams(res.data);
@@ -48,12 +52,13 @@ function MembersTable({ }: Props) {
     }, [])
 
     useEffect(() => {
+        const token = getToken();
         const options = { // Same url, different method between update and create
             method: 'GET',
             url: `${BASEURL}/dashboard/seller`,
-            // headers: {
-            //     'x-token': `${query.token}`
-            // },
+            headers: {
+                'x-token': `${token}`
+            },
         };
         axios.request(options).then((response) => {
 

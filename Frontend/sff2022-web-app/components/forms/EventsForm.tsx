@@ -3,6 +3,7 @@ import { Button, DatePicker, Divider, Form, Input, Col, Row, message } from 'ant
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { BASEURL } from '../../api/config';
+import useAuth from '../../Hooks/useAuth';
 
 type Props = {}
 
@@ -10,14 +11,16 @@ type Props = {}
 function EventsForm({ }: Props) {
     const [form] = Form.useForm();
     const [eventsData, seteventsData] = useState();
+    const { getToken} = useAuth();
 
     useEffect(()=>{
+        const token = getToken();
         const options = {
             method: 'GET',
             url: `${BASEURL}/settings/event`,
-            // headers: {
-            //     'x-token': `${query.token}`
-            // },
+            headers: {
+                'x-token': `${token}`
+            },
         }
         axios.request(options).then((res) => {
             seteventsData(res.data.events);
@@ -30,12 +33,13 @@ function EventsForm({ }: Props) {
     },[])
     
     const onFinish = (values:any) =>{
+        const token = getToken();
         const options = {
             method: 'PUT',
             url: `${BASEURL}/settings/event`,
-            // headers: {
-            //     'x-token': `${query.token}`
-            // },
+            headers: {
+                'x-token': `${token}`
+            },
             data:values
         }
         axios.request(options).then((res) => {

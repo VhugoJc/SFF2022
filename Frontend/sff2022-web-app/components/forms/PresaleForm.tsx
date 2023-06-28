@@ -6,6 +6,7 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { BASEURL } from '../../api/config';
 import { Presale } from '../../interfaces/Presale';
 import { Team } from '../../interfaces/teams';
+import useAuth from '../../Hooks/useAuth';
 
 type Props = {
     setrefresh: Dispatch<SetStateAction<boolean>>,
@@ -17,18 +18,20 @@ type Props = {
 function PresaleForm({ setrefresh, setIsModalOpen, foodDataForm, isUpdate }: Props) {
     const [form] = Form.useForm();
     const [teams, setteams] = useState<Team[]>([]);
+    const {getToken} = useAuth();
 
     useEffect(() => {
         form.setFieldsValue(foodDataForm);
     }, [foodDataForm])
 
     useEffect(() => {
+        const token = getToken();
         const options = {
             method: 'GET',
             url: `${BASEURL}/dashboard/team`,
-            // headers: {
-            //     'x-token': `${query.token}`
-            // },
+            headers: {
+                'x-token': `${token}`
+            },
         }
         axios.request(options).then((res) => {
             setteams(res.data);
@@ -37,10 +40,14 @@ function PresaleForm({ setrefresh, setIsModalOpen, foodDataForm, isUpdate }: Pro
     }, [])
 
     const onFinish = (values: any) => {
+        const token = getToken();
         const options = {
             method: '',
             url: `${BASEURL}/dashboard/presale`,
             //admin credentials
+            headers: {
+                'x-token': `${token}`
+            },
             data: values
         }
         if (!isUpdate) {

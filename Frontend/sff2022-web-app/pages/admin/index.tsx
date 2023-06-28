@@ -6,38 +6,48 @@ import BasicBar from '../../components/charts/BasicBar';
 import BasicColumn from '../../components/charts/BasicColumn';
 import BasicPie from '../../components/charts/BasicPie';
 import AdminLayout from '../../components/layout/AdminLayout';
+import useAuth from '../../Hooks/useAuth';
 
 export default function Admin() {
     const [data, setdata] = useState();
+    const { getToken } = useAuth();
 
-    useEffect(()=>{
-        const getData = async()=>{
-            try {
-                const response = await axios.get(BASEURL+'/transactions/teams');
-                if(response.data){
+    useEffect(() => {
+        const getData = () => {
+            const token = getToken();
+            const options = {
+                method: 'GET',
+                url: `${BASEURL}/transactions/teams`,
+                // credentials
+                headers: {
+                    'x-token': `${token}`
+                },
+            }
+            axios.request(options).then(response => {
+                if (response.data) {
                     setdata(response.data);
                 }
-                
-            } catch (error) {
-                message.error('Error al extraer los datos')
-            }
+            }).catch(error => {
+                message.error('Error al extraer los datos');
+                console.log(error);
+            })
         }
         getData();
-    },[]);
+    }, []);
 
     return (
         <div className='admin'>
             <AdminLayout>
                 <Row
-                    gutter={[16,16]}
+                    gutter={[16, 16]}
                 >
                     <Col md={24} lg={24}>
                         <Card title="Ventas totales" >
                             <a href="/admin/charts/sales">
                                 {
                                     data
-                                    ?<BasicColumn data={data}/>
-                                    : <Spin size='large'/>
+                                        ? <BasicColumn data={data} />
+                                        : <Spin size='large' />
                                 }
                             </a>
                         </Card>
@@ -47,8 +57,8 @@ export default function Admin() {
                             <a href="/admin/charts/sales-1">
                                 {
                                     data
-                                    ?<BasicBar  data={data} />
-                                    : <Spin size='large'/>
+                                        ? <BasicBar data={data} />
+                                        : <Spin size='large' />
                                 }
                             </a>
                         </Card>
@@ -58,8 +68,8 @@ export default function Admin() {
                             <a href="/admin/charts/sales-2">
                                 {
                                     data
-                                    ? <BasicPie  data={data}  />
-                                    :<Spin size='large'/>
+                                        ? <BasicPie data={data} />
+                                        : <Spin size='large' />
                                 }
                             </a>
                         </Card>
