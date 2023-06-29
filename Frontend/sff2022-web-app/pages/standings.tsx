@@ -20,7 +20,7 @@ export default function Standings() {
             </div>
             <div className='standings-chart-container'>
                 <Card className='standings-card'>
-                    <BasicColumn />
+                    {/* <BasicColumn /> */}
                 </Card>
             </div>
         </div>

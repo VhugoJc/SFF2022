@@ -150,10 +150,12 @@ const Foodtable: React.FC = () => {
             <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />
         ),
         onFilter: (value, record) =>
+        // @ts-ignore: Object is possibly 'null'.
             record[dataIndex]
                 .toString()
                 .toLowerCase()
-                .includes((value as string).toLowerCase()),
+                .includes((value as string).toLowerCase()
+        ),
         // onFilterDropdownOpenChange: visible => {
         //     if (visible) {
         //         setTimeout(() => searchInput.current?.select(), 100);
