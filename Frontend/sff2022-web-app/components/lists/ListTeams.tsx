@@ -98,7 +98,7 @@ function ListTeams({ }: Props) {
                                 key={item.name as any}
                                 extra={
                                     <img
-                                        width={272}
+                                        className='crud-images'
                                         alt="logo"
                                         src={item?.logo ? item?.logo as any: "https://www.nbmchealth.com/wp-content/uploads/2018/04/default-placeholder.png"}
                                     />
@@ -114,7 +114,9 @@ function ListTeams({ }: Props) {
                                     })}
                                 />
                                 {
-                                    item.description
+                                    item.description.length>350
+                                    ? item.description.slice(0,350) + "..."
+                                    : item.description
                                 }
                             </List.Item>
                         </a>
