@@ -1,12 +1,12 @@
 import { Card, Row, Col, message, Spin } from 'antd'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { BASEURL } from '../../api/config';
-import BasicBar from '../../components/charts/BasicBar';
-import BasicColumn from '../../components/charts/BasicColumn';
-import BasicPie from '../../components/charts/BasicPie';
-import AdminLayout from '../../components/layout/AdminLayout';
-import useAuth from '../../Hooks/useAuth';
+import { BASEURL } from '../api/config';
+import BasicBar from '../components/charts/BasicBar';
+import BasicColumn from '../components/charts/BasicColumn';
+import BasicPie from '../components/charts/BasicPie';
+import AdminLayout from '../components/layout/AdminLayout';
+import useAuth from '../Hooks/useAuth';
 
 export default function Admin() {
     const [data, setdata] = useState();
