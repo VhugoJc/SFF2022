@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+import 'antd/dist/antd.css';
 
 import {AuthProvider} from "../Context/AuthContext";
 
