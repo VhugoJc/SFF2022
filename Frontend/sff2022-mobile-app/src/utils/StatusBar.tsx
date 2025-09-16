@@ -1,19 +1,17 @@
-import { StatusBar as StatusBarGlobal, Platform, NativeModules } from 'react-native'
+import { StatusBar as StatusBarGlobal, Platform } from 'react-native'
 import React from 'react'
-import { View, Text } from 'dripsy';
-import Constants from 'expo-constants';
+import { View } from 'dripsy';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function StatusBar() {
-  const { StatusBarManager } = NativeModules;
-
-  const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 40 : StatusBarManager.HEIGHT;
+  const insets = useSafeAreaInsets();
 
   return (
     <>
       {
         Platform.OS === 'ios'
           ? (
-            <View sx={{ backgroundColor: '$primary', height:Constants.statusBarHeight }}>
+            <View sx={{ backgroundColor: '$primary', height: insets.top }}>
               <StatusBarGlobal barStyle={'light-content'} />
             </View>
           )

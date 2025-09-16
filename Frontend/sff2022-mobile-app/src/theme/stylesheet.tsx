@@ -1,7 +1,7 @@
 // import { StyleSheet } from "react-native";
 
 // export const styles = StyleSheet.create({
-export const styles = ({
+export const styles = {
   title: {
     color: '$light',
     fontSize: '$3',
@@ -108,4 +108,4 @@ export const styles = ({
     marginVertical: '$3',
     fontFamily: 'Rubik-regular',
   },
-});
+};

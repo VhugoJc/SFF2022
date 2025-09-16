@@ -1,15 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   output: 'export',
+  outputFileTracingRoot: __dirname,
   eslint: {
     ignoreDuringBuilds: true,
-  },
-  experimental: {
-    turbo: {
-      // Aprovecha Turbopack para builds más rápidos con Node.js 22
-    },
   },
   compiler: {
     // Optimizaciones del compilador para Node.js 22
@@ -18,6 +13,7 @@ const nextConfig = {
   images: {
     unoptimized: true, // Necesario para export estático
   },
+  distDir: '.next',
 }
 
 module.exports = nextConfig

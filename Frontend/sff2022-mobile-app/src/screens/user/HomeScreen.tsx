@@ -28,12 +28,31 @@ export default function HomeScreen() {
     
     const getSettigs = async()=>{
       try {
-        const response = await userAPI.get('/settings');
-        if(response.data.settings){
-          setsettings(response.data.settings);
-        }
+        // Comentamos temporalmente la llamada a la API
+        // const response = await userAPI.get('/settings');
+        // if(response.data.settings){
+        //   setsettings(response.data.settings);
+        // }
+        
+        // Datos mock para desarrollo sin backend
+        const mockSettings: Settings = {
+          name: "SFF 2022",
+          website: "https://sff2022.com",
+          logo: "",
+          homeData: {
+            title: "¡Bienvenido al SFF 2022!",
+            description: "Festival de comida y entretenimiento. ¡La mejor experiencia gastronómica te espera!",
+            url: "",
+            img: null
+          },
+          sponsors: [],
+          events: [],
+          date: new Date()
+        };
+        setsettings(mockSettings);
+        
       } catch (error) {
-        Alert.alert('Error de conexión')
+        console.log('API no disponible, usando datos mock');
       }
     }
     getSettigs();

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Button, Alert } from 'react-native';
-import { Camera } from 'expo-camera';
+import { CameraView, Camera } from 'expo-camera';
 import { Image, TextInput } from 'dripsy';
-import { BarCodeScanner } from 'expo-barcode-scanner';
 import { userAPI } from '../../api/UserApi';
 import { PreliminarySaleData } from '../../interfaces/SalesInterface';
 import { useNavigation } from '@react-navigation/native';
@@ -19,7 +18,7 @@ export default function ScanScreen() {
 
     const askPermissions = () => {
         (async () => {
-            const { status } = await BarCodeScanner.requestPermissionsAsync();
+            const { status } = await Camera.requestCameraPermissionsAsync();
             setHasPermission(status == "granted");
         })();
     };
@@ -52,9 +51,12 @@ export default function ScanScreen() {
     if (hasPermission && hasPermission) {
         return (
             <View>
-                <BarCodeScanner
-                    onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+                <CameraView
+                    onBarcodeScanned={scanned ? undefined : handleBarCodeScanned}
                     style={{ minWidth: '100%', minHeight: '90%' }}
+                    barcodeScannerSettings={{
+                        barcodeTypes: ['qr'],
+                    }}
                 />
                 {scanned && <Button title={'Escanear otra vez'} onPress={() => setScanned(false)} />}
             </View>

@@ -1,36 +1,31 @@
 import "./src/utils/IgnoreWarning";
-import { NavigationContainer } from "@react-navigation/native";
-import { theme } from "./src/theme/Dripsy";
-import { DripsyProvider } from "dripsy";
-import Fonts from './src/utils/Fonts'; // fonts component
-import StatusBar from './src/utils/StatusBar'; // statusbar color config
-import { AuthProvider } from './src/context/authContext/AuthContext';// Authentication State Provider
-import Navigation from "./src/Navigation/Index";// component which checks if the user is logged and renders the assigned navigation.
-import 'react-native-gesture-handler';//android bug fixed
+import React from 'react';
+import { DripsyProvider } from 'dripsy';
+import { NavigationContainer } from '@react-navigation/native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { theme } from './src/theme/Dripsy';
+import Fonts from './src/utils/Fonts';
+import StatusBar from './src/utils/StatusBar';
+import { AuthProvider } from './src/context/authContext/AuthContext';
 import FavProvider from './src/context/FavsContext/FavsContext';
+import Navigation from './src/Navigation/Index';
+import 'react-native-gesture-handler';
 
 export default function App() {
   return (
-    <DripsyProvider theme={theme}>  
-      <StatusBar />
-      <Fonts> 
-        <NavigationContainer>
-          <AppState>
-            <Navigation/>
-          </AppState>
-        </NavigationContainer>
-      </Fonts>
-    </DripsyProvider>
-
+    <SafeAreaProvider>
+      <DripsyProvider theme={theme}>
+        <StatusBar />
+        <Fonts>
+          <NavigationContainer>
+            <AuthProvider>
+              <FavProvider>
+                <Navigation />
+              </FavProvider>
+            </AuthProvider>
+          </NavigationContainer>
+        </Fonts>
+      </DripsyProvider>
+    </SafeAreaProvider>
   );
-}
-
-const AppState = ({ children }: any) => {
-  return (
-    <AuthProvider>
-      <FavProvider>
-      {children}
-      </FavProvider>
-    </AuthProvider>
-  )
 }

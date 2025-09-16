@@ -41,17 +41,30 @@ export const AuthProvider = ({children}:any) =>{
     },[]);
 
     const getToken =async ()=>{
-        const token = await AsyncStorage.getItem('token');
-        if(!token){
+        try {
+            const token = await AsyncStorage.getItem('token');
+            if(!token){
+                return logOut();
+            }
+            
+            // Comentamos temporalmente la llamada a la API para desarrollo
+            // TODO: Descomentar cuando el backend esté disponible
+            /*
+            //if token exists
+            const resp = await userAPI.get('/auth');
+            if(resp.status!==200){
+                return logOut();
+            }
+            dispatch({type:'SignIn',payload:{user:resp.data.user, token:resp.data.token, status:'authenticated'}});
+            */
+            
+            // Por ahora, si no hay token, ir directo a logout
+            return logOut();
+            
+        } catch (error) {
+            console.log('Error getting token:', error);
             return logOut();
         }
-        //if token exists
-        const resp = await userAPI.get('/auth');
-        if(resp.status!==200){
-            return logOut();
-        }
-        dispatch({type:'SignIn',payload:{user:resp.data.user, token:resp.data.token, status:'authenticated'}});
-        
     }
 
     const signIn = async ({email,password}: LoginData) => {
