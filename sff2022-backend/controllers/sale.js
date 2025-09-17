@@ -39,7 +39,7 @@ const saleWithQR = async (req = request, res = response) => {
     const admin = req.user;
     const { jwtSaleData } = req.body;
     try {
-        const { presaleId, userId, amount } = jwt.verify(jwtSaleData, process.env.SECRETSALESKEY) //actualizar variables de entorno en testing
+        const { presaleId, userId, amount } = jwt.verify(jwtSaleData, process.env.SECRETSALESKEY, { algorithms: ['HS256'] }) //actualizar variables de entorno en testing
         const presale = await Presale.findById(presaleId);
         const user = await User.findById(userId);
 

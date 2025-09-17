@@ -1,3 +1,23 @@
+# Environment files
 .env
+.env.local
+.env.production
+
+# Dependencies
 node_modules
+
+# IDE
 .vscode
+.idea
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Uploads
+uploads/*
+!uploads/.gitkeep

@@ -16,7 +16,7 @@ const jwtValidator = async (req = request, res = response, next) => {
 
     try {
 
-        const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+        const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY, { algorithms: ['HS256'] });
 
         // leer el usuario que corresponde al uid
         const user = await User.findById(uid);
@@ -60,7 +60,7 @@ const jwtAdminValidator = async (req = request, res = response, next) => {
 
     try {
 
-        const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+        const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY, { algorithms: ['HS256'] });
 
         // leer el usuario que corresponde al uid
         const user = await User.findById(uid);
@@ -111,7 +111,7 @@ const jwtSprAdminValidator = async (req = request, res = response, next) => {
 
     try {
 
-        const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+        const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY, { algorithms: ['HS256'] });
 
         // leer el usuario que corresponde al uid
         const user = await User.findById(uid);

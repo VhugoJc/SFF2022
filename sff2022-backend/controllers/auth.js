@@ -112,7 +112,7 @@ const passwordRecovery = async (req, res = response) => {
 const resetPassword = async (req, res = response) => {
     const token = req.header('x-token');
     const {newPassword} = req.body;
-    const { uid } = jwt.verify( token, process.env.SECRETORPRIVATEKEY );
+    const { uid } = jwt.verify( token, process.env.SECRETORPRIVATEKEY, { algorithms: ['HS256'] } );
     const today = moment();
     try{
         let user = await User.findById(uid);

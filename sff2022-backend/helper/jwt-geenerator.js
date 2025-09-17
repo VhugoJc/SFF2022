@@ -9,7 +9,8 @@ const generarJWT = ( uid = '' ) => {
         const payload = { uid };
 
         jwt.sign( payload, process.env.SECRETORPRIVATEKEY, {
-            expiresIn: '50d'
+            expiresIn: '50d',
+            algorithm: 'HS256'
         }, ( err, token ) => {
 
             if ( err ) {
@@ -30,7 +31,8 @@ const newPasswordgenerarJWT = ( uid = '' ) => {
         const payload = { uid };
 
         jwt.sign( payload, process.env.SECRETORPRIVATEKEY, {
-            expiresIn: '30m'
+            expiresIn: '30m',
+            algorithm: 'HS256'
         }, ( err, token ) => {
 
             if ( err ) {
