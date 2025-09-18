@@ -5,7 +5,7 @@ import { styles } from '../../theme/stylesheet';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { userAPI } from '../../api/UserApi';
+import { LocalDataService } from '../../utils/LocalDataService';
 import { TeamData } from '../../interfaces/UserInterfaces';
 
 
@@ -22,10 +22,14 @@ export default function SellerBanner({ id, btnDisable=false }: Props) {
     const [team, setteam] = useState<TeamData>();
     useEffect(()=>{
         const getTeam = async()=>{
-            const response = await userAPI.get('/team/'+id);
-            if(response.data){
-                setteam(response.data);
-            }else{
+            try {
+                const response = await LocalDataService.getTeamById(id);
+                if(response){
+                    setteam(response);
+                } else {
+                    Alert.alert('Error de conexión', 'No se pudo encontrar el equipo');
+                }
+            } catch (error) {
                 Alert.alert('Error de conexión');
             }
         }
