@@ -6,8 +6,7 @@ import TeamCard from '../Cards/TeamCard';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { TeamData } from '../../interfaces/UserInterfaces';
-import { userAPI } from "../../api/UserApi";
-// import teamsdb from '../../db/teams.json';
+import { LocalDataService } from "../../utils/LocalDataService";
 
 export default function TeamsList() {
     const navigation = useNavigation<StackNavigationProp<any>>();
@@ -17,9 +16,9 @@ export default function TeamsList() {
         let isMounted = true;
         const getTeam = async () => {
             try {
-                const response = await userAPI.get('/team');
-                if (response?.data) {
-                    if(isMounted) setteams(response.data);
+                const response = await LocalDataService.getTeams();
+                if (response) {
+                    if(isMounted) setteams(response);
                 }
             } catch (error) {
                 Alert.alert('Error inesperado', 'Verifica tu conexión a internet', [{

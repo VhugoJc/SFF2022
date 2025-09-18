@@ -11,7 +11,7 @@ import LargeBtn from '../../components/Button/LargeBtn';
 import SellerBanner from '../../components/Shared/SellerBanner';
 import { FavContext } from '../../context/FavsContext/FavsContext';
 import { AuthContext } from '../../context/authContext/AuthContext';
-import { userAPI } from '../../api/UserApi';
+import { LocalDataService } from '../../utils/LocalDataService';
 import productdb from '../../db/products.json';
 
 
@@ -23,6 +23,7 @@ export default function ItemFoodScreen() {
 
     const [favIcon, setfavIcon] = useState<boolean>(false);
     const [showHeader, setShowHeader] = useState<boolean>(false);
+    const [resolvedProducts, setResolvedProducts] = useState<any[]>([]);
 
     const { addFood, deleteFood, favsState } = useContext(FavContext);
     const { authState } = useContext(AuthContext);
@@ -34,6 +35,26 @@ export default function ItemFoodScreen() {
             setfavIcon(true);
         }
 
+        // Resolve product ObjectId references to actual product data
+        const resolveProducts = async () => {
+            try {
+                const products = await LocalDataService.getProducts();
+                const resolved = presaleData.products.map((productRef: any) => {
+                    const productId = typeof productRef === 'string' ? productRef : productRef.$oid;
+                    return products.find((product: any) => {
+                        const id = typeof product._id === 'string' ? product._id : product._id.$oid;
+                        return id === productId;
+                    });
+                }).filter(Boolean); // Remove any undefined products
+                
+                setResolvedProducts(resolved);
+            } catch (error) {
+                console.error('Error resolving products:', error);
+                setResolvedProducts([]);
+            }
+        };
+
+        resolveProducts();
     }, [])
 
     const handleScroll = (e: any) => {
@@ -96,9 +117,12 @@ export default function ItemFoodScreen() {
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                     <View sx={styles.flexDirection as any}>
                         {
-                            presaleData.products.map((product: any) => {
+                            resolvedProducts.map((product: any, index: number) => {
                                 return (
-                                    <ProductsCard key={product._id} product={product} />
+                                    <ProductsCard 
+                                        key={product?._id || `product-${index}`} 
+                                        product={product} 
+                                    />
                                 );
                             })
                         }
@@ -131,9 +155,9 @@ const PresaleAdminData = ({ id }: any) => {
     useEffect(() => {
         const getApi = async () => {
             try {
-                const sales = await userAPI.get(`/sale/presale-stadistic/${id}`);
-                settotal(sales.data.total);
-                setamount(sales.data.amount);
+                const stats = await LocalDataService.getPresaleStatistics();
+                settotal(stats.totalSales);
+                setamount(stats.total);
             } catch (err) {
                 Alert.alert('Error', 'Ha ocurrido un error en la petición', [{
                     text: 'Ok'

@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "event_1",
+    "title": "Keynote Principal: Transformación Digital en Ventas",
+    "img": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+    "date": "2025-03-15T09:00:00.000Z"
+  },
+  {
+    "_id": "event_2",
+    "title": "Workshop: Automatización con Salesforce Flow",
+    "img": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+    "date": "2025-03-15T11:00:00.000Z"
+  },
+  {
+    "_id": "event_3",
+    "title": "Panel: Inteligencia Artificial en CRM",
+    "img": "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80",
+    "date": "2025-03-15T14:00:00.000Z"
+  },
+  {
+    "_id": "event_4",
+    "title": "Networking & Almuerzo Empresarial",
+    "img": "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80",
+    "date": "2025-03-15T16:00:00.000Z"
+  },
+  {
+    "_id": "event_5",
+    "title": "Demo Live: Einstein Analytics en Acción",
+    "img": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2015&q=80",
+    "date": "2025-03-15T17:30:00.000Z"
+  },
+  {
+    "_id": "event_6",
+    "title": "Masterclass: Customer 360 Strategies",
+    "img": "https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80",
+    "date": "2025-03-16T09:30:00.000Z"
+  },
+  {
+    "_id": "event_7",
+    "title": "Roundtable: Futuro del E-commerce",
+    "img": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80",
+    "date": "2025-03-16T11:30:00.000Z"
+  },
+  {
+    "_id": "event_8",
+    "title": "Cierre y Premiación",
+    "img": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+    "date": "2025-03-16T16:00:00.000Z"
+  }
+]

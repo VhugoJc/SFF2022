@@ -5,7 +5,7 @@ import FoodCard from '../Cards/FoodCard';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Presale } from '../../interfaces/PresaleInterface';
-import { userAPI } from '../../api/UserApi';
+import { LocalDataService } from '../../utils/LocalDataService';
 
 interface Props{
   refreshing: boolean
@@ -19,9 +19,9 @@ export default function FoodList({refreshing}:Props) {
     
     const getPraseles = async () => {
       try {
-        const response = await userAPI.get('/presale');
-        if (response?.data) {
-          setPresales(response.data);
+        const response = await LocalDataService.getPresales();
+        if (response) {
+          setPresales(response);
         }
 
       } catch (err) {

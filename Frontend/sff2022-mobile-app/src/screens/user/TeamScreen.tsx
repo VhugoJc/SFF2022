@@ -8,10 +8,8 @@ import SocialMedia from '../../components/Shared/SocialMedia';
 import FoodDescriptionCard from '../../components/Cards/FoodDescriptionCard';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import teamsdb from '../../db/teams.json';
-import { Presale } from '../../interfaces/SalesInterface';
-import { userAPI } from '../../api/UserApi';
-// import presalesdb from '../../db/presales.json';
+import { Presale } from '../../interfaces/PresaleInterface';
+import { LocalDataService } from '../../utils/LocalDataService';
 
 
 interface Props {
@@ -35,9 +33,9 @@ export default function TeamScreen() {
     useEffect(()=>{
         const getPresales = async() =>{
             try {
-                const response = await userAPI.get('presale/'+teamData._id);
-                if(response?.data){
-                    setpresales(response.data);
+                const response = await LocalDataService.getPresalesByTeamId(teamData._id);
+                if(response){
+                    setpresales(response);
                 }
             } catch (error) {
                 Alert.alert('Error al obtener los combos');
@@ -45,11 +43,6 @@ export default function TeamScreen() {
         }
         getPresales();
     },[])
-
-
-    const teams = teamsdb;
-
-
 
     return (
         <ScrollView showsVerticalScrollIndicator={false}

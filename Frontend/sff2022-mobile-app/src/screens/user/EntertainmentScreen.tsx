@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView } from 'dripsy';
 import EntrreteinmentCard from '../../components/Cards/EntertainmentCard';
 import { Event } from '../../interfaces/EventInterface';
-import { userAPI } from '../../api/UserApi';
+import { LocalDataService } from '../../utils/LocalDataService';
 
 
 export default function Entreteinment() {
@@ -14,10 +14,12 @@ export default function Entreteinment() {
     useEffect(() => {
         const getEvents = async () => {
             try {
-                const myEvents = await userAPI.get('/settings/event');
-                setevents(myEvents.data.events);
+                // Load events from local JSON data
+                const localEvents = await LocalDataService.getEvents();
+                setevents(localEvents);
 
             } catch (error) {
+                console.log('Error loading local events data:', error);
                 Alert.alert('Error cargando los datos');
             }
         }

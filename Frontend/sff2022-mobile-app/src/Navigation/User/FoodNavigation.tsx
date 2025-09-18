@@ -16,7 +16,7 @@ export const FoodNavigation = () => {
             },
         }}
         >
-            <Stack.Screen  name="Comida" component={FoodScreen} />
+            <Stack.Screen  name="Comida" component={FoodScreen} options={{headerShown: false}} />
             
             <Stack.Group screenOptions={{headerShown:false}}>
                 <Stack.Screen  name="Mi Comida" options={{headerShown:false,presentation:"modal"}} component={ItemFoodScreen} />

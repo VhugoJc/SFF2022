@@ -5,7 +5,7 @@ import { StyleSheet, TouchableOpacity } from 'react-native';
 import { PresaleData } from '../../interfaces/UserInterfaces';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { Presale } from '../../interfaces/SalesInterface';
+import { Presale } from '../../interfaces/PresaleInterface';
 
 interface Props {
     presale: Presale,

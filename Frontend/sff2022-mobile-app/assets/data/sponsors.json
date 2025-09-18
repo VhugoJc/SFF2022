@@ -1,0 +1,27 @@
+[
+  {
+    "_id": "sponsor_1",
+    "name": "Salesforce",
+    "img": "https://logos-world.net/wp-content/uploads/2020/09/Salesforce-Logo.png"
+  },
+  {
+    "_id": "sponsor_2", 
+    "name": "AWS",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1280px-Amazon_Web_Services_Logo.svg.png"
+  },
+  {
+    "_id": "sponsor_3",
+    "name": "Microsoft",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/1024px-Microsoft_logo.svg.png"
+  },
+  {
+    "_id": "sponsor_4",
+    "name": "Google Cloud",
+    "img": "https://cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png"
+  },
+  {
+    "_id": "sponsor_5",
+    "name": "Oracle",
+    "img": "https://logos-world.net/wp-content/uploads/2020/09/Oracle-Logo.png"
+  }
+]

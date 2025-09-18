@@ -13,10 +13,10 @@ export default function EntertainmentCard({img,title,date}:Props) {
     return (
         <ImageBackground imageStyle={entertainmentCard.imgBckg}  source={{uri:img}}>
             <View sx={entertainmentCard.container}>
-                <Text sx={entertainmentCard.title}>
+                {/* <Text sx={entertainmentCard.title}>
                     {title}
                 </Text>
-                <Text sx={entertainmentCard.date}>{date.toString()}</Text>
+                <Text sx={entertainmentCard.date}>{date.toString()}</Text> */}
             </View>
         </ImageBackground>
     )
@@ -34,7 +34,7 @@ const entertainmentCard = StyleSheet.create({
         justifyContent:'center',
         padding:'$3',
         height:150,
-        backgroundColor:'$primaryTransparent',
+        // backgroundColor:'$primaryTransparent',
     },
     title:{
         color: '$light',
