@@ -13,7 +13,7 @@ export default function HomeBanner() {
     const navigation = useNavigation<StackNavigationProp<any>>();
     return (
         <ImageBackground
-            source={require("../../../assets/img/home_background.jpg")}
+            source={require("../../../assets/img/home_background.png")}
             style={{ height: 550 }}
         >
             <View>
@@ -21,7 +21,7 @@ export default function HomeBanner() {
                 <ScrollView
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
-                    style={{minHeight:'100%'}}
+                    style={{minHeight:100}}
                 >
                     <View sx={{ flexDirection: 'row', paddingLeft: '$3', marginTop: '$3' }}>
                         <IconBtn  onPress={() => navigation.navigate("FoodNav",{
