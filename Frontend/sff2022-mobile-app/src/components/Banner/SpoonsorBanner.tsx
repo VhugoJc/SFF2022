@@ -1,6 +1,6 @@
-import React from 'react';
-import { ImageSourcePropType, StyleSheet } from 'react-native';
-import { View, Text, Image, ScrollView } from 'dripsy';
+import React, { useEffect, useRef } from 'react';
+import { ImageSourcePropType, StyleSheet, ScrollView as RNScrollView } from 'react-native';
+import { View, Text, Image } from 'dripsy';
 import { styles } from '../../theme/stylesheet';
 import { Sponsors } from '../../interfaces/SettingsInterface';
 
@@ -8,45 +8,102 @@ interface Props{
     sponsors: Sponsors[] | undefined
 }
 export default function SpoonsorBanner({sponsors}:Props) {
+    const scrollViewRef = useRef<RNScrollView>(null);
+    
+    // Just show regular sponsors without infinite scroll for now
+    const displaySponsors = sponsors || [];
+    
     return (
-        <View sx={sponsorBanner.container}>
-            <Text sx={Object.assign({},styles.subtitle,{paddingLeft:'$3'})}>Nuestros Patrocinadores</Text> 
-            <Text sx={Object.assign({},styles.text,{paddingLeft:'$3'})}>Marcas que hacen posible este evento</Text> 
-            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                <View sx={sponsorBanner.scroll}>
-                    {
-                        sponsors?.map(sponsor=>{
-                            return <ImageSponsor key={sponsor._id} img={{uri:sponsor.img}}/>
-                        })
-                    }
+        <View sx={sponsorBanner.wrapper}>
+            <View sx={sponsorBanner.container}>
+                <View sx={sponsorBanner.headerSection}>
+                    <Text sx={sponsorBanner.title}>Nuestros Patrocinadores</Text> 
+                    <Text sx={sponsorBanner.subtitle}>Marcas que hacen posible este evento</Text> 
                 </View>
-            </ScrollView>
+                <RNScrollView 
+                    ref={scrollViewRef}
+                    horizontal={true} 
+                    showsHorizontalScrollIndicator={false} 
+                    contentContainerStyle={sponsorBanner.scrollContent}
+                    scrollEnabled={true}
+                    nestedScrollEnabled={false}
+                    keyboardShouldPersistTaps="handled"
+                >
+                    <View sx={sponsorBanner.scroll}>
+                        {displaySponsors.map((sponsor, index) => (
+                            <ImageSponsor key={`${sponsor._id}-${index}`} img={{uri:sponsor.img}} index={index}/>
+                        ))}
+                    </View>
+                </RNScrollView>
+            </View>
         </View>
     )
 }
 
 interface imgPRops{
-    img: ImageSourcePropType
+    img: ImageSourcePropType,
+    index: number
 }
-function ImageSponsor({img}:imgPRops) {
+function ImageSponsor({img, index}:imgPRops) {
     return(
-        <View>
+        <View sx={sponsorBanner.imageContainer}>
             <Image sx={sponsorBanner.img} source={img}/>
         </View>    
     );
 }
 
 const sponsorBanner = StyleSheet.create({
-    container:{
-        backgroundColor:'$background',
-        paddingVertical:50
+    wrapper: {
+        backgroundColor: '$background',
+        paddingVertical: 40,
     },
-    img:{
-        width:200,
-        height:200,
-        margin: '$3'
+    container: {
+        paddingHorizontal: 0,
+        minHeight: 300,
+        paddingVertical: 24,
     },
-    scroll:{
-        flexDirection:'row',
-    }
+    headerSection: {
+        marginBottom: 32,
+        paddingHorizontal: 8,
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '$primary',
+        marginBottom: 12,
+        textAlign: 'center',
+    },
+    subtitle: {
+        fontSize: 16,
+        color: '$text',
+        textAlign: 'center',
+        opacity: 0.8,
+        marginBottom: 16,
+    },
+    scrollContent: {
+        paddingHorizontal: 24,
+    },
+    scroll: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    imageContainer: {
+        backgroundColor: 'white',
+        borderRadius: 12,
+        padding: 32,
+        marginHorizontal: 12,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 3,
+    },
+    img: {
+        width: 180,
+        height: 120,
+        resizeMode: 'contain',
+    },
 });

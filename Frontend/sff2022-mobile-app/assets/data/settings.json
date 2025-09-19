@@ -2,11 +2,14 @@
   "name": "Sales Force Fest 2025",
   "website": "https://sff2025.com",
   "logo": "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/536283485_1299369135311145_4771061172300677103_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=ve1sHHfq4WQQ7kNvwH8v3d_&_nc_oc=AdliJFINB9SjN9S2V51Y714OwIgaRUdUozgli78-pYdVTEXCkv-bG6wM0b_NnDmEhZpzi8fm6wdHhj7GzuzqnXy8&_nc_zt=23&_nc_ht=scontent-dfw5-2.xx&_nc_gid=yPHkgCDBMkALM-qPliulKQ&oh=00_AfbWEtrNAspRhQ46ndlgV16fm4YIENmouUcT-1kAxOwkWw&oe=68D12C4D",
-  "date": "2025-03-15T09:00:00.000Z",
+  "date": "2025-11-07T08:00:00.000Z",
+  "startTime": "08:00",
+  "endTime": "20:00",
+  "duration": "8:00 AM - 8:00 PM",
   "homeData": {
     "title": "¡Bienvenido al Sales Force Fest 2025!",
     "description": "Festival de comida y entretenimiento. ¡La mejor experiencia gastronómica te espera! Disfruta de los mejores equipos, combos especiales y eventos únicos.",
-    "url": "",
-    "img": "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/532161831_1293546049226787_6335895516557152430_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=_KeyxbHDGKoQ7kNvwHpuAyH&_nc_oc=Adlzvpeg_HKUWZ88dPR2uKuT5GfaaFBfxziwuBEMfmTjkAwutzio72N9WUm5--shbWPzmkyO1qPmYqMZsB8gmR1n&_nc_zt=23&_nc_ht=scontent-dfw5-1.xx&_nc_gid=c7wgceZvq1E6_qvdUTfhsg&oh=00_AfZTAC1d55vnXKQ36Ahmq7G7nSEMG2Msw-wPYtZ8nJieOA&oe=68D151B7"
+    "url": "https://www.facebook.com/SalesForceF?locale=es_LA",
+    "img": "../../assets/img/sff_main_image.png"
   }
 }

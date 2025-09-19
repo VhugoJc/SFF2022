@@ -18,6 +18,9 @@ export class LocalDataService {
         website: settingsData.website,
         logo: settingsData.logo,
         date: new Date(settingsData.date),
+        startTime: settingsData.startTime,
+        endTime: settingsData.endTime,
+        duration: settingsData.duration,
         homeData: settingsData.homeData,
         sponsors: sponsorsData as Sponsors[],
         events: eventsData as Events[]

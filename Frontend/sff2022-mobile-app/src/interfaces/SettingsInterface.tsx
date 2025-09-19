@@ -20,6 +20,9 @@ export interface Settings{
     website:string,
     logo:string,
     date:Date,
+    startTime?: string,
+    endTime?: string,
+    duration?: string,
     sponsors: Array<Sponsors>,
     events:Array<Events>,
     homeData:HomeData

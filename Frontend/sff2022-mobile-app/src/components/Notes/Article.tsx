@@ -11,7 +11,7 @@ interface Props{
 export default function Article({homeData}:Props) {
   return (
     <View sx={articles.container}>
-      <Image sx={articles.img} source={{uri:homeData?.img}} />
+      <Image sx={articles.img} source={require('../../../assets/img/background_main.png')} />
       <Text sx={styles.subtitle}>{homeData?.title}</Text>
       <Text sx={styles.text}>
       {homeData?.description}

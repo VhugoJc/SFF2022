@@ -1,10 +1,5 @@
 [
   {
-    "_id": "sponsor_1",
-    "name": "Salesforce",
-    "img": "https://logos-world.net/wp-content/uploads/2020/09/Salesforce-Logo.png"
-  },
-  {
     "_id": "sponsor_2", 
     "name": "AWS",
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1280px-Amazon_Web_Services_Logo.svg.png"

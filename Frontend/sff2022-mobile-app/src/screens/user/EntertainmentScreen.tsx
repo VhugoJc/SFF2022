@@ -43,6 +43,9 @@ export default function Entreteinment() {
                 />
             }
         >
+            <View sx={entreteinment.header}>
+                <Text sx={entreteinment.title}>Agenda</Text>
+            </View>
             <View sx={entreteinment.container}>
                 {
                     events.map(event => {
@@ -65,6 +68,17 @@ export default function Entreteinment() {
     )
 }
 const entreteinment = StyleSheet.create({
+    header: {
+        backgroundColor: '$background',
+        paddingHorizontal: 20,
+        paddingVertical: 15,
+        alignItems: 'center'
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '$primary'
+    },
     container: {
         backgroundColor: '$background',
         flex: 1,
@@ -76,6 +90,6 @@ const entreteinment = StyleSheet.create({
         width: '50%'
     },
     scrollView: {
-        backgroundColor:'white'
+        backgroundColor:'$background'
     }
 });

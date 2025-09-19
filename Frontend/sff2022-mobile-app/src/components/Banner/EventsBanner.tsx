@@ -18,10 +18,10 @@ export default function EventsBanner() {
         >
             <View sx={events.container}>
                 <Text sx={Object.assign({}, styles.subtitle, { color: '$light' })}>
-                    Los mejores eventos
+                    Agenda del Evento
                 </Text>
                 <Text sx={Object.assign({}, styles.text, { color: '$light' })}>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                    Descubre los horarios de bandas, shows y actividades que harán único tu día. Organiza tu tiempo y no te pierdas nada del Salesforce Fest.
                     {"\n"}
                 </Text>
                 <IconBtn onPress={() => navigation.navigate("Entretenimiento" as any)} name='Descubrir' type='light' />
