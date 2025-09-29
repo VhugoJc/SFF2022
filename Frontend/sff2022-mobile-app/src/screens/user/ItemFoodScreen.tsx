@@ -99,18 +99,18 @@ export default function ItemFoodScreen() {
                 >
                 </ImageBackground>
                 <View sx={itemFood.header as any}>
-                    <Text sx={Object.assign({}, styles.subtitle, { textTransform: 'uppercase' }) as object}>
+                    <Text sx={Object.assign({}, styles.subtitle, { textTransform: 'uppercase', color: '$secondary', }) as object}>
                         {presaleData.name}
                     </Text>
-                    <Text sx={itemFood.price}>
+                    <Text sx={Object.assign({}, styles.text, {fontFamily: 'Rubik-bold'})}>
                         {`$${presaleData.cost.toFixed(2)}`}
                     </Text>
 
-                    <Text sx={Object.assign({}, styles.text, { color: '$secondary' })}>
+                    <Text sx={styles.text}>
                         {presaleData.description}
                     </Text>
 
-                    <Text sx={Object.assign({}, styles.text, itemFood.subtitle)}>
+                    <Text sx={Object.assign({}, styles.subtitle, { textTransform: 'uppercase', color: '$secondary', }) as object}>
                         Incluye:
                     </Text>
                 </View>
@@ -201,7 +201,7 @@ const itemFood = StyleSheet.create({
         height: 200
     },
     price: {
-        color: '$blueLight',
+        color: '$primary',
         fontFamily: 'Rubik-regular',
         fontSize: '$2',
         marginBottom: '$4'

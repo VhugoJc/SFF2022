@@ -15,8 +15,8 @@ export default function ProductsCard({product}:Props) {
                 source={product?.img ?{uri:product.img} :{uri:'https://dicesabajio.com.mx/wp-content/uploads/2021/06/no-image.jpeg'}}
                 sx={productsCard.img}
             />
-            <Text sx={styles.text}>{`${product.name}`}</Text>
-            <Text sx={Object.assign({},styles.text,{color:'$blueLight'})}>{product.description} </Text>
+            {/* <Text sx={styles.text}>{`${product.name}`}</Text>
+            <Text sx={Object.assign({},styles.text,{color:'$blueLight'})}>{product.description} </Text> */}
         </View>
     )
 }

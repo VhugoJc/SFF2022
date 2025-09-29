@@ -24,8 +24,8 @@ export default function FoodDescriptionCard({ presale, btnDisable = false }: Pro
                     })}>
             <View sx={foodDescriptionCard.container}>
                 <View sx={foodDescriptionCard.description}>
-                    <Text sx={Object.assign({}, styles.text, { color: "$primary", textTransform: 'uppercase' }) as object}>{presale.name}</Text>
-                    <Text sx={styles.blueLabel}>{`$${presale.cost.toFixed(2)}`}</Text>
+                    <Text sx={Object.assign({}, styles.text, { color: "$primary", textTransform: 'uppercase', fontFamily: 'Rubik-bold' }) as object}>{presale.name}</Text>
+                    <Text sx={styles.text}>{`$${presale.cost.toFixed(2)}`}</Text>
                     <Text sx={Object.assign({}, styles.text, { fontSize: '$0' })}>
                         {presale.description}
                     </Text>

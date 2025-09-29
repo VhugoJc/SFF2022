@@ -39,7 +39,7 @@ export default function SellerBanner({ id, btnDisable=false }: Props) {
     return (
         <View>
             <View sx={seller.header as any}>
-                <Text sx={Object.assign({}, styles.text, seller.subtitle)}>
+                <Text sx={Object.assign({}, styles.subtitle, { textTransform: 'uppercase', color: '$secondary', }) as object}>
                     Vendedor:
                 </Text>
             </View>

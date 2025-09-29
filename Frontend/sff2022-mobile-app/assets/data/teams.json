@@ -2,20 +2,20 @@
   "_id": {
     "$oid": "6313dae64965321f3d983c78"
   },
-  "name": "FrankieTort",
+  "name": "GravityTorts",
   "imgs": [
-    "https://picsum.photos/800/600?random=1",
-    "https://picsum.photos/800/600?random=2"
+    "https://sales-force-fest.s3.us-east-1.amazonaws.com/images/teams/gravityFalls_banner.webp",
+    "https://sales-force-fest.s3.us-east-1.amazonaws.com/images/teams/gravityFalls_banner2.jpg"
   ],
   "socialMedia": {
     "twitter": "",
     "facebook": "https://fb.watch/fjZF7buKEc/?mibextid=bZN3Wv",
     "tiktok": "",
-    "instagram": "",
+    "instagram": "https://www.instagram.com/gravitytorts/",
     "whatsapp":"https://fb.watch/fjZF7buKEc/?mibextid=bZN3Wv"
   },
-  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,",
-  "logo": "https://picsum.photos/200/200?random=3",
-  "status": false,
+  "description": "Nuestra misión en el sales force fest es convertirnos en el equipo mas enigmatico y destacado, inspirado en la esencia de gravity falls, capturando la atención con detalles misteriosos y únicos. nos enfocamos en ofrecer tortas deliciosas que conquisten el paladar, sino que también te sorpen-dan con un toque de misterio.",
+  "logo": "https://sales-force-fest.s3.us-east-1.amazonaws.com/images/teams/gravityFalls_logo.webp",
+  "status": true,
   "__v": 0
 }]

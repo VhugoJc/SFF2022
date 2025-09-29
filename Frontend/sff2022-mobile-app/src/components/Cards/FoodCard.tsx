@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ImageSourcePropType, StyleSheet, ImageBackground } from 'react-native';
 import { styles } from '../../theme/stylesheet';
 import { Icon } from '@rneui/base';
@@ -17,17 +17,31 @@ interface FoodCardProps {
     onPress?(): void
 }
 export default function FoodCard({ img, title, price, paid = false, fav = false, edit = false, onPress }: FoodCardProps) {
+    const [imageError, setImageError] = useState(false);
+    
+    // Fallback image when the original image fails to load
+    const fallbackImage = require('../../../assets/img/rocket_illustration.png');
+    const imageSource = imageError ? fallbackImage : img;
+    
+    const handleImageError = () => {
+        setImageError(true);
+    };
+
     return (
         <TouchableOpacity onPress={onPress}>
-            <View sx={foodCard.container}>
+            <View style={foodCard.container as any}>
                 <View style={foodCard.favicon}>
                     {
                         paid ?
-                            <Image sx={foodCard.paidIcon} source={require('../../../assets/img/paid.png')} />
+                            <Image style={foodCard.paidIcon as any} source={require('../../../assets/img/paid.png')} />
                             : null
                     }
                 </View>
-                <ImageBackground style={foodCard.img} source={img}>
+                <ImageBackground 
+                    style={foodCard.img} 
+                    source={imageSource}
+                    onError={handleImageError}
+                >
                     {
                         fav
                             ? <CircleBtn name='favorite' right />
@@ -36,8 +50,8 @@ export default function FoodCard({ img, title, price, paid = false, fav = false,
                                 : null
                     }
                 </ImageBackground>
-                <Text sx={Object.assign({}, styles.text, { textTransform: 'uppercase' }) as object}>{title}</Text>
-                <Text sx={styles.blueLabel}>${price ?price.toFixed(2) :null}</Text>
+                <Text sx={Object.assign({}, styles.text, { textTransform: 'uppercase', fontFamily: 'Rubik-bold'}) as object}>{title}</Text>
+                <Text sx={styles.text}>${price ?price.toFixed(2) :null}</Text>
             </View>
         </TouchableOpacity>
     )
@@ -45,9 +59,9 @@ export default function FoodCard({ img, title, price, paid = false, fav = false,
 
 const foodCard = StyleSheet.create({
     container: {
-        backgroundColor: '$background',
-        marginVertical: '$3',
-        paddingBottom: '$3'
+        backgroundColor: '#fff',
+        marginVertical: 12,
+        paddingBottom: 12
     },
     img: {
         height: 150,

@@ -3,13 +3,13 @@
     "_id": {
       "$oid": "63177b4c8175af177f365988"
     },
-    "name": "Torta Mega Tortas",
-    "cost": 225.5,
-    "description": "deliciosas tortas en equipo",
+    "name": "Combo Mystery Shack",
+    "cost": 80,
+    "description": "Combo Mystery Shack: una deliciosa sorpresa creada por GravityTorts — ¡prueba la aventura!",
     "sellerId": {
       "$oid": "6313dae64965321f3d983c78"
     },
-    "coverImg": "https://picsum.photos/400/300?random=10",
+    "coverImg": "https://sales-force-fest.s3.us-east-1.amazonaws.com/images/combos/gravityFalls_combo1.webp",
     "products": [
       {
         "$oid": "633917d23f2653998755b05b"
@@ -24,14 +24,239 @@
     "_id": {
       "$oid": "63177b638175af177f36598b"
     },
-    "name": "TortaFrankie",
-    "cost": 22,
-    "description": "deliciosas tortas en equipo",
+    "name": "Combo Dipper",
+    "cost": 120,
+    "description": "Combo Dipper: misterio y sabor al estilo del Diario 3.",
     "sellerId": {
       "$oid": "6313dae64965321f3d983c78"
     },
-    "coverImg": "https://picsum.photos/400/300?random=11",
+    "coverImg": "https://sales-force-fest.s3.us-east-1.amazonaws.com/images/combos/gravityFalls_combo2.webp",
     "products": [
+      {
+        "$oid": "6339182a3f2653998755b05f"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "63177b648175af177f36598c"
+    },
+    "name": "Combo Mabel",
+    "cost": 95,
+    "description": "Combo Mabel: dulzura y diversión en cada bocado, perfecto para los amantes de los colores brillantes.",
+    "sellerId": {
+      "$oid": "6313dae64965321f3d983c78"
+    },
+    "coverImg": "https://sales-force-fest.s3.us-east-1.amazonaws.com/images/combos/gravityFalls_combo3.webp",
+    "products": [
+      {
+        "$oid": "633917d23f2653998755b05b"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "63177b658175af177f36598d"
+    },
+    "name": "Combo Grunkle Stan",
+    "cost": 110,
+    "description": "Combo Grunkle Stan: sabor tradicional con un toque misterioso, como las aventuras en la cabaña.",
+    "sellerId": {
+      "$oid": "6313dae64965321f3d983c78"
+    },
+    "coverImg": "https://sales-force-fest.s3.us-east-1.amazonaws.com/images/combos/gravityFalls_combo4.webp",
+    "products": [
+      {
+        "$oid": "6339182a3f2653998755b05f"
+      },
+      {
+        "$oid": "633917d23f2653998755b05b"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "63177b668175af177f36598e"
+    },
+    "name": "Combo Bill Cipher",
+    "cost": 150,
+    "description": "Combo Bill Cipher: una experiencia triangular única que desafiará todos tus sentidos.",
+    "sellerId": {
+      "$oid": "6313dae64965321f3d983c78"
+    },
+    "coverImg": "https://sales-force-fest.s3.us-east-1.amazonaws.com/images/combos/gravityFalls_combo5.webp",
+    "products": [
+      {
+        "$oid": "6339182a3f2653998755b05f"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "63177b678175af177f36598f"
+    },
+    "name": "Combo Wendy",
+    "cost": 85,
+    "description": "Combo Wendy: fresco y relajado, perfecto para disfrutar en cualquier momento del día.",
+    "sellerId": {
+      "$oid": "6313dae64965321f3d983c78"
+    },
+    "coverImg": "https://sales-force-fest.s3.us-east-1.amazonaws.com/images/combos/gravityFalls_combo6.webp",
+    "products": [
+      {
+        "$oid": "633917d23f2653998755b05b"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "63177b688175af177f365990"
+    },
+    "name": "Combo Soos",
+    "cost": 75,
+    "description": "Combo Soos: el más divertido y económico, lleno de buena vibra y sabor casero.",
+    "sellerId": {
+      "$oid": "6313dae64965321f3d983c78"
+    },
+    "coverImg": "https://sales-force-fest.s3.us-east-1.amazonaws.com/images/combos/gravityFalls_combo7.webp",
+    "products": [
+      {
+        "$oid": "6339182a3f2653998755b05f"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "63177b698175af177f365991"
+    },
+    "name": "Combo Gideon",
+    "cost": 130,
+    "description": "Combo Gideon: pequeño pero poderoso, una explosión de sabor en cada porción.",
+    "sellerId": {
+      "$oid": "6313dae64965321f3d983c78"
+    },
+    "coverImg": "https://sales-force-fest.s3.us-east-1.amazonaws.com/images/combos/gravityFalls_combo8.webp",
+    "products": [
+      {
+        "$oid": "633917d23f2653998755b05b"
+      },
+      {
+        "$oid": "6339182a3f2653998755b05f"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "63177b6a8175af177f365992"
+    },
+    "name": "Combo Ford",
+    "cost": 140,
+    "description": "Combo Ford: científicamente delicioso, diseñado para mentes curiosas y paladares exigentes.",
+    "sellerId": {
+      "$oid": "6313dae64965321f3d983c78"
+    },
+    "coverImg": "https://sales-force-fest.s3.us-east-1.amazonaws.com/images/combos/gravityFalls_combo9.webp",
+    "products": [
+      {
+        "$oid": "6339182a3f2653998755b05f"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "63177b6b8175af177f365993"
+    },
+    "name": "Combo Pacifica",
+    "cost": 160,
+    "description": "Combo Pacifica: elegante y sofisticado, para quienes buscan una experiencia gastronómica premium.",
+    "sellerId": {
+      "$oid": "6313dae64965321f3d983c78"
+    },
+    "coverImg": "https://sales-force-fest.s3.us-east-1.amazonaws.com/images/combos/gravityFalls_combo10.webp",
+    "products": [
+      {
+        "$oid": "633917d23f2653998755b05b"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "63177b6c8175af177f365994"
+    },
+    "name": "Combo Robbie",
+    "cost": 90,
+    "description": "Combo Robbie: rebelde y único, con un toque emo que conquistará tu corazón.",
+    "sellerId": {
+      "$oid": "6313dae64965321f3d983c78"
+    },
+    "coverImg": "https://sales-force-fest.s3.us-east-1.amazonaws.com/images/combos/gravityFalls_combo11.webp",
+    "products": [
+      {
+        "$oid": "6339182a3f2653998755b05f"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "63177b6d8175af177f365995"
+    },
+    "name": "Combo Tambry",
+    "cost": 85,
+    "description": "Combo Tambry: moderno y trendy, perfecto para compartir en redes sociales.",
+    "sellerId": {
+      "$oid": "6313dae64965321f3d983c78"
+    },
+    "coverImg": "https://sales-force-fest.s3.us-east-1.amazonaws.com/images/combos/gravityFalls_combo12.webp",
+    "products": [
+      {
+        "$oid": "633917d23f2653998755b05b"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "63177b6e8175af177f365996"
+    },
+    "name": "Combo Old Man McGucket",
+    "cost": 65,
+    "description": "Combo Old Man McGucket: rústico y auténtico, con ingredientes naturales de la montaña.",
+    "sellerId": {
+      "$oid": "6313dae64965321f3d983c78"
+    },
+    "coverImg": "https://sales-force-fest.s3.us-east-1.amazonaws.com/images/combos/gravityFalls_combo13.webp",
+    "products": [
+      {
+        "$oid": "6339182a3f2653998755b05f"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "63177b6f8175af177f365997"
+    },
+    "name": "Combo Journal 3",
+    "cost": 200,
+    "description": "Combo Journal 3: el más misterioso y completo, con secretos culinarios por descubrir.",
+    "sellerId": {
+      "$oid": "6313dae64965321f3d983c78"
+    },
+    "coverImg": "https://sales-force-fest.s3.us-east-1.amazonaws.com/images/combos/gravityFalls_combo14.webp",
+    "products": [
+      {
+        "$oid": "633917d23f2653998755b05b"
+      },
       {
         "$oid": "6339182a3f2653998755b05f"
       }

@@ -25,24 +25,36 @@ export default function TeamScreen() {
 
     const onRefresh = () => {
         setRefreshing(true);
+        getPresales();
         setTimeout(function () {
             setRefreshing(false);
         }, 500);
     }
 
-    useEffect(()=>{
-        const getPresales = async() =>{
-            try {
-                const response = await LocalDataService.getPresalesByTeamId(teamData._id);
-                if(response){
-                    setpresales(response);
-                }
-            } catch (error) {
-                Alert.alert('Error al obtener los combos');
+    const getPresales = async() =>{
+        try {
+            // Extract the string ID from the object if needed
+            const teamId = typeof teamData._id === 'string' ? teamData._id : teamData._id.$oid;
+            const response = await LocalDataService.getPresalesByTeamId(teamId);
+            if(response){
+                setpresales(response);
             }
+        } catch (error) {
+            Alert.alert('Error al obtener los combos');
         }
+    }
+
+    useEffect(()=>{
         getPresales();
     },[])
+
+    // Refresh presales when screen comes into focus
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+            getPresales();
+        });
+        return unsubscribe;
+    }, [navigation]);
 
     return (
         <ScrollView showsVerticalScrollIndicator={false}

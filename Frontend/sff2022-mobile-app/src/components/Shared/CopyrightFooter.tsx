@@ -1,7 +1,11 @@
 import React from 'react';
 import { Text, View } from 'dripsy';
 
-const CopyrightFooter = () => {
+interface Props {
+  lightBackground?: boolean;
+}
+
+const CopyrightFooter = ({ lightBackground = false }: Props) => {
   const currentYear = new Date().getFullYear();
   
   return (
@@ -17,9 +21,10 @@ const CopyrightFooter = () => {
       <Text
         sx={{
           fontSize: 12,
-          color: '$light',
+          color: lightBackground ? '$primary' : '$light',
           textAlign: 'center',
           lineHeight: 18,
+          fontWeight: 'bold'
         }}
       >
         © {currentYear} Sales Force Fest. Todos los derechos reservados.
@@ -27,7 +32,7 @@ const CopyrightFooter = () => {
       <Text
         sx={{
           fontSize: 11,
-          color: '$secondary',
+          color: lightBackground ? '$primary' : '$secondary',
           textAlign: 'center',
           marginTop: 0,
         }}

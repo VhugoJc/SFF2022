@@ -13,7 +13,7 @@ export const theme = makeTheme({
         $primary: '#380B58',
         $secondary: '#D678F1',
         $blueLight:"rgba(215, 120, 241, 0.21)",
-        $light:'#FFFFFF',
+        $light:'#f6f6f6ff',
         $red:'#E63946',
         $background:'#f6f6f6ff',
         $primaryTransparent:"rgba(29,53,87,0.7)",
