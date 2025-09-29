@@ -14,6 +14,7 @@ import { AccountNavigation } from '../shared/AccountNavigation';
 // single screens
 import FavoritesScreen from '../../screens/user/FavoritesScreen';
 import { MyPresaleNavigation } from './MyPresaleNavigation';
+import { FavNavigation } from './FavNavigation';
 import LoginNavigation from '../shared/LoginNavigation';
 
 const Tab = createBottomTabNavigator();
@@ -40,9 +41,9 @@ export default function AppNavigation() {
         >
         <Tab.Screen name='HomeNoLogNav' options={{headerShown:false, title:"Home"}} component={HomeNavigation}/>
         <Tab.Screen name='FoodNav' initialParams={{status:"Equipo"}} options={{headerShown:false, title:"Comida"}} component={FoodNavigation}/>
-        {/* <Tab.Screen name='Favoritos' component={FavoritesScreen}/> */}
+        <Tab.Screen name='FavNav' options={{headerShown:false, title:"Favoritos"}} component={FavNavigation}/>
         {/* <Tab.Screen name='PresaleNav'options={{headerShown:false, title:"Mis Preventas"}}  component={MyPresaleNavigation}/> */}
-        <Tab.Screen name='AccountNoLogNav' component={LoginNavigation} options={{headerShown:false,title:"Mi cuenta"}}/>
+        {/* <Tab.Screen name='AccountNoLogNav' component={LoginNavigation} options={{headerShown:false,title:"Mi cuenta"}}/> */}
     </Tab.Navigator>
     ); 
 }
@@ -58,6 +59,11 @@ const screenOptions = (route:any, color:any, size:any) =>{
         case 'FoodNav':
             iconName='restaurant';
             break;
+
+        case 'FavNav':
+            iconName='favorite';
+            break;
+            
         case 'AccountNoLogNav':
             iconName='person';
             break;

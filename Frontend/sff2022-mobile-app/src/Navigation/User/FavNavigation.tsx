@@ -14,7 +14,19 @@ export const FavNavigation = () => {
             },
         }}
         >
-            <Stack.Screen  name="Favoritos" component={FavoritesScreen}/>
+            <Stack.Screen  
+                name="Favoritos" 
+                component={FavoritesScreen}
+                options={{
+                    headerStyle: {
+                        height: 60,
+                    },
+                    headerTitleStyle: {
+                        fontSize: 18,
+                        fontFamily: 'Rubik-regular',
+                    },
+                }}
+            />
             
             <Stack.Group screenOptions={{headerShown:false}}>
                 <Stack.Screen  name="Mi Comida Fav" options={{headerShown:false,presentation:"modal"}} component={ItemFoodScreen} />

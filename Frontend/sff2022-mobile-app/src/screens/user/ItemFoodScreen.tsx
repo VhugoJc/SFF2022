@@ -83,14 +83,10 @@ export default function ItemFoodScreen() {
         >
             <View sx={showHeader ? itemFood.headerTop : { zIndex: 2 } as any}>
                 <CircleBtn name='close' onPress={() => navigation.goBack()} />
-                {
-                    authState.status === 'authenticated' && authState.user?.role === 'USER_ROLE'
-                        ? <CircleBtn
-                            name={favIcon ? 'favorite' : 'favorite-border'}
-                            onPress={() => handleFavs(presaleData._id)} right
-                        />
-                        : null
-                }
+                <CircleBtn
+                    name={favIcon ? 'favorite' : 'favorite-border'}
+                    onPress={() => handleFavs(presaleData._id)} right
+                />
             </View>
             <ScrollView showsVerticalScrollIndicator={false} bounces={false} scrollEventThrottle={16} onScroll={handleScroll}>
                 <ImageBackground

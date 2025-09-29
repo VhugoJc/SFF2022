@@ -16,7 +16,7 @@ export default function CircleBtn({ name, right, onPress,type='background' }: Pr
             style={Object.assign({}, circleBtn.container, right ? circleBtn.right : {},)}
         >
             <View sx={Object.assign({},circleBtn.circle,{backgroundColor: `$${type}`})}>
-                <Icon size={19} name={name}  
+                <Icon size={24} name={name}  
                     color={
                         name==='favorite'
                         ? '#E63946'
@@ -37,8 +37,8 @@ const circleBtn = StyleSheet.create({
         borderColor: '$light',
         alignItems: 'center',
         justifyContent: 'center',
-        width: 30,
-        height: 30,
+        width: 36,
+        height: 36,
         backgroundColor: '$background',
         borderRadius: 50,
         marginTop: '$2',

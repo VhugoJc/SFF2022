@@ -1,11 +1,12 @@
 import { Text, StyleSheet, Alert, TouchableOpacity, ActivityIndicator } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { View, } from 'dripsy';
 import FoodCard from '../Cards/FoodCard';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Presale } from '../../interfaces/PresaleInterface';
 import { LocalDataService } from '../../utils/LocalDataService';
+import { FavContext } from '../../context/FavsContext/FavsContext';
 
 interface Props{
   refreshing: boolean;
@@ -27,6 +28,7 @@ export default function FoodList({refreshing, shuffleKey}:Props) {
   const [displayedPresales, setDisplayedPresales] = useState<Presale[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   
+  const { favsState, addFood, deleteFood } = useContext(FavContext);
   const ITEMS_PER_CHUNK = 10;
 
   useEffect(() => {
@@ -70,21 +72,33 @@ export default function FoodList({refreshing, shuffleKey}:Props) {
   const hasMoreItems = displayedPresales.length < allPresales.length;
 
   const navigation = useNavigation<StackNavigationProp<any>>();
+
+  const handleFavorite = (presaleId: string) => {
+    const isFavorited = favsState.FoodIds.includes(presaleId);
+    if (isFavorited) {
+      deleteFood(presaleId);
+    } else {
+      addFood(presaleId);
+    }
+  };
   
   return (
     <View style={{ flex: 1, position: 'relative' }}>
       <View style={[foodsList.container, { flex: 1 }]}>
         {
           displayedPresales.map((presale: Presale) => {
+            const isFavorited = favsState.FoodIds.includes(presale._id);
             return (
               <FoodCard
                 key={presale._id}
                 title={presale.name}
                 price={presale.cost}
                 img={{ uri: presale.coverImg }}
+                fav={isFavorited}
                 onPress={() => navigation.navigate("Mi Comida", {
                   presaleData: presale
                 })}
+                onFavPress={() => handleFavorite(presale._id)}
               />
             );
           })

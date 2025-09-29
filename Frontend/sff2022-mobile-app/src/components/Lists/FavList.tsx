@@ -8,7 +8,7 @@ import { PresaleData } from '../../interfaces/UserInterfaces';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { styles } from '../../theme/stylesheet';
-import { userAPI } from '../../api/UserApi';
+import { LocalDataService } from '../../utils/LocalDataService';
 import { Presale } from '../../interfaces/PresaleInterface'
 
 export default function FavList() {
@@ -18,10 +18,10 @@ export default function FavList() {
 
     useEffect(() => {
         const getPresale = async () => {
-            const response = await userAPI.get('/presale');
-            if (response.data) {
+            const response = await LocalDataService.getPresales();
+            if (response) {
                 const auxArray: any = favsState.FoodIds.map(foodId => {
-                    return response.data.find((item: Presale) => item._id === foodId);
+                    return response.find((item: Presale) => item._id === foodId);
                 });
                 setfavFood(auxArray);
             }

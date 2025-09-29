@@ -13,10 +13,12 @@ interface FoodCardProps {
     paid?: boolean,
     fav?: boolean,
     edit?: boolean,
+    showHeart?: boolean,
     _id?: string
-    onPress?(): void
+    onPress?(): void,
+    onFavPress?(): void
 }
-export default function FoodCard({ img, title, price, paid = false, fav = false, edit = false, onPress }: FoodCardProps) {
+export default function FoodCard({ img, title, price, paid = false, fav = false, edit = false, showHeart = false, onPress, onFavPress }: FoodCardProps) {
     const [imageError, setImageError] = useState(false);
     
     // Fallback image when the original image fails to load
@@ -44,7 +46,7 @@ export default function FoodCard({ img, title, price, paid = false, fav = false,
                 >
                     {
                         fav
-                            ? <CircleBtn name='favorite' right />
+                            ? <CircleBtn name='favorite' right onPress={onFavPress} />
                             : edit
                                 ? <CircleBtn name='edit' right />
                                 : null
